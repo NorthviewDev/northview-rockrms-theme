@@ -1,417 +1,897 @@
+// stylelint-disable value-keyword-case
 
-// Theme Colors *show in editor*
-@theme-1: #428bca; // bootstrap primary blue #color
-@theme-1-text: #fff; // #color
-//--
-@theme-2: @gray-darker; // admin bar
-@theme-2-text: lighten(@gray-darker, 70%);
-//--
-@theme-3: lighten(@theme-1, 20%); // header #color
-@theme-3-text: darken(@theme-3, 55%); // #color
-//--
-@theme-4: lighten(@theme-1, 30%); // page title #color
-@theme-4-text: darken(@theme-4, 50%); // #color
-//--
-@theme-5: lighten(@theme-1, 40%); // badge bar #color
-@theme-5-text: darken(@theme-5, 45%); // #color
-//--
-@theme-6: lighten(@theme-1, 45%); // family bar #color
-@theme-6-text: darken(@theme-6, 40%); // #color
-//--
-@theme-7: spin(@theme-1, -135); // accent color #color
-@theme-7-text: #fff; // #color
-//--
-@theme-8: @gray-light; // action buttons / type labels #color
-@theme-8-text: #fff; // #color
-//--
-@body-bg:           #fff; // The background color of the page. #color
+//
+// Variables
+// --------------------------------------------------
+
+/*
+    Colors from InVision:
+*/
+
+@color-gray-darker: #221f1f;
+@color-gray-dark: #373737;
+@color-gray: #777576;
+@color-gray-light: #979797;
+@color-gray-lighter: #d3d3d3;
+
+@color-brand-primary: #53DAEC;
+@color-white: #ffffff;
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+@black:                 #000;
+@white:                 @color-white;
+@gray-darker:           @color-gray-darker;
+@gray-dark:             @color-gray-dark;
+@gray:                  @color-gray;
+@gray-light:            @color-gray-light;
+@gray-lighter:          @color-gray-lighter;
+@brand-primary:         @color-brand-primary;
+
+@brand-success:         #5cb85c;
+@brand-info:            #5bc0de;
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
 
 
-// Text *show in editor*
-@text-color:             @gray-dark; // The default text color. #color
-@link-color:             @brand-primary; // The color for all links. #color
-@link-hover-color:       darken(@link-color, 15%); // The rollover color for all links. #color
-@text-muted:             @gray-light; // The muted color for text #color #color
-@text-selection-bg:      #afd074; // Text selection background color (used when people select text with the mouse). #color
-@text-selection-color:   #fff;    // Text selection text color (used when people select text with the mouse). #color
-@font-family-sans-serif: "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif; // The base font to use for text. Be sure when defining this font that the various weights are configured.
-@font-size-base:          14px; // The default text size.
-@line-height-base:        1.428571429; // The default line height.
-//--
-@required-field-color: #eca9a7; // Color of the small dot that denotes required fields. #color
-@well-bg: darken(@body-bg, 5%);             // The backgroud color for wells. Wells are used to group like content. #color
-@help-color: #86b8cc;           // The color of the help icon used in Rock. #color
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
 
-// Bootstrap Colors *show in editor*
+//** Background color for `<body>`.
+@body-bg:               #fff;
+//** Global text color on `<body>`.
+@text-color:            @gray-darker;
 
-//// Bootstrap Colors {The primary colors defined by the Bootstrap framework. [More Information](http://getbootstrap.com/customize/#colors)}
-@brand-primary:         @theme-1; // #color
-@brand-success:         #5cb85c; // #color
-@brand-info:            #5bc0de; // #color
-@brand-warning:         #f0ad4e; // #color
-@brand-danger:          #d9534f; // #color
-//--
-@gray-darker:            lighten(#000, 13.5%); // #color
-@gray-dark:              lighten(#000, 20%); // #color
-@gray:                   lighten(#000, 33.5%); // #color
-@gray-light:             lighten(#000, 46.7%); // #color
-@gray-lighter:           lighten(#000, 93.5%); // #color
+//** Global textual link color.
+@link-color:            @brand-primary;
+//** Link hover color set via `darken()` function.
+@link-hover-color:      @link-color;
+//** Link hover decoration.
+@link-hover-decoration: underline;
 
-// Font Sizes
-//// Heading Sizes
-@font-size-h1:            floor(@font-size-base * 2.6); // ~36px
-@font-size-h2:            floor(@font-size-base * 2.15); // ~30px
-@font-size-h3:            ceil(@font-size-base * 1.7); // ~24px
-@font-size-h4:            ceil(@font-size-base * 1.25); // ~18px
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+@font-family-sans-serif:  ff-good-web-pro, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-sans-serif;
+
+@font-size-base:          16px;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * .85)); // ~12px
+
+@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
+@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
 @font-size-h5:            @font-size-base;
-@font-size-h6:            ceil(@font-size-base * .85); // ~12px
+@font-size-h6:            ceil((@font-size-base * .85)); // ~12px
 
-// Page Areas
-//// Header
-@header-bg:         @theme-2; // The header background color.
-@header-text-color: @theme-2-text; // The header text color.
-//--
-@header-hambuger-color: #fff; // The text color of the header minimizer.
-@header-hambuger-bg: @brand-primary; // The background color of the header minimizer.
-@header-hamburger-border: @brand-primary; // The border color of the header minimizer.
+//** Unit-less `line-height` for use in components like buttons.
+@line-height-base:        1.428571429; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
 
-//// Main Navigation
-@nav-bg: @theme-1;                                     // The background color of the main navigation.
-@nav-color: lighten(@gray-light, 10%);                 // The text color of the main navigation.
-@navbar-inverse-border: darken(@header-bg, 10%);       // The main navigation border color.
-@navbar-inverse-link-hover-color: @theme-8-text;
-@navbar-inverse-link-active-color: @theme-8-text;      // The active page in the header's text color.
-@navbar-inverse-link-active-bg: darken(@theme-8, 15%); // The active page in the header's background color.
-
-//// Page Title
-@pagetitle-bg: @theme-3;          // The background color of the page title section.
-@pagetitle-text-color: @theme-3-text;  // The text color of the page title section.
-
-//// Breadcrumbs
-@breadcrumb-bg:               #f5f5f5;
-@breadcrumb-color:            #ccc;
-@breadcrumb-active-color:     @gray-light;
-@breadcrumb-separator:        "/";
-
-//// Footer
-@footer-bg: @header-bg;             // The background color of the footer.
-@footer-color: @header-text-color;  // The text color of the footer.
-
-//// Admin Bar
-@adminbar-bg: @theme-2;
-@adminbar-text-color: @theme-2-text;
-
-// Global Styles
-@border-radius-base: 4px;       // The global setting for rounding corners.
-
-@photo-border: @theme-3;   // Standard border color for photos.
-@hr-border: lighten(@text-color, 40%);      // The color horizontal rule lines.
-//--
-@legend-color:                   @gray-dark; // Text color for html legend element. The legend element is not used much in the core blocks (provided here for theme developers.)
-@legend-border-color:            @input-border; // Border color for html legend element. The legend element is not used much in the core blocks (provided here for theme developers.)
-
-//// Scroll Bars
-@scroll-track-color: #aaa; // Color of the scrollbar track line.
-@scroll-thumb-color: #ccc; // Color of the scrollbar thumb which moves up and down the track line.
-
-//// Scroll Bars
-@spinner-bg: @btn-primary-bg;       // The background color of the wait spinner.
-@spinner-color: @btn-primary-color; // The bar color of the wait spinner.
+//** By default, this inherits from the `<body>`.
+@headings-font-family:    ff-good-web-pro-condensed, sans-serif;
+@headings-font-weight:    700;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
 
 
-// Control Variables
-//// Inputs
-@input-bg:                       #fff;                      // The background color of input fields.
-@input-bg-disabled:              @gray-lighter;             // The background of inputs in a disabled state.
-@input-color:                    @gray;                     // The text color of inputs.
-@input-border:                   #ccc;                      // The border color of inputs.
-@input-border-radius:            @border-radius-base;       // The border radius of input fields.
-@input-border-focus:             #66afe9;                   // The border color of active inputs.
-@input-color-placeholder:        lighten(@text-color, 40%); // The text color of input placeholder text.
-@input-group-addon-bg:           #f0f0f0;                   // Used for pre (dollar signs, etc.) and post ( percent signs) input addons as well as picker backgrounds.
-@input-group-addon-border-color: @input-border;             // Used for pre (dollar signs, etc.) and post ( percent signs) input addons as well as picker borders (highly recommended that you use the same color as the input border).
+//== Iconography
+//
+//## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
 
-//// Picker
-@picker-action-bg: #e3ded7;     // The background color of the actions bar at the bottom of the picker dropdown.
+//** Load fonts from this directory.
+@icon-font-path:          "../fonts/";
+//** File name for all font files.
+@icon-font-name:          "glyphicons-halflings-regular";
+//** Element ID within SVG icon file.
+@icon-font-svg-id:        "glyphicons_halflingsregular";
 
 
-//// Date Picker
-@datepicker-highlight-bg: @theme-2;         // Background color for highlighting dates and selector elements of the datepicker.
-@datepicker-highlight-color: @theme-2-text; // Text color for highlighting dates and selector elements of the datepicker.
+//== Components
+//
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-//// Image Editor
-@imageeditor-bg: @photo-border;              // The background for the image editor roll-over. This control is used to upload images.
-@imageeditor-color: contrast(@photo-border); // The icon color for the image editor roll-over. This control is used to upload images.
+@padding-base-vertical:     6px;
+@padding-base-horizontal:   12px;
+
+@padding-large-vertical:    10px;
+@padding-large-horizontal:  16px;
+
+@padding-small-vertical:    5px;
+@padding-small-horizontal:  10px;
+
+@padding-xs-vertical:       1px;
+@padding-xs-horizontal:     5px;
+
+@line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small:         1.5;
+
+@border-radius-base:        4px;
+@border-radius-large:       6px;
+@border-radius-small:       3px;
+
+//** Global color for active items (e.g., navs or dropdowns).
+@component-active-color:    #fff;
+//** Global background color for active items (e.g., navs or dropdowns).
+@component-active-bg:       @brand-primary;
+
+//** Width of the `border` for generating carets that indicate dropdowns.
+@caret-width-base:          4px;
+//** Carets increase slightly in size for larger components.
+@caret-width-large:         5px;
 
 
-// Panel
-@panel-bg:                    #fff;                  // The background color of the panel body.
-@panel-text:                  @text-color; // The text color of the panel.
-@panel-border:                darken(@theme-3, 10%);                  // The panel's border color.
-@panel-top-border-color:      darken(@panel-border, 5%);           // Color of the panel's top border often used as an accent color.
-@panel-border-radius:         @border-radius-base;
-//--
-@panel-heading-bg:            @theme-5;                  // The background color of the panel's header.
-@panel-heading-text-color:    @theme-5-text;              // The heading's text color.
-@panel-heading-border:        darken(@panel-heading-bg, 30%); // The headings border color.
-//--
-@panel-following-active-bg:   @panel-top-border-color;   // The background color of the following square when it's active at the top of panels that support the following feature (e.g. Group Details block).
-//--
-@panel-footer-bg:             @panel-bg;                 // The background color of the panel's footer.
-@panel-footer-color:          @panel-text;              // The color text of the panel's footer.
+//== Tables
+//
+//## Customizes the `.table` component with basic values, each used across all table variations.
+
+//** Padding for `<th>`s and `<td>`s.
+@table-cell-padding:            8px;
+//** Padding for cells in `.table-condensed`.
+@table-condensed-cell-padding:  5px;
+
+//** Default background color used for all tables.
+@table-bg:                      transparent;
+//** Background color used for `.table-striped`.
+@table-bg-accent:               #f9f9f9;
+//** Background color used for `.table-hover`.
+@table-bg-hover:                #f5f5f5;
+@table-bg-active:               @table-bg-hover;
+
+//** Border color for table and cell borders.
+@table-border-color:            #ddd;
 
 
-// Grid
-@grid-border-color: #ddd;   // The border color of the grids cells.
-@grid-padding: 8px;         // The default padding of the grid cells.
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
 
-//// Filter Section
-@grid-filter-bg: @panel-heading-bg;        // The background color of the filter section of the grid.
-@grid-filter-color: @panel-heading-text-color; // The text color of the filter section of the grid.
-
-//// Grid Header
-@grid-column-header-bg: @theme-1;                        // The background color of the grid header.
-@grid-column-header-text-color: @theme-1-text;     // The text color of the grid header.
-@grid-column-header-font-size: 14px;                    // The font size of the grid header.
-@grid-column-header-font-weight: @font-weight-semibold; // The font weight of the grid header.
-@grid-column-header-border-color: @grid-border-color;    // The border color of the grid header.
-//--
-@grid-column-header-bold-bg: @nav-bg;                   // Background color for bold table headers like the merge person page.
-@grid-column-header-bold-color: @nav-color;             // The text color for bold table headers like the merge person page.
-
-//// Row Striping
-@grid-row-even-bg: @panel-bg;         // The even rows background color.
-@grid-row-even-color: @panel-text;  // The even rows text color.
-@grid-row-odd-bg: darken(@grid-row-even-bg, 3%);         // The odd rows background color.
-@grid-row-odd-color: @text-color;   // The odd rows text color.
-
-//// Hover
-@grid-hover-bg: #d5e6ed;            // Row background color when hovered over.
-@grid-hover-color: @text-color;     // Row text color when hovered over.
-
-//// Section Headers
-@grid-section-bg: @theme-3;          // Some grids like the person merge grid have section headers to group like rows. This styles the background of these rows.
-@grid-section-color: @theme-3-text;  // Some grids like the person merge grid have section headers to group like rows. This styles the text of these rows.
-
-//// Pager Section
-@grid-pager-bg: @panel-heading-bg;
-@grid-pager-color: @panel-heading-text-color;
-//--
-@grid-pager-button-bg: darken(@grid-pager-bg, 5%);
-@grid-pager-button-color: @text-color;
-@grid-pager-button-border: darken(@grid-pager-button-bg, 20%);
-@grid-pager-button-active-bg: lighten(@grid-pager-button-bg, 10%);
-
-//// Footer
-@grid-footer-bg: @panel-heading-bg;
-@grid-footer-text-color: @panel-heading-text-color;
-@grid-footer-font-size: 10px;
-@grid-footer-font-weight: 300;
-//--
-@grid-footer-button-bg: darken(@grid-footer-bg, 5%);
-@grid-footer-button-text-color: @text-color;
-@grid-footer-button-border: darken(@grid-footer-bg, 20%);
-
-//// Table Styles
-@table-bg: @grid-row-even-bg;
-@table-border-color: @grid-border-color;
-@table-bg-accent: @grid-row-odd-bg;
-
-// Person Profile
-//// Bio Bar
-@persondetails-bio-bg: @theme-3;
-@persondetails-bio-color: @theme-3-text;
-@persondetails-bio-action-color: #fff;
-@persondetails-bio-action-bg: #6a6a6a;
-@persondetails-bio-action-border: darken(@persondetails-bio-action-bg, 5%);
-@persondetails-bio-photo-border: @header-bg;
-@persondetails-bio-photo-following: #817b72;
-
-//// Badge Bar
-@persondetails-badge-bg: @theme-3;
-@persondetails-badge-color: @theme-3-text;
-
-//// Family Bar
-@persondetails-familybar-bg: @theme-3;
-@persondetails-familybar-color: @theme-3-text;
-@persondetails-familybar-action-color: #fff;
-@persondetails-familybar-action-bg: #6a6a6a;
-@persondetails-familybar-action-border: darken(@persondetails-bio-action-bg, 5%);
-@persondetails-familybar-photo-bg: darken(@persondetails-familybar-bg, 20%);
-
-// Note Types
-
-//// Alert / Hightlight Note
-@note-highlight-bg: @alert-danger-bg;
-@note-highlight-text: @alert-danger-text;
-@note-highlight-border: @alert-danger-border;
-
-//// Private / Personal Note
-@note-personal-bg: @alert-info-bg;
-@note-personal-text: @alert-info-text;
-@note-personal-border: @alert-info-border;
-
-// Modals
-@modal-header-bg: @theme-1;
-@modal-header-text-color: @theme-1-text;
-@modal-body-bg: @body-bg;
-@modal-body-text-color: @text-color;
-@modal-footer-bg: @theme-5;
-@modal-footer-text-color: @theme-5-text;
-@modal-dropshadow-color: rgba(0,0,0,.6);
-
-//// Backdrop
-@modal-backdrop-bg:           #000;
-@modal-backdrop-opacity:      .5;
-
-// Tooltip
-@tooltip-header-bg: @theme-1;
-@tooltip-header-text-color: @theme-1-text;
-@tooltip-bg: @theme-1;
-
-// Pills
-@nav-pills-active-link-hover-bg:         @theme-1;
-@nav-pills-active-link-hover-color:      @theme-1-text;
-@nav-pills-link-color: @link-color;  // The color of the none active pill link.
-
-// List As Blocks { Used on many administration pages and pages like 'My Workflows', 'Connections' and 'Calendar'. }
-@listasblocks-bg: @theme-3;
-@listasblocks-border-color: darken(@theme-3, 10%);
-@listasblocks-color: @theme-3-text;
-@listasblocks-rollover-bg: @theme-2;
-@listasblocks-rollover-text-color: @theme-2-text;
-@listasblocks-rollover-border-color: darken(@listasblocks-rollover-bg, 5%);
-@listasblocks-active-bg: @theme-2;
-@listasblocks-active-border-color: darken(@listasblocks-active-bg, 10%);
-@listasblocks-active-color: @theme-2-text;
-
-// Tags { Styles for the tag control used on the person profile. }
-@tag-bg: #c2b8a7;
-@tag-text-color: #231f20;
-@tag-border-radius: @border-radius-base;
-@tag-dot-color: #dbd5cb;
-@tag-bg-alt: #d0c6b4;
-
-// Autocomplete Styles
-@autocomplete-bg: @theme-3;
-@autocomplete-border: darken(@autocomplete-bg, 10%);
-@autocomplete-text: @theme-3;
-@autocomplete-rollover-bg: darken(@autocomplete-bg, 10%);  // the background color of the rollover for autocompletes.
-
-// Smart Search
-@smartsearch-bg: rgba(255, 255, 255, .1);
-@smartsearch-border-color: #2c2c2c;
-@smartsearch-box-shadow: 0 1px 2px rgba(0, 0, 0, .1) inset, 0 1px 0 rgba(255, 255, 255, .15);
-@smartsearch-input-text-color: @header-text-color;
-@smartsearch-input-selection-background: #2e2e2e;
-@smartsearch-input-selection-text-color: #fff;
-@smartsearch-text-color: @header-text-color;
-
-// Wizard Styles { Used on pages like 'Calendar' and 'Event Registration' to help guide the user through a complex series of screens. }
-@wizard-bg: @gray-lighter;
-@wizard-item-bar-color: #bbb;
-@wizard-item-bar-complete-color: darken(@wizard-item-bar-color, 10%);
-//--
-@wizard-item-label-active-color: @text-color;
-@wizard-item-icon-active-color: @nav-pills-active-link-hover-color;
-@wizard-item-icon-active-bg: @nav-pills-active-link-hover-bg;
-//--
-@wizard-item-label-complete-color: @wizard-item-label-active-color;
-@wizard-item-icon-complete-color: @wizard-item-icon-color;
-@wizard-item-icon-complete-bg: @wizard-item-icon-active-bg;
-//--
-@wizard-item-label-color: lighten(@wizard-item-label-active-color, 25%);
-@wizard-item-icon-color: @wizard-item-icon-active-color;
-@wizard-item-icon-bg: lighten(@wizard-item-icon-active-bg, 25%);
-
-// Tree Viewer
-@tree-rollover-bg: lighten(@theme-2, 20%);         // Background color of the rollover for items in the treeview.
-@tree-rollover-color: @theme-2-text;      // Text color of the rollover for items in the treeview.
-@tree-selected-bg: #6a6a6a;         // Background color of selected items in the treeview.
-@tree-selected-color: #fff;      // Text color of selected items in the treeview.
-
-// Buttons
 @btn-font-weight:                normal;
-//--
+
 @btn-default-color:              #333;
 @btn-default-bg:                 #fff;
-@btn-default-border:             darken(@body-bg, 20%);
-//--
+@btn-default-border:             #ccc;
+
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
 @btn-primary-border:             darken(@btn-primary-bg, 5%);
-//--
+
 @btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             darken(@btn-success-bg, 5%);
-//--
-@btn-warning-color:              #fff;
-@btn-warning-bg:                 @brand-warning;
-@btn-warning-border:             darken(@btn-warning-bg, 5%);
-//--
-@btn-danger-color:               #fff;
-@btn-danger-bg:                  @brand-danger;
-@btn-danger-border:              darken(@btn-danger-bg, 5%);
-//--
+
 @btn-info-color:                 #fff;
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
-//--
-@btn-action-color:              @theme-4-text;
-@btn-action-bg:                 @theme-4;
-@btn-action-border:             darken(@btn-action-bg, 5%);
-//--
-@btn-security-color:            @btn-default-color;
-@btn-security-bg:               @btn-default-bg;
-@btn-security-border:           @btn-default-border;
-//--
+
+@btn-warning-color:              #fff;
+@btn-warning-bg:                 @brand-warning;
+@btn-warning-border:             darken(@btn-warning-bg, 5%);
+
+@btn-danger-color:               #fff;
+@btn-danger-bg:                  @brand-danger;
+@btn-danger-border:              darken(@btn-danger-bg, 5%);
+
 @btn-link-disabled-color:        @gray-light;
 
-// Custom Labels { The bootstrap labels use the brand colors. }
-@label-campus-bg: #83758f;               // Used for identifing campuses.
-@label-type-bg: @theme-3;  // Used for showing the 'type' of an idea. For instance on the group viewer this highlights the group's type.
+// Allows for customizing button radius independently from global border radius
+@btn-border-radius-base:         @border-radius-base;
+@btn-border-radius-large:        @border-radius-large;
+@btn-border-radius-small:        @border-radius-small;
 
-// Form States and Actions Colors
-@state-warning-text:             #c09853;
-@state-warning-bg:               #fcf8e3;
-@state-warning-border:           darken(spin(@state-warning-bg, -10), 3%);
-//--
-@state-danger-text:              #b94a48;
-@state-danger-bg:                #f2dede;
-@state-danger-border:            darken(spin(@state-danger-bg, -10), 3%);
-//--
-@state-success-text:             #468847;
+
+//== Forms
+//
+//##
+
+//** `<input>` background color
+@input-bg:                       #fff;
+//** `<input disabled>` background color
+@input-bg-disabled:              @gray-lighter;
+
+//** Text color for `<input>`s
+@input-color:                    @gray;
+//** `<input>` border color
+@input-border:                   #ccc;
+
+// TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
+//** Default `.form-control` border radius
+// This has no effect on `<select>`s in some browsers, due to the limited stylability of `<select>`s in CSS.
+@input-border-radius:            @border-radius-base;
+//** Large `.form-control` border radius
+@input-border-radius-large:      @border-radius-large;
+//** Small `.form-control` border radius
+@input-border-radius-small:      @border-radius-small;
+
+//** Border color for inputs on focus
+@input-border-focus:             #66afe9;
+
+//** Placeholder text color
+@input-color-placeholder:        #999;
+
+//** Default `.form-control` height
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+//** Large `.form-control` height
+@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+//** Small `.form-control` height
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+
+//** `.form-group` margin
+@form-group-margin-bottom:       15px;
+
+@legend-color:                   @gray-dark;
+@legend-border-color:            #e5e5e5;
+
+//** Background color for textual input addons
+@input-group-addon-bg:           @gray-lighter;
+//** Border color for textual input addons
+@input-group-addon-border-color: @input-border;
+
+//** Disabled cursor for form controls and buttons.
+@cursor-disabled:                not-allowed;
+
+
+//== Dropdowns
+//
+//## Dropdown menu container and contents.
+
+//** Background for the dropdown menu.
+@dropdown-bg:                    #fff;
+//** Dropdown menu `border-color`.
+@dropdown-border:                rgba(0, 0, 0, .15);
+//** Dropdown menu `border-color` **for IE8**.
+@dropdown-fallback-border:       #ccc;
+//** Divider color for between dropdown items.
+@dropdown-divider-bg:            #e5e5e5;
+
+//** Dropdown link text color.
+@dropdown-link-color:            @gray-dark;
+//** Hover color for dropdown links.
+@dropdown-link-hover-color:      darken(@gray-dark, 5%);
+//** Hover background for dropdown links.
+@dropdown-link-hover-bg:         #f5f5f5;
+
+//** Active dropdown menu item text color.
+@dropdown-link-active-color:     @component-active-color;
+//** Active dropdown menu item background color.
+@dropdown-link-active-bg:        @component-active-bg;
+
+//** Disabled dropdown menu item background color.
+@dropdown-link-disabled-color:   @gray-light;
+
+//** Text color for headers within dropdown menus.
+@dropdown-header-color:          @gray-light;
+
+//** Deprecated `@dropdown-caret-color` as of v3.1.0
+@dropdown-caret-color:           #000;
+
+
+//-- Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+//
+// Note: These variables are not generated into the Customizer.
+
+@zindex-navbar:            1000;
+@zindex-dropdown:          1000;
+@zindex-popover:           1060;
+@zindex-tooltip:           1070;
+@zindex-navbar-fixed:      1030;
+@zindex-modal-background:  1040;
+@zindex-modal:             1050;
+
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+//** Deprecated `@screen-xs` as of v3.0.1
+@screen-xs:                  480px;
+//** Deprecated `@screen-xs-min` as of v3.2.0
+@screen-xs-min:              @screen-xs;
+//** Deprecated `@screen-phone` as of v3.0.1
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+//** Deprecated `@screen-sm` as of v3.0.1
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+//** Deprecated `@screen-tablet` as of v3.0.1
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+//** Deprecated `@screen-md` as of v3.0.1
+@screen-md:                  992px;
+@screen-md-min:              @screen-md;
+//** Deprecated `@screen-desktop` as of v3.0.1
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+//** Deprecated `@screen-lg` as of v3.0.1
+@screen-lg:                  1200px;
+@screen-lg-min:              @screen-lg;
+//** Deprecated `@screen-lg-desktop` as of v3.0.1
+@screen-lg-desktop:          @screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
+
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+@grid-columns:              12;
+//** Padding between columns. Gets divided in half for the left and right.
+@grid-gutter-width:         24px;
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+@grid-float-breakpoint:     @screen-sm-min;
+//** Point at which the navbar begins collapsing.
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
+
+
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+
+// Small screen / tablet
+@container-tablet:             (720px + @grid-gutter-width);
+//** For `@screen-sm-min` and up.
+@container-sm:                 @container-tablet;
+
+// Medium screen / desktop
+@container-desktop:            (940px + @grid-gutter-width);
+//** For `@screen-md-min` and up.
+@container-md:                 @container-desktop;
+
+// Large screen / wide desktop
+@container-large-desktop:      (1360px + @grid-gutter-width);
+//** For `@screen-lg-min` and up.
+@container-lg:                 @container-large-desktop;
+
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+@navbar-height:                    50px;
+@navbar-margin-bottom:             @line-height-computed;
+@navbar-border-radius:             @border-radius-base;
+@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
+@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-collapse-max-height:       340px;
+
+@navbar-default-color:             #777;
+@navbar-default-bg:                #f8f8f8;
+@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
+
+// Navbar links
+@navbar-default-link-color:                #777;
+@navbar-default-link-hover-color:          #333;
+@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-active-color:         #555;
+@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-disabled-color:       #ccc;
+@navbar-default-link-disabled-bg:          transparent;
+
+// Navbar brand label
+@navbar-default-brand-color:               @navbar-default-link-color;
+@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-bg:            transparent;
+
+// Navbar toggle
+@navbar-default-toggle-hover-bg:           #ddd;
+@navbar-default-toggle-icon-bar-bg:        #888;
+@navbar-default-toggle-border-color:       #ddd;
+
+
+//=== Inverted navbar
+// Reset inverted navbar basics
+@navbar-inverse-color:                      lighten(@gray-light, 15%);
+@navbar-inverse-bg:                         #222;
+@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
+
+// Inverted navbar links
+@navbar-inverse-link-color:                 lighten(@gray-light, 15%);
+@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color:        #444;
+@navbar-inverse-link-disabled-bg:           transparent;
+
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          #fff;
+@navbar-inverse-brand-hover-bg:             transparent;
+
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg:            #333;
+@navbar-inverse-toggle-icon-bar-bg:         #fff;
+@navbar-inverse-toggle-border-color:        #333;
+
+
+//== Navs
+//
+//##
+
+//=== Shared nav styles
+@nav-link-padding:                          10px 15px;
+@nav-link-hover-bg:                         @gray-lighter;
+
+@nav-disabled-link-color:                   @gray-light;
+@nav-disabled-link-hover-color:             @gray-light;
+
+//== Tabs
+@nav-tabs-border-color:                     #ddd;
+
+@nav-tabs-link-hover-border-color:          @gray-lighter;
+
+@nav-tabs-active-link-hover-bg:             @body-bg;
+@nav-tabs-active-link-hover-color:          @gray;
+@nav-tabs-active-link-hover-border-color:   #ddd;
+
+@nav-tabs-justified-link-border-color:            #ddd;
+@nav-tabs-justified-active-link-border-color:     @body-bg;
+
+//== Pills
+@nav-pills-border-radius:                   @border-radius-base;
+@nav-pills-active-link-hover-bg:            @component-active-bg;
+@nav-pills-active-link-hover-color:         @component-active-color;
+
+
+//== Pagination
+//
+//##
+
+@pagination-color:                     @link-color;
+@pagination-bg:                        #fff;
+@pagination-border:                    #ddd;
+
+@pagination-hover-color:               @link-hover-color;
+@pagination-hover-bg:                  @gray-lighter;
+@pagination-hover-border:              #ddd;
+
+@pagination-active-color:              #fff;
+@pagination-active-bg:                 @brand-primary;
+@pagination-active-border:             @brand-primary;
+
+@pagination-disabled-color:            @gray-light;
+@pagination-disabled-bg:               #fff;
+@pagination-disabled-border:           #ddd;
+
+
+//== Pager
+//
+//##
+
+@pager-bg:                             @pagination-bg;
+@pager-border:                         @pagination-border;
+@pager-border-radius:                  15px;
+
+@pager-hover-bg:                       @pagination-hover-bg;
+
+@pager-active-bg:                      @pagination-active-bg;
+@pager-active-color:                   @pagination-active-color;
+
+@pager-disabled-color:                 @pagination-disabled-color;
+
+
+//== Jumbotron
+//
+//##
+
+@jumbotron-padding:              30px;
+@jumbotron-color:                inherit;
+@jumbotron-bg:                   @gray-lighter;
+@jumbotron-heading-color:        inherit;
+@jumbotron-font-size:            ceil((@font-size-base * 1.5));
+@jumbotron-heading-font-size:    ceil((@font-size-base * 4.5));
+
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+@state-success-text:             #3c763d;
 @state-success-bg:               #dff0d8;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
-//--
-@state-info-text:                #3a87ad;
+
+@state-info-text:                #31708f;
 @state-info-bg:                  #d9edf7;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
-// Code
+@state-warning-text:             #8a6d3b;
+@state-warning-bg:               #fcf8e3;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text:              #a94442;
+@state-danger-bg:                #f2dede;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+
+
+//== Tooltips
+//
+//##
+
+//** Tooltip max width
+@tooltip-max-width:           200px;
+//** Tooltip text color
+@tooltip-color:               #fff;
+//** Tooltip background color
+@tooltip-bg:                  #000;
+@tooltip-opacity:             .9;
+
+//** Tooltip arrow width
+@tooltip-arrow-width:         5px;
+//** Tooltip arrow color
+@tooltip-arrow-color:         @tooltip-bg;
+
+
+//== Popovers
+//
+//##
+
+//** Popover body background color
+@popover-bg:                          #fff;
+//** Popover maximum width
+@popover-max-width:                   276px;
+//** Popover border color
+@popover-border-color:                rgba(0, 0, 0, .2);
+//** Popover fallback border color
+@popover-fallback-border-color:       #ccc;
+
+//** Popover title background color
+@popover-title-bg:                    darken(@popover-bg, 3%);
+
+//** Popover arrow width
+@popover-arrow-width:                 10px;
+//** Popover arrow color
+@popover-arrow-color:                 @popover-bg;
+
+//** Popover outer arrow width
+@popover-arrow-outer-width:           (@popover-arrow-width + 1);
+//** Popover outer arrow color
+@popover-arrow-outer-color:           fadein(@popover-border-color, 5%);
+//** Popover outer arrow fallback color
+@popover-arrow-outer-fallback-color:  darken(@popover-fallback-border-color, 20%);
+
+
+//== Labels
+//
+//##
+
+//** Default label background color
+@label-default-bg:            @gray-light;
+//** Primary label background color
+@label-primary-bg:            @brand-primary;
+//** Success label background color
+@label-success-bg:            @brand-success;
+//** Info label background color
+@label-info-bg:               @brand-info;
+//** Warning label background color
+@label-warning-bg:            @brand-warning;
+//** Danger label background color
+@label-danger-bg:             @brand-danger;
+
+//** Default label text color
+@label-color:                 #fff;
+//** Default text color of a linked label
+@label-link-hover-color:      #fff;
+
+
+//== Modals
+//
+//##
+
+//** Padding applied to the modal body
+@modal-inner-padding:         15px;
+
+//** Padding applied to the modal title
+@modal-title-padding:         15px;
+//** Modal title line-height
+@modal-title-line-height:     @line-height-base;
+
+//** Background color of modal content area
+@modal-content-bg:                             #fff;
+//** Modal content border color
+@modal-content-border-color:                   rgba(0, 0, 0, .2);
+//** Modal content border color **for IE8**
+@modal-content-fallback-border-color:          #999;
+
+//** Modal backdrop background color
+@modal-backdrop-bg:           #000;
+//** Modal backdrop opacity
+@modal-backdrop-opacity:      .5;
+//** Modal header border color
+@modal-header-border-color:   #e5e5e5;
+//** Modal footer border color
+@modal-footer-border-color:   @modal-header-border-color;
+
+@modal-lg:                    900px;
+@modal-md:                    600px;
+@modal-sm:                    300px;
+
+
+//== Alerts
+//
+//## Define alert colors, border radius, and padding.
+
+@alert-padding:               15px;
+@alert-border-radius:         @border-radius-base;
+@alert-link-font-weight:      bold;
+
+@alert-success-bg:            @state-success-bg;
+@alert-success-text:          @state-success-text;
+@alert-success-border:        @state-success-border;
+
+@alert-info-bg:               @state-info-bg;
+@alert-info-text:             @state-info-text;
+@alert-info-border:           @state-info-border;
+
+@alert-warning-bg:            @state-warning-bg;
+@alert-warning-text:          @state-warning-text;
+@alert-warning-border:        @state-warning-border;
+
+@alert-danger-bg:             @state-danger-bg;
+@alert-danger-text:           @state-danger-text;
+@alert-danger-border:         @state-danger-border;
+
+
+//== Progress bars
+//
+//##
+
+//** Background color of the whole progress component
+@progress-bg:                 #f5f5f5;
+//** Progress bar text color
+@progress-bar-color:          #fff;
+//** Variable for setting rounded corners on progress bar.
+@progress-border-radius:      @border-radius-base;
+
+//** Default progress bar color
+@progress-bar-bg:             @brand-primary;
+//** Success progress bar color
+@progress-bar-success-bg:     @brand-success;
+//** Warning progress bar color
+@progress-bar-warning-bg:     @brand-warning;
+//** Danger progress bar color
+@progress-bar-danger-bg:      @brand-danger;
+//** Info progress bar color
+@progress-bar-info-bg:        @brand-info;
+
+
+//== List group
+//
+//##
+
+//** Background color on `.list-group-item`
+@list-group-bg:                 #fff;
+//** `.list-group-item` border color
+@list-group-border:             #ddd;
+//** List group border radius
+@list-group-border-radius:      @border-radius-base;
+
+//** Background color of single list items on hover
+@list-group-hover-bg:           #f5f5f5;
+//** Text color of active list items
+@list-group-active-color:       @component-active-color;
+//** Background color of active list items
+@list-group-active-bg:          @component-active-bg;
+//** Border color of active list elements
+@list-group-active-border:      @list-group-active-bg;
+//** Text color for content within active list items
+@list-group-active-text-color:  lighten(@list-group-active-bg, 40%);
+
+//** Text color of disabled list items
+@list-group-disabled-color:      @gray-light;
+//** Background color of disabled list items
+@list-group-disabled-bg:         @gray-lighter;
+//** Text color for content within disabled list items
+@list-group-disabled-text-color: @list-group-disabled-color;
+
+@list-group-link-color:         #555;
+@list-group-link-hover-color:   @list-group-link-color;
+@list-group-link-heading-color: #333;
+
+
+//== Panels
+//
+//##
+
+@panel-bg:                    #fff;
+@panel-body-padding:          15px;
+@panel-heading-padding:       10px 15px;
+@panel-footer-padding:        @panel-heading-padding;
+@panel-border-radius:         @border-radius-base;
+
+//** Border color for elements within panels
+@panel-inner-border:          #ddd;
+@panel-footer-bg:             #f5f5f5;
+
+@panel-default-text:          @gray-dark;
+@panel-default-border:        #ddd;
+@panel-default-heading-bg:    #f5f5f5;
+
+@panel-primary-text:          #fff;
+@panel-primary-border:        @brand-primary;
+@panel-primary-heading-bg:    @brand-primary;
+
+@panel-success-text:          @state-success-text;
+@panel-success-border:        @state-success-border;
+@panel-success-heading-bg:    @state-success-bg;
+
+@panel-info-text:             @state-info-text;
+@panel-info-border:           @state-info-border;
+@panel-info-heading-bg:       @state-info-bg;
+
+@panel-warning-text:          @state-warning-text;
+@panel-warning-border:        @state-warning-border;
+@panel-warning-heading-bg:    @state-warning-bg;
+
+@panel-danger-text:           @state-danger-text;
+@panel-danger-border:         @state-danger-border;
+@panel-danger-heading-bg:     @state-danger-bg;
+
+
+//== Thumbnails
+//
+//##
+
+//** Padding around the thumbnail image
+@thumbnail-padding:           4px;
+//** Thumbnail background color
+@thumbnail-bg:                @body-bg;
+//** Thumbnail border color
+@thumbnail-border:            #ddd;
+//** Thumbnail border radius
+@thumbnail-border-radius:     @border-radius-base;
+
+//** Custom text color for thumbnail captions
+@thumbnail-caption-color:     @text-color;
+//** Padding around the thumbnail caption
+@thumbnail-caption-padding:   9px;
+
+
+//== Wells
+//
+//##
+
+@well-bg:                     #f5f5f5;
+@well-border:                 darken(@well-bg, 7%);
+
+
+//== Badges
+//
+//##
+
+@badge-color:                 #fff;
+//** Linked badge text color on hover
+@badge-link-hover-color:      #fff;
+@badge-bg:                    @gray-light;
+
+//** Badge text color in active nav link
+@badge-active-color:          @link-color;
+//** Badge background color in active nav link
+@badge-active-bg:             #fff;
+
+@badge-font-weight:           bold;
+@badge-line-height:           1;
+@badge-border-radius:         10px;
+
+
+//== Breadcrumbs
+//
+//##
+
+@breadcrumb-padding-vertical:   8px;
+@breadcrumb-padding-horizontal: 15px;
+//** Breadcrumb background color
+@breadcrumb-bg:                 #f5f5f5;
+//** Breadcrumb text color
+@breadcrumb-color:              #ccc;
+//** Text color of current page in the breadcrumb
+@breadcrumb-active-color:       @gray-light;
+//** Textual separator for between breadcrumb elements
+@breadcrumb-separator:          "/";
+
+
+//== Carousel
+//
+//##
+
+@carousel-text-shadow:                        0 1px 2px rgba(0, 0, 0, .6);
+
+@carousel-control-color:                      #fff;
+@carousel-control-width:                      15%;
+@carousel-control-opacity:                    .5;
+@carousel-control-font-size:                  20px;
+
+@carousel-indicator-active-bg:                #fff;
+@carousel-indicator-border-color:             #fff;
+
+@carousel-caption-color:                      #fff;
+
+
+//== Close
+//
+//##
+
+@close-font-weight:           bold;
+@close-color:                 #000;
+@close-text-shadow:           0 1px 0 #fff;
+
+
+//== Code
+//
+//##
+
 @code-color:                  #c7254e;
 @code-bg:                     #f9f2f4;
-//--
+
+@kbd-color:                   #fff;
+@kbd-bg:                      #333;
+
 @pre-bg:                      #f5f5f5;
 @pre-color:                   @gray-dark;
 @pre-border-color:            #ccc;
 @pre-scrollable-max-height:   340px;
 
-// Dropdowns
-@dropdown-bg:                    #fff;
-@dropdown-border:                rgba(0,0,0,.15);
-@dropdown-fallback-border:       #ccc;
-@dropdown-divider-bg:            #e5e5e5;
-//--
-@dropdown-link-color:            @gray-dark;
-@dropdown-link-hover-color:      darken(@gray-dark, 5%);
-@dropdown-link-hover-bg:         #f5f5f5;
-//--
-@dropdown-link-active-color:     @component-active-color;
-@dropdown-link-active-bg:        @component-active-bg;
-//--
-@dropdown-link-disabled-color:   @gray-light;
-//--
-@dropdown-header-color:          @gray-light;
-//--
-@dropdown-caret-color:           @link-color;
+
+//== Type
+//
+//##
+
+//** Horizontal offset for forms and lists.
+@component-offset-horizontal: 180px;
+//** Text muted color
+@text-muted:                  @gray-light;
+//** Abbreviations and acronyms border color
+@abbr-border-color:           @gray-light;
+//** Headings small color
+@headings-small-color:        @gray-light;
+//** Blockquote small color
+@blockquote-small-color:      @gray-light;
+//** Blockquote font size
+@blockquote-font-size:        (@font-size-base * 1.25);
+//** Blockquote border color
+@blockquote-border-color:     @gray-lighter;
+//** Page header border color
+@page-header-border-color:    @gray-lighter;
+//** Width of horizontal description list titles
+@dl-horizontal-offset:        @component-offset-horizontal;
+//** Point at which .dl-horizontal becomes horizontal
+@dl-horizontal-breakpoint:    @grid-float-breakpoint;
+//** Horizontal line color.
+@hr-border:                   @gray-lighter;
+
+// Bootstrap 4 Variables
+// Used when @enable-flexbox: true;
+@bs4-screen-xs: 0;
+@bs4-screen-sm: 576px;
+@bs4-screen-md: @screen-sm;
+@bs4-screen-lg: @screen-md;
+@bs4-screen-xl: @screen-lg;
+
+@bs4-container-sm: 540px;
+@bs4-container-md: 720px;
+@bs4-container-lg: 960px;
+@bs4-container-xl: 1140px;
