@@ -1,0 +1,111 @@
+/*** BUTTONS ***/
+.c-btn {
+  --button-font-family: var(--font-family-condensed);
+  --button-font-weight: 500;
+  --button-border-color: @gray;
+  --button-color: @gray;
+  --button-padding-x: 30px;
+  --button-offset: 7px;
+  display: inline-block;
+  box-sizing: content-box;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0;
+  border-color: var(--button-border-color);
+  color: var(--button-color);
+	font-family: var(--button-font-family);
+	font-size: 18px;
+	font-weight: var(--button-font-weight);
+	letter-spacing: 0.8px;
+	line-height: 1;
+	text-transform: uppercase;
+  padding: 7px 15px 5px;
+  position: relative;
+  transition: all ease-in-out 300ms;
+  .nv-icon {
+    font-size: 0.85em;
+    &.nv-icon--carat_right {
+      position: relative;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 1em;
+      height: 1em;
+      align-content: flex-end;
+      align-items: center;
+      float: right;
+      flex-direction: row-reverse;
+      transition: all ease-in-out 300ms;
+      margin-left: 5px;
+      &:before {
+        position: absolute;
+        top:50%;
+        right:0;
+        transform: translateY(-50%);
+      }
+      &:after {
+        content:"";
+        height:0;
+        width: 100%;
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--button-border-color);
+        background: @text-color;
+        border-radius: 0;
+        transform: translateX(-3px);
+      }
+    }
+  }
+  &:hover {
+    padding-left: var(--button-padding-x);
+    padding-right: var(--button-padding-x);
+    text-decoration: none;
+    color: var(--button-color);
+    .nv-icon--carat_right {
+      width: 2em;
+      &:after {
+      }
+    }
+  }
+  &.c-btn--offset-border {
+    padding: 6px 22px 12px;
+    margin-top:7px;
+    margin-left: 7px;
+    background-color: @white;
+    border:none;
+    color: @text-color;
+    .nv-icon--carat_right:after {
+      border-color: @text-color;
+    }
+    &:hover {
+      padding-left: var(--button-padding-x);
+      padding-right: var(--button-padding-x);
+      color: @text-color;
+    }
+    &:after {
+      position: absolute;
+      top:0;
+      left:0;
+      bottom:0;
+      right:0;
+      content:"";
+      transform: translate(-7px,-7px);
+      border: solid 2px @text-color;
+    }  
+  }
+  &.c-btn--primary {
+    background-color: @brand-primary;
+  }
+  &.c-btn--dark {
+    color: @white;
+    background-color: @gray-darker;
+    border-color: @gray-darker;
+    .nv-icon--carat_right:after {
+      border-color: @white;
+    }
+    &:hover {
+      color: @white;      
+    }
+  }
+}

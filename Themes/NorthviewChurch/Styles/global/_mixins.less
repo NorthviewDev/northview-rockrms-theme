@@ -1,0 +1,4 @@
+.sizeBase10(@index: 1) when (@index =< 10) {
+  .sizeBase10((@index + 1)); 
+  --s@{index}: calc(@index * 10px);
+}

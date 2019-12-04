@@ -1,0 +1,207 @@
+/*** HERO BLOCK COMPONENT ***/
+.c-block-hero {
+  //min-height: calc(~"100vh" - var(--pwa-menu-height));
+  position: relative;
+  overflow: hidden;
+  @media (min-width: @screen-sm) {
+    //min-height: inherit;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 112px 120px;
+  }
+}
+.c-block-hero__background-video {
+  line-height: 0;
+  position: relative;
+  margin-top: (@grid-gutter-width / 2);
+  margin-bottom: (@grid-gutter-width / 2);
+  @media (min-width: @screen-sm) {
+  	width:22.2%;
+  	float:left;
+  	margin: 20px 15px 0 0;
+  }
+  &:after {
+    content:"";
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  	opacity: 0.6;
+  	background: linear-gradient(180deg, #FFFFFF 0%, rgba(208,208,208,0.45) 100%);
+  }
+  video {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(~"100vh" - var(--pwa-menu-height) - @grid-gutter-width);
+    object-fit: cover;
+  }
+  .ornamental {
+    position: absolute;
+    transform: rotate(-90deg);
+    transform-origin: top left;
+    bottom: 0;
+    left: -@grid-gutter-width;
+    z-index: 10;
+    color:@brand-primary;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: 3px;
+  }
+}
+.c-block-hero__container {
+  max-width: 100%;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    background-color: #53DAEC;
+    transform: skew(-15deg);
+    transform-origin: bottom right;
+    @media (min-width: @screen-sm) {
+  	  width: 62.7%;
+      background-color: #53DAEC;
+      transform: skew(-38deg);
+    }  
+  }
+  .container {
+    max-width: 100%;
+    @media (min-width: @screen-sm) {
+    	position: relative;
+    	z-index: 10;
+    }
+  }
+}
+.c-block-hero__content {
+  position: absolute;
+  top:0;
+  right: auto;
+  bottom:0;
+  left:0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-content: stretch;
+  align-items: flex-end;
+  padding: @grid-gutter-width * 1.5;
+  z-index: 20;
+  @media (orientation: landscape) {
+    flex-direction: row;
+  }
+  @media (min-width: @screen-sm) {
+  	top: 50%;
+  	right: 0;
+  	bottom: auto;
+  	left: auto;
+  	transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-content: center;
+    padding:0;
+  }
+}
+.c-block-hero__headline {
+  font-family: ff-good-web-pro-condensed, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  position: relative;
+  text-transform: uppercase;
+	color: #221F1F;
+	letter-spacing: 0.5px;
+	line-height: 1;
+	margin-top:0;
+	margin-bottom: 1.5rem;
+	margin-right:40px;
+	width: 10ch; //10 characters wide
+	display: inline-block; //align svg to top right of text
+	font-size:14vw;
+	@media (min-width: @screen-sm) {
+  	font-size: 104px;
+  	letter-spacing: 1.18px;
+  	line-height: 96px;
+  	margin-top:80px;
+  	margin-right: 80px;
+  	margin-bottom: 40px;
+	}
+	.ornamental {
+  	font-size: 30px;
+    line-height: 1;
+    position: absolute;
+    top: 100%;
+    left: 30%;
+    letter-spacing: 3px;
+	}
+}
+.c-block-hero__wrap-text {
+  position: absolute;
+  top:0;
+  right:0;
+  transform: translate(50%,-50%);
+  width: 80px;
+  height:80px;
+  svg {
+    path {
+      fill: none;
+    }
+  }
+  @media (min-width: @screen-sm) {
+  	width: 160px;
+  	height: 160px;
+  }
+}
+#circleText {
+  font-size: 10px;
+}
+#circle-and-text {
+  transform: rotate(90deg);
+  transform-origin: center;
+  animation-name: rotatingtext;
+  animation-duration: 9s;
+  animation-iteration-count: infinite;
+}
+.c-block-hero__cta {
+  align-self: flex-end;
+  .c-btn {
+    .nv-icon--carat_right:after {
+      border-width:2px;
+      border-radius: 3px;
+      transform: translateX(-4px);
+    }
+    @media (min-width: @screen-sm) {
+    	font-size: 30px;
+      padding: 8px 58px 14px;
+      margin-top:9px;
+      margin-left:9px;
+      &:hover {
+        padding-left: 75px;
+        padding-right: 75px;
+      }
+      &:after {
+        transform: translate(-10px,-10px);
+        border: solid 3px @text-color;
+      }  
+    }
+  }
+}
+
+@keyframes rotatingtext {
+  0% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(-270deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}

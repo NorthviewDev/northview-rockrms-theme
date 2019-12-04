@@ -1,0 +1,106 @@
+/*** CARD COMPONENT ***/
+.c-card {
+  --card-body-padding: @grid-gutter-width;
+  position: relative;
+  background-color: @white;
+  margin-bottom: var(--s2);
+  &.c-card--primary {
+    background-color: @brand-primary;
+    color: @gray-darker;
+  	.ornamental {
+    	font-size: 30px;
+      line-height: 1;
+      position: absolute;
+      bottom: -10px;
+      width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      overflow: hidden;
+      height: 1em;
+      letter-spacing: 3px;
+      @media (min-width: @screen-sm) {
+      	letter-spacing: 15px;
+      }
+      i {
+        float: left;
+      }
+  	}
+  }
+}
+
+/**
+ * Card Header
+ * 1) Contains the card media
+ */
+.c-card__header {
+}
+/**
+ * Card Media
+ * 1) Typically an image, but could be a video or iframe
+ */
+.c-card__media {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+ * Card Body
+ * 1) Contains the card title and description
+ */
+.c-card__body {
+  padding: var(--card-body-padding);
+  .c-card--primary & {
+    @media (min-width: @screen-sm) {
+	    padding: 58px;
+    }
+  }
+  .stack {
+    background-color: @white;
+    padding: var(--s2);
+  }
+}
+
+/**
+ * Card Callout
+ * 1) A <span> tag that contains the card's callout text
+ */
+.c-card__callout {
+	color: @gray;
+	font-size: 14px;
+	line-height: 1.5;
+	font-style: italic;
+	font-weight: 500;
+	display: block;
+}
+
+/**
+ * Card Title
+ * 1) The heading for a card (can be an h2, h3, or h4)
+ */
+.c-card__title {
+  margin-top:0;
+	font-size: 25px;
+	&.c-card__title--big {
+  	font-size: 29px;
+  	line-height: 1;
+  	text-transform: uppercase;  	
+  	@media (min-width: @screen-sm) {
+    	font-size: 64px;
+  	}
+	}
+}
+
+/**
+ * Card Description
+ * 1) A <p> tag that contains the card's primary text
+ */
+.c-card__description {
+  .c-card--primary & {
+  	font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+  }
+}

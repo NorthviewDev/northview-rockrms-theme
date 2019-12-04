@@ -1,0 +1,88 @@
+/*** SECTION COMPONENT ***/
+.c-section {
+  --section-padding-top: calc(@grid-gutter-width * 2);
+  --section-padding-bottom: calc(@grid-gutter-width * 2);
+  @media (min-width: @screen-sm) {
+    --section-padding-top: calc(@grid-gutter-width * 3);
+    --section-padding-bottom: calc(@grid-gutter-width * 3);
+  }  
+  padding-top: var(--section-padding-top);
+  padding-bottom: var(--section-padding-bottom);
+  background-color: @gray-lighter;
+  background-position: center center;
+  &.c-section--dark {
+    color: @white;
+    background-color: @gray-darker;
+  }
+  &.c-section--light {
+    background-color: @white;
+  }
+  &.c-section--bgimg {
+    background-size: cover;
+  }
+  &.c-section--bgimg-tile {
+  }
+  &.c-section--overlap-bottom {
+    padding-bottom: calc(@grid-gutter-width * 3);
+    @media (min-width: @screen-sm) {
+    	padding-bottom: calc(@grid-gutter-width * 4);
+    }
+  }
+}
+.c-section--overlap-bottom + * > * {
+  --section-overlap-top: calc(@grid-gutter-width * -4); //translate along negative Y axis
+  @media (min-width: @screen-sm) {
+    --section-overlap-top: calc(@grid-gutter-width * -5); //translate along negative Y axis
+  }  
+  margin-top: var(--section-overlap-top)
+}
+.c-section__header {
+  text-align: center;
+	color: @gray;
+	font-size: 29px;
+	letter-spacing: 1px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 0;
+	margin-bottom: (@grid-gutter-width / 2);
+	@media (min-width: @screen-sm) {
+  	font-size: 64px;
+  	letter-spacing: 2.21px;
+    margin-bottom: (@grid-gutter-width * 1.5);
+	}
+	.c-section--light & {
+    color: @gray-darker;
+  }
+}
+.c-section__footer {
+  text-align: center;
+	margin-top: (@grid-gutter-width / 2);
+	margin-bottom:0;
+}
+.has-ornaments {
+  .ornament {
+    display: block;
+    position: absolute;
+    user-select: none;
+    transform-origin: top left;
+    animation: 1s ease-in-out infinite moveit;
+    z-index: 1;
+    .nv-icon {
+      position: absolute;
+      transform-origin: center;
+      animation-name: fullcircle;
+      animation-duration: 9s;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+@keyframes moveit {
+  0% { transform: translateY(0px); }
+  50%   { transform: translateY(6px); }
+  100%   { transform: translateY(0px); }
+}
+@keyframes fullcircle {
+  100% {
+    transform: rotate(360deg);
+  }
+}
