@@ -59,6 +59,9 @@
 	margin-top: (@grid-gutter-width / 2);
 	margin-bottom:0;
 }
+.ornamental {
+  user-select:none;
+}
 .has-ornaments {
   .ornament {
     display: block;
@@ -67,6 +70,10 @@
     transform-origin: top left;
     animation: 1s ease-in-out infinite moveit;
     z-index: 1;
+    color: @brand-primary;
+    @media (min-width: @screen-sm) {
+    	z-index: 10;
+    }
     .nv-icon {
       position: absolute;
       transform-origin: center;
