@@ -1,0 +1,39 @@
+  <section id="homepage-feature" class="c-block-hero__wrapper">
+    <div class="c-block-hero has-ornaments">
+      <div class="c-block-hero__container">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+            {%- for item in Items -%}
+              <div class="c-block-hero__background-video l-aspect-ratio__9-16">
+                <video poster="/GetImage.ashx?guid={{ item | Attribute:'BackgroundImage','RawValue' }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
+                  <source src="/GetFile.ashx?guid={{ item | Attribute:'Video','RawValue' }}" type="video/mp4">
+                </video>
+              </div>
+              {%- endfor -%}
+              <div class="c-block-hero__content">
+                <h1 class="c-block-hero__headline">
+                  <span class="c-block-hero__wrap-text">
+                    <svg id="circle"
+                  	  viewBox="0 0 80 80" width="80" height="80">
+                      <g id="circle-and-text">
+                        <path id="arc" d="M40,72C22.4,72,8,57.6,8,40S22.4,8,40,8s32,14.4,32,32S57.6,72,40,72z M40,8.4C22.6,8.4,8.4,22.6,8.4,40S22.6,71.6,40,71.6
+                	S71.6,57.4,71.6,40S57.4,8.4,40,8.4z"/>
+                        <text id="circleText">
+                          <textPath textLength="175%" id="circleTextPath" xlink:href="#arc">
+                            Wherever you're going
+                          </textPath>
+                        </text>
+                      </g>
+                    </svg>
+                  </span>
+                  <span>we're here for you</span>
+                </h1>
+                <p class="c-block-hero__cta"><a href="{{ LinkedPages.DetailPage }}" class="c-btn c-btn--offset-border">Visit<i class="nv-icon nv-icon--carat_right"></i></a></p>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div><!-- end c-block--hero-->
+  </section>
