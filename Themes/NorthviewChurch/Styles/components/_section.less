@@ -10,6 +10,7 @@
   padding-bottom: var(--section-padding-bottom);
   background-color: @gray-lighter;
   background-position: center center;
+  position: relative;
   &.c-section--dark {
     color: @white;
     background-color: @gray-darker;
@@ -19,17 +20,33 @@
   }
   &.c-section--bgimg {
     background-size: cover;
+    color: @white;
+    background-color: @gray-darker;
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+    &:after {
+      content:"";
+      background-color: @gray-darker;
+      opacity: 0.9;
+      position: absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;    
+    }
   }
-  &.c-section--bgimg-tile {
-  }
-  &.c-section--overlap-bottom {
+}
+.c-section--overlap-bottom {
+  .c-section {
     padding-bottom: calc(@grid-gutter-width * 3);
     @media (min-width: @screen-sm) {
     	padding-bottom: calc(@grid-gutter-width * 4);
     }
   }
 }
-.c-section--overlap-bottom + * > * {
+.c-section--overlap-bottom + * section > .container {
   --section-overlap-top: calc(@grid-gutter-width * -4); //translate along negative Y axis
   @media (min-width: @screen-sm) {
     --section-overlap-top: calc(@grid-gutter-width * -5); //translate along negative Y axis
@@ -38,20 +55,44 @@
 }
 .c-section__header {
   text-align: center;
-	color: @gray;
-	font-size: 29px;
-	letter-spacing: 1px;
-	text-align: center;
-	text-transform: uppercase;
-	margin-top: 0;
 	margin-bottom: (@grid-gutter-width / 2);
 	@media (min-width: @screen-sm) {
-  	font-size: 64px;
-  	letter-spacing: 2.21px;
     margin-bottom: (@grid-gutter-width * 1.5);
-	}
+	}    
+  > * {
+  	color: @gray;
+  	font-size: 29px;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	margin: 0;
+  	@media (min-width: @screen-sm) {
+    	font-size: 64px;
+    	letter-spacing: 2.21px;
+  	}
+  }
 	.c-section--light & {
-    color: @gray-darker;
+  	> * {
+      color: @gray-darker;
+      display:inline-block;
+      position: relative;
+    	span {
+      	position: relative;
+      	z-index: 1;
+      	min-width: 250px;
+      	display: inline-block;
+    	}
+    	&:after {
+      	content:"";
+      	background-color: @brand-primary;
+      	height:0.45em;
+      	bottom:0;
+      	left:-20px;
+      	right:-20px;
+      	position: absolute;
+      	z-index: 0;
+      	transition: all ease-in-out 150ms;
+    	}
+    }
   }
 }
 .c-section__footer {

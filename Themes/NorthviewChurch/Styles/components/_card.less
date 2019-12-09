@@ -1,14 +1,19 @@
 /*** CARD COMPONENT ***/
-.c-card {
+:root {
   --card-body-padding: @grid-gutter-width;
+}
+.c-card {
   position: relative;
   background-color: @white;
   margin-bottom: var(--s2);
-  &.c-card--primary {
-    background-color: @brand-primary;
+  &.c-card--title-highlight {
     color: @gray-darker;
+    display: inline-block;
+    min-width: 50%;
+    .c-card__body {
+      background-color: @brand-primary;
+    }
   	.ornamental {
-    	font-size: 30px;
       line-height: 1;
       position: absolute;
       bottom: -10px;
@@ -18,9 +23,11 @@
       white-space: nowrap;
       overflow: hidden;
       height: 1em;
+    	font-size: 15px;
       letter-spacing: 3px;
       @media (min-width: @screen-sm) {
-      	letter-spacing: 15px;
+      	font-size: 30px;
+      	letter-spacing: 6px;
       }
       i {
         float: left;
@@ -52,14 +59,11 @@
  */
 .c-card__body {
   padding: var(--card-body-padding);
-  .c-card--primary & {
+  background-color: @white;
+  .c-card--title-highlight & {
     @media (min-width: @screen-sm) {
-	    padding: 58px;
+	    padding: 58px 100px;
     }
-  }
-  .stack {
-    background-color: @white;
-    padding: var(--s2);
   }
 }
 
@@ -74,6 +78,9 @@
 	font-style: italic;
 	font-weight: 500;
 	display: block;
+	+ * {
+    margin-top:0;
+	}
 }
 
 /**
@@ -81,12 +88,22 @@
  * 1) The heading for a card (can be an h2, h3, or h4)
  */
 .c-card__title {
-  margin-top:0;
 	font-size: 25px;
-	&.c-card__title--big {
+	color: @text-color;
+	@media (min-width: @screen-sm) {
+  	font-size: 36px;
+	}
+	&.c-card__title--med {
   	font-size: 29px;
-  	line-height: 1;
   	text-transform: uppercase;  	
+  	@media (min-width: @screen-sm) {
+    	font-size: 48px;
+  	}
+	}
+	.c-card--title-highlight & {
+  	font-size: 29px;
+  	text-transform: uppercase;
+  	text-align: center;
   	@media (min-width: @screen-sm) {
     	font-size: 64px;
   	}
@@ -98,7 +115,8 @@
  * 1) A <p> tag that contains the card's primary text
  */
 .c-card__description {
-  .c-card--primary & {
+  color: @text-color;
+  .c-card--title-highlight & {
   	font-size: 20px;
     line-height: 26px;
     text-align: center;

@@ -1,4 +1,7 @@
 /*** NAVIGATION MENU COMPONENT ***/
+#zone-navigation {
+	flex: 1 1 auto;
+}
 .c-primary-nav {
   display: flex;
   background-color: #eeeeee;
@@ -26,9 +29,10 @@
   	background-color: transparent;
   	position: relative;
   	flex-direction: row;
-  	flex: 1 1 auto;
   	padding-bottom: 0;
-  	padding-left: 8.5%;
+  }
+  @media (min-width: @screen-lg) {
+  	padding-left: 8.5%;  
   }
 }
 .c-primary-nav__content {
@@ -118,6 +122,6 @@
     content: "\e900";
   }
   &:hover, &:focus {
-    color: @white;
+    color: @text-color;
   }
 }

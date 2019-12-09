@@ -2,57 +2,35 @@
 
 <asp:Content ID="ctFeature" ContentPlaceHolderID="feature" runat="server">
 
-    <section class="main-feature">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <Rock:Zone Name="Feature" runat="server" />
-                </div>
-            </div>
-        </div>
-    </section>
+  <Rock:Zone Name="Feature" runat="server" />
 
 </asp:Content>
 
 <asp:Content ID="ctMain" ContentPlaceHolderID="main" runat="server">
 
-	<main class="container">
+	<main id="site-content">
 
         <!-- Start Content Area -->
 
         <!-- Ajax Error -->
         <div class="alert alert-danger ajax-error no-index" style="display:none">
-            <p><strong>Error</strong></p>
-            <span class="ajax-error-message"></span>
-        </div>
-
-        <div class="row">
+          <div class="row">
             <div class="col-md-12">
-                <Rock:Zone Name="Sub Feature" runat="server" />
+              <p><strong>Error</strong></p>
+              <span class="ajax-error-message"></span>
             </div>
+          </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <Rock:Zone Name="Section A" runat="server" />
-            </div>
-        </div>
+        <Rock:Zone Name="Sub Feature" runat="server" />
 
-        <div class="row">
-            <div class="col-md-4">
-                <Rock:Zone Name="Section B" runat="server" />
-            </div>
-            <div class="col-md-4">
-                <Rock:Zone Name="Section C" runat="server" />
-            </div>
-            <div class="col-md-4">
-                <Rock:Zone Name="Section D" runat="server" />
-            </div>
-        </div>
+        <Rock:Zone Name="Section A" runat="server" />
+        <Rock:Zone Name="Section B" runat="server" />
+        <Rock:Zone Name="Section C" runat="server" />
+        <Rock:Zone Name="Section D" runat="server" />
 
         <!-- End Content Area -->
 
 	</main>
 
 </asp:Content>
-

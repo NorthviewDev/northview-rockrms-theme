@@ -4,7 +4,7 @@
   top:0;
   left:0;
   width: 100%;
-  z-index: 99999;
+  z-index: 1000;
   @media (min-width: @screen-sm) {
     display: flex;
     flex-direction: row;
@@ -55,7 +55,10 @@
   	position: relative;
   	background-color: transparent;
   	width: auto;
-  	margin: 0 43px 0 43px;
+  	margin-right: @grid-gutter-width;
+  }
+  @media (min-width: @screen-lg) {
+  	margin-right: 43px;
   }
 }
 .c-header__control {

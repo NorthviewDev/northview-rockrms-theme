@@ -1,46 +1,11 @@
 @import "_button";
 @import "_list";
-@import "_header";
-@import "_section";
 @import "_card";
-@import "_navigation";
-@import "_hero-block";
 @import "_icon-link";
+@import "_section";
+@import "_latest-message";
+@import "_hero-block";
+
+@import "_header";
+@import "_navigation";
 @import "_footer";
-
-
-@media (min-width: @screen-sm) {
-  #latest-message-grid {
-    display: grid;
-    grid-template-columns: 55% 1fr;
-    grid-template-rows: auto 2fr 1fr;
-    grid-template-areas: "Media Title" "Media Body" "Media Footer";
-    .c-card__header { 
-      grid-area: Media;
-      margin-top: var(--s4);
-    }
-    .c-section__header {
-      grid-area: Title;
-    	font-size: 64px;
-    	letter-spacing: 2.21px;
-    	line-height: 60px;
-    	width: 60%;
-    	text-align: left;
-    	padding-left: var(--s3);
-    	margin-bottom: var(--s2);
-    }
-    .c-card__body {
-      grid-area: Body;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      transform: translateX(calc(var(--s3)*-1));
-    }
-    .c-section__footer { 
-      text-align: left;
-      grid-area: Footer; 
-    	padding-left: var(--s3);
-    	margin-top: var(--s2);
-    }
-  }
-}
