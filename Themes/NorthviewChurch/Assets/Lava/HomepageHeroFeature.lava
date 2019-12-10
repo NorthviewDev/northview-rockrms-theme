@@ -5,8 +5,11 @@
           <div class="row">
             <div class="col-md-12">
             {%- for item in Items -%}
-              <div class="c-block-hero__background-video l-aspect-ratio__9-16">
-                <video poster="/GetImage.ashx?guid={{ item | Attribute:'BackgroundImage','RawValue' }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
+            {%- assign displayTitle = item.ContentChannel | Attribute:'DisplayTitle' -%}
+            {%- assign hiddenXs = "" -%}
+            {%- if forloop.first != true -%}{%- assign hiddenXs = " hidden-xs" -%}{%- endif -%}
+              <div class="c-block-hero__background-video l-aspect-ratio__9-16{{hiddenXs}}">
+                <video poster="/GetImage.ashx?guid={{ item | Attribute:'BackgroundImage','RawValue' }}&w=900&h=1600&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
                   <source src="/GetFile.ashx?guid={{ item | Attribute:'Video','RawValue' }}" type="video/mp4">
                 </video>
               </div>
@@ -14,6 +17,7 @@
               <div class="c-block-hero__content">
                 <h1 class="c-block-hero__headline">
                   <span class="c-block-hero__wrap-text">
+                  {% comment %}<!--
                     <svg id="circle"
                   	  viewBox="0 0 80 80" width="80" height="80">
                       <g id="circle-and-text">
@@ -25,11 +29,14 @@
                           </textPath>
                         </text>
                       </g>
-                    </svg>
+                    </svg>-->
+                  {% endcomment %}
+                  {% assign circleTextImage = '~~/Assets/_img/circle-text.svg' %}
+                    <img src="{{ circleTextImage | ResolveRockUrl }}" alt="Wherever you're going" id="circle" />
                   </span>
-                  <span>we're here for you</span>
+                  <span>{{ displayTitle }}</span>
                 </h1>
-                <p class="c-block-hero__cta"><a href="{{ LinkedPages.DetailPage }}" class="c-btn c-btn--offset-border">Visit<i class="nv-icon nv-icon--carat_right"></i></a></p>
+                <p class="c-block-hero__cta"><a href="{{ LinkedPages.DetailPage }}" class="c-btn c-btn--large c-btn--offset-border">Visit<i class="nv-icon nv-icon--carat_right"></i></a></p>
               </div>
             </div>
           </div>

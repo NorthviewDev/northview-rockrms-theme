@@ -1,6 +1,3 @@
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
               <div class="c-section__header"><h2>Events</h2></div>
               <div class="row">
               {%- for eventItem in EventItems limit:3 -%}
@@ -33,6 +30,3 @@
               {%- endfor -%}
               </div><!--/.row-->
               <p class="c-section__footer"><a href="{{ DetailsPage }}" class="c-btn">All Events<i class="nv-icon nv-icon--carat_right"></i></a></p>
-          </div>
-        </div>
-    </div>
