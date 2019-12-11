@@ -22111,13 +22111,6 @@ a:focus {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-.form-control {
-  background-color: #d8d8d8;
-  color: #777576;
-  border: none;
-  border-radius: 0;
-  box-sizing: content-box;
-}
 /*** BUTTONS ***/
 .c-btn {
   --button-font-family: var(--font-family-condensed);
@@ -23244,6 +23237,11 @@ a:focus {
   width: 75%;
   margin-left: auto;
   margin-right: auto;
+  background-color: #d8d8d8;
+  color: #777576;
+  border: none;
+  border-radius: 0;
+  box-sizing: content-box;
 }
 .location-search__title {
   font-size: 36px;
