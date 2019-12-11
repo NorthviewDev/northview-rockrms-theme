@@ -9,7 +9,7 @@
             {%- assign hiddenXs = "" -%}
             {%- if forloop.first != true -%}{%- assign hiddenXs = " hidden-xs" -%}{%- endif -%}
               <div class="c-block-hero__background-video l-aspect-ratio__9-16{{hiddenXs}}">
-                <video poster="/GetImage.ashx?guid={{ item | Attribute:'BackgroundImage','RawValue' }}&w=900&h=1600&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
+                <video poster="/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=900&h=1600&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
                   <source src="/GetFile.ashx?guid={{ item | Attribute:'Video','RawValue' }}" type="video/mp4">
                 </video>
               </div>

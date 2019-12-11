@@ -32,7 +32,7 @@
         }
     }
 
-    //home page scripts
+    //hero scripts
     function addOrnamentalElem(appendObject,appendIconClass,numIcons,delayMs) { 
       // create a new element 
       var newSpan = document.createElement("span");
@@ -87,6 +87,8 @@
       addOrnamentalElem(heroVideo,"nv-icon--ornament_backslash",15,40);
       var heroHeadline = document.querySelector('.c-block-hero__headline');
       addOrnamentalElem(heroHeadline,"nv-icon--ornament_backslash",15,40);
+      var heroContainer = document.querySelector('.c-block-hero__container');
+      addOrnamentalElem(heroContainer,"nv-icon--ornament_plus",3,180);
       var calloutPrimary = document.querySelectorAll('.c-card--title-highlight');
       calloutPrimary.forEach(item => { 
         addOrnamentalElem(item,"nv-icon--ornament_backslash",35,40)
@@ -119,3 +121,4 @@
     window.onload = function(){
       playHeroVideos()
     };
+        

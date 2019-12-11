@@ -95,6 +95,22 @@
     }
   }
 }
+.c-section__description {
+  color: @text-color;
+	font-size: 36px;
+	line-height: 40px;
+	text-align: center;
+	text-transform: none;
+	font-family: @headings-font-family;
+	font-weight: 600;
+	margin-top: var(--s3);
+	.c-section--light & {
+  	color: @gray-darker;
+  }
+	.c-section--dark & {
+  	color: @white;
+  }
+}
 .c-section__footer {
   text-align: center;
 	margin-top: (@grid-gutter-width / 2);

@@ -13,7 +13,10 @@
                 <div class="l-col">
                   <div class="c-block-hero__background-video g-aspect-ratio__16-9">
                     <video poster="/GetImage.ashx?guid={{ CurrentPage | Attribute:'PageHeaderImage','RawValue' }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
-                      <source src="/GetFile.ashx?guid={{ CurrentPage | Attribute:'PageHeaderVideo','RawValue' }}" type="video/mp4">
+                    {%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
+                    {%- if pageHeaderVideo != "" -%}
+                      <source src="/GetFile.ashx?guid={{ pageHeaderVideo }}" type="video/mp4">
+                    {%- endif -%}
                     </video>
                   </div>
                 </div>
