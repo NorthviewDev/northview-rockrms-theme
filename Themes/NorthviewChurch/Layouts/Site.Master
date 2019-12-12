@@ -22,14 +22,6 @@
         var pageHeaderImage = page.GetAttributeValue( "PageHeaderImage" );
         var pageHeaderVideo = page.GetAttributeValue( "PageHeaderVideo" );
 
-        if ( !(string.IsNullOrEmpty(pageHeaderImage)) || !(string.IsNullOrEmpty(pageHeaderVideo)) )
-        {
-            var script = @"
-              $('body').removeClass('no-header');
-            ";
-            ScriptManager.RegisterStartupScript( this.Page, this.GetType(), "bodyNoHeader", script, true );
-        }
-
         HtmlMeta typeOGMetaTag = new HtmlMeta();
         typeOGMetaTag.Attributes.Add("property", "og:type");
         typeOGMetaTag.Attributes.Add("content", "website");
@@ -82,7 +74,7 @@
     
   <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
-<body runat="server" id="body" class="no-header">
+<body runat="server" id="body">
   
   <form id="form1" runat="server">
   
@@ -99,9 +91,7 @@
   <footer id="site-footer" role="contentinfo">
     <section class="c-section c-section--dark">
       <div class="container">
-        <div class="l-row--flex">
-          <Rock:Zone Name="Footer" runat="server" />
-        </div>
+        <Rock:Zone Name="Footer" runat="server" />
       </div>
     </section>  
     <Rock:Zone Name="Footer Info" runat="server" />

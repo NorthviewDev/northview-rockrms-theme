@@ -2,16 +2,20 @@
 {%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
 {%- assign sectionClass="" -%}
 {%- assign ornamentClass="" -%}
+{%- assign containerClass="" -%}
 {%- if pageHeaderImage != "" || if pageHeaderVideo != "" -%}
   {%- assign sectionClass=" has-media" -%}
   {%- assign ornamentClass=" has-ornaments" -%}
+  {%- assign containerClass="col-md-9 col-md-offset-1" -%}
+{%- else -%}
+  {%- assign containerClass="col-md-12" -%}
 {%- endif -%}
   <section id="main-feature" class="c-block-hero__wrapper{{ sectionClass }}">
     <div class="c-block-hero{{ ornamentClass }}">
       <div class="c-block-hero__container">
         <div class="container">
           <div class="row">
-            <div class="col-md-9 col-md-offset-1">
+            <div class="{{ containerClass }}">
               <div class="l-row--flex">
                 <div class="l-col--flex">
                   <div class="c-block-hero__content">

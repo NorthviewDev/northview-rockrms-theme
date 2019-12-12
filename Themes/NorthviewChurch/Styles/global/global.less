@@ -67,6 +67,9 @@ a {
   grid-gap: @grid-gutter-width * 2;
   margin: @grid-gutter-width * 2;
   align-items: flex-end;
+  @media (min-width: @screen-sm) {
+    grid-template-columns: 1fr 1fr;
+  }    
   &.l-grid--2col--xs {
     grid-template-columns: 1fr 1fr;    
     @media (min-width: @screen-sm) {
@@ -77,5 +80,21 @@ a {
     @media (min-width: @screen-sm) {
 	    grid-template-columns: 1fr 1fr 1fr;
     }    
+  }
+}
+
+/*** FLEX LAYOUT ***/
+.l-row--flex {
+  @media (min-width: @screen-sm) {
+    display: flex;
+    flex-direction: row;
+    &.row-reverse {
+      flex-direction: row-reverse;
+    }
+    .l-col--flex {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
   }
 }

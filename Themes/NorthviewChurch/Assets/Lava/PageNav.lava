@@ -1,5 +1,13 @@
+{%- assign pageHeaderImage = CurrentPage | Attribute:'PageHeaderImage','RawValue' -%}
+{%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
+{%- assign sectionClass="" -%}
+{%- if pageHeaderImage != "" || if pageHeaderVideo != "" -%}
+  {%- assign sectionClass=" has-media" -%}
+{%- else -%}
+  {%- assign sectionClass=" no-header" -%}
+{%- endif -%}
 {% if Page.DisplayChildPages and Page.Pages != empty %}
-	<nav id="nav" class="c-primary-nav">
+	<nav id="nav" class="c-primary-nav{{ sectionClass }}">
 	  <div class="c-primary-nav__content">
   		<ul class="c-primary-nav__list">
       {% for childPage in Page.Pages %}
