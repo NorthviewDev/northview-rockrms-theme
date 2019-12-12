@@ -1,20 +1,72 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Rock.Web.UI.RockMasterPage" %>
 <%@ Import Namespace="System.Web.Optimization" %>
+<%@ Import Namespace="Rock" %>
+<%@ Import Namespace="Rock.Model" %>
+<%@ Import Namespace="Rock.Web.UI" %>
+<%@ Import Namespace="Rock.Web.Cache" %>
 <!DOCTYPE html>
+
 <script runat="server">
-// keep code below to call base class init method
-/// <summary>
-/// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
-/// </summary>
-/// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
-  protected override void OnInit( EventArgs e )
-  {
-    base.OnInit( e );
-  }
+
+    // keep code below to call base class init method
+
+    /// <summary>
+    /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+    /// </summary>
+    /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
+    protected override void OnInit( EventArgs e )
+    {
+        base.OnInit( e );
+        //Check to see if header media exists
+        var page = PageCache.Get( ( ( RockPage ) Page ).PageId );
+        var pageHeaderImage = page.GetAttributeValue( "PageHeaderImage" );
+        var pageHeaderVideo = page.GetAttributeValue( "PageHeaderVideo" );
+
+        if ( !(string.IsNullOrEmpty(pageHeaderImage)) || !(string.IsNullOrEmpty(pageHeaderVideo)) )
+        {
+            var script = @"
+              $('body').removeClass('no-header');
+            ";
+            ScriptManager.RegisterStartupScript( this.Page, this.GetType(), "bodyNoHeader", script, true );
+        }
+
+        HtmlMeta typeOGMetaTag = new HtmlMeta();
+        typeOGMetaTag.Attributes.Add("property", "og:type");
+        typeOGMetaTag.Attributes.Add("content", "website");
+        Page.Header.Controls.Add(typeOGMetaTag);
+        if (!(string.IsNullOrEmpty(page.PageTitle)))
+        {
+            HtmlMeta titleOGMetaTag = new HtmlMeta();
+            titleOGMetaTag.Attributes.Add("property", "og:title");
+            titleOGMetaTag.Attributes.Add("content", page.BrowserTitle);
+            Page.Header.Controls.Add(titleOGMetaTag);
+        }
+        if (!(string.IsNullOrEmpty(page.Description)))
+        {
+            HtmlMeta descOGMetaTag = new HtmlMeta();
+            descOGMetaTag.Attributes.Add("property", "og:description");
+            descOGMetaTag.Attributes.Add("content", page.Description);
+            Page.Header.Controls.Add(descOGMetaTag);
+        }
+        if (!(string.IsNullOrEmpty(pageHeaderImage)))
+        {
+            HtmlMeta imageOGMetaTag = new HtmlMeta();
+            imageOGMetaTag.Attributes.Add("property", "og:image");
+            imageOGMetaTag.Attributes.Add("content", "https://rock.northviewchurch.us/GetImage.ashx?Guid=" + pageHeaderImage);
+            Page.Header.Controls.Add(imageOGMetaTag);
+        }
+        HtmlMeta urlOGMetaTag = new HtmlMeta();
+        urlOGMetaTag.Attributes.Add("property", "og:url");
+        urlOGMetaTag.Attributes.Add("content", Request.Url.AbsoluteUri);
+        Page.Header.Controls.Add(urlOGMetaTag);
+
+    }
+
 </script>
 
 <html lang="en-US" class="no-js">
 <head runat="server">
+  <meta http-equiv="X-UA-Compatible" content="IE=10" />
   <meta charset="utf-8">
   <title></title>
   <script src="<%# System.Web.Optimization.Scripts.Url("~/Scripts/Bundles/RockJQueryLatest" ) %>"></script>
@@ -24,12 +76,13 @@
   <!-- Included CSS Files -->
 	<link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/_icons/webfont/style.css") %>"/>
   <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", true) %>"/>
+  <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme2.css", true) %>"/>
   
   <script src="<%# ResolveRockUrl("~/Scripts/modernizr.js" ) %>" ></script>
     
   <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
-<body runat="server">
+<body runat="server" id="body" class="no-header">
   
   <form id="form1" runat="server">
   

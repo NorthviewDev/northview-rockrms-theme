@@ -21955,62 +21955,6 @@ fieldset[disabled] .btn-danger-solid.focus {
 */
 /* FontAwesome Start */
 /* FontAwesome End */
-@media print {
-  @page {
-    margin: 0.5in;
-  }
-  .nav-sub {
-    display: none;
-  }
-  #cms-admin-footer {
-    display: none;
-  }
-  a[href]:after {
-    content: "" !important;
-  }
-}
-html {
-  -webkit-font-smoothing: antialiased;
-}
-main {
-  display: block;
-}
-h1.pagetitle:empty {
-  display: none;
-}
-.page-icon {
-  display: none;
-}
-/* hide block panels */
-.panel.panel-block {
-  border: 0;
-  box-shadow: none;
-}
-.panel.panel-block > .panel-heading,
-.panel.panel-block > .rock-panel-drawer {
-  display: none;
-}
-.panel.panel-block > .panel-body {
-  padding: 0;
-}
-.panel.panel-block > .panel-body .grid.grid-panel {
-  margin: 0;
-}
-.panel-heading a {
-  border-bottom: 1px dotted #53DAEC;
-}
-.panel-heading a:hover {
-  border-bottom-style: solid;
-  text-decoration: none;
-}
-.panel-success .panel-heading a {
-  color: #3c763d;
-  border-color: #3c763d;
-}
-.panel-warning .panel-heading a {
-  color: #8a6d3b;
-  border-color: #8a6d3b;
-}
 .g-padding--s1 {
   padding: var(--s1);
 }
@@ -23649,4 +23593,4 @@ footer .c-block__footer-info p {
 footer .c-block__footer-info a {
   color: #ffffff;
 }
-/*# sourceMappingURL=theme.css.map */
+/*# sourceMappingURL=theme2.css.map */
