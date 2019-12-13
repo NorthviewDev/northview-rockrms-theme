@@ -42,14 +42,14 @@
   .c-section {
     padding-bottom: calc(@grid-gutter-width * 3);
     @media (min-width: @screen-sm) {
-    	padding-bottom: calc(@grid-gutter-width * 5);
+    	padding-bottom: calc(@grid-gutter-width * 7);
     }
   }
 }
 .c-section--overlap-bottom + * section > .container {
   --section-overlap-top: calc(@grid-gutter-width * -4); //translate along negative Y axis
   @media (min-width: @screen-sm) {
-    --section-overlap-top: calc(@grid-gutter-width * -5); //translate along negative Y axis
+    --section-overlap-top: calc(@grid-gutter-width * -7); //translate along negative Y axis
   }  
   margin-top: var(--section-overlap-top)
 }
@@ -59,7 +59,7 @@
 	@media (min-width: @screen-sm) {
     margin-bottom: (@grid-gutter-width * 1.5);
 	}    
-  > * {
+  h2 {
   	color: @text-color;
   	font-size: 29px;
   	margin-top:0;
@@ -67,8 +67,10 @@
     	font-size: 64px;
   	}
   }
+  #latest-message &,
+  #featured-events &,
 	.c-section--dark & {
-  	> * {
+  	h2 {
     	color: @gray;
     	letter-spacing: 1px;
     	text-transform: uppercase;
@@ -78,7 +80,7 @@
     }
   }
 	.c-section--light & {
-  	> * {
+  	h2 {
       color: @gray-darker;
       display:inline-block;
       position: relative;

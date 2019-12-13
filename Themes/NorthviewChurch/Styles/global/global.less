@@ -1,7 +1,7 @@
 @import "_mixins";
-@import "_global-spacing";
+@import "../_fishhook-mixins";
 :root {
-  .sizeBase10();
+  .sizeBase12(); //12px size increments
   --font-family-primary: @font-family-sans-serif;
   --font-family-condensed: @headings-font-family;
   --pwa-menu-height: 64px;
@@ -51,7 +51,6 @@ a {
     margin-top: 0;
     margin-bottom: 0;
   } 
-  
   > * + * {
     margin-top: var(--space);
   }
