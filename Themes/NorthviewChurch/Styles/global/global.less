@@ -64,22 +64,28 @@ a {
 /*** GRID LAYOUT ***/
 .l-grid {
   display: grid;
-  grid-gap: @grid-gutter-width * 2;
-  margin: @grid-gutter-width * 2;
-  align-items: flex-end;
+  grid-gap: @grid-gutter-width;
   @media (min-width: @screen-sm) {
     grid-template-columns: 1fr 1fr;
-  }    
+  }
   &.l-grid--2col--xs {
     grid-template-columns: 1fr 1fr;    
-    @media (min-width: @screen-sm) {
-	    grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
   }
   &.l-grid--3col {
     @media (min-width: @screen-sm) {
 	    grid-template-columns: 1fr 1fr 1fr;
     }    
+  }
+  &.l-grid--4col {
+    @media (min-width: @screen-sm) {
+	    grid-template-columns: 1fr 1fr 1fr 1fr;
+    }    
+  }
+  &.l-grid--align-middle {
+    align-items: center;
+  }
+  &.l-grid--align-bottom {
+    align-items: flex-end;
   }
 }
 

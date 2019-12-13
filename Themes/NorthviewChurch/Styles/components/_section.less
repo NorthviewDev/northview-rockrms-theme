@@ -3,8 +3,8 @@
   --section-padding-top: calc(@grid-gutter-width * 2);
   --section-padding-bottom: calc(@grid-gutter-width * 2);
   @media (min-width: @screen-sm) {
-    --section-padding-top: calc(@grid-gutter-width * 3);
-    --section-padding-bottom: calc(@grid-gutter-width * 3);
+    --section-padding-top: calc(@grid-gutter-width * 4);
+    --section-padding-bottom: calc(@grid-gutter-width * 4);
   }  
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
@@ -42,7 +42,7 @@
   .c-section {
     padding-bottom: calc(@grid-gutter-width * 3);
     @media (min-width: @screen-sm) {
-    	padding-bottom: calc(@grid-gutter-width * 4);
+    	padding-bottom: calc(@grid-gutter-width * 5);
     }
   }
 }
@@ -60,15 +60,22 @@
     margin-bottom: (@grid-gutter-width * 1.5);
 	}    
   > * {
-  	color: @gray;
+  	color: @text-color;
   	font-size: 29px;
-  	letter-spacing: 1px;
-  	text-transform: uppercase;
-  	margin: 0;
+  	margin-top:0;
   	@media (min-width: @screen-sm) {
     	font-size: 64px;
-    	letter-spacing: 2.21px;
   	}
+  }
+	.c-section--dark & {
+  	> * {
+    	color: @gray;
+    	letter-spacing: 1px;
+    	text-transform: uppercase;
+    	@media (min-width: @screen-sm) {
+      	letter-spacing: 2.21px;
+    	}
+    }
   }
 	.c-section--light & {
   	> * {
