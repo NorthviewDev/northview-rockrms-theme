@@ -25,6 +25,12 @@
       float:none;
       width: 46px;
     }
+    &.no-header {
+      .c-logo-link__img .cls-1 {
+        fill: @white;
+        color: @white;
+      }
+    }
   }
   .c-logo-link__img {
     transform: rotate(90deg) translate(-20px);
@@ -35,6 +41,7 @@
     	height: 46px;
     }
     .cls-1 {
+      transition: all 150ms ease-in-out;
       fill: @text-color;
       color: @text-color;
     }
@@ -68,6 +75,7 @@
   padding-bottom: 22px;
   line-height:1;
   border:none;
+  transition: all 150ms ease-in-out;
   @media (min-width: @screen-sm) {
     font-size: 22px;
     padding-left: 26px;
@@ -97,6 +105,15 @@
     	position: relative;
     	z-index: 1;
   	}
+  }
+  .no-header & {
+    color: @white;
+    &:after {
+      background-color: @brand-primary;
+    }
+  	&:hover, &:focus {
+      color: @white;
+    }
   }
   &.dark {
   	background-color: @color-gray-darker;

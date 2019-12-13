@@ -173,14 +173,6 @@
   @media (min-width: @screen-sm) {
   	padding: @grid-gutter-width;
   }
-  .l-row--flex {
-    display: flex;
-    .l-col--flex {
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-    }
-  }
   .c-block-hero__background-video {
     line-height: 0;
     position: relative;
@@ -250,9 +242,12 @@
   //min-height: calc(~"100vh" - var(--pwa-menu-height));
   position: relative;
   @media (min-width: @screen-sm) {
-    padding: 88px 96px 42px 96px;
+    padding: 151px 96px 119px 96px;
   }
   #main-feature.has-media & {
+    @media (min-width: @screen-sm) {
+      padding: 88px 96px 42px 96px;
+    }
     &:after {
       content:"";
       position: absolute;
@@ -273,7 +268,7 @@
   > .ornamental {
     position: absolute;
     transform: rotate(-90deg);
-    transform-origin: bottom left;
+    transform-origin: top left;
     bottom: 13%;
     left: 100%;
     z-index: 10;
@@ -309,16 +304,18 @@
   	font-size: 80px;
   	letter-spacing: 1.11px;
   	line-height: 96px;
-  	transform: translate(20px,-75px);
-  	z-index: 20;
-  	margin-bottom: 20px;
 	}
-  #main-feature.has-media & {
+  .has-media & {
+  	@media (min-width: @screen-sm) {
+    	transform: translate(20px,-75px);
+    	z-index: 20;
+    	margin-bottom: 20px;
+  	}
   	span {
     	position: relative;
     	z-index: 1;
-    	min-width: 250px;
-    	display: inline-block;
+    	min-width: 8ch;
+    	display: block;
   	}
   	&:after {
     	content:"";
@@ -331,20 +328,20 @@
     	z-index: 0;
     	transition: all ease-in-out 150ms;
   	}
-  }
-	> .ornamental {
-    line-height: 1;
-    position: absolute;
-    bottom:-20px;
-    left: 30%;
-    color: @text-color;
-  	font-size: 15px;
-    letter-spacing: 3px;
-  	@media (min-width: @screen-sm) {
-  		font-size: 34px;
-      letter-spacing: 6px;
+  	> .ornamental {
+      line-height: 1;
+      position: absolute;
+      bottom:-20px;
+      left: 30%;
+      color: @text-color;
+    	font-size: 15px;
+      letter-spacing: 3px;
+    	@media (min-width: @screen-sm) {
+    		font-size: 34px;
+        letter-spacing: 6px;
+    	}
   	}
-	}
+  }
 }
 .c-block-hero__cta {
   align-self: flex-end;

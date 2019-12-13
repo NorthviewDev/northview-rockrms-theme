@@ -6,6 +6,9 @@
   position: relative;
   background-color: @white;
   margin-bottom: var(--s2);
+  @media (min-width: @screen-sm) {
+  	margin-bottom: 0;
+  }
   &.c-card--title-highlight {
     color: @gray-darker;
     display: inline-block;
@@ -50,7 +53,8 @@
   display: block;
   width: 100%;
   max-width: 100%;
-  height: auto;
+  object-fit: cover;  
+  height: 100%;
 }
 
 /**
@@ -60,6 +64,11 @@
 .c-card__body {
   padding: var(--card-body-padding);
   background-color: @white;
+  .c-card--side-by-side & {
+    @media (min-width: @screen-sm) {
+	    padding: @grid-gutter-width * 2;
+    }    
+  }
   .c-card--title-highlight & {
     @media (min-width: @screen-sm) {
 	    padding: 58px 100px;
@@ -117,6 +126,8 @@
 .c-card__description {
   color: @text-color;
 	font-size: 20px;
+	text-transform: none;
+	letter-spacing: normal;
   .c-card--title-highlight & {
   	color: @text-color;
   	font-size: 20px;
