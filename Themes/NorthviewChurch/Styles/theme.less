@@ -31,7 +31,7 @@ h1.pagetitle:empty { // hides the page title h1 tag if the page has the title hi
   display: none;
 }
 
-/* hide block panels */
+/* Rock Overrides */
 .panel.panel-block {
   border: 0;
   box-shadow: none;
@@ -49,8 +49,6 @@ h1.pagetitle:empty { // hides the page title h1 tag if the page has the title hi
     }
   }
 }
-
-
 .panel-heading {
   a {
     border-bottom: 1px dotted @link-color;
@@ -74,9 +72,11 @@ h1.pagetitle:empty { // hides the page title h1 tag if the page has the title hi
     }
   }
 }
-
+.zone-instance.outline {
+  float: none;
+}
 @import 'global/global';
 @import 'components/components';
 
 @import "global/_global-spacing"; //these inline styles should override defaults
-@import "_css-overrides.less";
+@import "_css-overrides.less"; //editable in Rock Theme settings
