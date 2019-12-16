@@ -21981,7 +21981,7 @@ h1.pagetitle:empty {
 .page-icon {
   display: none;
 }
-/* hide block panels */
+/* Rock Overrides */
 .panel.panel-block {
   border: 0;
   box-shadow: none;
@@ -22010,6 +22010,9 @@ h1.pagetitle:empty {
 .panel-warning .panel-heading a {
   color: #8a6d3b;
   border-color: #8a6d3b;
+}
+.zone-instance.outline {
+  float: none;
 }
 .block-grid,
 [class*="block-grid-"] {
@@ -22621,6 +22624,7 @@ a:focus {
   }
 }
 .c-card--title-highlight .c-card__title {
+  color: #221f1f !important;
   font-size: 29px;
   text-transform: uppercase;
   text-align: center;
@@ -22714,20 +22718,12 @@ a:focus {
   right: 0;
   bottom: 0;
 }
-.c-section--overlap-bottom .c-section {
-  padding-bottom: calc(24px * 3);
-}
-@media (min-width: 768px) {
-  .c-section--overlap-bottom .c-section {
-    padding-bottom: calc(24px * 7);
-  }
-}
-.c-section--overlap-bottom + * section > .container {
+.c-section--overlap-top .container {
   --section-overlap-top: calc(24px * -4);
   margin-top: var(--section-overlap-top);
 }
 @media (min-width: 768px) {
-  .c-section--overlap-bottom + * section > .container {
+  .c-section--overlap-top .container {
     --section-overlap-top: calc(24px * -7);
   }
 }
@@ -22888,6 +22884,12 @@ a:focus {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+#campus-details .location-details,
+#campus-details .campus-intro {
+  background-color: #ffffff;
+  color: #221f1f;
+  padding: var(--s3);
 }
 @media (min-width: 768px) {
   #latest-message-grid {

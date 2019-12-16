@@ -38,15 +38,7 @@
     }
   }
 }
-.c-section--overlap-bottom {
-  .c-section {
-    padding-bottom: calc(@grid-gutter-width * 3);
-    @media (min-width: @screen-sm) {
-    	padding-bottom: calc(@grid-gutter-width * 7);
-    }
-  }
-}
-.c-section--overlap-bottom + * section > .container {
+.c-section--overlap-top .container {
   --section-overlap-top: calc(@grid-gutter-width * -4); //translate along negative Y axis
   @media (min-width: @screen-sm) {
     --section-overlap-top: calc(@grid-gutter-width * -7); //translate along negative Y axis
@@ -160,5 +152,17 @@
 @keyframes fullcircle {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+#campus-details {
+  .location-details,
+  .campus-intro {
+    background-color: @white;
+    color: @text-color;
+    padding: var(--s3);
+  }
+  .campus-intro {
+    
   }
 }
