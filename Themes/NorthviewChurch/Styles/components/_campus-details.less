@@ -1,0 +1,39 @@
+#campus-details {
+  overflow: hidden;
+  &:before {
+    content:"";
+    background-color: rgba(211,211,211,0.15);
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width: 50%;
+    transform: skew(15deg);
+    transform-origin: bottom left;
+    @media (min-width: @screen-sm) {
+      transform: skew(38deg);
+    }
+  }
+}
+.location-details {
+  
+}
+.location-details__info-list {
+  margin-top: var(--s2);
+  i {
+    font-size: 1.2em;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  a {
+    color: @text-color;
+    &:hover, &:focus {
+      color: @brand-primary;
+    }
+  }
+}
+
+.campus-intro {
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}

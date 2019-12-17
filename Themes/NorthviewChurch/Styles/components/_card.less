@@ -1,6 +1,6 @@
 /*** CARD COMPONENT ***/
 :root {
-  --card-body-padding: @grid-gutter-width;
+  --card-body-padding: var(--s2);
 }
 .c-card {
   position: relative;
@@ -13,6 +13,10 @@
     color: @gray-darker;
     display: inline-block;
     min-width: 50%;
+    margin-bottom: var(--s3);
+    @media (min-width: @screen-sm) {
+      margin-bottom: var(--s4);
+    }
     .c-card__body {
       background-color: @brand-primary;
     }
@@ -27,10 +31,9 @@
       overflow: hidden;
       height: 1em;
     	font-size: 15px;
-      letter-spacing: 3px;
+    	letter-spacing: 7px;
       @media (min-width: @screen-sm) {
       	font-size: 30px;
-      	letter-spacing: 6px;
       }
       i {
         float: left;
@@ -53,8 +56,10 @@
   display: block;
   width: 100%;
   max-width: 100%;
-  object-fit: cover;  
-  height: 100%;
+  .c-card--side-by-side:not(.c-card--big) & {
+    object-fit: cover;  
+    height: 100%;    
+  }
 }
 
 /**
@@ -64,10 +69,15 @@
 .c-card__body {
   padding: var(--card-body-padding);
   background-color: @white;
+  .c-card--big & {
+    background-color: transparent;
+  }
   .c-card--side-by-side & {
+    margin-bottom: var(--s2);
     @media (min-width: @screen-sm) {
-	    padding: @grid-gutter-width * 2;
-    }    
+    	margin-bottom:0;
+	    padding: var(--s4);
+    }
   }
   .c-card--title-highlight & {
     @media (min-width: @screen-sm) {
@@ -104,7 +114,6 @@
 	}
 	&.c-card__title--med {
   	font-size: 29px;
-  	text-transform: uppercase;  	
   	@media (min-width: @screen-sm) {
     	font-size: 48px;
   	}
@@ -134,5 +143,11 @@
   	font-size: 20px;
     line-height: 26px;
     text-align: center;
+  }
+}
+
+.c-card--side-by-side {
+  > :first-child {
+    margin-bottom: 0;
   }
 }

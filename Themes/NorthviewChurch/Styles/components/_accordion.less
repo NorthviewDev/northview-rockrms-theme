@@ -1,0 +1,35 @@
+.panel-group {
+  .panel {
+    border:none;
+    border-radius: 0;
+    background-color: transparent;
+  }
+  .panel-heading {
+    background-color: transparent;
+    padding-left:0;
+    padding-right:0;
+  }
+  .panel-title {
+    color: @text-color;
+  	font-size: 20px;
+  	font-weight: 600;
+  	line-height: 30px;
+  	font-family: @font-family-sans-serif;
+  	a {
+    	display: block;
+    	position: relative;
+    	border: none;
+    	padding-right: 50px;
+    	&:after {
+      	.nvicon("\e907");
+      	position: absolute;
+      	top: 50%;
+      	right:0;
+      	transform: translateY(-50%);
+    	}
+    	&[aria-expanded="true"]:after {
+      	.nvicon("\e904");
+    	}
+  	}
+  }
+}
