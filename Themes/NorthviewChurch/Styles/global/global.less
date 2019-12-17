@@ -6,6 +6,79 @@
   --font-family-condensed: @headings-font-family;
   --pwa-menu-height: 64px;
 }
+// 1. HTML Overrides
+// -------------------------
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  display: block;
+}
+
+h1.pagetitle:empty { // hides the page title h1 tag if the page has the title hidden
+  display: none;
+}
+
+.page-icon {
+  display: none;
+}
+
+.nv-icon {
+  display: inline-block;
+}
+
+/* Rock Overrides */
+.panel.panel-block {
+  border: 0;
+  box-shadow: none;
+
+  & > .panel-heading,
+  & > .rock-panel-drawer {
+    display: none;
+  }
+
+  & > .panel-body {
+    padding: 0;
+
+    .grid.grid-panel {
+      margin: 0;
+    }
+  }
+}
+.panel-heading {
+  a {
+    border-bottom: 1px dotted @link-color;
+    &:hover {
+      border-bottom-style: solid;
+      text-decoration: none;
+    }
+  }
+
+  .panel-success & {
+    a {
+      color: @panel-success-text;
+      border-color: @panel-success-text;
+    }
+  }
+
+  .panel-warning & {
+    a {
+      color: @panel-warning-text;
+      border-color: @panel-warning-text;
+    }
+  }
+}
+.zone-instance.outline {
+  float: none;
+}
+.block-highlight,
+.zone-highlight {
+  header {
+    position: relative;
+  }
+}
 /*** GLOBAL STYLES ***/
 body {
   background-color: #fafafa;
@@ -38,6 +111,9 @@ a {
   	border: none;
 	}
 }
+ul, ol {
+  padding-left: 1.5em;
+}
 .container {
   max-width: 100%;  
 }
@@ -55,20 +131,23 @@ a {
     margin-top: var(--space);
   }
 }
-
 .center-block {
   float:none;
 }
 
 /*** GRID LAYOUT ***/
 .l-grid {
-  display: grid;
-  grid-gap: @grid-gutter-width;
   @media (min-width: @screen-sm) {
+    display: grid;
+    grid-gap: var(--s2);
     grid-template-columns: 1fr 1fr;
   }
-  &.l-grid--2col--xs {
-    grid-template-columns: 1fr 1fr;    
+  &.l-grid--xs-2col {
+    @media (max-width: @screen-xs-max) {
+      display: grid;
+      grid-gap: var(--s2);
+      grid-template-columns: 1fr 1fr;      
+    }
   }
   &.l-grid--3col {
     @media (min-width: @screen-sm) {

@@ -1,58 +1,59 @@
 {%- campus id:'{{ campusId }}' -%}
-  <div id="campus-details">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="location-details">
-            <h3>Location Details</h3>
-            {%- assign serviceTimes = campus.ServiceTimes | Split:'|' -%}
-            {%- for serviceTime in serviceTimes -%}{% assign serviceDayTime = serviceTime | Split:'^' %}{% assign separator='' %}{% if forloop.length > 1 %}{% if forloop.last %}{% assign separator=' and '%}{% elseif forloop.first != true and serviceDayTime[0] == serviceDay %}{% assign separator=', '%}{% endif %}{% endif %}{% if serviceDayTime[0] != serviceDay %}<p>{{ serviceDayTime[0] | Pluralize}} at {% assign serviceDay = serviceDayTime[0] %}{% endif %}{{ separator }}{{ serviceDayTime[1] }}</p>{%- endfor -%}
-            <ul class="list-unstyled">
-            <li><a href="mailto:{{ 'Global' | Attribute:'OrganizationEmail' }}">{{ 'Global' | Attribute:'OrganizationEmail' }}</a></li>
-            <li><a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' }}">{{ campus.PhoneNumber }}</a></li>
-            {%- location id:'{{ campus.LocationId }}' -%}
-            {%- for location in locationItems -%}
-            {%- assign campusLocation = location.Street1 | Trim -%}
-            {%- if campusLocation != "" -%}
-            <li class="location-link"><a target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;destination={{location.Street1}}+{{location.City}}+{{location.State}}+{{location.PostalCode}}">Map & Directions</a></li>
-            {%- endif -%}
-            </ul>
-            {%- endfor -%}
-            {%- endlocation -%}
-          </div>
+<section id="campus-details" class="c-section c-section--dark g-padding--bottom-s10">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="location-details stack">
+          <h3>Location Details</h3>
+          {%- assign serviceDay = '' %}
+          {%- assign serviceTimes = campus.ServiceTimes | Split:'|' -%}
+          {%- for serviceTime in serviceTimes -%}{% assign serviceDayTime = serviceTime | Split:'^' %}{% assign separator='' %}{% if forloop.length > 1 %}{% if forloop.last %}{% assign separator=' and '%}{% elseif forloop.first != true and serviceDayTime[0] == serviceDay %}{% assign separator=', '%}{% endif %}{% endif %}{% if serviceDayTime[0] != serviceDay %}<p>{{ serviceDayTime[0] | Pluralize}} at {% assign serviceDay = serviceDayTime[0] %}{% endif %}{{ separator }}{{ serviceDayTime[1] }}{%- endfor -%}
+          <ul class="location-details__info-list stack list-unstyled">
+          <li><i class="nv-icon nv-icon--email fa-fw"></i> <a href="mailto:{{ 'Global' | Attribute:'OrganizationEmail' }}">{{ 'Global' | Attribute:'OrganizationEmail' }}</a></li>
+          <li><i class="nv-icon nv-icon--phone fa-fw"></i> <a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' }}">{{ campus.PhoneNumber }}</a></li>
+          {%- location id:'{{ campus.LocationId }}' -%}
+          {%- for location in locationItems -%}
+          {%- assign campusLocation = location.Street1 | Trim -%}
+          {%- if campusLocation != "" -%}
+          <li><i class="nv-icon nv-icon--location_marker fa-fw"></i> <a target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;destination={{location.Street1}}+{{location.City}}+{{location.State}}+{{location.PostalCode}}">Map & Directions</a></li>
+          {%- endif -%}
+          </ul>
+          {%- endfor -%}
+          {%- endlocation -%}
         </div>
-        <div class="col-md-8">
-          <div class="campus-intro l-grid">
-          {%- personalias id:'{{ campus.LeaderPersonAliasId }}' -%}
-          {%- person id:'{{ personalias.PersonId }}' -%}
-            <div class="l-col">
-      				<div class="row">
-      					<div class="col-sm-12 col-md-12">
-      						<div class="staff__photo">
-      							{%- if bio != "" -%}
-      							<a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
-      							{%- endif -%}
-                      <img class="staff__detail-image" src="/GetImage.ashx?id={{ person.PhotoId }}" alt="{{ person.FullName }}" />
-      							{%- if bio != "" -%}
-                      <span class="vc">Read Bio</span>
-                    </a>
-      							{%- endif -%}
-      						</div>
-                  <div class="staff__name">{{ person.FullName }}</div>
-      						<div class="staff__title">{{ campus.Name }} Campus Pastor</div>
-      						<ul class="staff__meta">
-      							{% if email != '' %}<li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}"><i class="nv-icon nv-icon--email"></i>{{ person.Email }}</a></li>{% endif %}
-      							{% if extension != '' %}<li class="staff__phone"><a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' }},{{ extension }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i>{{ campus.PhoneNumber }}</a></li>{% endif %}
-      						</ul>  
-      					</div>              	 
-      				</div>
-  			    </div>
-          {%- endperson -%}
-          {%- endpersonalias -%}
-            <div class="l-col">{{ campus | Attribute:'LocationPageIntro' }}</div>
-          </div>
+      </div>
+      <div class="col-md-8">
+        <div class="campus-intro l-grid">
+        {%- personalias id:'{{ campus.LeaderPersonAliasId }}' -%}
+        {%- person id:'{{ personalias.PersonId }}' -%}
+          <div class="l-col">
+    				<div class="row">
+    					<div class="col-sm-12 col-md-12">
+    						<div class="staff__photo">
+    							{%- if bio != "" -%}
+    							<a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
+    							{%- endif -%}
+                    <img class="staff__detail-image" src="/GetImage.ashx?id={{ person.PhotoId }}" alt="{{ person.FullName }}" />
+    							{%- if bio != "" -%}
+                    <span class="vc">Read Bio</span>
+                  </a>
+    							{%- endif -%}
+    						</div>
+                <div class="staff__name">{{ person.FullName }}</div>
+    						<div class="staff__title">{{ campus.Name }} Campus Pastor</div>
+    						<ul class="staff__meta list-unstyled list-inline">
+    							{% if email != '' %}<li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}"><i class="nv-icon nv-icon--email"></i></a></li>{% endif %}
+    							{% if extension != '' %}<li class="staff__phone"><a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' }},{{ extension }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>{% endif %}
+    						</ul>  
+    					</div>              	 
+    				</div>
+			    </div>
+        {%- endperson -%}
+        {%- endpersonalias -%}
+          <div class="l-col stack">{{ campus | Attribute:'LocationPageIntro' }}</div>
         </div>
       </div>
     </div>
   </div>
+</section>
 {%- endcampus -%}

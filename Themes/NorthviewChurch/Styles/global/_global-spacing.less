@@ -1,5 +1,9 @@
+:root {
+  --screen-xs-max: @screen-xs-max;
+  --screen-sm-max: @screen-sm-max;
+  --screen-md-max: @screen-md-max;
+}
 .generate-spacing(10);
-
 .generate-spacing(@n, @i: 0) when (@i =< @n) {
   .g-margin--s@{i} {
     margin: var(~"--s@{i}");
@@ -52,6 +56,63 @@
   .g-grid-gap--s@{i} {
     grid-gap: var(~"--s@{i}");
   }
+
+  @sizes: xs, sm, md;
+  each(@sizes, {
+    @media (max-width: var(~"--screen-@{value}-max")) {
+      .g-margin--@{value}-s@{i} {
+      	margin: var(~"--s@{i}");
+      }
+      .g-margin--@{value}-x-s@{i} {
+        margin-left: var(~"--s@{i}");
+        margin-right: var(~"--s@{i}");
+      }
+      .g-margin--@{value}-y-s@{i} {
+        margin-top: var(~"--s@{i}");
+        margin-bottom: var(~"--s@{i}");
+      }
+      .g-margin--@{value}-left-s@{i} {
+        margin-left: var(~"--s@{i}");
+      }
+      .g-margin--@{value}-right-s@{i} {
+        margin-right: var(~"--s@{i}");
+      }
+      .g-margin--@{value}-top-s@{i} {
+        margin-top: var(~"--s@{i}");
+      }
+      .g-margin--@{value}-bottom-s@{i} {
+        margin-bottom: var(~"--s@{i}");
+      }
+    
+      .g-padding--@{value}-s@{i} {
+        padding: var(~"--s@{i}");
+      }
+      .g-padding--@{value}-x-s@{i} {
+        padding-left: var(~"--s@{i}");
+        padding-right: var(~"--s@{i}");
+      }
+      .g-padding--@{value}-y-s@{i} {
+        padding-top: var(~"--s@{i}");
+        padding-bottom: var(~"--s@{i}");
+      }
+      .g-padding--@{value}-left-s@{i} {
+        padding-left: var(~"--s@{i}");
+      }
+      .g-padding--@{value}-right-s@{i} {
+        padding-right: var(~"--s@{i}");
+      }
+      .g-padding--@{value}-top-s@{i} {
+        padding-top: var(~"--s@{i}");
+      }
+      .g-padding--@{value}-bottom-s@{i} {
+        padding-bottom: var(~"--s@{i}");
+      }
+      
+      .g-grid-gap--@{value}-s@{i} {
+        grid-gap: var(~"--s@{i}");
+      }
+    }
+  });
 
   .generate-spacing(@n, (@i + 1));
 }

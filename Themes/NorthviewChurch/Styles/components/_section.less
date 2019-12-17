@@ -1,10 +1,10 @@
 /*** SECTION COMPONENT ***/
 .c-section {
-  --section-padding-top: calc(@grid-gutter-width * 2);
-  --section-padding-bottom: calc(@grid-gutter-width * 2);
+  --section-padding-top: var(--s4);
+  --section-padding-bottom: var(--s4);
   @media (min-width: @screen-sm) {
-    --section-padding-top: calc(@grid-gutter-width * 4);
-    --section-padding-bottom: calc(@grid-gutter-width * 4);
+    --section-padding-top: var(--s8);
+    --section-padding-bottom: var(--s8);
   }  
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
@@ -14,6 +14,9 @@
   &.c-section--dark {
     color: @white;
     background-color: @gray-darker;
+  }
+  &.c-section--medium {
+    background-color: @gray-lightest;
   }
   &.c-section--light {
     background-color: @white;
@@ -47,9 +50,9 @@
 }
 .c-section__header {
   text-align: center;
-	margin-bottom: (@grid-gutter-width / 2);
+	margin-bottom: var(--s1);
 	@media (min-width: @screen-sm) {
-    margin-bottom: (@grid-gutter-width * 1.5);
+    margin-bottom: var(--s3);
 	}    
   h2 {
   	color: @text-color;
@@ -114,10 +117,10 @@
 }
 .c-section__footer {
   text-align: center;
-	margin-top: (@grid-gutter-width / 2);
+	margin-top: var(--s1);
 	margin-bottom:0;
 	@media (min-width: @screen-sm) {
-    margin-top: (@grid-gutter-width * 1.5);
+    margin-top: var(--s3);
 	}    
 }
 .ornamental {

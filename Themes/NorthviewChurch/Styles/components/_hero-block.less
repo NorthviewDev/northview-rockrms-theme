@@ -9,20 +9,36 @@
   .c-block-hero__background-video {
     line-height: 0;
     position: relative;
-    margin-top: (@grid-gutter-width / 2);
-    margin-bottom: (@grid-gutter-width / 2);
+    margin-top: var(--s1);
+    margin-bottom: var(--s1);
     &.l-aspect-ratio__9-16 {
       @media (min-width: @screen-sm) {
       	width:22.2%;
       	float:left;
       	margin: 20px 15px 0 0;
       }
+      video {
+        width: 100%;
+        max-width: 100%;
+        max-height: calc(~"100vh" - var(--pwa-menu-height) - var(--s2));
+        object-fit: cover;
+      }    
     }
     &.l-aspect-ratio__16-9 {
       @media (min-width: @screen-sm) {
       	width: calc(66.6% + 30px);
       	margin: 20px 15px 0 0;
       }
+      video {
+        height: 100%;
+        max-height: calc(~"100vh" - var(--pwa-menu-height) - var(--s2));
+        object-fit: cover;
+        @media (min-width: @screen-sm) {
+          height: auto;
+          width: 100%;
+          max-width: 100%;
+        }
+      }    
     }
     &:after {
       content:"";
@@ -34,27 +50,21 @@
     	opacity: 0.6;
     	background: linear-gradient(180deg, #FFFFFF 0%, rgba(208,208,208,0.45) 100%);
     }
-    video {
-      width: 100%;
-      max-width: 100%;
-      max-height: calc(~"100vh" - var(--pwa-menu-height) - @grid-gutter-width);
-      object-fit: cover;
-    }    
     > .ornamental {
       position: absolute;
       transform: rotate(-90deg);
       transform-origin: top left;
       bottom: 0;
-      left: -(@grid-gutter-width / 2);
+      left: calc(var(--s1) * -1);
       z-index: 10;
       color:@brand-primary;
       line-height: 1;
       font-size: 15px;
-      letter-spacing: 3px;
+      white-space: nowrap;
+      overflow: hidden;
     	@media (min-width: @screen-sm) {
     		font-size: 34px;
-        letter-spacing: 6px;
-        left: -@grid-gutter-width;
+        left: calc(var(--s2) * -1);
     	}
     }
   }
@@ -71,7 +81,7 @@
     justify-content: flex-end;
     align-content: stretch;
     align-items: flex-end;
-    padding: @grid-gutter-width * 1.5;
+    padding: var(--s3);
     z-index: 20;
     @media (orientation: landscape) {
       flex-direction: row;
@@ -113,10 +123,10 @@
       bottom:auto;
       top:100%;
       font-size: 15px;
-      letter-spacing: 3px;
+      white-space: nowrap;
+      overflow: hidden;
       @media (min-width: @screen-sm) {
         font-size: 34px;
-      	letter-spacing:6px;
       }
   	}
   	&:after {
@@ -169,9 +179,9 @@
   }
 }
 #main-feature {
-  padding: @grid-gutter-width;
+  padding: var(--s2);
   @media (min-width: @screen-sm) {
-  	padding: @grid-gutter-width;
+  	padding: var(--s2);
   }
   .c-block-hero__background-video {
     line-height: 0;
@@ -205,10 +215,10 @@
       line-height: 1;
       transform: translate(-40%,-75px);
     	font-size: 15px;
-      letter-spacing: 3px;
+      white-space: nowrap;
+      overflow: hidden;
     	@media (min-width: @screen-sm) {
     		font-size: 34px;
-        letter-spacing: 6px;
     	}
     }
   }
@@ -276,9 +286,10 @@
     line-height: 1;
     font-size: 15px;
     letter-spacing: 5px;
+    white-space: nowrap;
+    overflow: hidden;
     @media (min-width: @screen-sm) {
       font-size: 30px;
-    	letter-spacing: 10px;
     }
   }
   .container {
@@ -335,10 +346,12 @@
       left: 30%;
       color: @text-color;
     	font-size: 15px;
-      letter-spacing: 3px;
+      height: 1em;
+      overflow: hidden;
+      white-space: nowrap;
+      overflow: hidden;
     	@media (min-width: @screen-sm) {
     		font-size: 34px;
-        letter-spacing: 6px;
     	}
   	}
   }

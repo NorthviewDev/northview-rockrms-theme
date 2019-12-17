@@ -1,21 +1,28 @@
+@mapheight: 530px;
 #campusmap {
-  height: 530px;
+  height: @mapheight;
+  @media (min-width: @screen-sm) {
+    width: 70%;
+  	float: left;
+  }
 }
-
 #campus-locations {
-  position: relative;
-  overflow: hidden;
+  @media (min-width: @screen-sm) {
+    height: @mapheight;	
+    overflow: hidden;
+  }
   > .content {
-    position: absolute;
-    top:0;
-    left:0;
-    bottom: 0;
-    width: 30%;
     background-color: @white;
-    box-shadow: 0px 0px 10px 0px #8c8c8c;
     padding: 58px;
-    overflow: auto;
-    z-index: 10;
+    @media (min-width: @screen-sm) {
+      box-shadow: 0px 0px 10px 0px #8c8c8c;
+      height: @mapheight;	
+      width: 30%;
+      float: left;
+      overflow: auto;
+      position: relative;
+      z-index: 10;
+    }
   }
 }
 .location-search {
