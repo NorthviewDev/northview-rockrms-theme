@@ -1,6 +1,9 @@
 /*** HERO BLOCK COMPONENT ***/
 #homepage-feature {
   background-color: transparent;
+  &:after {
+    content:"";
+  }
   .c-block-hero {
     @media (min-width: @screen-sm) {
       padding: 112px 120px;
@@ -9,6 +12,7 @@
   .c-block-hero__background-video {
     line-height: 0;
     position: relative;
+    //overflow: hidden;
     margin-top: var(--s1);
     margin-bottom: var(--s1);
     &.l-aspect-ratio__9-16 {
@@ -174,20 +178,37 @@
 */
   .has-ornaments {
     .ornament {
+      z-index: 1;
       color: @text-color;
     }
   }
 }
 #main-feature {
-  padding: var(--s2);
+  padding: var(--s1);
   @media (min-width: @screen-sm) {
   	padding: var(--s2);
+  }
+  .c-block-hero__header {
+    @media (max-width: @screen-xs-max) {
+    	padding: 0;
+      .l-col {
+        .aspect-ratio(296,348);
+      }
+    }
+  }
+  .c-block-hero__content {
+    @media (max-width: @screen-xs-max) {
+      position: absolute;      
+      bottom: 0;      
+      padding: var(--s2);
+      left: 0;
+      z-index: 20;
+    }
   }
   .c-block-hero__background-video {
     line-height: 0;
     position: relative;
-    @media (min-width: @screen-sm) {
-    }
+    overflow: hidden;
     &:after {
       content:"";
       position: absolute;
@@ -200,11 +221,15 @@
     	z-index: 10;
     }
     video {
-      width: 100%;
-      max-width: 100%;
       object-fit: cover;
       position: relative;
       z-index: 5;
+      height: 100%;
+      width: 100%;
+      max-width: 100%;
+      @media (min-width: @screen-sm) {
+        height: auto;
+      }
     }    
     > .ornamental {
       position: absolute;
@@ -230,7 +255,6 @@
   &.has-media {
     background-color: transparent; 
     &:after {
-      content: "";
       position: absolute;
       top: 0;
       right: 0;
@@ -241,6 +265,7 @@
       transform-origin: bottom right;
       z-index: 5;
       @media (min-width: @screen-sm) {
+        content: "";
     	  width: 62.7%;
         background-color: @brand-primary;
         transform: skew(-38deg);
@@ -288,8 +313,10 @@
     letter-spacing: 5px;
     white-space: nowrap;
     overflow: hidden;
+    display: none;
     @media (min-width: @screen-sm) {
       font-size: 30px;
+      display: block;
     }
   }
   .container {
@@ -307,7 +334,6 @@
   text-transform: uppercase;
 	color: @white;
 	letter-spacing: 0.5px;
-	line-height: 1;
 	position: relative;
 	font-size:14vw;
 	margin-bottom: 0;
@@ -333,16 +359,21 @@
     	background-color: @brand-primary;
     	height:0.45em;
     	bottom:0;
-    	left:-20px;
-    	right:-20px;
     	position: absolute;
     	z-index: 0;
     	transition: all ease-in-out 150ms;
+    	left:-10px;
+    	width: 75%;
+    	@media (min-width: @screen-sm) {
+      	left:-20px;
+    		right:-20px;
+    		width: auto;
+    	}
   	}
   	> .ornamental {
       line-height: 1;
       position: absolute;
-      bottom:-20px;
+      bottom:-8px;
       left: 30%;
       color: @text-color;
     	font-size: 15px;
@@ -352,6 +383,7 @@
       overflow: hidden;
     	@media (min-width: @screen-sm) {
     		font-size: 34px;
+        bottom:-20px;
     	}
   	}
   }
