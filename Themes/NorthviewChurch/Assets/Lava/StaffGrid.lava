@@ -31,7 +31,6 @@
 	{%- assign lastName = item.LastName -%}
   {%- assign title = item.Position -%}
 	{%- assign email = item.Email -%}
-	{%- assign churchPhone = 'Global' | Attribute:'OrganizationPhone' -%}
 	{%- assign extension = '' -%}
 	{%- person id:'{{personId}}' -%}
 		{%- for phoneNumber in person.PhoneNumbers -%}
@@ -47,7 +46,8 @@
 	{%- for item in groupmemberItems -%}
 	
 	{%- assign title = item | Attribute:'Title' -%}
-	
+  {%- assign phone = item | Attribute:'Phone' -%}
+
 	{%- assign bio = item | Attribute:'Bio' -%}
 
 	<div class='block-grid-item' style="-ms-grid-row:{{rowPos}};-ms-grid-column:{{colPos}};">
@@ -56,7 +56,7 @@
 					<div class="col-sm-12 col-md-12">
       		  <div class="staff__photo">
       			  {%- if bio != "" -%}
-      				<a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
+      				  <a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
       				{%- endif -%}
                 <img class="staff__detail-image" src="/GetImage.ashx?id={{ person.PhotoId }}" alt="{{ person.FullName }}" />
       				{%- if bio != "" -%}
@@ -66,14 +66,17 @@
       		  </div>
             <div class="staff__name">{{ person.FullName }}</div>
       			<div class="staff__title">{{ title }}</div>
-      			<ul class="staff__meta">
-      			  {% if email != '' %}<li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}"><i class="nv-icon nv-icon--email"></i></a></li>{% endif %}
-    							{% if extension != '' %}<li class="staff__phone"><a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' }},{{ extension }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>{% endif %}
-      						</ul>  
-      					</div>              	 
-      				</div>
-  			    </div>
-
+        			<ul class="staff__meta">
+        			  {% if email != '' %}
+        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}"><i class="nv-icon nv-icon--email"></i></a></li>
+                {% endif %}
+                {% if phone != '' %}
+                  <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+                {% endif %}
+        		  </ul>  
+      		  </div>              	 
+          </div>
+  		  </div>
 		</div>
 	{%- endfor -%}
 	{%- endgroupmember -%}
