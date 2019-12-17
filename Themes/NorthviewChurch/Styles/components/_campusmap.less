@@ -1,8 +1,10 @@
 @mapheight: 530px;
 #campusmap {
   height: @mapheight;
-  width: 70%;
-  float: left;
+  @media (min-width: @screen-sm) {
+    width: 70%;
+  	float: left;
+  }
 }
 #campus-locations {
   @media (min-width: @screen-sm) {

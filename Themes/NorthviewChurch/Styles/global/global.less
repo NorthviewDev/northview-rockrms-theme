@@ -142,10 +142,12 @@ ul, ol {
     grid-gap: var(--s2);
     grid-template-columns: 1fr 1fr;
   }
-  &.l-grid--2col--xs {
-    display: grid;
-    grid-gap: var(--s2);
-    grid-template-columns: 1fr 1fr;    
+  &.l-grid--xs-2col {
+    @media (max-width: @screen-xs-max) {
+      display: grid;
+      grid-gap: var(--s2);
+      grid-template-columns: 1fr 1fr;      
+    }
   }
   &.l-grid--3col {
     @media (min-width: @screen-sm) {

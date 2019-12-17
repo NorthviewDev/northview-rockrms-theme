@@ -12,69 +12,6 @@
 @import "_variable-overrides.less";
 @import "_print.less";
 
-// 1. HTML Overrides
-// -------------------------
-
-html {
-  -webkit-font-smoothing: antialiased;
-}
-
-main {
-  display: block;
-}
-
-h1.pagetitle:empty { // hides the page title h1 tag if the page has the title hidden
-  display: none;
-}
-
-.page-icon {
-  display: none;
-}
-
-/* Rock Overrides */
-.panel.panel-block {
-  border: 0;
-  box-shadow: none;
-
-  & > .panel-heading,
-  & > .rock-panel-drawer {
-    display: none;
-  }
-
-  & > .panel-body {
-    padding: 0;
-
-    .grid.grid-panel {
-      margin: 0;
-    }
-  }
-}
-.panel-heading {
-  a {
-    border-bottom: 1px dotted @link-color;
-    &:hover {
-      border-bottom-style: solid;
-      text-decoration: none;
-    }
-  }
-
-  .panel-success & {
-    a {
-      color: @panel-success-text;
-      border-color: @panel-success-text;
-    }
-  }
-
-  .panel-warning & {
-    a {
-      color: @panel-warning-text;
-      border-color: @panel-warning-text;
-    }
-  }
-}
-.zone-instance.outline {
-  float: none;
-}
 @import 'global/global';
 @import 'components/components';
 

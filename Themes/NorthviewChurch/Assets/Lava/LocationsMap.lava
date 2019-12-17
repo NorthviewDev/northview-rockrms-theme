@@ -202,7 +202,7 @@ ORDER BY c.[Order]
 
 	    if (windowWidth >= 768) {
 	      //var panRight = windowWidth * -0.18;
-	      map.panBy(-230,0);        
+	      //map.panBy(-230,0);        
 	    }
 
 			$('.infowindow').each(function(){
