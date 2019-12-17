@@ -21,6 +21,10 @@
   background-position: center center;
   border-bottom: solid 8px @brand-primary;
   .aspect-ratio(437,244);
+  margin-bottom: var(--s1);
+  @media (min-width: @screen-sm) {
+  	margin-bottom: 0;
+  }
   &:before {
     content:"";
     position: absolute;

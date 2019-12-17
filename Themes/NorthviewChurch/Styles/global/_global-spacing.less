@@ -52,57 +52,65 @@
     grid-gap: var(~"--s@{i}");
   }
 
-  @value: xs;
-  @media (max-width: @screen-xs-max) {
-    .g-margin--@{value}-s@{i} {
+  @media (min-width: @screen-sm-min) {
+    .min-width(sm);
+  }
+  @media (min-width: @screen-md-min) {
+    .min-width(md);
+  }
+  @media (min-width: @screen-lg-min) {
+    .min-width(lg);
+  }
+  .min-width(@width) {
+    .g-margin--@{width}-s@{i} {
     	margin: var(~"--s@{i}");
     }
-    .g-margin--@{value}-x-s@{i} {
+    .g-margin--@{width}-x-s@{i} {
       margin-left: var(~"--s@{i}");
       margin-right: var(~"--s@{i}");
     }
-    .g-margin--@{value}-y-s@{i} {
+    .g-margin--@{width}-y-s@{i} {
       margin-top: var(~"--s@{i}");
       margin-bottom: var(~"--s@{i}");
     }
-    .g-margin--@{value}-left-s@{i} {
+    .g-margin--@{width}-left-s@{i} {
       margin-left: var(~"--s@{i}");
     }
-    .g-margin--@{value}-right-s@{i} {
+    .g-margin--@{width}-right-s@{i} {
       margin-right: var(~"--s@{i}");
     }
-    .g-margin--@{value}-top-s@{i} {
+    .g-margin--@{width}-top-s@{i} {
       margin-top: var(~"--s@{i}");
     }
-    .g-margin--@{value}-bottom-s@{i} {
+    .g-margin--@{width}-bottom-s@{i} {
       margin-bottom: var(~"--s@{i}");
     }
   
-    .g-padding--@{value}-s@{i} {
+    .g-padding--@{width}-s@{i} {
       padding: var(~"--s@{i}");
     }
-    .g-padding--@{value}-x-s@{i} {
+    .g-padding--@{width}-x-s@{i} {
       padding-left: var(~"--s@{i}");
       padding-right: var(~"--s@{i}");
     }
-    .g-padding--@{value}-y-s@{i} {
+    .g-padding--@{width}-y-s@{i} {
       padding-top: var(~"--s@{i}");
       padding-bottom: var(~"--s@{i}");
     }
-    .g-padding--@{value}-left-s@{i} {
+    .g-padding--@{width}-left-s@{i} {
       padding-left: var(~"--s@{i}");
     }
-    .g-padding--@{value}-right-s@{i} {
+    .g-padding--@{width}-right-s@{i} {
       padding-right: var(~"--s@{i}");
     }
-    .g-padding--@{value}-top-s@{i} {
+    .g-padding--@{width}-top-s@{i} {
       padding-top: var(~"--s@{i}");
     }
-    .g-padding--@{value}-bottom-s@{i} {
+    .g-padding--@{width}-bottom-s@{i} {
       padding-bottom: var(~"--s@{i}");
     }
     
-    .g-grid-gap--@{value}-s@{i} {
+    .g-grid-gap--@{width}-s@{i} {
       grid-gap: var(~"--s@{i}");
     }
   }

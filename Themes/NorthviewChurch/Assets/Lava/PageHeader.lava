@@ -15,7 +15,7 @@
       <div class="c-block-hero__container">
         <div class="container">
           <div class="row">
-            <div class="{{ containerClass }}">
+            <div class="{{ containerClass }} c-block-hero__header">
               <div class="l-row--flex">
                 <div class="l-col--flex">
                   <div class="c-block-hero__content">
