@@ -1,4 +1,18 @@
     //Global Scripts
+
+    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+    let vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    
+    // We listen to the resize event
+    window.addEventListener('resize', () => {
+      // We execute the same script as before
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
+    
+
     var navActive = false,
         navOpen = document.querySelector('.nav-toggle-menu'),
         navListOpen = document.querySelector('.c-primary-nav');
@@ -93,28 +107,43 @@
       calloutPrimary.forEach(item => { 
         addOrnamentalElem(item,"nv-icon--ornament_backslash",35,40)
       });
-    };
+      var cardOrnamental = document.querySelectorAll('.c-card.decorated');
+      cardOrnamental.forEach(item => { 
+        addOrnamentalElem(item,"nv-icon--ornament_minus",8,40)
+      });
+    }
 
     $('.has-ornaments').each(function(){
       var hasOrnaments = this;
-      rangeTop = [5,33]; rangeLeft = [5,33];
-      addOrnament(hasOrnaments,"nv-icon--ornament_circle",rangeTop,rangeLeft);
-      rangeTop = [5,33]; rangeLeft = [34,66];
-      addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);
-      rangeTop = [5,33]; rangeLeft = [67,95];
-      addOrnament(hasOrnaments,"nv-icon--ornament_square",rangeTop,rangeLeft);
-      rangeTop = [34,66]; rangeLeft = [5,33];
-      addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);
-      rangeTop = [34,66]; rangeLeft = [34,66];
-      addOrnament(hasOrnaments,"nv-icon--ornament_square",rangeTop,rangeLeft);
-      rangeTop = [34,66]; rangeLeft = [67,95];
-      addOrnament(hasOrnaments,"nv-icon--ornament_circle",rangeTop,rangeLeft);
-      rangeTop = [67,95]; rangeLeft = [5,33];
-      addOrnament(hasOrnaments,"nv-icon--ornament_square",rangeTop,rangeLeft);
-      rangeTop = [67,95]; rangeLeft = [34,66];
-      addOrnament(hasOrnaments,"nv-icon--ornament_circle",rangeTop,rangeLeft);
-      rangeTop = [67,95]; rangeLeft = [67,95];
-      addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);
+      if (window.innerWidth < 768) {
+        rangeTop = [5,45]; rangeLeft = [5,45];
+        addOrnament(hasOrnaments,"nv-icon--ornament_circle",rangeTop,rangeLeft);
+        rangeTop = [5,45]; rangeLeft = [55,95];
+        addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);
+        rangeTop = [55,95]; rangeLeft = [5,45];
+        addOrnament(hasOrnaments,"nv-icon--ornament_square",rangeTop,rangeLeft);
+        rangeTop = [55,95]; rangeLeft = [55,95];
+        addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);
+      } else {
+        rangeTop = [5,33]; rangeLeft = [5,33];
+        addOrnament(hasOrnaments,"nv-icon--ornament_circle",rangeTop,rangeLeft);
+        rangeTop = [5,33]; rangeLeft = [34,66];
+        addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);
+        rangeTop = [5,33]; rangeLeft = [67,95];
+        addOrnament(hasOrnaments,"nv-icon--ornament_square",rangeTop,rangeLeft);
+        rangeTop = [34,66]; rangeLeft = [5,33];
+        addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);
+        rangeTop = [34,66]; rangeLeft = [34,66];
+        addOrnament(hasOrnaments,"nv-icon--ornament_square",rangeTop,rangeLeft);
+        rangeTop = [34,66]; rangeLeft = [67,95];
+        addOrnament(hasOrnaments,"nv-icon--ornament_circle",rangeTop,rangeLeft);
+        rangeTop = [67,95]; rangeLeft = [5,33];
+        addOrnament(hasOrnaments,"nv-icon--ornament_square",rangeTop,rangeLeft);
+        rangeTop = [67,95]; rangeLeft = [34,66];
+        addOrnament(hasOrnaments,"nv-icon--ornament_circle",rangeTop,rangeLeft);
+        rangeTop = [67,95]; rangeLeft = [67,95];
+        addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);        
+      }
     });
 
     window.onload = setTimeout(() => {addSlashes()}, 500);

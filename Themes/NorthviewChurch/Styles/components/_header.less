@@ -57,7 +57,7 @@
   background-color: #fff;
   border-bottom:none;
   z-index: 99;
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-md) {
   	position: relative;
   	background-color: transparent;
   	width: auto;
@@ -76,7 +76,7 @@
   line-height:1;
   border:none;
   transition: all 150ms ease-in-out;
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-md) {
     font-size: 22px;
     padding-left: 26px;
     padding-right: 26px;
@@ -92,20 +92,20 @@
     	content:"";
     	z-index: 0;
     	transition: all ease-in-out 150ms;
-	  }	
-  	&:hover, &:focus {
-      color: @color-gray-darker;
-    	padding-top:18px;
-    	&:after {
-        height: 2px;
-      	width: 100%;
-    	}
-  	}
-  	i {
-    	position: relative;
-    	z-index: 1;
-  	}
+	  }
   }
+	&:hover, &:focus {
+    color: @color-gray-darker;
+  	padding-top:18px;
+  	&:after {
+      height: 2px;
+    	width: 100%;
+  	}
+	}
+	i {
+  	position: relative;
+  	z-index: 1;
+	}
   .no-header & {
     color: @white;
     &:after {
