@@ -7,10 +7,10 @@
   {%- assign sectionClass=" no-header" -%}
 {%- endif -%}
   	<div class="c-header__controls{{ sectionClass }}">
-  		<a href="/" class="c-header__control dark visible-xs-inline-block"><i class="nv-icon nv-icon--church_logomark"></i><span class="sr-only">Home</span></a>
-  		<a href="#nav" class="c-header__control nav-toggle nav-toggle-menu  visible-xs-inline-block"><i class="nv-icon nv-icon--menu"></i><span class="sr-only">Menu</span></a>
-  		<a href="#locations" class="c-header__control visible-xs"><i class="nv-icon nv-icon--location_marker"></i><span class="sr-only">Locations</span></a>
-  		<a href="/give" class="c-header__control hidden-xs"><i class="nv-icon nv-icon--give"></i><span class="sr-only">Give</span></a>
+  		<a href="/" class="c-header__control dark hidden-md hidden-lg"><i class="nv-icon nv-icon--church_logomark"></i><span class="sr-only">Home</span></a>
+  		<a href="#nav" class="c-header__control nav-toggle nav-toggle-menu hidden-md hidden-lg"><i class="nv-icon nv-icon--menu"></i><span class="sr-only">Menu</span></a>
+  		<a href="#locations" class="c-header__control hidden-md hidden-lg"><i class="nv-icon nv-icon--location_marker"></i><span class="sr-only">Locations</span></a>
+  		<a href="/give" class="c-header__control visible-md-inline-block visible-lg-inline-block"><i class="nv-icon nv-icon--give"></i><span class="sr-only">Give</span></a>
   		<a href="#login" class="c-header__control"><i class="nv-icon nv-icon--account"></i><span class="sr-only">Log In</span></a>
   		<a href="#search-form" class="c-header__control nav-toggle nav-toggle-search"><i class="nv-icon nv-icon--search"></i><span class="sr-only">Search</span></a>
   	</div><!-- end c-header__controls -->

@@ -1,32 +1,31 @@
-              <div class="c-section__header"><h2>Events</h2></div>
-              <div class="row">
-              {%- for eventItem in EventItems limit:3 -%}
-              {%- assign numEvents = eventItem | Size -%}
-              {%- assign event = eventItem | First -%}
-                <div class="col-md-4">
-                  <div class="c-card">
-                    <div class="c-card__header">
-                      <img class="c-card__media" src="/GetImage.ashx?guid={{ event.EventItemOccurrence.EventItem.Photo.Guid }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" />
-                    </div>
-                    <div class="c-card__body stack">
-                      {% assign eventAudiences = event.EventItemOccurrence.EventItem.EventItemAudiences %}
-                      <span class="c-card__callout">{%- for audience in eventAudiences -%}{{ audience.DefinedValue.Value }}{% if forloop.last != true %}, {% endif %}{%- endfor -%}</span>
-                      <h3 class="c-card__title">{{ event.Name }}</h3>
-                      <ul class="c-block__date-time c-list--inline">
-                        <li><i class="nv-icon nv-icon--calendar"></i> {{ event.Date | Date:"M/d/yyyy" }}</li>
-                        <li><i class="nv-icon nv-icon--clock"></i> {{ event.Time }}</li>
-                      </ul>
-                      {%- assign eventDetailPage = event.DetailPage | Trim -%}
-                      {%- if eventDetailPage != "" -%}
-                      <p><a href="{{ event.DetailPage }}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
-                      {%- else -%}
-                      <p><a href="{{ DetailsPage }}?EventId={{event.EventItemOccurrence.EventItemId}}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
-                      {%- endif -%}
-                    </div>
-                    <div class="c-card__footer">
-                    </div>
-                  </div><!--/.c-card-->
-                </div><!--/.col-md-4-->
-              {%- endfor -%}
-              </div><!--/.row-->
-              <p class="c-section__footer"><a href="{{ DetailsPage }}" class="c-btn">All Events<i class="nv-icon nv-icon--carat_right"></i></a></p>
+<div class="l-grid l-grid--sm-3col">
+{%- for eventItems in EventItems limit:3 -%}
+{%- assign numEvents = eventItems | Size -%}
+{%- assign event = eventItems | First -%}
+  <div class="c-card">
+    <div class="c-card__header">
+    {%- if event.EventItemOccurrence.EventItem.Photo.Guid && event.EventItemOccurrence.EventItem.Photo.Guid != "" -%}
+      <img class="c-card__media" src="/GetImage.ashx?guid={{ event.EventItemOccurrence.EventItem.Photo.Guid }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" />
+    {%- endif -%}
+    </div>
+    <div class="c-card__body stack">
+    {%- assign eventLocations = "" -%}
+    {%- for eventItem in eventItems -%}
+      {% capture eventLocations %}{{ eventLocations }}{% if forloop.first != true %}, {% endif %}{{ eventItem.EventItemOccurrence.Campus.Name }}{% endcapture %}
+    {%- endfor -%}
+      <span class="c-card__callout">{{ eventLocations }}</span>
+      <h3 class="c-card__title">{{ event.Name }}</h3>
+      <ul class="c-block__date-time c-list--inline">
+        <li><i class="nv-icon nv-icon--calendar"></i> {{ event.Date | Date:"M/d/yyyy" }}</li>
+        <li><i class="nv-icon nv-icon--clock"></i> {{ event.Time }}</li>
+      </ul>
+      {%- assign eventDetailPage = event.DetailPage | Trim -%}
+      {%- if eventDetailPage != "" -%}
+      <p><a href="{{ event.DetailPage }}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
+      {%- else -%}
+      <p><a href="{{ DetailsPage }}?EventOccurrenceId={{event.EventItemOccurrence.Id}}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
+      {%- endif -%}
+    </div>
+  </div><!--/.c-card-->
+{%- endfor -%}
+</div><!--/.l-grid-->

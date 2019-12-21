@@ -2,7 +2,7 @@
 .c-section {
   --section-padding-top: var(--s4);
   --section-padding-bottom: var(--s4);
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-lg) {
     --section-padding-top: var(--s8);
     --section-padding-bottom: var(--s8);
   }  
@@ -42,7 +42,7 @@
   }
 }
 .c-section--overlap-top .container {
-  --section-overlap-top: calc(@grid-gutter-width * -4); //translate along negative Y axis
+  --section-overlap-top: calc(@grid-gutter-width * -3); //translate along negative Y axis
   @media (min-width: @screen-sm) {
     --section-overlap-top: calc(@grid-gutter-width * -7); //translate along negative Y axis
   }  
@@ -106,13 +106,17 @@
 }
 .c-section__description {
   color: @text-color;
-	font-size: 36px;
-	line-height: 40px;
+	font-size: 24px;
+	line-height: 1.1;
 	text-align: center;
 	text-transform: none;
 	font-family: @headings-font-family;
 	font-weight: 600;
-	margin-top: var(--s3);
+	margin-top: var(--s1);
+	@media (min-width: @screen-sm) {
+		margin-top: var(--s3);
+    font-size: 36px;
+	}
 	.c-section--light & {
   	color: @gray-darker;
   }
@@ -157,17 +161,5 @@
 @keyframes fullcircle {
   100% {
     transform: rotate(360deg);
-  }
-}
-
-#campus-details {
-  .location-details,
-  .campus-intro {
-    background-color: @white;
-    color: @text-color;
-    padding: var(--s3);
-  }
-  .campus-intro {
-    
   }
 }

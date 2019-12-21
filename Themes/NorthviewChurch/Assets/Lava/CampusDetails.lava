@@ -26,12 +26,14 @@
         <div class="campus-intro l-grid">
         {%- personalias id:'{{ campus.LeaderPersonAliasId }}' -%}
         {%- person id:'{{ personalias.PersonId }}' -%}
+        {% comment %}{%- assign bio = "" -%}not sure how to get there from here{% endcomment %}
+        {%- assign groupId = 292677 -%}{% comment %}Campus Lead Team{% endcomment %}
           <div class="l-col">
     				<div class="row">
-    					<div class="col-sm-12 col-md-12">
+    					<div class="staff__item">
     						<div class="staff__photo">
     							{%- if bio != "" -%}
-    							<a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
+    							<a class="staff__detail-link" href="/staff/{{groupId}}/{{person.FirstName}}-{{person.LastName}}" title="{{ person.FullName }}">
     							{%- endif -%}
                     <img class="staff__detail-image" src="/GetImage.ashx?id={{ person.PhotoId }}&w=300&h=300&mode=crop" alt="{{ person.FullName }}" />
     							{%- if bio != "" -%}
