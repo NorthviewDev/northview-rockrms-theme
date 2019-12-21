@@ -36,14 +36,23 @@
   					{% endif %}
   					</h2>
   					<p class='event__info'>
-  						{{ eventItemOccurrence.Time}}
-  						{% if eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveStartDate != eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveEndDate %}
+  						{%- assign startTime = eventItemOccurrence.Time -%}
+  						<pre>{{ startTime }}</pre>
+              {%- assign endTime = eventItemOccurrence.EventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:1,'enddatetime' | First | Date: 'h:mm tt' -%}
+  						{%- if endTime && if startTime != endTime -%}
+  						 - <pre>{{ endTime }}</pre>
+  						{%- endif -%}
+  						{%- if eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveStartDate != eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveEndDate -%}
   							&bull; 
-  							{{ eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveStartDate  | Date: 'MMM d' }}
+  							{{ eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveStartDate | Date: 'MMM d' }}
   		                     - 
-  							{{ eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveEndDate  | Date: 'MMM d' }}
-  		        {% endif %}
+  							{{ eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveEndDate | Date: 'MMM d' }}
+  		        {%- endif -%}
+						{%- if eventItemOccurrence.Location != null -%}
+  						&bull; {{ eventItemOccurrence.Location}}
+						{%- endif -%}
   		      </p>
+            
   				</div>
   				{% if eventItemOccurrence.DetailPage != null %}
 				  <a class="c-btn" href="{{ eventItemOccurrence.DetailPage }}">Details <i class="nv-icon nv-icon--carat_right"></i></a>
@@ -60,3 +69,5 @@
 	</div>
 	{% endif %}
 </div>
+
+{{"Lava"|Debug}}

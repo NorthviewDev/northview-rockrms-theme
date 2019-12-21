@@ -23,7 +23,7 @@
   @media (orientation: landscape) {
     justify-content: flex-start;
   }
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-md) {
   	transform: none;
   	min-height: 0;
   	background-color: transparent;
@@ -44,7 +44,7 @@
   margin-bottom: 3em;
   padding-left:0;
   list-style: none;
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-md) {
     margin-bottom:0;
   }
 }
@@ -58,7 +58,7 @@
 	text-transform: uppercase;
 	margin: var(--s1) 0;
 	vertical-align: top;
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-md) {
     display: inline;
     font-size: 26px;
     line-height: 1.2;
@@ -95,16 +95,18 @@
   	}
 	}
   .no-header & {
-    color: @white;
-  	&:hover, &:focus {
+    @media (min-width: @screen-lg) {
       color: @white;
+    	&:hover, &:focus {
+        color: @white;
+      }    	
     }
   }
 	span {
   	position: relative;
   	z-index: 1;
 	}
-	@media (min-width: @screen-sm) {
+	@media (min-width: @screen-md) {
   	padding-left:0;
 	  &:after {
   	  position: relative;

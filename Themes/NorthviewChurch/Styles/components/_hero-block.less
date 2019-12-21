@@ -234,6 +234,7 @@
     line-height: 0;
     position: relative;
     overflow: hidden;
+/*
     &:after {
       content:"";
       position: absolute;
@@ -245,6 +246,7 @@
     	background: linear-gradient(180deg, #FFFFFF 0%, rgba(208,208,208,0.45) 100%);
     	z-index: 10;
     }
+*/
     video {
       object-fit: cover;
       position: relative;
@@ -297,7 +299,13 @@
     	  width: 62.7%;
         background-color: @brand-primary;
         transform: skew(-38deg);
-      }  
+      }
+      @media (min-width: @screen-md) {
+      	width: 68.7%
+      }
+      @media (min-width: @screen-lg) {
+    	  width: 62.7%;
+      }
     }
   }
 }
@@ -342,7 +350,7 @@
     white-space: nowrap;
     overflow: hidden;
     display: none;
-    @media (min-width: @screen-sm) {
+    @media (min-width: @screen-lg) {
       font-size: 30px;
       display: block;
     }
