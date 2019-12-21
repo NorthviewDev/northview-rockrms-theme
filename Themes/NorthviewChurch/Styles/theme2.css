@@ -182,6 +182,21 @@
     grid-template-columns: repeat(1, 1fr);
   }
 }
+.pad {
+  padding: 0 48px;
+}
+@media (min-width: 768px) {
+  .pad {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+@media (min-width: 992px) {
+  .pad {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
 .staff__item {
   background: transparent;
   border-bottom: 0;
@@ -213,11 +228,14 @@
   border-radius: 50%;
   overflow: hidden;
   border: none;
-  background-color: #53DAEC;
+  background-color: rgba(34, 31, 31, 0.8);
+  -webkit-box-shadow: inset 0px 0px 0px 4px #53DAEC;
+  -moz-box-shadow: inset 0px 0px 0px 4px #53DAEC;
+  box-shadow: inset 0px 0px 0px 4px #53DAEC;
 }
 .staff__detail-link img {
   opacity: 1;
-  transition: opacity ease 0.5s;
+  transition: all ease 0.5s;
 }
 .staff__detail-link:before {
   background-color: transparent;
@@ -246,9 +264,11 @@
   opacity: 1;
 }
 .staff__detail-link:hover img {
-  opacity: 0;
+  opacity: 0.2;
+  padding: 4px;
 }
 .staff__detail-link .vc {
+  font-family: ff-good-web-pro-condensed, sans-serif;
   position: absolute;
   top: 50%;
   width: 100%;
@@ -257,8 +277,8 @@
   z-index: 5;
   opacity: 0;
   color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 900;
   text-transform: uppercase;
 }
 @media (min-width: 768px) {
@@ -312,5 +332,14 @@
 }
 .staff__meta li a:hover {
   color: black;
+}
+.staff-member h2.staff__title {
+  color: #221f1f;
+  font-size: 36px;
+  line-height: 40px;
+  text-transform: none;
+  font-family: ff-good-web-pro-condensed, sans-serif;
+  font-weight: 600;
+  margin-top: var(--s0);
 }
 /*# sourceMappingURL=theme2.css.map */
