@@ -3,7 +3,19 @@
 @import "global/_mixins.less";
 @import "_fishhook-mixins.less";
 
+.pad{
+    padding: 0 48px;
+    @media (min-width: @screen-sm) {
+      padding-left: 60px;
+      padding-right:60px;
+    }
+  @media (min-width: @screen-md) {
+    padding-left: 120px;
+    padding-right:120px;
+  }
+}
 
+// Staff component
 .staff{
   &__item{
     text-align: center;
@@ -34,11 +46,14 @@
     position: relative;
 	  border-radius: 50%;
 	  overflow: hidden;
-	  border: none;
-	  background-color: @color-brand-primary;
+    border: none;
+	  background-color: rgba(34,31,31,0.8);
+    -webkit-box-shadow:inset 0px 0px 0px 4px @color-brand-primary;
+    -moz-box-shadow:inset 0px 0px 0px 4px @color-brand-primary;
+    box-shadow:inset 0px 0px 0px 4px @color-brand-primary;
 	  img{
   	  opacity: 1;
-  	  transition: opacity ease .5s;
+  	  transition: all ease .5s;
 	  }
     &:before{
 	    background-color: transparent;
@@ -51,7 +66,8 @@
         opacity: 1;
       }
       img{
-        opacity: 0;
+        opacity: .2;
+        padding: 4px;
       }
 /*
       &:before{
@@ -71,6 +87,7 @@
 */
     }
 	  .vc {
+  	  font-family: @headings-font-family;
 		  position: absolute;
 		  top:50%;
 		  width: 100%;
@@ -79,8 +96,8 @@
 	    z-index: 5;
 	    opacity: 0;
 	    color: @white;
-	    font-size: 1.5rem;
-	    font-weight: 600;
+	    font-size: 24px;
+	    font-weight: 900;
 	    text-transform: uppercase;
 	  }
   }
@@ -139,5 +156,15 @@
       
     }
   }
-
+}
+.staff-member{
+  h2.staff__title{
+    color: #221f1f;
+    font-size: 36px;
+    line-height: 40px;
+    text-transform: none;
+    font-family: ff-good-web-pro-condensed, sans-serif;
+    font-weight: 600;
+    margin-top: var(--s0);
+  }
 }

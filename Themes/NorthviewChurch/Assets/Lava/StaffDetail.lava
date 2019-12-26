@@ -46,12 +46,12 @@
 					<div class="staff__photo staff__photo--large"><img src="/GetImage.ashx?id={{ person.PhotoId }}&w=600&h=600&mode=crop&anchor=middlecenter&scale=both" alt="{{ firstName }} {{ lastName }}" /></div>
 				</div>
 				<div class="col-sm-8 col-sm-offset-2 col-md-offset-0 col-md-4">
-					<div class="staff__name">{% if nickName != "" %}{{ nickName }}{% else %}{{ firstName }}{% endif %} {{ lastName }}</div>
-					<div class="staff__title">{{ title }}</div>
+					<h1>{% if nickName != "" %}{{ nickName }}{% else %}{{ firstName }}{% endif %} {{ lastName }}</h1>
+					<h2 class="staff__title">{{ title }}</h2>
 					<div class="staff__bio">{{ bio }}</div>
 					<ul class="staff__meta">
 						{% if email != '' %}
-        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}"><i class="nv-icon nv-icon--email"></i></a></li>
+        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}" target="_blank"><i class="nv-icon nv-icon--email"></i></a></li>
                 {% endif %}
                 {% if phone != '' %}
                   <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>

@@ -22,7 +22,7 @@
 {%- endsql -%}
 <div class="staff-list">
 	<h2 class="section__title">{{ staffGroupTitle }}</h2>
-	<div class="block-grid block-grid-xs-1 block-grid-sm-3 block-grid-md-5">
+	<div class="block-grid block-grid-xs-1 block-grid-sm-3 block-grid-md-4 block-grid-lg-5">
 	{%- for item in results -%}
 	{%- assign personId = item.PersonId -%}
 	{%- assign groupId = item.GroupId -%}
@@ -68,7 +68,7 @@
       			<div class="staff__title">{{ title }}</div>
         			<ul class="staff__meta">
         			  {% if email != '' %}
-        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}"><i class="nv-icon nv-icon--email"></i></a></li>
+        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}" target="_blank"><i class="nv-icon nv-icon--email"></i></a></li>
                 {% endif %}
                 {% if phone != '' %}
                   <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
