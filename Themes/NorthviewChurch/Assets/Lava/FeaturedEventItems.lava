@@ -11,7 +11,7 @@
     <div class="c-card__body stack">
     {%- assign eventLocations = "" -%}
     {%- for eventItem in eventItems -%}
-      {% capture eventLocations %}{{ eventLocations }}{% if forloop.first != true %}, {% endif %}{{ eventItem.EventItemOccurrence.Campus.Name }}{% endcapture %}
+      {%- capture eventLocations %}{{ eventLocations }}{% if forloop.first != true %}, {% endif %}{{ eventItem.EventItemOccurrence.Campus.Name }}{% endcapture -%}
     {%- endfor -%}
       <span class="c-card__callout">{{ eventLocations }}</span>
       <h3 class="c-card__title">{{ event.Name }}</h3>

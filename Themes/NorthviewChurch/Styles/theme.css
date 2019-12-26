@@ -22456,23 +22456,14 @@ ol {
 .c-btn .nv-icon.nv-icon--carat_left,
 .c-btn .nv-icon.nv-icon--carat_right {
   position: relative;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
+  display: inline-block;
   width: 1em;
   height: 1em;
-  align-content: flex-end;
-  -webkit-box-align: center;
-          align-items: center;
-  float: right;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-          flex-direction: row-reverse;
   -webkit-transition: all ease-in-out 300ms;
   transition: all ease-in-out 300ms;
   margin-left: 5px;
   margin-top: 1px;
+  vertical-align: text-top;
 }
 .c-btn .nv-icon.nv-icon--carat_left:before,
 .c-btn .nv-icon.nv-icon--carat_right:before {
@@ -22492,11 +22483,13 @@ ol {
   border-color: var(--button-border-color);
   background: #221f1f;
   border-radius: 0;
-  -webkit-transform: translateX(-3px);
-          transform: translateX(-3px);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translate(-3px, -50%);
+          transform: translate(-3px, -50%);
 }
 .c-btn .nv-icon.nv-icon--carat_left {
-  float: left;
   margin-left: 0;
   margin-right: 8px;
 }
@@ -22567,8 +22560,8 @@ ol {
   .c-btn.c-btn--large .nv-icon--carat_right:after {
     border-width: 2px;
     border-radius: 3px;
-    -webkit-transform: translateX(-4px);
-            transform: translateX(-4px);
+    -webkit-transform: translate(-4px, -50%);
+            transform: translate(-4px, -50%);
   }
 }
 .c-btn.c-btn--offset-border {
@@ -22623,6 +22616,12 @@ ol {
 }
 .c-btn.c-btn--text-link .nv-icon--carat_right:after {
   border-color: #53DAEC;
+}
+.c-btn.c-btn--display-block {
+  display: block;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
 }
 /*** LISTS ***/
 .c-list--inline,
@@ -22970,6 +22969,9 @@ ol {
     left: -20px;
     right: -20px;
   }
+}
+.c-section--light .c-section__header--plain h2:after {
+  content: none;
 }
 .c-section__description {
   color: #221f1f;
@@ -23743,23 +23745,18 @@ ol {
   height: 530px;
 }
 @media (min-width: 768px) {
-  #campusmap {
-    width: 70%;
-    float: left;
-  }
-}
-@media (min-width: 768px) {
   #campus-locations {
     height: 530px;
     overflow: hidden;
   }
 }
-#campus-locations > .content {
+#campus-locations #location-search {
   background-color: #ffffff;
   padding: 58px;
+  --space: 2rem;
 }
 @media (min-width: 768px) {
-  #campus-locations > .content {
+  #campus-locations #location-search {
     box-shadow: 0px 0px 10px 0px #8c8c8c;
     height: 530px;
     width: 30%;
@@ -23769,13 +23766,10 @@ ol {
     z-index: 10;
   }
 }
-.location-search {
-  --space: 2rem;
-}
-.location-search .form-group {
+#campus-locations #location-search .form-group {
   text-align: center;
 }
-.location-search .form-group .form-control {
+#campus-locations #location-search .form-group .form-control {
   width: 75%;
   margin-left: auto;
   margin-right: auto;
@@ -23791,8 +23785,17 @@ ol {
   line-height: 1;
   text-align: center;
 }
-.campus-list {
+#campus-list {
   margin-top: 36px;
+}
+.location-link a {
+  color: #221f1f;
+}
+.location-link a:hover {
+  color: #53DAEC;
+}
+.location-link a.c-btn {
+  color: #ffffff;
 }
 #campus-details {
   overflow: hidden;

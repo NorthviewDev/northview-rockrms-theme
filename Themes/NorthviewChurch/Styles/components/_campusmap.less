@@ -1,17 +1,13 @@
 @mapheight: 530px;
 #campusmap {
   height: @mapheight;
-  @media (min-width: @screen-sm) {
-    width: 70%;
-  	float: left;
-  }
 }
 #campus-locations {
   @media (min-width: @screen-sm) {
     height: @mapheight;	
     overflow: hidden;
   }
-  > .content {
+  #location-search {
     background-color: @white;
     padding: 58px;
     @media (min-width: @screen-sm) {
@@ -23,21 +19,19 @@
       position: relative;
       z-index: 10;
     }
-  }
-}
-.location-search {
-  --space: 2rem;
-  .form-group {
-    text-align: center;
-    .form-control {
-      width: 75%;
-      margin-left: auto;
-      margin-right:auto;
-      background-color: #d8d8d8;
-      color: #777576;
-      border: none;
-      border-radius: 0;
-      box-sizing: content-box;
+    --space: 2rem;
+    .form-group {
+      text-align: center;
+      .form-control {
+        width: 75%;
+        margin-left: auto;
+        margin-right:auto;
+        background-color: #d8d8d8;
+        color: #777576;
+        border: none;
+        border-radius: 0;
+        box-sizing: content-box;
+      }
     }
   }
 }
@@ -47,6 +41,17 @@
   line-height: 1;
   text-align: center;
 }
-.campus-list {
+#campus-list {
   margin-top: 36px;
+}
+.location-link {
+  a {
+    color: @text-color;
+    &:hover {
+      color: @brand-primary;
+    }
+    &.c-btn {
+      color: @white;
+    }
+  }
 }
