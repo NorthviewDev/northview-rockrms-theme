@@ -26,6 +26,10 @@
       width: 46px;
     }
     &.no-header {
+      display: none;
+      @media (min-width: @screen-sm) {
+        display: block;
+      }
       .c-logo-link__img .cls-1 {
         fill: @white;
         color: @white;

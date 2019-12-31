@@ -18,8 +18,10 @@
                   <p><a href="{{ DetailPage }}/{{ message.PrimarySlug }}" class="c-btn c-btn--dark">Watch<i class="nv-icon nv-icon--carat_right"></i></a></p>
                 </div>
               </div>
-              {% endfor %}
+              {%- endfor -%}
+              {%- if allmessages -%}
               <p class="c-section__footer"><a href="{{ DetailPage }}" class="c-btn">All Messages<i class="nv-icon nv-icon--carat_right"></i></a></p>
+              {%- endif -%}
             </div>
           </div>
         </div>

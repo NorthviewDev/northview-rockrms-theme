@@ -18,7 +18,7 @@
 	font-size: 18px;
 	font-weight: var(--button-font-weight);
 	letter-spacing: 0.8px;
-	line-height: 1;
+	line-height: 1.1;
 	text-transform: uppercase;
   padding: 7px 15px 5px;
   position: relative;
@@ -32,12 +32,12 @@
     &.nv-icon--carat_left,
     &.nv-icon--carat_right {
       position: relative;
-      display: inline-block;
+      float:right;
       width: 1em;
       height: 1em;
       transition: all ease-in-out 300ms;
       margin-left: 5px;
-      margin-top:1px;
+      margin-top:0;
       vertical-align: text-top;
       &:before {
         position: absolute;
@@ -61,6 +61,7 @@
       }
     }
     &.nv-icon--carat_left {
+      float:left;
       margin-left: 0;
       margin-right: 8px;
       &:before {
@@ -91,7 +92,7 @@
       &.c-btn--offset-border {
       	padding: 8px 58px 14px;
       }
-      margin-top:9px;
+      margin-top:16px;
       margin-left:9px;
       &:hover, &:focus {
         padding-left: 75px;
@@ -120,7 +121,7 @@
   }
   &.c-btn--offset-border {
     padding: 6px 22px 12px;
-    margin-top:7px;
+    margin-top:12px;
     margin-left: 7px;
     background-color: @white;
     border:none;
@@ -170,8 +171,5 @@
   }
   &.c-btn--display-block {
     display: block;
-    padding-left: 0;
-    padding-right:0;
-    text-align: center;
   }
 }

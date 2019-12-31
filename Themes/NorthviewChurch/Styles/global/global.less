@@ -89,6 +89,7 @@ body {
   margin-bottom: var(--pwa-menu-height);
   @media (min-width: @screen-sm) {
     margin-bottom:0;
+    font-size: 19px;
   }
 }
 #form1 {
@@ -108,7 +109,10 @@ a {
 	display: inline-block;
 	text-decoration: none;
 	border-bottom: solid 1px @brand-primary;
+	color: @text-color;
+	font-weight: 600;
 	&:hover, &:focus {
+  	color: @brand-primary;
   	text-decoration: none;
 	}
 	.config-bar & {
@@ -133,6 +137,27 @@ ul, ol {
   } 
   > * + * {
     margin-top: var(--space);
+  }
+}
+
+.addthis_toolbox {
+  background-color: @text-color;
+  color: @white;
+  ul {
+    display: flex;
+    justify-content: space-around;
+    margin:0;
+    padding:0;
+    list-style: none;
+    li {
+      margin:0;
+      padding: var(--s1);
+      a {
+        border: none;
+        color: @white;
+        margin: 0;
+      }
+    }
   }
 }
 .center-block {
