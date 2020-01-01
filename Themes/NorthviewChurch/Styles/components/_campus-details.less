@@ -21,6 +21,9 @@
   color: @text-color;
   padding: var(--s3);
 }
+.location-details {
+  font-size: 16px;
+}
 .location-details__info-list {
   margin-top: var(--s2);
   i {
@@ -38,7 +41,13 @@
 .campus-intro {
   grid-template-columns: 1fr 2fr;
   align-items: center;
-  &:first-child {
+  :first-child {
     align-self: flex-start;
+  }
+  h2 {
+    font-size: floor((@font-size-base * 1.5625)); // ~25px
+    @media (min-width: @screen-sm) {
+    	font-size: 36px;
+    }
   }
 }
