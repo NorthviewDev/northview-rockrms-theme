@@ -73,7 +73,8 @@
     map.data.setStyle((feature) => {
       latlng = feature.getGeometry().get();
       bounds.extend(latlng);
-      map.fitBounds(bounds,{left:230});
+//      map.fitBounds(bounds,{left:230});
+      map.fitBounds(bounds);
       return {
         icon: {
   				url: "{{'Global' | Attribute:'PublicApplicationRoot'}}Themes/NorthviewChurch/Assets/_img/Location_Marker.png",
@@ -88,25 +89,8 @@
   					30)
         },
       };
-    });
-								
-  map.data.forEach(function(feature){
-    console.log(feature.getProperty('campusid'));
-    if(feature.getProperty('campusid') === cid){
-      LatLng = feature.getGeometry().get();
-      id = feature.getProperty('id');
-      var marker = new google.maps.Marker({
-           position: LatLng,
-           map: map,
-           draggable: true,
-           id: id,
-           icon: imageActive,
-      });
-      allMarkers[id] = marker;
-      map.data.remove(feature);
-    } 
-  });
-  
+    }); 
+     
 /* THIS SHOULD WORK BUT I CAN'T FIGURE OUT WHY IT DOESN'T >:(
   
     map.data.forEach((feature) => {
@@ -234,6 +218,8 @@
 
 //  showAllCampusList(map.data);
 
+  const section = document.getElementById('campus-locations');
+
   // Build and add the search bar
   const card = document.createElement('div');
   const titleBar = document.createElement('div');
@@ -249,6 +235,7 @@
     componentRestrictions: {country: 'us'},
   };
 
+  
   card.setAttribute('id', 'location-search');
   titleBar.setAttribute('class', 'stack');
   title.setAttribute('class', 'location-search__title');
@@ -273,7 +260,9 @@
   titleBar.appendChild(inputContainer);
   titleBar.appendChild(buttonContainer);
   card.appendChild(panel);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
+  section.insertBefore(card,section.firstChild);
+//  map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
+
 
   // Make the search bar into a Places Autocomplete search bar and select
   // which detail fields should be returned about the place that
@@ -303,7 +292,7 @@
     // Recenter the map to the selected address
     originLocation = place.geometry.location;
     map.setCenter(originLocation);
-    map.panBy(-230,0)
+    //map.panBy(-230,0)
     map.setZoom(9);
     //console.log(place);
 
@@ -423,18 +412,21 @@ function showCampusList(data, campuses) {
     button.setAttribute('class','c-btn c-btn--text-link c-btn--display-block')
     const icon = document.createElement('i');
     icon.setAttribute('class','nv-icon nv-icon--carat_right')
-    const name = document.createElement('h4');
-    name.classList.add('place');
+    const name = document.createElement('h3');
+    name.classList.add('place__name');
+    const place = document.createElement('div');
+    place.classList.add('place');
     const currentCampus = data.getFeatureById(campus.campusid);
     button.textContent = currentCampus.getProperty('name');
     button.setAttribute('href', currentCampus.getProperty('url'));
     button.appendChild(icon);
     name.appendChild(button);
-    panel.appendChild(name);
+    place.appendChild(name);
     const distanceText = document.createElement('p');
-    distanceText.classList.add('distanceText');
+    distanceText.classList.add('place__distance-text');
     distanceText.textContent = campus.distanceText;
-    panel.appendChild(distanceText);
+    place.appendChild(distanceText);
+    panel.appendChild(place);
   });
 
   // Open the panel

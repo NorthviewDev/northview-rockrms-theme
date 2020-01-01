@@ -15,7 +15,6 @@
   .c-block-hero__background-video {
     line-height: 0;
     position: relative;
-    //overflow: hidden;
     margin-top: var(--s1);
     margin-bottom: var(--s1);
     &.l-aspect-ratio__9-16 {
@@ -77,6 +76,7 @@
       font-size: 15px;
       white-space: nowrap;
       overflow: hidden;
+      letter-spacing: 2.5px;
     	@media (min-width: @screen-sm) {
     		font-size: 34px;
         left: calc(var(--s2) * -1);
@@ -221,14 +221,6 @@
       }
     }
   }
-  &.no-header .c-block-hero__header {
-    @media (max-width: @screen-xs-max) {
-      padding-left:0;
-      padding-right:0;
-    }
-    .make-md-column(8);
-    .make-md-column-offset(2);
-  }
   .c-block-hero__content {
     @media (max-width: @screen-xs-max) {
       position: absolute;      
@@ -249,6 +241,9 @@
     line-height: 0;
     position: relative;
     overflow: hidden;
+    @media (min-width: @screen-sm) {
+    	overflow: visible;
+    }
 /*
     &:after {
       content:"";
@@ -284,6 +279,7 @@
     	font-size: 15px;
       white-space: nowrap;
       overflow: hidden;
+      letter-spacing: 2.5px;
     	@media (min-width: @screen-sm) {
     		font-size: 34px;
     	}
@@ -372,7 +368,7 @@
     overflow: hidden;
     display: none;
     @media (min-width: @screen-lg) {
-      font-size: 30px;
+      font-size: 24px;
       display: block;
     }
   }
@@ -440,9 +436,9 @@
       color: @text-color;
     	font-size: 15px;
       height: 1em;
-      overflow: hidden;
       white-space: nowrap;
       overflow: hidden;
+      letter-spacing: 2.5px;
     	@media (min-width: @screen-sm) {
     		font-size: 24px;
         bottom:-15px;
@@ -462,4 +458,8 @@
   100% {
     transform: rotate(-360deg);
   }
+}
+
+.wow {
+  visibility: hidden;
 }

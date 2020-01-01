@@ -32,15 +32,18 @@
   					{% if eventItemOccurrence.DetailPage != null %}
   					<a href="{{ eventItemOccurrence.DetailPage }}">{{ eventItemOccurrence.Name }}</a>
   					{% else %}
-  					<a href="{{ DetailsPage }}?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}">{{ eventItemOccurrence.Name }}</a>
+  					<a href="{{ DetailsPage }}?EventId={{ eventItemOccurrence.EventItemOccurrence.EventItemId }}">{{ eventItemOccurrence.Name }}</a>
   					{% endif %}
   					</h2>
   					<p class='event__info'>
   						{%- assign startTime = eventItemOccurrence.Time -%}
-  						<pre>{{ startTime }}</pre>
               {%- assign endTime = eventItemOccurrence.EventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:1,'enddatetime' | First | Date: 'h:mm tt' -%}
-  						{%- if endTime && if startTime != endTime -%}
-  						 - <pre>{{ endTime }}</pre>
+  						{%- if startTime == "12:00 AM" and endTime == null -%}
+  						All Day
+  						{%- elseif endTime and startTime != endTime -%}
+  						{{ startTime }} - {{ endTime }}
+  						{%- else -%}
+  						{{ startTime }}
   						{%- endif -%}
   						{%- if eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveStartDate != eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveEndDate -%}
   							&bull; 
@@ -57,7 +60,7 @@
   				{% if eventItemOccurrence.DetailPage != null %}
 				  <a class="c-btn" href="{{ eventItemOccurrence.DetailPage }}">Details <i class="nv-icon nv-icon--carat_right"></i></a>
   				{% else %}
-				  <a class="c-btn" href="{{ DetailsPage }}?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}">Details <i class="nv-icon nv-icon--carat_right"></i></a>
+				  <a class="c-btn" href="{{ DetailsPage }}?EventId={{ eventItemOccurrence.EventItemOccurrence.EventItemId }}">Details <i class="nv-icon nv-icon--carat_right"></i></a>
   				{% endif %}
   
   				{% assign current_start_day = eventItemOccurrence.Date %}
@@ -69,5 +72,3 @@
 	</div>
 	{% endif %}
 </div>
-
-{{"Lava"|Debug}}

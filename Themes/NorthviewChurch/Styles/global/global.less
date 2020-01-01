@@ -83,11 +83,12 @@ h1.pagetitle:empty { // hides the page title h1 tag if the page has the title hi
     position: relative;
   }
 }
+
 /*** GLOBAL STYLES ***/
 body {
   background-color: #fafafa;
   margin-bottom: var(--pwa-menu-height);
-  @media (min-width: @screen-sm) {
+  @media (min-width: @screen-md) {
     margin-bottom:0;
     font-size: 19px;
   }
@@ -101,6 +102,23 @@ body {
   box-shadow: 0px 0px 10px 0px #8c8c8c;
   background-color:@white;
 }
+
+blockquote {
+  padding: 0;
+  border-left: none;
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+}
+@media (min-width: @screen-md) {
+  blockquote { font-size: 36px; }
+  h1, .h1 { font-size: 80px; }
+  h2, .h2 { font-size: 48px; }
+  h3, .h3 { font-size: 36px; }
+  h4, .h4 { font-size: 22px; }
+  h5, .h5 { font-size: 19px; }
+  h6, .h6 { font-size: 14px; }
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -123,9 +141,11 @@ ul, ol {
   padding-left: 1.5em;
 }
 .container {
-  max-width: 100%;  
+  max-width: 100%;
+  @media (min-width: @screen-xl-min) {
+    width: @container-xl;
+  }
 }
-
 .stack {
   --space: 1rem;
   &.text-center {
@@ -163,7 +183,11 @@ ul, ol {
 .center-block {
   float:none;
 }
-
+.btn-group.hidden-print {
+  @media (max-width: @screen-sm-max) {
+  	display: none;
+  }
+}
 /*** GRID LAYOUT ***/
 .l-grid {
   @media (min-width: @screen-sm) {

@@ -187,13 +187,16 @@
         {% if eventItemOccurrence.ContactPersonAliasId != null or eventItemOccurrence.ContactEmail != '' or eventItemOccurrence.ContactPhone != '' %}
         <p>
           <strong>Contact</strong><br />
-          {% if eventItemOccurrence.ContactPersonAliasId != null %}
+
+          {%- if eventItemOccurrence.ContactEmail != '' -%}
+          <a href="mailto:{{ eventItemOccurrence.ContactEmail }}">
+          {%- endif -%}
+          {%- if eventItemOccurrence.ContactPersonAliasId != null -%}
           {{ eventItemOccurrence.ContactPersonAlias.Person.FullName }} <br />
-          {% endif %}
-  
-          {% if eventItemOccurrence.ContactEmail != '' %}
-          {{ eventItemOccurrence.ContactEmail }} <br />
-          {% endif %}
+          {%- endif -%}
+          {%- if eventItemOccurrence.ContactEmail != ''- %}
+          </a>
+          {%- endif -%}
   
           {{ eventItemOccurrence.ContactPhone }}
         </p>

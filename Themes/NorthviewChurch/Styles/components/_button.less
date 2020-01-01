@@ -32,12 +32,12 @@
     &.nv-icon--carat_left,
     &.nv-icon--carat_right {
       position: relative;
-      float:right;
+      display: inline-block;
       width: 1em;
       height: 1em;
       transition: all ease-in-out 300ms;
       margin-left: 5px;
-      margin-top:0;
+      margin-top:3px;
       vertical-align: text-top;
       &:before {
         position: absolute;
@@ -51,7 +51,7 @@
         width: 100%;
         border-style: solid;
         border-width: 1px;
-        border-color: var(--button-border-color);
+        border-color: inherit;
         background: @text-color;
         border-radius: 0;
         position: absolute;
@@ -61,7 +61,6 @@
       }
     }
     &.nv-icon--carat_left {
-      float:left;
       margin-left: 0;
       margin-right: 8px;
       &:before {
@@ -106,7 +105,7 @@
       }
       &:after {
         transform: translate(-10px,-10px);
-        border: solid 3px @text-color;
+        border-width: 3px;
       }
       .nv-icon--carat_right {
         margin-left: 10px;
@@ -126,9 +125,6 @@
     background-color: @white;
     border:none;
     color: @text-color;
-    .nv-icon--carat_right:after {
-      border-color: @text-color;
-    }
     &:hover, &:focus {
       padding-left: var(--button-padding-x);
       padding-right: var(--button-padding-x);
@@ -152,9 +148,6 @@
     color: @white;
     background-color: @gray-darker;
     border-color: @gray-darker;
-    .nv-icon--carat_right:after {
-      border-color: @white;
-    }
     &:hover, &:focus {
       color: @white;      
     }
@@ -165,9 +158,6 @@
     color: @brand-primary;
     padding-left:0;
     padding-right:0;
-    .nv-icon--carat_right:after {
-      border-color: @brand-primary;
-    }
   }
   &.c-btn--display-block {
     display: block;

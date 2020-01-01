@@ -46,13 +46,15 @@
         {% if EventItemOccurrence.ContactPersonAliasId != null or EventItemOccurrence.ContactEmail != '' or EventItemOccurrence.ContactPhone != '' %}
         <p>
           <strong>Contact</strong><br />
-          {% if EventItemOccurrence.ContactPersonAliasId != null %}
+          {%- if EventItemOccurrence.ContactEmail != '' -%}
+          <a href="mailto:{{ EventItemOccurrence.ContactEmail }}">
+          {%- endif -%}
+          {%- if EventItemOccurrence.ContactPersonAliasId != null -%}
           {{ EventItemOccurrence.ContactPersonAlias.Person.FullName }} <br />
-          {% endif %}
-  
-          {% if EventItemOccurrence.ContactEmail != '' %}
-          {{ EventItemOccurrence.ContactEmail }} <br />
-          {% endif %}
+          {%- endif -%}
+          {%- if EventItemOccurrence.ContactEmail != '' -%}
+          </a>
+          {%- endif -%}
   
           {{ EventItemOccurrence.ContactPhone }}
         </p>

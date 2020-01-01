@@ -69,8 +69,10 @@
 	<link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/_icons/webfont/style.css") %>"/>
   <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", true) %>"/>
   <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme2.css", true) %>"/>
+  <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/animate.min.css") %>"/>
   
   <script src="<%# ResolveRockUrl("~/Scripts/modernizr.js" ) %>" ></script>
+  <script src="<%# ResolveRockUrl("~~/Assets/Scripts/wow.min.js" ) %>" ></script>
     
   <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
@@ -97,7 +99,7 @@
     <Rock:Zone Name="Footer Info" runat="server" />
   </footer>
   
-  <script src="/Themes/NorthviewChurch/Assets/Scripts/global.js" type="text/javascript"></script>
+  <script src="/Themes/NorthviewChurch/Assets/Scripts/global-min.js" type="text/javascript"></script>
   
   <%-- controls for scriptmanager and update panel --%>
   <asp:ScriptManager ID="sManager" runat="server"/>

@@ -1,6 +1,10 @@
 @mapheight: 530px;
 #campusmap {
   height: @mapheight;
+  @media (min-width: @screen-sm) {
+    width: 70%;
+    float:left;
+  }
 }
 #campus-locations {
   @media (min-width: @screen-sm) {
@@ -9,8 +13,9 @@
   }
   #location-search {
     background-color: @white;
-    padding: 58px;
+    padding: 48px 30px;
     @media (min-width: @screen-sm) {
+      padding: 58px;
       box-shadow: 0px 0px 10px 0px #8c8c8c;
       height: @mapheight;	
       width: 30%;
@@ -42,20 +47,29 @@
   text-align: center;
 }
 #campus-list {
-  margin-top: 36px;
-}
-.location-link {
-  a {
-    color: @text-color;
-    &:hover {
-      color: @brand-primary;
-    }
-    &.c-btn {
-      color: @white;
+  > :first-child{
+    margin-top: 36px;
+  }
+  .place {
+    padding: var(--s1);
+  }
+  .place__name {
+    font-size: 25px;
+    text-transform: none;
+    margin:0;
+    a {
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      i:after {
+        border-bottom-width: 2px;
+      }
     }
   }
+  .place__distance-text {
+    margin:0;
+  }
 }
-
 
 //Google Maps InfoWindow overrides
 .gm-style .gm-style-iw-c {

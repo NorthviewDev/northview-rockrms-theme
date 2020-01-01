@@ -444,15 +444,15 @@ namespace RockWeb.Blocks.Event
                 
             if ( ViewMode == "Month" ) 
             {
-              tOutput.Text = string.Format( "<h2 class=\"events-calendar__header-title\">All Events for {0:MMMM yyyy}</h2>", FilterStartDate );
+              tOutput.Text = string.Format( "<h2 class=\"events-calendar__header-title\">Events for {0:MMMM yyyy}</h2>", FilterStartDate );
             } 
             else if ( ViewMode == "Week" ) 
             {
-              tOutput.Text = string.Format( "<h2 class=\"events-calendar__header-title\">All Events for the {0} of {1:MMMM dd, yyyy}</h2>", ViewMode, FilterStartDate );
+              tOutput.Text = string.Format( "<h2 class=\"events-calendar__header-title\">Events for the {0} of {1:MMMM dd, yyyy}</h2>", ViewMode, FilterStartDate );
             }
             else 
             {
-              tOutput.Text = string.Format( "<h2 class=\"events-calendar__header-title\">All Events for {0:MMMM dd, yyyy}</h2>", FilterStartDate );
+              tOutput.Text = string.Format( "<h2 class=\"events-calendar__header-title\">Events for {0:MMMM dd, yyyy}</h2>", FilterStartDate );
             }
 
             var mergeFields = new Dictionary<string, object>();

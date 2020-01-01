@@ -47,25 +47,27 @@ function recursiveDelay(functionToCall, executionsNumber, timeoutInMilliseconds)
 }
 
 //hero scripts
-function addOrnamentalElem(appendObject,appendIconClass,numIcons,delayMs) { 
+function addOrnamentalElem(appendObject,appendIconClass,numIcons) { 
   // create a new element 
   var newSpan = document.createElement("span");
   // add the text node to the newly created div
-  newSpan.classList.add("ornamental");  
-  // add the newly created element and its content into the DOM 
-  appendObject.appendChild(newSpan);
-  
+  newSpan.classList.add("ornamental");    
   // External function to call
-  let appendIcon = function() {
+  let appendIcon = function(j) {
     var newIcon = document.createElement("i");
     newIcon.classList.add("nv-icon");
+    newIcon.classList.add("wow");
+    newIcon.classList.add("fadeIn");
+    newIcon.setAttribute('data-wow-duration',"5ms")
+    newIcon.setAttribute('data-wow-delay',((30 * j)) + "ms")
     newIcon.classList.add(appendIconClass);
     newSpan.appendChild(newIcon);
   }
-  
-  // Initial call
-  recursiveDelay(appendIcon, numIcons, delayMs);
-
+  for (i = 0; i < numIcons; i++) {
+    appendIcon(i);
+  }
+  // add the newly created element and its content into the DOM 
+  appendObject.appendChild(newSpan);
 }
 function playHeroVideos(){
   var heroVideos = document.querySelectorAll('.c-block-hero__background-video');
@@ -91,6 +93,8 @@ function addOrnament(appendObject,appendIconClass,rangeTop,rangeLeft) {
   appendObject.appendChild(newSpan);
   var newIcon = document.createElement("i");
   newIcon.classList.add("nv-icon");
+  newIcon.classList.add("wow");
+  newIcon.classList.add("fadeIn");
   newIcon.classList.add(appendIconClass);
   newSpan.style.top = randPercentRange(rangeTop);
   newSpan.style.left = randPercentRange(rangeLeft);
@@ -98,18 +102,18 @@ function addOrnament(appendObject,appendIconClass,rangeTop,rangeLeft) {
 }
 function addSlashes(){
   var heroVideo = document.querySelector('.c-block-hero__background-video');
-  addOrnamentalElem(heroVideo,"nv-icon--ornament_backslash",15,40);
+  addOrnamentalElem(heroVideo,"nv-icon--ornament_backslash",15);
   var heroHeadline = document.querySelector('.c-block-hero__headline');
-  addOrnamentalElem(heroHeadline,"nv-icon--ornament_backslash",15,40);
+  addOrnamentalElem(heroHeadline,"nv-icon--ornament_backslash",15);
   var heroContainer = document.querySelector('.c-block-hero__container');
-  addOrnamentalElem(heroContainer,"nv-icon--ornament_plus",3,180);
+  addOrnamentalElem(heroContainer,"nv-icon--ornament_plus",3);
   var calloutPrimary = document.querySelectorAll('.c-card--title-highlight');
   calloutPrimary.forEach(item => { 
-    addOrnamentalElem(item,"nv-icon--ornament_backslash",35,40)
+    addOrnamentalElem(item,"nv-icon--ornament_backslash",35)
   });
   var cardOrnamental = document.querySelectorAll('.c-card.decorated');
   cardOrnamental.forEach(item => { 
-    addOrnamentalElem(item,"nv-icon--ornament_minus",8,40)
+    addOrnamentalElem(item,"nv-icon--ornament_minus",8)
   });
 }
 
@@ -146,7 +150,7 @@ $('.has-ornaments').each(function(){
   }
 });
 
-window.onload = setTimeout(() => {addSlashes()}, 500);
+addSlashes();
 window.onload = function(){
   playHeroVideos()
 };
@@ -157,3 +161,5 @@ $(function() {
     html: 'true'
   });
 });
+
+new WOW().init();
