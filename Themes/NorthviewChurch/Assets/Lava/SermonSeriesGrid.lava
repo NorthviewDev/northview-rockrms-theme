@@ -17,7 +17,7 @@
           <a class="series__link" href="{{ LinkedPages.DetailPage }}/{{ item.PrimarySlug  }}">
             <article class="series">
             {% if detailImageGuid != '' %}
-    				  <img class="series__image img-responsive" src="/GetImage.ashx?Guid={{ seriesImageGuid }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
+    				  <img class="series__image img-responsive" src="/GetImage.ashx?Guid={{ seriesImageGuid }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
             {% endif %}
 <!--
               <div class="series__body">

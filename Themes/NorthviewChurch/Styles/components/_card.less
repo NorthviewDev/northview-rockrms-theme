@@ -1,4 +1,14 @@
 /*** CARD COMPONENT ***/
+a.c-card {
+  border-bottom: solid 13px @color-gray-light;
+  transition: all ease-in-out 100ms;
+  display: block;
+  &:hover, &:focus {
+    outline: none;
+    box-shadow: none;
+  	transform: translateY(-5px);
+  }
+}
 .c-card {
   position: relative;
   background-color: @white;

@@ -37,6 +37,7 @@
       </div>
       <div class="addthis_toolbox">
         <ul>
+          <li class="text-uppercase"><strong>Share This</strong></li>
           <li><a class="addthis_button_facebook"><i class="fab fa-facebook"></i></a></li>
           <li><a class="addthis_button_twitter"><i class="fab fa-twitter"></i></a></li>
           <li><a class="addthis_button_email"><i class="nv-icon nv-icon--email"></i></a></li>

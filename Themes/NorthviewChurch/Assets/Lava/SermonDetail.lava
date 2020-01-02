@@ -1,47 +1,50 @@
-﻿{% assign item = Items | First %}
-{% if item %}
+﻿{% if Item %}
+	{% assign videoLink = Item | Attribute:'VideoLink','RawValue' %}
+	{% assign videoEmbed = Item | Attribute:'VideoEmbed' %}
+	{% assign audioLink = Item | Attribute:'AudioLink','RawValue' %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 center-block">
+      
+      <div id="latest-message" class="message-detail">
+        <div class="container">
+        <div class="row">
+          <div class="col-lg-10 center-block">
+            <div id="latest-message-grid">
+              <div class="c-card__header">
+            		{% if videoEmbed != '' %}
+            			{{ videoEmbed }}
+            		{% endif %}
+              </div><!-- end .c-card__header -->
+              <div class="c-card__body">
+                <div class="stack">
+              {%- assign messageSeries = message.ParentItems | First -%}
+                  <span class="c-card__callout">{{ messageSeries.ContentChannelItem.Title }}</span>
+                  <h3 class="c-card__title">{{ Item.Title }}</h3>
+                  <p><strong> {{ Item | Attribute:'Speaker' }} - {{ Item.StartDateTime | Date:'M/d/yyyy' }}</strong></p>
+                  
+                <div class="sermon-media">
+                  {% if audioLink != '' %}
+                    <a href="{{ audioLink }}" class=""><i class="nv-icon nv-icon--audio"></i> Audio Only</a>
+                  {% endif %}
+                </div>
+							  
+                </div>
+              </div><!-- end .c-card__body -->
+					{{ Item.Content }}
 
-	{% assign videoLink = item | Attribute:'VideoLink','RawValue' %}
-	{% assign videoEmbed = item | Attribute:'VideoEmbed' %}
-	{% assign audioLink = item | Attribute:'AudioLink','RawValue' %}
-
-	<article class="message-detail">
-
-		{% if videoEmbed != '' %}
-			{{ videoEmbed }}
-		{% endif %}
-
-		<h1>{{ item.Title }}</h1>
-
-		<p>
-			<strong> {{ item | Attribute:'Speaker' }} - {{ item.StartDateTime | Date:'M/d/yyyy' }}</strong>
-		</p>
-
-		<div class="row">
-			<div class="col-md-8">
-				{{ item.Content }}
-			</div>
-			<div class="col-md-4">
-				{% if videoLink != '' or audioLink != '' %}
-					<div class="panel panel-default">
-						<div class="panel-heading">Downloads &amp; Resources</div>
-						<div class="list-group">
-
-							{% if videoLink != '' %}
-								<a href="{{ videoLink }}" class="list-group-item"><i class="fa fa-film"></i> Video Download</a>
-							{% endif %}
-
-							{% if audioLink != '' %}
-								<a href="{{ audioLink }}" class="list-group-item"><i class="fa fa-volume-up"></i> Audio Download</a>
-							{% endif %}
-
-						</div>
-					</div>
-				{% endif %}
-			</div>
-		</div>
-	</article>
+	
+            </div></div></div></div>
+		
+		
+	    </div>
+	
+    </div>
+  </div>
+</div>
 
 {% else %}
 	<h1>Could not find message.</h1>
 {% endif %}
+
+{{"Lava"|Debug}}

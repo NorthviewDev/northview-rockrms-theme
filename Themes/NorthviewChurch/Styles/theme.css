@@ -22238,6 +22238,23 @@ body {
     font-size: 19px;
   }
 }
+body.narrow .c-block-hero__header {
+  position: relative;
+  min-height: 1px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+@media (min-width: 992px) {
+  body.narrow .c-block-hero__header {
+    float: left;
+    width: 66.66666667%;
+  }
+}
+@media (min-width: 992px) {
+  body.narrow .c-block-hero__header {
+    margin-left: 16.66666667%;
+  }
+}
 #form1 {
   width: 1680px;
   max-width: 100%;
@@ -22756,6 +22773,19 @@ button:focus {
   border-color: #777576;
 }
 /*** CARD COMPONENT ***/
+a.c-card {
+  border-bottom: solid 13px #979797;
+  -webkit-transition: all ease-in-out 100ms;
+  transition: all ease-in-out 100ms;
+  display: block;
+}
+a.c-card:hover,
+a.c-card:focus {
+  outline: none;
+  box-shadow: none;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
 .c-card {
   position: relative;
   background-color: #ffffff;
@@ -23840,7 +23870,6 @@ button:focus {
   .masonry-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-gap: var(--s2);
     grid-template-areas: "item1 item2 item4" "item1 item3 item4" "item5 item7 item8" "item6 item7 item9";
   }
@@ -24716,23 +24745,6 @@ body.events #featured-events .container {
 @media (min-width: 1200px) {
   body.events #featured-events {
     padding: 32px 120px 0 120px;
-  }
-}
-body.event-detail .no-header .c-block-hero__header {
-  position: relative;
-  min-height: 1px;
-  padding-right: 12px;
-  padding-left: 12px;
-}
-@media (min-width: 992px) {
-  body.event-detail .no-header .c-block-hero__header {
-    float: left;
-    width: 66.66666667%;
-  }
-}
-@media (min-width: 992px) {
-  body.event-detail .no-header .c-block-hero__header {
-    margin-left: 16.66666667%;
   }
 }
 @media (max-width: 767px) {
