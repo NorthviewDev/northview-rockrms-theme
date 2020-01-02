@@ -1,2 +1,17 @@
 .form-control {
+  background-color: #d8d8d8;
+  color: @text-color;
+  font-weight: 600;
+  border: none;
+  border-radius: 0;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  &:focus {
+    box-shadow: none;
+    outline: solid 3px @brand-primary;
+  }
+  .searchbox & {
+    box-sizing: border-box;
+    padding: 10px;
+  }
 }

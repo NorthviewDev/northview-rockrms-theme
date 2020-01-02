@@ -61,7 +61,7 @@
 			</div><!-- end .row -->
 			<div class="row">
 				<div class="col-sm-8 col-sm-offset-2 col-md-offset-6 col-md-4">
-					<a href="/leadership" class="c-btn">Back to Team<i class="nv-icon nv-icon--carat_left"></i></a>
+					<a href="/leadership" class="c-btn"><i class="nv-icon nv-icon--carat_left"></i>Back to Team</a>
 				</div>
 			</div>
 		</div>	
