@@ -3,6 +3,7 @@
   position: relative;
   background-color: @white;
   margin-bottom: var(--s2);
+  height: 100%;
   @media (min-width: @screen-sm) {
   	margin-bottom: 0;
   }
@@ -89,15 +90,16 @@
   .decorated & {
     padding: var(--s3) var(--s4);
   }
-  .c-card--big & {
-    background-color: transparent;
-  }
   .c-card--side-by-side & {
     margin-bottom: var(--s2);
     @media (min-width: @screen-sm) {
     	margin-bottom:0;
 	    padding: var(--s4);
     }
+  }
+  .c-card--big & {
+    background-color: transparent;
+    padding:0;
   }
   .c-card--title-highlight & {
     @media (min-width: @screen-sm) {

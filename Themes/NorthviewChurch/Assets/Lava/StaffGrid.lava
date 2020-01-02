@@ -22,7 +22,7 @@
 {%- endsql -%}
 <div class="staff-list">
 	<h2 class="section__title">{{ staffGroupTitle }}</h2>
-	<div class="block-grid block-grid-xs-1 block-grid-sm-3 block-grid-md-4 block-grid-lg-5">
+	<div class="staff-grid">
 	{%- for item in results -%}
 	{%- assign personId = item.PersonId -%}
 	{%- assign groupId = item.GroupId -%}
@@ -50,7 +50,7 @@
 
 	{%- assign bio = item | Attribute:'Bio' -%}
 
-	<div class='block-grid-item' style="-ms-grid-row:{{rowPos}};-ms-grid-column:{{colPos}};">
+	<div class='staff-grid__item'>
 			<div class="staff__item">
 				<div class="row">
 					<div class="col-sm-12 col-md-12">

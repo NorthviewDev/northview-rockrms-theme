@@ -65,15 +65,15 @@
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          16px;
-@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
-@font-size-small:         ceil((@font-size-base * .85)); // ~12px
+@font-size-large:         floor((@font-size-base * 1.2)); // ~19px
+@font-size-small:         floor((@font-size-base * .85)); // ~13px
 
-@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
-@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
-@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
-@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
-@font-size-h5:            @font-size-base;
-@font-size-h6:            ceil((@font-size-base * .85)); // ~12px
+@font-size-h1:            floor((@font-size-base * 2.25)); // ~36px
+@font-size-h2:            floor((@font-size-base * 1.8125)); // ~29px
+@font-size-h3:            floor((@font-size-base * 1.5625)); // ~25px
+@font-size-h4:            floor((@font-size-base * 1.25)); // ~20px
+@font-size-h5:            @font-size-base;                // 16px
+@font-size-h6:            floor((@font-size-base * .85)); // ~13px
 
 //** Unit-less `line-height` for use in components like buttons.
 @line-height-base:        1.428571429; // 20/14
@@ -118,9 +118,9 @@
 @line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
 @line-height-small:         1.5;
 
-@border-radius-base:        4px;
-@border-radius-large:       6px;
-@border-radius-small:       3px;
+@border-radius-base:        0;
+@border-radius-large:       0;
+@border-radius-small:       0;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
@@ -371,9 +371,14 @@
 @container-md:                 @container-desktop;
 
 // Large screen / wide desktop
-@container-large-desktop:      (1360px + @grid-gutter-width);
+@container-large-desktop:      (1200px);
 //** For `@screen-lg-min` and up.
 @container-lg:                 @container-large-desktop;
+
+// Large screen / wide desktop
+@container-xl-desktop:      (1360px + @grid-gutter-width);
+//** For `@screen-lg-min` and up.
+@container-xl:                 @container-xl-desktop;
 
 
 //== Navbar
@@ -784,8 +789,8 @@
 //
 //##
 
-@well-bg:                     #f5f5f5;
-@well-border:                 darken(@well-bg, 7%);
+@well-bg:                     @white;
+@well-border:                 none;
 
 
 //== Badges

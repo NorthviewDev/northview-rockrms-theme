@@ -21,9 +21,6 @@
   
   function initMap() {
 
-		//create empty LatLngBounds object
-		var bounds = new google.maps.LatLngBounds();
-		
     var opts = {
         // How zoomed in you want the map to start at (always required)
         zoom: 9,
@@ -68,9 +65,16 @@
 
     // Load the campuses GeoJSON onto the map.
     map.data.loadGeoJson("https://new.northviewchurch.us/Webhooks/Lava.ashx/ActiveCampuses", {idPropertyName: 'campusid'});
+
+    //create empty LatLngBounds object
+    var bounds = new google.maps.LatLngBounds(); 
   
     // Define the custom marker icons
     map.data.setStyle((feature) => {
+      latlng = feature.getGeometry().get();
+      bounds.extend(latlng);
+//      map.fitBounds(bounds,{left:230});
+      map.fitBounds(bounds);
       return {
         icon: {
   				url: "{{'Global' | Attribute:'PublicApplicationRoot'}}Themes/NorthviewChurch/Assets/_img/Location_Marker.png",
@@ -85,8 +89,19 @@
   					30)
         },
       };
+    }); 
+     
+/* THIS SHOULD WORK BUT I CAN'T FIGURE OUT WHY IT DOESN'T >:(
+  
+    map.data.forEach((feature) => {
+      feature.getGeometry().forEachLatLng((latlng) => {
+         bounds.extend(latlng);
+         //console.log("LatLng = " + latlng);
+      });
     });
-    
+    map.fitBounds(bounds);
+*/
+  
 {% comment %}/****
 //moving all this into Lava Webhook at /Webhooks/Lava.ashx/ActiveCampuses
   {%- for campus in Campuses -%}
@@ -172,14 +187,11 @@
 		{%- endif -%}
 	{%- endfor -%}
 
-	//now fit the map to the newly inclusive bounds
-	map.fitBounds(bounds);
-  map.panBy(-230,0);
 ***/
 {% endcomment %}
-  
-  const infoWindow = new google.maps.InfoWindow();
 
+  const infoWindow = new google.maps.InfoWindow();
+    	
   // Show the information for a campus when its marker is clicked.
   map.data.addListener('click', (event) => {
     const name = event.feature.getProperty('name');
@@ -189,9 +201,9 @@
     const phone = event.feature.getProperty('phone');
     const position = event.feature.getGeometry().get();
     const content = `
-      <div style="padding:20px">
-        <h2>${name}</h2>
-        <p><b>Service Times:</b> ${serviceTimes}</p>
+      <div class="stack" style="padding:20px">
+        <h4>${name}</h4>
+        <p>${serviceTimes}</p>
         <p><b>Phone:</b> ${phone}</p>
         ${locationLink}
       </div>
@@ -203,6 +215,10 @@
     infoWindow.setOptions({pixelOffset: new google.maps.Size(0, -30)});
     infoWindow.open(map);
   });
+
+//  showAllCampusList(map.data);
+
+  const section = document.getElementById('campus-locations');
 
   // Build and add the search bar
   const card = document.createElement('div');
@@ -219,6 +235,7 @@
     componentRestrictions: {country: 'us'},
   };
 
+  
   card.setAttribute('id', 'location-search');
   titleBar.setAttribute('class', 'stack');
   title.setAttribute('class', 'location-search__title');
@@ -231,6 +248,7 @@
   input.setAttribute('placeholder', 'Enter Your Location');
   buttonContainer.setAttribute('class', 'form-group');
   button.setAttribute('id', 'searchButton');
+  button.setAttribute('type', 'submit');
   button.setAttribute('class', 'c-btn c-btn--primary c-btn--offset-border');
   button.textContent = 'Visit';
   icon.setAttribute('class', 'nv-icon nv-icon--carat_right');
@@ -242,7 +260,9 @@
   titleBar.appendChild(inputContainer);
   titleBar.appendChild(buttonContainer);
   card.appendChild(panel);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
+  section.insertBefore(card,section.firstChild);
+//  map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
+
 
   // Make the search bar into a Places Autocomplete search bar and select
   // which detail fields should be returned about the place that
@@ -272,8 +292,9 @@
     // Recenter the map to the selected address
     originLocation = place.geometry.location;
     map.setCenter(originLocation);
+    //map.panBy(-230,0)
     map.setZoom(9);
-    console.log(place);
+    //console.log(place);
 
     originMarker.setPosition(originLocation);
     originMarker.setVisible(true);
@@ -285,9 +306,9 @@
 
     return;
   });
-      
-  }
   
+}
+
 /**
  * Use Distance Matrix API to calculate distance from origin to each campus.
  * @param {google.maps.Data} data The geospatial data object layer for the map
@@ -387,15 +408,73 @@ function showCampusList(data, campuses) {
 
   campuses.forEach((campus) => {
     // Add campus details with text formatting
-    const name = document.createElement('p');
-    name.classList.add('place');
+    const button = document.createElement('a');
+    button.setAttribute('class','c-btn c-btn--text-link c-btn--display-block')
+    const icon = document.createElement('i');
+    icon.setAttribute('class','nv-icon nv-icon--carat_right')
+    const name = document.createElement('h3');
+    name.classList.add('place__name');
+    const place = document.createElement('div');
+    place.classList.add('place');
     const currentCampus = data.getFeatureById(campus.campusid);
-    name.textContent = currentCampus.getProperty('name');
-    panel.appendChild(name);
+    button.textContent = currentCampus.getProperty('name');
+    button.setAttribute('href', currentCampus.getProperty('url'));
+    button.appendChild(icon);
+    name.appendChild(button);
+    place.appendChild(name);
     const distanceText = document.createElement('p');
-    distanceText.classList.add('distanceText');
+    distanceText.classList.add('place__distance-text');
     distanceText.textContent = campus.distanceText;
-    panel.appendChild(distanceText);
+    place.appendChild(distanceText);
+    panel.appendChild(place);
+  });
+
+  // Open the panel
+  panel.classList.add('open');
+
+  return;
+}
+
+/**
+ * Build the content of the side panel from the initial unsorted list of campuses
+ * and display it.
+ * @param {google.maps.Data} data The geospatial data object layer for the map
+ */
+function showAllCampusList(data) {
+  let panel = document.createElement('div');
+  // If the panel already exists, use it. Else, create it and add to the page.
+  if (document.getElementById('campus-list')) {
+    panel = document.getElementById('campus-list');
+    // If panel is already open, close it
+    if (panel.classList.contains('open')) {
+      panel.classList.remove('open');
+    }
+  } else {
+    panel.setAttribute('id', 'campus-list');
+    const body = document.body;
+    body.insertBefore(panel, body.childNodes[0]);
+  }
+
+
+  // Clear the previous details
+  while (panel.lastChild) {
+    panel.removeChild(panel.lastChild);
+  }
+
+  data.forEach((campus) => {
+    // Add campus details with text formatting
+    const button = document.createElement('a');
+    button.setAttribute('class','c-btn c-btn--text-link c-btn--display-block')
+    const icon = document.createElement('i');
+    icon.setAttribute('class','nv-icon nv-icon--carat_right')
+    const name = document.createElement('h4');
+    name.classList.add('place');
+    //const currentCampus = data.getFeatureById(campus.campusid);
+    button.textContent = campus.getProperty('name');
+    button.setAttribute('href', campus.getProperty('url'));
+    button.appendChild(icon);
+    name.appendChild(button);
+    panel.appendChild(name);
   });
 
   // Open the panel
@@ -407,5 +486,3 @@ function showCampusList(data, campuses) {
 <link rel="stylesheet" href="/Themes/NorthviewChurch/Assets/Scripts/snazzymaps/snazzy-info-window.min.css">
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ 'Global' | Attribute:'GoogleAPIKey' }}&libraries=places&callback=initMap" async defer></script>
 <script src="/Themes/NorthviewChurch/Assets/Scripts/snazzymaps/snazzy-info-window.min.js"></script>
-
-{{"Lava" | Debug }}

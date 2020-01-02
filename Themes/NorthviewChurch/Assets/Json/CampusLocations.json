@@ -8,7 +8,7 @@
 {%- assign serviceDay = "" -%}
 {%- assign displayServiceTimes = "" -%}					
 {%- assign serviceTimes = campus.ServiceTimes -%}
-{%- capture displayServiceTimes -%}{%- for serviceTime in serviceTimes -%}{%- assign separator='' -%}{%- if forloop.length > 1 -%}{%- if forloop.last -%}{% assign separator=' and ' -%}{%- elseif forloop.first != true and serviceTime.Day == serviceDay -%}{% assign separator=', ' -%}{% endif -%}{%- endif -%}{%- if serviceTime.Day != serviceDay -%}{{ serviceTime.Day | Pluralize}} at&nbsp;{%- assign serviceDay = serviceTime.Day -%}{%- endif -%}{{ separator }}{{ serviceTime.Time }}{%- endfor -%}{%- endcapture -%}
+{%- capture displayServiceTimes -%}{%- for serviceTime in serviceTimes -%}{%- assign separator='' -%}{%- if forloop.length > 1 -%}{%- if forloop.last -%}{% assign separator=' and ' -%}{%- elseif forloop.first != true and serviceTime.Day == serviceDay -%}{% assign separator=', ' -%}{% endif -%}{%- endif -%}{%- if serviceTime.Day != serviceDay -%}{% assign at=' at ' -%}{{ serviceTime.Day | Pluralize}}{{ at }}{%- assign serviceDay = serviceTime.Day -%}{%- endif -%}{{ separator }}{{ serviceTime.Time }}{%- endfor -%}{%- endcapture -%}
 {%- assign campusLocation = campus.Location.Street1 | Trim -%}
 {%- capture displayLocationLink -%}{%- if campusLocation != "" -%}<p class='location-link'><i class='nv-icon nv-icon--location_marker'></i><a target='_blank' href='https://www.google.com/maps/dir/?api=1&amp;destination={{campus.Location.Street1}}+{{campus.Location.City}}+{{campus.Location.State}}+{{campus.Location.PostalCode}}'>Map & Directions</a></p>{%- endif -%}{%- endcapture -%}
           {

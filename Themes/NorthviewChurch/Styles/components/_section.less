@@ -41,24 +41,26 @@
     }
   }
 }
-.c-section--overlap-top .container {
-  --section-overlap-top: calc(@grid-gutter-width * -3); //translate along negative Y axis
-  @media (min-width: @screen-sm) {
-    --section-overlap-top: calc(@grid-gutter-width * -7); //translate along negative Y axis
-  }  
-  margin-top: var(--section-overlap-top)
+.c-section--overlap-top {
+  .container:first-child {
+    --section-overlap-top: calc(@grid-gutter-width * -3); //translate along negative Y axis
+    @media (min-width: @screen-lg) {
+      --section-overlap-top: calc(@grid-gutter-width * -7); //translate along negative Y axis
+    }  
+    margin-top: var(--section-overlap-top)
+  }
 }
 .c-section__header {
   text-align: center;
 	margin-bottom: var(--s1);
-	@media (min-width: @screen-sm) {
+	@media (min-width: @screen-md) {
     margin-bottom: var(--s3);
 	}    
   h2 {
   	color: @text-color;
   	font-size: 29px;
   	margin-top:0;
-  	@media (min-width: @screen-sm) {
+  	@media (min-width: @screen-md) {
     	font-size: 64px;
   	}
   }
@@ -147,6 +149,10 @@
     animation: 1s ease-in-out infinite moveit;
     z-index: 10;
     color: @brand-primary;
+    font-size: 14px;
+    @media (min-width: @screen-sm) {
+    	font-size: 24px;
+    }
     .nv-icon {
       position: absolute;
       transform-origin: center;

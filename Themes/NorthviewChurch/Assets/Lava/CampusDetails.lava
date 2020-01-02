@@ -2,7 +2,7 @@
 <section id="campus-details" class="c-section c-section--dark g-padding--bottom-s7 g-padding--sm-bottom-s10">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3 col-md-offset-1">
         <div class="location-details stack">
           <h3>Location Details</h3>
           {%- assign serviceDay = '' %}
@@ -22,7 +22,7 @@
           {%- endlocation -%}
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="campus-intro l-grid">
         {%- personalias id:'{{ campus.LeaderPersonAliasId }}' -%}
         {%- person id:'{{ personalias.PersonId }}' -%}
@@ -31,7 +31,7 @@
           <div class="l-col">
     				<div class="row">
     					<div class="staff__item">
-    						<div class="staff__photo">
+    						<div class="staff__photo g-padding--x-s1">
     							{%- if bio != "" -%}
     							<a class="staff__detail-link" href="/staff/{{groupId}}/{{person.FirstName}}-{{person.LastName}}" title="{{ person.FullName }}">
     							{%- endif -%}

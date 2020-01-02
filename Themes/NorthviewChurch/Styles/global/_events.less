@@ -6,8 +6,9 @@ body.events {
       position: relative;
       z-index: 1;
     }
+    padding-bottom:0;
     @media (min-width: @screen-sm) {
-    	padding: 32px 120px 0 120px;
+    	padding: 32px 12px 0 120px;
     	&:after {
       	content:"";
       	position: absolute;
@@ -18,6 +19,22 @@ body.events {
       	background-color: @text-color;
     	}
     }
+    @media (min-width: @screen-lg) {
+    	padding: 32px 120px 0 120px;
+    }
+  }
+}
+body.event-detail {
+  .no-header .c-block-hero__header {
+    .make-md-column(8);
+    .make-md-column-offset(2);
+  }
+}
+#events-calendar {
+  @media (max-width: @screen-xs-max) {
+  	padding-top:0;
+  	padding-left:7px;
+  	padding-right: 7px;
   }
 }
 .events-calendar {
@@ -25,7 +42,7 @@ body.events {
     text-align: center;
     .calendar {
       border: none;
-      padding: 0 5px;
+      padding: 0 5px 5px;
       background-color: @white;
       margin-bottom: 10px;
       @media (min-width: @screen-sm) {
@@ -48,9 +65,12 @@ body.events {
     margin-bottom: var(--s4);
   }
   h2 {
-    margin:0;
-    flex-grow: 1;
-    font-size: 48px;
+    margin-top:0;
+    @media (min-width: @screen-sm) {
+      margin:0;
+      flex-grow: 1;
+      font-size: 48px;
+    }
   }
   .filter {
     .panel {
@@ -60,7 +80,10 @@ body.events {
       border: solid 2px @text-color;
       box-shadow: none;
       border-radius: 0;
-      margin-left: var(--s1);
+      margin-bottom: var(--s1);
+      @media (min-width: @screen-sm) {
+      	margin-left: var(--s1);
+      }
       .panel-heading {
         .panel-title {
           a {
@@ -115,12 +138,14 @@ body.events {
   }
 }
 .event{
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
   border-top: solid 2px @gray-lighter;
   margin-top: var(--s2);
   padding-top: var(--s2);
+  @media (min-width: @screen-sm) {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;  	
+  }
   &:first-child {
     border:none;
     margin-top:0;

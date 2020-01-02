@@ -6,9 +6,10 @@
 {%- if pageHeaderImage != "" || if pageHeaderVideo != "" -%}
   {%- assign sectionClass=" has-media" -%}
   {%- assign ornamentClass=" has-ornaments" -%}
-  {%- assign containerClass="col-md-9 col-md-offset-1" -%}
+  {%- assign containerClass="col-lg-9 col-lg-offset-1" -%}
 {%- else -%}
-  {%- assign containerClass="col-md-12" -%}
+  {%- assign sectionClass=" no-header" -%}
+  {%- assign containerClass="col-xs-12" -%}
 {%- endif -%}
   <section id="main-feature" class="c-block-hero__wrapper{{ sectionClass }}">
     <div class="c-block-hero{{ ornamentClass }}">

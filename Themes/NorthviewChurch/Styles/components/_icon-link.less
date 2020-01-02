@@ -1,14 +1,39 @@
 /*** ICON LINK ***/
 .c-icon-link {
   text-align: center;
-  text-transform: uppercase;
-  border-bottom:none;
+  transition: all ease-in-out 100ms;
+  &:hover, &:focus {
+  	transform: translateY(-5px);
+  }
+  a {
+    display: block;
+    border: none;
+  	color: @gray-lighter;
+  	fill: @gray-lighter;
+  	&:hover, &:focus {
+    	color: @white;
+    	fill: @white;
+    }
+  }
 	.c-section--dark & {
-  	color: @white;
+  	color: @gray-lighter;
+  	fill: @gray-lighter;
+  	&:hover, &:focus {
+    	color: @white;
+    	fill: @white;
+    	a {
+      	color: @white;
+      	fill: @white;
+      }
+  	}
 	}
 }
-.c-icon-link_text {
-	color: @white;
+.c-icon-link__icon {
+  width: 60%;
+  margin: 0 auto;
+}
+.c-icon-link__title {
+	text-transform: uppercase;
 	font-size: 20px;
 	letter-spacing: 0.5px;
 	line-height: 1.5;
