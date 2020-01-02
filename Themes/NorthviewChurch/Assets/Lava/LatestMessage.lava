@@ -19,7 +19,7 @@
                 </div>
               </div>
               {% endfor %}
-              <p class="c-section__footer"><a href="{{ DetailPage }}" class="c-btn">All Messages<i class="nv-icon nv-icon--carat_right"></i></a></p>
+              <p class="c-section__footer"><a href="/messages" class="c-btn">All Messages<i class="nv-icon nv-icon--carat_right"></i></a></p>
             </div>
           </div>
         </div>
