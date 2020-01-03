@@ -1,47 +1,57 @@
-﻿{% assign item = Items | First %}
-{% if item %}
+﻿{% comment %}
+This is for the message detail page https://new.northviewchurch.us/message/
+{% endcomment %}
+{% if Item %}
+	{% assign videoEmbed = Item | Attribute:'VideoEmbed' %}
+	{% assign audioLink = Item | Attribute:'AudioLink' %}
+  {% assign SeriesTitle = Item.ParentItems[0].ContentChannelItem.Title %}
 
-	{% assign videoLink = item | Attribute:'VideoLink','RawValue' %}
-	{% assign videoEmbed = item | Attribute:'VideoEmbed' %}
-	{% assign audioLink = item | Attribute:'AudioLink','RawValue' %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 center-block">
+      
+      <div id="latest-message" class="message-detail">
+        <div class="container">
+        <div class="row">
+          <div class="col-lg-10 center-block">
+            <div id="recent-message-grid">
+              <div class="c-card__header">
+            		{% if videoEmbed != '' %}
+            			{{ videoEmbed }}
+            		{% endif %}
+              </div><!-- end .c-card__header -->
+              <div class="c-card__body">
+                <div class="stack">
+                <span class="c-card__callout">{{ SeriesTitle }}</span>
+                  <h3 class="c-card__title">{{ Item.Title }}</h3>
+                  <p>Weekend of {{ Item.StartDateTime | Date:'MMMM d, yyyy'  }}</p>
+                  
+                <ul class="sermon-media">
+                  {% if audioLink != '' %}
+                  <li><a href="{{ audioLink }}" target="_blank" title="Listen to {{ item.Title }}"><span class="nv-icon nv-icon--audio"></span>Audio Only</a></li> 
+        				  {% endif %}
+        				  <li><a href="https://itunes.apple.com/us/podcast/northview-church-audio-podcast/id378824543?mt=2" target="_blank" title="List to {{ item.Title }}"><span class="nv-icon nv-icon--subscribe"></span>Subscribe</a></li>
+        				  {% if audioLink != '' %}
+                  <li><a href="{{ audioLink }}" target="_blank" title="right-click and save as"><span class="nv-icon nv-icon--download"></span>Download</a></li>
+                   {% endif %}
+                  <li><a href="#" target="_blank" title="right-click and save as" class="addthis_button_compact"><span class="nv-icon nv-icon--share"></span>Share</a></li>
+                </ul>
+							  
+                </div>
+              </div><!-- end .c-card__body -->
+					</div> <!-- Latest Message Grid -->
+        		<div class="row">
+        			<div class="col-md-12">
+          			<h2>{{ SeriesTitle }}</h2>
+        				{{ Item.Content }}
+        			</div>	
+            </div>
+          </div>
+        </div>
+      </div>
+			
+    </div>
+  </div>
+</div>
 
-	<article class="message-detail">
-
-		{% if videoEmbed != '' %}
-			{{ videoEmbed }}
-		{% endif %}
-
-		<h1>{{ item.Title }}</h1>
-
-		<p>
-			<strong> {{ item | Attribute:'Speaker' }} - {{ item.StartDateTime | Date:'M/d/yyyy' }}</strong>
-		</p>
-
-		<div class="row">
-			<div class="col-md-8">
-				{{ item.Content }}
-			</div>
-			<div class="col-md-4">
-				{% if videoLink != '' or audioLink != '' %}
-					<div class="panel panel-default">
-						<div class="panel-heading">Downloads &amp; Resources</div>
-						<div class="list-group">
-
-							{% if videoLink != '' %}
-								<a href="{{ videoLink }}" class="list-group-item"><i class="fa fa-film"></i> Video Download</a>
-							{% endif %}
-
-							{% if audioLink != '' %}
-								<a href="{{ audioLink }}" class="list-group-item"><i class="fa fa-volume-up"></i> Audio Download</a>
-							{% endif %}
-
-						</div>
-					</div>
-				{% endif %}
-			</div>
-		</div>
-	</article>
-
-{% else %}
-	<h1>Could not find message.</h1>
 {% endif %}

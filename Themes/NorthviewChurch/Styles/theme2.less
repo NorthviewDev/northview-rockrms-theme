@@ -2,3 +2,77 @@
 @import "_variable-overrides.less";
 @import "global/_mixins.less";
 @import "_fishhook-mixins.less";
+
+
+.series-detail,
+.message-detail{
+  .c-block-hero__headline{
+    visibility: hidden;
+    pointer-events: none;
+    .ornamental{
+      display: none;
+    }
+  }
+  .c-card__body{
+    p{
+      margin: 0;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+  .sermon-media{
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    li{
+      display: inline;
+      text-align: center;
+      padding: 0 12px;
+      &:first-child{
+        padding-left: 0;
+      }
+      a{
+        text-decoration: none;
+        font-size: 10px;
+        border-bottom: none;
+        .nv-icon{
+          font-size: 24px;
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: @screen-sm) {
+  #recent-message-grid {
+    display: grid;
+    grid-template-columns: 55% 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "Media Title" "Media Body" "Media Footer";
+    .c-card__header { 
+      grid-area: Media;
+      margin-top: var(--s1);
+    }
+    .c-section__header {
+      grid-area: Title;
+    	width: 60%;
+    	text-align: left;
+    	padding-left: var(--s3);
+    	margin-bottom: var(--s2);
+    	h2 {
+      	line-height: 0.9375em;    	
+    	}
+    }
+    .c-card__body {
+      grid-area: unset;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transform: translateX(20%);
+      margin-top: var(--s7);
+
+    }
+  }
+}
