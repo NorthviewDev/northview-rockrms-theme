@@ -8,7 +8,7 @@
               {%- assign DetailPage = LinkedPages.DetailPage -%}
               {%- assign messageImageGuid = message | Attribute:'MessageImage','RawValue' -%}
               <div class="c-card__header">
-               <img class="c-card__media" src="/GetImage.ashx?guid={{ messageImageGuid }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" />
+               <img class="c-card__media" src="/GetImage.ashx?guid={{ messageImageGuid }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" />
               </div>
               <div class="c-card__body">
                 <div class="stack">
@@ -19,8 +19,8 @@
                 </div>
               </div>
               {%- endfor -%}
-              {%- if allmessages -%}
-              <p class="c-section__footer"><a href="{{ DetailPage }}" class="c-btn">All Messages<i class="nv-icon nv-icon--carat_right"></i></a></p>
+              {%- if allmessagesurl -%}
+              <p class="c-section__footer"><a href="{{ allmessagesurl }}" class="c-btn">All Messages<i class="nv-icon nv-icon--carat_right"></i></a></p>
               {%- endif -%}
             </div>
           </div>

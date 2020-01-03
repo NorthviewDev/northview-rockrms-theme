@@ -1,0 +1,44 @@
+{%- assign sermonId = Item.Id -%}
+{%- assign parent = Item.ParentItems | First -%}
+{%- assign series = parent.ContentChannelItem -%}
+{%- capture childIds -%}
+{% for child in series.ChildItems %}Id == {{ child.ChildContentChannelItem.Id }}{% unless forloop.last %} || {% endunless %}{% endfor %}
+{%- endcapture -%}
+{%- assign sermonItemCount = childIds | Size -%}
+{%- if sermonItemCount > 1 -%}
+<section class="sermon-list c-section c-section--medium g-padding--top-s0">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>More Messages in this Series</h2>
+      
+        <div class="l-grid">
+        	{%- contentchannelitem where:'{{ childIds }}' sort:'StartDateTime desc' -%}
+        	{%- for message in contentchannelitemItems -%}
+        	  {%- assign sermonItemId = message.Id -%}
+        	  {%- if sermonItemId != sermonId -%}
+            <a class="c-card" href="/message/{{ message.PrimarySlug }}">
+              <div class="c-card__body stack">
+              {%- assign eventAudience = "" -%}
+              {%- for audience in event.EventItemOccurrence.EventItem.EventItemAudiences  -%}
+                {%- capture eventAudience %}{{ eventAudience }}{% if forloop.first != true %}, {% endif %}{{ audience.DefinedValue.Value }}{% endcapture -%}
+              {%- endfor -%}
+                <span class="c-card__callout">Message</span>
+                <h3 class="c-card__title">{{ message.Title }}</h3>
+                {%- assign displayDate = message | Attribute:'DisplayDate' -%}
+                {%- if displayDate != "" -%}
+                <p>{{ displayDate }}</p>
+                {%- else -%}
+                <p>{{ message.StartDateTime | Date:'M/d/yyyy' }}</p>
+                {%- endif -%}
+              </div>
+            </a><!--/.c-card-->
+            {%- endif -%}
+          {%- endfor -%}
+          {%- endcontentchannelitem -%}
+        </div><!--/.l-grid-->
+      </div>
+    </div>
+  </div>
+</section><!-- end .sermon-grid -->
+{%- endif -%}

@@ -1,13 +1,33 @@
-﻿{% for item in Items %}
-{% if item.Id == PageParameter.Item %}
-<article class="margin-b-lg">
-  <h3>{{ item.Title }}</h3>
-
-  <div>
-    {{ item | Attribute:'Image' }}
+﻿{%- assign videoUrl = Item | Attribute:'VideoURL','RawValue' -%}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 center-block">
+      <div class="embed-responsive embed-responsive-16by9">
+      {% if videoUrl != '' %}
+        <video poster="/GetImage.ashx?guid={{ Item | Attribute:'Image','RawValue' }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" controls preload>
+          <source src="{{ videoUrl }}" type="video/mp4">
+        </video>
+      {% else %}
+        <img src="/GetImage.ashx?guid={{ Item | Attribute:'Image','RawValue' }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" alt="{{ Item.Title }}" />
+      {% endif %}
+      </div>
+    </div>
   </div>
-
-  {{ item.Content }}
-</article>
-{% endif %}
-{% endfor %}
+  <div class="row g-margin--y-s2">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="well well--lg stack g-margin--bottom-s0">
+        <h2>{{ Item.Title }}</h2>
+        {{ Item.Content }}
+      </div>
+      <div class="addthis_toolbox">
+        <ul>
+          <li class="text-uppercase"><strong>Share This</strong></li>
+          <li><a class="addthis_button_facebook"><i class="fab fa-facebook"></i></a></li>
+          <li><a class="addthis_button_twitter"><i class="fab fa-twitter"></i></a></li>
+          <li><a class="addthis_button_email"><i class="nv-icon nv-icon--email"></i></a></li>
+          <li><a class="addthis_button_more"><span class="nv-icon nv-icon--ornament_plus"></span></a></li> 
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

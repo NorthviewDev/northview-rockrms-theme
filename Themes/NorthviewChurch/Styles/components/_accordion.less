@@ -4,6 +4,9 @@
     border-radius: 0;
     background-color: transparent;
   }
+  .panel-body {
+    padding: var(--s2);
+  }
   .panel-heading {
     background-color: transparent;
     padding-left:0;
@@ -29,6 +32,9 @@
     	}
     	&[aria-expanded="true"]:after {
       	.nv-icon("\e904");
+    	}
+    	&:hover, &:focus {
+      	color: @color-gray;
     	}
   	}
   }

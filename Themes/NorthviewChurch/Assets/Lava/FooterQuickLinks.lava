@@ -1,0 +1,12 @@
+<div class="l-pad--xs stack">
+    <div class="c-section__header text-left">
+        <h2>Quick Links</h2>
+    </div>
+    <ul class="c-list--quick-links">
+    {% for definedValue in DefinedValues %}
+        {% assign LinkClass = definedValue | Attribute:'LinkClass','RawValue' %}
+        {% assign LinkTarget = definedValue | Attribute:'LinkTarget','RawValue' %}
+        <li class='{{LinkClass}}'><a href='{{ definedValue.Description }}' target='{{LinkTarget}}'>{{ definedValue.Value }}</a></li>
+    {% endfor %}
+    </ul>
+</div>

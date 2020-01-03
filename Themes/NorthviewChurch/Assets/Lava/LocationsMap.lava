@@ -2,6 +2,46 @@
   <div id="campusmap"></div>
 </div>
 <script type="text/javascript">
+  const section = document.getElementById('campus-locations');
+
+  // Build and add the search bar
+  const card = document.createElement('div');
+  const titleBar = document.createElement('div');
+  const title = document.createElement('h2');
+  const inputContainer = document.createElement('div');
+  const input = document.createElement('input');
+  const buttonContainer = document.createElement('div');
+  const button = document.createElement('button');
+  const icon = document.createElement('i');
+  const panel = document.createElement('div');
+  
+  card.setAttribute('id', 'location-search');
+  titleBar.setAttribute('class', 'stack');
+  title.setAttribute('class', 'location-search__title');
+  title.textContent = 'Join us this weekend';
+  titleBar.appendChild(title);
+  inputContainer.setAttribute('class', 'form-group');
+  input.setAttribute('id', 'addressInput');
+  input.setAttribute('class', 'form-control');
+  input.setAttribute('type', 'text');
+  input.setAttribute('placeholder', 'Enter Your Address');
+  buttonContainer.setAttribute('class', 'form-group');
+  button.setAttribute('id', 'searchButton');
+  button.setAttribute('type', 'submit');
+  button.setAttribute('class', 'c-btn c-btn--primary c-btn--offset-border');
+  button.textContent = 'Visit';
+  icon.setAttribute('class', 'nv-icon nv-icon--carat_right');
+  panel.setAttribute('id', 'campus-list');
+  inputContainer.appendChild(input);
+  button.appendChild(icon);
+  buttonContainer.appendChild(button);
+  card.appendChild(titleBar);
+  titleBar.appendChild(inputContainer);
+  titleBar.appendChild(buttonContainer);
+  card.appendChild(panel);
+  section.insertBefore(card,section.firstChild);
+//  map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
+
   // Style credit: https://snazzymaps.com/style/151/ultra-light-with-labels
   const mapStyle = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]
   
@@ -65,16 +105,10 @@
 
     // Load the campuses GeoJSON onto the map.
     map.data.loadGeoJson("https://new.northviewchurch.us/Webhooks/Lava.ashx/ActiveCampuses", {idPropertyName: 'campusid'});
-
-    //create empty LatLngBounds object
-    var bounds = new google.maps.LatLngBounds(); 
-  
+      
     // Define the custom marker icons
     map.data.setStyle((feature) => {
       latlng = feature.getGeometry().get();
-      bounds.extend(latlng);
-//      map.fitBounds(bounds,{left:230});
-      map.fitBounds(bounds);
       return {
         icon: {
   				url: "{{'Global' | Attribute:'PublicApplicationRoot'}}Themes/NorthviewChurch/Assets/_img/Location_Marker.png",
@@ -89,18 +123,53 @@
   					30)
         },
       };
-    }); 
-     
-/* THIS SHOULD WORK BUT I CAN'T FIGURE OUT WHY IT DOESN'T >:(
-  
-    map.data.forEach((feature) => {
+    });
+
+    /*** until I can figure out a better solution, I'm creating a second invisible map element
+       to loop through for setting bounds and displaying initial campus list ***/
+    var map2 = new google.maps.Map(document.createElement('div'));      
+    function loadGeoJson(map2) {
+      $.ajax({
+        url: 'https://new.northviewchurch.us/Webhooks/Lava.ashx/ActiveCampuses',
+        dataType: 'json',
+        async: false,
+        success: function(data){
+          var features = map2.data.addGeoJson(data);
+        }
+      });
+    }
+    loadGeoJson(map2);
+    //create empty LatLngBounds object
+    var bounds = new google.maps.LatLngBounds(); 
+
+    map2.data.forEach((feature) => {
       feature.getGeometry().forEachLatLng((latlng) => {
          bounds.extend(latlng);
          //console.log("LatLng = " + latlng);
       });
+      
+      // Add campus details with text formatting
+      const button = document.createElement('a');
+      button.setAttribute('class','c-btn c-btn--text-link c-btn--display-block')
+      const icon = document.createElement('i');
+      icon.setAttribute('class','nv-icon nv-icon--carat_right')
+      const name = document.createElement('h3');
+      name.classList.add('place__name');
+      const place = document.createElement('div');
+      place.classList.add('place');
+      //const currentCampus = data.getFeatureById(campus.campusid);
+      button.textContent = feature.getProperty('name');
+      button.setAttribute('href', feature.getProperty('url'));
+      button.appendChild(icon);
+      name.appendChild(button);
+      place.appendChild(name);
+      panel.appendChild(place);
+  
+      // Open the panel
+      panel.classList.add('open');
+
     });
     map.fitBounds(bounds);
-*/
   
 {% comment %}/****
 //moving all this into Lava Webhook at /Webhooks/Lava.ashx/ActiveCampuses
@@ -209,7 +278,6 @@
       </div>
       <div><a href="${url}" class="c-btn c-btn--dark c-btn--display-block">Details<i class="nv-icon nv-icon--carat_right"></i></a></div>
       `;
-
     infoWindow.setContent(content);
     infoWindow.setPosition(position);
     infoWindow.setOptions({pixelOffset: new google.maps.Size(0, -30)});
@@ -218,55 +286,14 @@
 
 //  showAllCampusList(map.data);
 
-  const section = document.getElementById('campus-locations');
-
-  // Build and add the search bar
-  const card = document.createElement('div');
-  const titleBar = document.createElement('div');
-  const title = document.createElement('h2');
-  const inputContainer = document.createElement('div');
-  const input = document.createElement('input');
-  const buttonContainer = document.createElement('div');
-  const button = document.createElement('button');
-  const icon = document.createElement('i');
-  const panel = document.createElement('div');
-  const options = {
-    types: ['address'],
-    componentRestrictions: {country: 'us'},
-  };
-
-  
-  card.setAttribute('id', 'location-search');
-  titleBar.setAttribute('class', 'stack');
-  title.setAttribute('class', 'location-search__title');
-  title.textContent = 'Join us this weekend';
-  titleBar.appendChild(title);
-  inputContainer.setAttribute('class', 'form-group');
-  input.setAttribute('id', 'addressInput');
-  input.setAttribute('class', 'form-control');
-  input.setAttribute('type', 'text');
-  input.setAttribute('placeholder', 'Enter Your Location');
-  buttonContainer.setAttribute('class', 'form-group');
-  button.setAttribute('id', 'searchButton');
-  button.setAttribute('type', 'submit');
-  button.setAttribute('class', 'c-btn c-btn--primary c-btn--offset-border');
-  button.textContent = 'Visit';
-  icon.setAttribute('class', 'nv-icon nv-icon--carat_right');
-  panel.setAttribute('id', 'campus-list');
-  inputContainer.appendChild(input);
-  button.appendChild(icon);
-  buttonContainer.appendChild(button);
-  card.appendChild(titleBar);
-  titleBar.appendChild(inputContainer);
-  titleBar.appendChild(buttonContainer);
-  card.appendChild(panel);
-  section.insertBefore(card,section.firstChild);
-//  map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
-
 
   // Make the search bar into a Places Autocomplete search bar and select
   // which detail fields should be returned about the place that
   // the user selects from the suggestions.
+  const options = {
+    types: ['address'],
+    componentRestrictions: {country: 'us'},
+  };
   const autocomplete = new google.maps.places.Autocomplete(input, options);
 
   autocomplete.setFields(
@@ -427,54 +454,6 @@ function showCampusList(data, campuses) {
     distanceText.textContent = campus.distanceText;
     place.appendChild(distanceText);
     panel.appendChild(place);
-  });
-
-  // Open the panel
-  panel.classList.add('open');
-
-  return;
-}
-
-/**
- * Build the content of the side panel from the initial unsorted list of campuses
- * and display it.
- * @param {google.maps.Data} data The geospatial data object layer for the map
- */
-function showAllCampusList(data) {
-  let panel = document.createElement('div');
-  // If the panel already exists, use it. Else, create it and add to the page.
-  if (document.getElementById('campus-list')) {
-    panel = document.getElementById('campus-list');
-    // If panel is already open, close it
-    if (panel.classList.contains('open')) {
-      panel.classList.remove('open');
-    }
-  } else {
-    panel.setAttribute('id', 'campus-list');
-    const body = document.body;
-    body.insertBefore(panel, body.childNodes[0]);
-  }
-
-
-  // Clear the previous details
-  while (panel.lastChild) {
-    panel.removeChild(panel.lastChild);
-  }
-
-  data.forEach((campus) => {
-    // Add campus details with text formatting
-    const button = document.createElement('a');
-    button.setAttribute('class','c-btn c-btn--text-link c-btn--display-block')
-    const icon = document.createElement('i');
-    icon.setAttribute('class','nv-icon nv-icon--carat_right')
-    const name = document.createElement('h4');
-    name.classList.add('place');
-    //const currentCampus = data.getFeatureById(campus.campusid);
-    button.textContent = campus.getProperty('name');
-    button.setAttribute('href', campus.getProperty('url'));
-    button.appendChild(icon);
-    name.appendChild(button);
-    panel.appendChild(name);
   });
 
   // Open the panel

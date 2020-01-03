@@ -400,6 +400,11 @@
 	@media (min-width: @screen-md) {
   	font-size: 80px;
 	}
+  .no-header & {
+    .ornamental {
+      display: none;
+    }
+  }
   .has-media & {
   	@media (min-width: @screen-sm) {
     	transform: translate(20px,-75px);

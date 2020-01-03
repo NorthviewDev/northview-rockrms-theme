@@ -1,4 +1,14 @@
 /*** CARD COMPONENT ***/
+a.c-card {
+  border-bottom: solid 13px @color-gray-light;
+  transition: all ease-in-out 100ms;
+  display: block;
+  &:hover, &:focus {
+    outline: none;
+    box-shadow: none;
+  	transform: translateY(-5px);
+  }
+}
 .c-card {
   position: relative;
   background-color: @white;
@@ -99,7 +109,10 @@
   }
   .c-card--big & {
     background-color: transparent;
-    padding:0;
+    padding: var(--s1) 0 0;
+    @media (min-width: @screen-sm) {
+    	padding:0;
+    }
   }
   .c-card--title-highlight & {
     @media (min-width: @screen-sm) {
@@ -131,12 +144,12 @@
 .c-card__title {
 	font-size: 25px;
 	color: @text-color;
-	@media (min-width: @screen-sm) {
+	@media (min-width: @screen-md) {
   	font-size: 36px;
 	}
 	&.c-card__title--med {
   	font-size: 29px;
-  	@media (min-width: @screen-sm) {
+  	@media (min-width: @screen-md) {
     	font-size: 48px;
   	}
 	}
@@ -145,7 +158,7 @@
   	font-size: 29px;
   	text-transform: uppercase;
   	text-align: center;
-  	@media (min-width: @screen-sm) {
+  	@media (min-width: @screen-md) {
     	font-size: 64px;
   	}
 	}
@@ -170,6 +183,6 @@
 
 .c-card--side-by-side {
   > :first-child {
-    margin-bottom: 0;
+    //margin-bottom: 0;
   }
 }

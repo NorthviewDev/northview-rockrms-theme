@@ -2,8 +2,8 @@
 <section id="campus-details" class="c-section c-section--dark g-padding--bottom-s7 g-padding--sm-bottom-s10">
   <div class="container">
     <div class="row">
-      <div class="col-md-3 col-md-offset-1">
-        <div class="location-details stack">
+      <div class="col-md-4 col-lg-3 col-lg-offset-1">
+        <div class="location-details well stack">
           <h3>Location Details</h3>
           {%- assign serviceDay = '' %}
           {%- assign serviceTimes = campus.ServiceTimes | Split:'|' -%}
@@ -22,11 +22,11 @@
           {%- endlocation -%}
         </div>
       </div>
-      <div class="col-md-7">
+      <div class="col-md-8 col-lg-7">
         <div class="campus-intro l-grid">
         {%- personalias id:'{{ campus.LeaderPersonAliasId }}' -%}
         {%- person id:'{{ personalias.PersonId }}' -%}
-        {% comment %}{%- assign bio = "" -%}not sure how to get there from here{% endcomment %}
+        {%- assign bio = "" -%}{% comment %}not sure how to get there from here{% endcomment %}
         {%- assign groupId = 292677 -%}{% comment %}Campus Lead Team{% endcomment %}
           <div class="l-col">
     				<div class="row">
