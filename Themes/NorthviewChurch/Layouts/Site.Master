@@ -44,8 +44,18 @@
         {
             HtmlMeta imageOGMetaTag = new HtmlMeta();
             imageOGMetaTag.Attributes.Add("property", "og:image");
-            imageOGMetaTag.Attributes.Add("content", "https://rock.northviewchurch.us/GetImage.ashx?Guid=" + pageHeaderImage);
+            imageOGMetaTag.Attributes.Add("content", "https://rock.northviewchurch.us/GetImage.ashx?Guid=" + pageHeaderImage + "&w=1600&h=900");
             Page.Header.Controls.Add(imageOGMetaTag);
+
+            HtmlMeta imageTwMetaTag = new HtmlMeta();
+            imageTwMetaTag.Attributes.Add("property", "twitter:image");
+            imageTwMetaTag.Attributes.Add("content", "https://rock.northviewchurch.us/GetImage.ashx?Guid=" + pageHeaderImage + "&w=1600&h=900");
+            Page.Header.Controls.Add(imageTwMetaTag);
+
+            HtmlMeta cardTwMetaTag = new HtmlMeta();
+            cardTwMetaTag.Attributes.Add("name", "twitter:card");
+            cardTwMetaTag.Attributes.Add("content", "summary_large_image");
+            Page.Header.Controls.Add(cardTwMetaTag);            
         }
         HtmlMeta urlOGMetaTag = new HtmlMeta();
         urlOGMetaTag.Attributes.Add("property", "og:url");

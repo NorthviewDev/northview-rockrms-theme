@@ -1,5 +1,5 @@
 ﻿{% comment %}
-This is for the series detail page https://new.northviewchurch.us/series/
+This is for the series detail page https://www.northviewchurch.us/series/
 {% endcomment %}
 
 {% assign series = Item %}
@@ -17,18 +17,14 @@ This is for the series detail page https://new.northviewchurch.us/series/
     	{% assign SeriesTitle = series.Title %}
     {% assign SermonDate = Item.StartDateTime | Date:'MMM d, yyyy' %}
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 center-block">
-
       <div id="latest-message" class="message-detail">
         <div class="container">
           <div class="row">
-            <div class="col-lg-10 center-block">
+            <div class="col-sm-9 col-md-10 center-block">
                 <div id="recent-message-grid">
                   <div class="c-card__header">
                     {% if videoEmbed != '' %}
-                			{{ videoEmbed }}
+                			<div class="embed-responsive embed-responsive-16by9">{{ videoEmbed }}</div>
                 		{% endif %}
                   </div> <!-- end c-card__header  -->
                   <div class="c-card__body">
@@ -62,8 +58,4 @@ This is for the series detail page https://new.northviewchurch.us/series/
         </div>
 	    </div>
 	
-    </div>
-  </div>
-</div>
-
 {% endcontentchannelitem %}

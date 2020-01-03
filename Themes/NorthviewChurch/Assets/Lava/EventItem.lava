@@ -15,24 +15,26 @@
         {{ Event.Description }}
     
         {% if Event.Summary != '' %}
-          {{ Event.Summary | AddMetaTagToHead:'name','description' }}
+          {{ Event.Summary | StripHtml | AddMetaTagToHead:'name','description' }}
+        {% else %}
+          {{ Event.Description | StripHtml | AddMetaTagToHead:'name','description' }}
         {% endif %}
     
         {{ 'summary_large_image' | AddMetaTagToHead:'property','twitter:card' }}
         {{ Event.Name | AddMetaTagToHead:'property','twitter:title' }}
-        {{ Event.Description | AddMetaTagToHead:'property','twitter:description' }}
+        {{ Event.Description | StripHtml | AddMetaTagToHead:'property','twitter:description' }}
     
         {{ Event.Name | AddMetaTagToHead:'property','og:title' }}
-        {{ Event.Description | AddMetaTagToHead:'property','og:description' }}
+        {{ Event.Description | StripHtml | AddMetaTagToHead:'property','og:description' }}
     
-        {% assign facebookPhoto = Event | Attribute:'core_calendar_FacebookPhoto','Object' %}
-        {% if facebookPhoto %}
-        {{ facebookPhoto.Url | AddMetaTagToHead:'property','og:image' }}
+        {% assign facebookPhoto = Event.Photo,'Url' %}
+        {% if facebookPhoto != '' %}
+        {{ facebookPhoto | AddMetaTagToHead:'property','og:image' }}
         {% endif %}
     
-        {% assign twitterPhoto = Event | Attribute:'core_calendar_TwitterPhoto','Object' %}
+        {% assign twitterPhoto = Event.Photo,'Url' %}
         {% if twitterPhoto != '' %}
-        {{ twitterPhoto.Url | AddMetaTagToHead:'property','twitter:image' }}
+        {{ twitterPhoto | AddMetaTagToHead:'property','twitter:image' }}
         {% endif %}
       </div>
       <div class="addthis_toolbox">

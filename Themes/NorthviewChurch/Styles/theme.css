@@ -22255,6 +22255,13 @@ body.narrow .c-block-hero__header {
     margin-left: 16.66666667%;
   }
 }
+body.no-title .c-block-hero__headline {
+  visibility: hidden;
+  pointer-events: none;
+}
+body.no-title .c-block-hero__headline .ornamental {
+  display: none;
+}
 #form1 {
   width: 1680px;
   max-width: 100%;
@@ -23074,6 +23081,16 @@ a.c-card:focus {
     --section-overlap-top: calc(24px * -7);
   }
 }
+@media (min-width: 768px) {
+  body.no-title .c-section--overlap-top .container:first-child {
+    --section-overlap-top: calc(24px * -13);
+  }
+}
+@media (min-width: 1200px) {
+  body.no-title .c-section--overlap-top .container:first-child {
+    --section-overlap-top: calc(24px * -12);
+  }
+}
 .c-section__header {
   text-align: center;
   margin-bottom: var(--s1);
@@ -23354,6 +23371,7 @@ a.c-card:focus {
 }
 #homepage-feature .c-block-hero__background-video.l-aspect-ratio__16-9 video {
   height: 100%;
+  height: 600px;
 }
 @media (min-width: 768px) {
   #homepage-feature .c-block-hero__background-video.l-aspect-ratio__16-9 video {
@@ -23962,8 +23980,13 @@ a.c-card:focus {
 }
 @media (min-width: 768px) {
   #campusmap {
-    width: 70%;
+    width: 60%;
     float: left;
+  }
+}
+@media (min-width: 1200px) {
+  #campusmap {
+    width: 70%;
   }
 }
 @media (min-width: 768px) {
@@ -23982,11 +24005,16 @@ a.c-card:focus {
     padding: 58px;
     box-shadow: 0px 0px 10px 0px #8c8c8c;
     height: 530px;
-    width: 30%;
+    width: 40%;
     float: left;
     overflow: auto;
     position: relative;
     z-index: 10;
+  }
+}
+@media (min-width: 1200px) {
+  #campus-locations #location-search {
+    width: 30%;
   }
 }
 #campus-locations #location-search .form-group {

@@ -46,7 +46,15 @@
     --section-overlap-top: calc(@grid-gutter-width * -3); //translate along negative Y axis
     @media (min-width: @screen-lg) {
       --section-overlap-top: calc(@grid-gutter-width * -7); //translate along negative Y axis
-    }  
+    }
+    body.no-title & {
+      @media (min-width: @screen-sm) {
+        --section-overlap-top: calc(@grid-gutter-width * -13); //translate along negative Y axis
+      }
+      @media (min-width: @screen-lg) {
+        --section-overlap-top: calc(@grid-gutter-width * -12); //translate along negative Y axis
+      }      
+    }
     margin-top: var(--section-overlap-top)
   }
 }

@@ -107,6 +107,15 @@ body {
       .make-md-column-offset(2);
     }
   }
+  &.no-title {
+    .c-block-hero__headline{
+      visibility: hidden;
+      pointer-events: none;
+      .ornamental{
+        display: none;
+      }
+    }
+  }
 }
 #form1 {
   width: 1680px;

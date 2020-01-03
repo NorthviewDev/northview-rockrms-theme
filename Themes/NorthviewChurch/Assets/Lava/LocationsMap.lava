@@ -104,7 +104,7 @@
     var map = new google.maps.Map(mapElement, opts);
 
     // Load the campuses GeoJSON onto the map.
-    map.data.loadGeoJson("https://new.northviewchurch.us/Webhooks/Lava.ashx/ActiveCampuses", {idPropertyName: 'campusid'});
+    map.data.loadGeoJson("https://northviewchurch.us/Webhooks/Lava.ashx/ActiveCampuses", {idPropertyName: 'campusid'});
       
     // Define the custom marker icons
     map.data.setStyle((feature) => {
@@ -130,7 +130,7 @@
     var map2 = new google.maps.Map(document.createElement('div'));      
     function loadGeoJson(map2) {
       $.ajax({
-        url: 'https://new.northviewchurch.us/Webhooks/Lava.ashx/ActiveCampuses',
+        url: 'https://northviewchurch.us/Webhooks/Lava.ashx/ActiveCampuses',
         dataType: 'json',
         async: false,
         success: function(data){

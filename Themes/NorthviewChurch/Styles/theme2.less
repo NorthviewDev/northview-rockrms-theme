@@ -3,26 +3,16 @@
 @import "global/_mixins.less";
 @import "_fishhook-mixins.less";
 
-
-.series-detail,
 .message-detail{
-  .c-block-hero__headline{
-    visibility: hidden;
-    pointer-events: none;
-    .ornamental{
-      display: none;
-    }
-  }
   .c-card__body{
     p{
-      margin: 0;
       font-size: 16px;
       line-height: 20px;
     }
   }
   .sermon-media{
     list-style: none;
-    margin: 20px 0;
+    margin: 20px 0 0;
     padding: 0;
     li{
       display: inline;
@@ -43,36 +33,31 @@
     }
   }
 }
-
-
-@media (min-width: @screen-sm) {
-  #recent-message-grid {
-    display: grid;
-    grid-template-columns: 55% 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: "Media Title" "Media Body" "Media Footer";
-    .c-card__header { 
-      grid-area: Media;
-      margin-top: var(--s1);
+#recent-message-grid {
+  @media (min-width: @screen-md) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: center;
+  }
+  .c-card__header {
+    order: 0;
+    flex: 0 1 62%;
+    align-self: auto;
+  }
+  .c-card__body {
+    order: 0;
+    flex: 0 1 38%;
+    align-self: auto;
+    position: relative;
+    z-index: 10;
+    @media (min-width: @screen-md) {
+    	margin-left: -20px;
     }
-    .c-section__header {
-      grid-area: Title;
-    	width: 60%;
-    	text-align: left;
-    	padding-left: var(--s3);
-    	margin-bottom: var(--s2);
-    	h2 {
-      	line-height: 0.9375em;    	
-    	}
-    }
-    .c-card__body {
-      grid-area: unset;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      transform: translateX(20%);
-      margin-top: var(--s7);
-
+    @media (min-width: @screen-xl) {
+    	margin-left: -40px;
     }
   }
 }
