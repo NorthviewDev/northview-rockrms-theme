@@ -1,9 +1,12 @@
 ﻿{%- assign videoUrl = Item | Attribute:'VideoURL','RawValue' -%}
+{%- assign videoEmbed = Item | Attribute:'VideoEmbed','RawValue' -%}
 <div class="container">
   <div class="row">
     <div class="col-md-8 center-block">
       <div class="embed-responsive embed-responsive-16by9">
-      {% if videoUrl != '' %}
+      {% if videoEmbed != '' %}
+        {{ videoEmbed }}
+      {% elseif videoUrl != '' %}
         <video poster="/GetImage.ashx?guid={{ Item | Attribute:'Image','RawValue' }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" controls preload>
           <source src="{{ videoUrl }}" type="video/mp4">
         </video>

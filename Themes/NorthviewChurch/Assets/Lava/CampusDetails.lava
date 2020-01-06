@@ -7,7 +7,7 @@
           <h3>Location Details</h3>
           {%- assign serviceDay = '' %}
           {%- assign serviceTimes = campus.ServiceTimes | Split:'|' -%}
-          {%- for serviceTime in serviceTimes -%}{% assign serviceDayTime = serviceTime | Split:'^' %}{% assign separator='' %}{% if forloop.length > 1 %}{% if forloop.last %}{% assign separator=' and '%}{% elseif forloop.first != true and serviceDayTime[0] == serviceDay %}{% assign separator=', '%}{% endif %}{% endif %}{% if serviceDayTime[0] != serviceDay %}<p>{{ serviceDayTime[0] | Pluralize}} at {% assign serviceDay = serviceDayTime[0] %}{% endif %}{{ separator }}{{ serviceDayTime[1] }}{%- endfor -%}
+          <p>{%- for serviceTime in serviceTimes -%}{% assign serviceDayTime = serviceTime | Split:'^' %}{% assign separator='' %}{% if forloop.length > 1 %}{% if forloop.last != true %}{% assign separator=', '%}{% endif %}{{ serviceDayTime[0] | Pluralize}} at {% assign serviceDay = serviceDayTime[0] %}{{ serviceDayTime[1] }}{{ separator }}{%- endif -%}{%- endfor -%}</p>
           <ul class="location-details__info-list stack list-unstyled">
           <li><i class="nv-icon nv-icon--email fa-fw"></i> <a href="mailto:{{ 'Global' | Attribute:'OrganizationEmail' }}">{{ 'Global' | Attribute:'OrganizationEmail' }}</a></li>
           <li><i class="nv-icon nv-icon--phone fa-fw"></i> <a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' }}">{{ campus.PhoneNumber }}</a></li>

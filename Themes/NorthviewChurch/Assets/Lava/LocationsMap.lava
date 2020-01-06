@@ -103,12 +103,17 @@
     // Create the Google Map using our element and options defined above
     var map = new google.maps.Map(mapElement, opts);
 
+    //create empty LatLngBounds object
+    var bounds = new google.maps.LatLngBounds(); 
+
     // Load the campuses GeoJSON onto the map.
     map.data.loadGeoJson("https://northviewchurch.us/Webhooks/Lava.ashx/ActiveCampuses", {idPropertyName: 'campusid'});
       
     // Define the custom marker icons
     map.data.setStyle((feature) => {
       latlng = feature.getGeometry().get();
+      bounds.extend(latlng);
+      map.fitBounds(bounds);
       return {
         icon: {
   				url: "{{'Global' | Attribute:'PublicApplicationRoot'}}Themes/NorthviewChurch/Assets/_img/Location_Marker.png",
@@ -127,7 +132,7 @@
 
     /*** until I can figure out a better solution, I'm creating a second invisible map element
        to loop through for setting bounds and displaying initial campus list ***/
-    var map2 = new google.maps.Map(document.createElement('div'));      
+    var map2 = new google.maps.Map(document.createElement('div'),opts);      
     function loadGeoJson(map2) {
       $.ajax({
         url: 'https://northviewchurch.us/Webhooks/Lava.ashx/ActiveCampuses',
@@ -139,14 +144,14 @@
       });
     }
     loadGeoJson(map2);
-    //create empty LatLngBounds object
-    var bounds = new google.maps.LatLngBounds(); 
 
     map2.data.forEach((feature) => {
+/*
       feature.getGeometry().forEachLatLng((latlng) => {
          bounds.extend(latlng);
-         //console.log("LatLng = " + latlng);
+         console.log("LatLng = " + latlng);
       });
+*/
       
       // Add campus details with text formatting
       const button = document.createElement('a');
@@ -169,8 +174,7 @@
       panel.classList.add('open');
 
     });
-    map.fitBounds(bounds);
-  
+
 {% comment %}/****
 //moving all this into Lava Webhook at /Webhooks/Lava.ashx/ActiveCampuses
   {%- for campus in Campuses -%}
