@@ -68,7 +68,7 @@
       			<div class="staff__title">{{ title }}</div>
         			<ul class="staff__meta">
         			  {% if email != '' %}
-        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}" target="_blank"><i class="nv-icon nv-icon--email"></i></a></li>
+        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a></li>
                 {% endif %}
                 {% if phone != '' %}
                   <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>

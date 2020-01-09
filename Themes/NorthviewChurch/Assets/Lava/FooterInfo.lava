@@ -5,7 +5,7 @@
                 <p>© Copyright {{ 'Now' | Date:'yyyy' }} Northview Church. All rights reserved.</p>
             </div>
             <div class="l-col">
-                <p>Created by <a href="https://fishhook.us" target="_blank">Fishhook</a>. Powered by <a href="https://rockrms.com" target="_blank">Rock</a>.</p>
+                <p>Created by <a href="https://fishhook.us" target="_blank" rel="noopener">Fishhook</a>. Powered by <a href="https://rockrms.com" target="_blank" rel="noopener">Rock</a>.</p>
             </div>
         </div>
     </div>

@@ -1,23 +1,24 @@
+<link rel='stylesheet' href='https://vjs.zencdn.net/7.2.3/video-js.css'>
   <section id="homepage-feature" class="c-block-hero__wrapper has-media">
     <div class="c-block-hero has-ornaments">
       <div class="c-block-hero__container">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
-        {%- assign numItems = Items | Size -%}
+          {%- assign numItems = Items | Size -%}
           {%- for item in Items -%}
             {%- assign displayTitle = item.ContentChannel | Attribute:'DisplayTitle' -%}
             {%- if numItems > 1 -%}
               {%- assign hiddenXs = "" -%}
               {%- if forloop.first != true -%}{%- assign hiddenXs = " hidden-xs" -%}{%- endif -%}
               <div class="c-block-hero__background-video l-aspect-ratio__9-16{{hiddenXs}}">
-                <video poster="/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=900&h=1600&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
+                <video poster="/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=450&h=800&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
                   <source src="/GetFile.ashx?guid={{ item | Attribute:'Video','RawValue' }}" type="video/mp4">
                 </video>
               </div>
             {%- else -%}
               <div class="c-block-hero__background-video l-aspect-ratio__16-9">
-                <video poster="/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
+                <video poster="/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" autoplay loop muted playsinline preload>
                   <source src="/GetFile.ashx?guid={{ item | Attribute:'Video','RawValue' }}" type="video/mp4">
                 </video>
               </div>

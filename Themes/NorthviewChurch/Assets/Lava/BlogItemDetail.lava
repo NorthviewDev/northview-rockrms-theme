@@ -7,11 +7,11 @@
       {% if videoEmbed != '' %}
         {{ videoEmbed }}
       {% elseif videoUrl != '' %}
-        <video poster="/GetImage.ashx?guid={{ Item | Attribute:'Image','RawValue' }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" controls preload>
+        <video poster="/GetImage.ashx?guid={{ Item | Attribute:'Image','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both&quality=70" controls preload>
           <source src="{{ videoUrl }}" type="video/mp4">
         </video>
       {% else %}
-        <img src="/GetImage.ashx?guid={{ Item | Attribute:'Image','RawValue' }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" alt="{{ Item.Title }}" />
+        <img src="/GetImage.ashx?guid={{ Item | Attribute:'Image','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" alt="{{ Item.Title }}" />
       {% endif %}
       </div>
     </div>

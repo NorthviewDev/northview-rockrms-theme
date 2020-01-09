@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ 'Global' | Attribute:'GoogleAPIKey' }}&libraries=places"></script>
 <div id="campus-locations">
   <div id="campusmap"></div>
 </div>
@@ -111,9 +112,13 @@
       
     // Define the custom marker icons
     map.data.setStyle((feature) => {
+
+/*
       latlng = feature.getGeometry().get();
       bounds.extend(latlng);
       map.fitBounds(bounds);
+*/
+
       return {
         icon: {
   				url: "{{'Global' | Attribute:'PublicApplicationRoot'}}Themes/NorthviewChurch/Assets/_img/Location_Marker.png",
@@ -146,12 +151,11 @@
     loadGeoJson(map2);
 
     map2.data.forEach((feature) => {
-/*
+
       feature.getGeometry().forEachLatLng((latlng) => {
          bounds.extend(latlng);
-         console.log("LatLng = " + latlng);
+         //console.log("LatLng = " + latlng);
       });
-*/
       
       // Add campus details with text formatting
       const button = document.createElement('a');
@@ -173,7 +177,8 @@
       // Open the panel
       panel.classList.add('open');
 
-    });
+  });
+  map.fitBounds(bounds);
 
 {% comment %}/****
 //moving all this into Lava Webhook at /Webhooks/Lava.ashx/ActiveCampuses
@@ -465,7 +470,9 @@ function showCampusList(data, campuses) {
 
   return;
 }
+initMap();
 </script>
+{% comment %}
 <link rel="stylesheet" href="/Themes/NorthviewChurch/Assets/Scripts/snazzymaps/snazzy-info-window.min.css">
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ 'Global' | Attribute:'GoogleAPIKey' }}&libraries=places&callback=initMap" async defer></script>
 <script src="/Themes/NorthviewChurch/Assets/Scripts/snazzymaps/snazzy-info-window.min.js"></script>
+{% endcomment %}

@@ -7,7 +7,7 @@
           <h3>Location Details</h3>
           {%- assign serviceDay = '' %}
           {%- assign serviceTimes = campus.ServiceTimes | Split:'|' -%}
-          <p>{%- for serviceTime in serviceTimes -%}{% assign serviceDayTime = serviceTime | Split:'^' %}{% assign separator='' %}{% if forloop.length > 1 %}{% if forloop.last != true %}{% assign separator=', '%}{% endif %}{{ serviceDayTime[0] | Pluralize}} at {% assign serviceDay = serviceDayTime[0] %}{{ serviceDayTime[1] }}{{ separator }}{%- endif -%}{%- endfor -%}</p>
+          <p>{%- for serviceTime in serviceTimes -%}{% assign serviceDayTime = serviceTime | Split:'^' %}{% assign separator=', ' %}{{ serviceDayTime[0] | Pluralize}} at {% assign serviceDay = serviceDayTime[0] %}{{ serviceDayTime[1] }}{% if forloop.length > 1 and forloop.last != true %}{{ separator }}{% endif %}{%- endfor -%}</p>
           <ul class="location-details__info-list stack list-unstyled">
           <li><i class="nv-icon nv-icon--email fa-fw"></i> <a href="mailto:{{ 'Global' | Attribute:'OrganizationEmail' }}">{{ 'Global' | Attribute:'OrganizationEmail' }}</a></li>
           <li><i class="nv-icon nv-icon--phone fa-fw"></i> <a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' }}">{{ campus.PhoneNumber }}</a></li>
@@ -15,7 +15,7 @@
           {%- for location in locationItems -%}
           {%- assign campusLocation = location.Street1 | Trim -%}
           {%- if campusLocation != "" -%}
-          <li><i class="nv-icon nv-icon--location_marker fa-fw"></i> <a target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;destination={{location.Street1}}+{{location.City}}+{{location.State}}+{{location.PostalCode}}">Map & Directions</a></li>
+          <li><i class="nv-icon nv-icon--location_marker fa-fw"></i> <a target="_blank" rel="noreferrer" href="https://www.google.com/maps/dir/?api=1&amp;destination={{location.Street1}}+{{location.City}}+{{location.State}}+{{location.PostalCode}}">Map & Directions</a></li>
           {%- endif -%}
           </ul>
           {%- endfor -%}

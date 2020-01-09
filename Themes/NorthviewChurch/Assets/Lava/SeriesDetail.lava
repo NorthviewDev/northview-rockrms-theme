@@ -35,13 +35,13 @@ This is for the series detail page https://www.northviewchurch.us/series/
                     </div>
                      <ul class="sermon-media">
                     {% if audioLink != '' %}
-            				  <li><a href="{{ audioLink }}" target="_blank" title="Listen to {{ item.Title }}"><span class="nv-icon nv-icon--audio"></span>Audio Only</a></li> 
+            				  <li><a href="{{ audioLink }}" target="_blank" rel="noopener" title="Listen to {{ item.Title }}"><span class="nv-icon nv-icon--audio"></span>Audio Only</a></li> 
             				  {% endif %}
-            				  <li><a href="https://itunes.apple.com/us/podcast/northview-church-audio-podcast/id378824543?mt=2" target="_blank" title="List to {{ item.Title }}"><span class="nv-icon nv-icon--subscribe"></span>Subscribe</a></li>
+            				  <li><a href="https://itunes.apple.com/us/podcast/northview-church-audio-podcast/id378824543?mt=2" target="_blank" rel="noreferrer" title="List to {{ item.Title }}"><span class="nv-icon nv-icon--subscribe"></span>Subscribe</a></li>
             				  {% if audioLink != '' %}
-                      <li><a href="{{ audioLink }}" target="_blank" title="right-click and save as"><span class="nv-icon nv-icon--download"></span>Download</a></li>
+                      <li><a href="{{ audioLink }}" target="_blank" rel="noopener" title="right-click and save as"><span class="nv-icon nv-icon--download"></span>Download</a></li>
                        {% endif %}
-                      <li><a href="#" target="_blank" title="right-click and save as" class="addthis_button_compact"><span class="nv-icon nv-icon--share"></span>Share</a></li>
+                      <li><a href="#" target="_blank" rel="noopener" title="right-click and save as" class="addthis_button_compact"><span class="nv-icon nv-icon--share"></span>Share</a></li>
                       </ul>
                   </div><!-- end c-card__body -->
                 </div> <!-- Latest Message Grid -->

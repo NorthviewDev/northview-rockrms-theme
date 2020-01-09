@@ -1,11 +1,9 @@
 .form-control {
-  background-color: #d8d8d8;
+  background-color: @gray-lightest;
   color: @text-color;
   font-weight: 600;
   border: none;
   border-radius: 0;
-  box-sizing: content-box;
-  padding: 10px 20px;
   &:focus {
     box-shadow: none;
     outline: solid 3px @brand-primary;
@@ -14,4 +12,9 @@
     box-sizing: border-box;
     padding: 10px;
   }
+}
+#addressInput {
+  background-color: #d8d8d8;
+  box-sizing: content-box;
+  padding: 10px 20px;
 }

@@ -5,7 +5,7 @@
   <div class="c-card">
     <div class="c-card__header">
     {%- if event.EventItemOccurrence.EventItem.Photo.Guid && event.EventItemOccurrence.EventItem.Photo.Guid != "" -%}
-      <img class="c-card__media" src="/GetImage.ashx?guid={{ event.EventItemOccurrence.EventItem.Photo.Guid }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" />
+      <img class="c-card__media" src="/GetImage.ashx?guid={{ event.EventItemOccurrence.EventItem.Photo.Guid }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" />
     {%- endif -%}
     </div>
     <div class="c-card__body stack">
@@ -23,7 +23,7 @@
       {%- if eventDetailPage != "" -%}
       <p><a href="{{ event.DetailPage }}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
       {%- else -%}
-      <p><a href="{{ DetailsPage }}?EventOccurrenceId={{event.EventItemOccurrence.Id}}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
+      <p><a href="/event?EventOccurrenceId={{event.EventItemOccurrence.Id}}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
       {%- endif -%}
     </div>
   </div><!--/.c-card-->

@@ -26,7 +26,7 @@
                 {%- if pageHeaderImage != "" || if pageHeaderVideo != "" -%}
                 <div class="l-col">
                   <div class="c-block-hero__background-video g-aspect-ratio__16-9">
-                    <video poster="/GetImage.ashx?guid={{ pageHeaderImage }}&w=1600&h=900&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
+                    <video poster="/GetImage.ashx?guid={{ pageHeaderImage }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
                     {%- if pageHeaderVideo != "" -%}
                       <source src="/GetFile.ashx?guid={{ pageHeaderVideo }}" type="video/mp4">
                     {%- endif -%}
