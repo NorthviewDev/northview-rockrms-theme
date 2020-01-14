@@ -31,16 +31,10 @@
     vertical-align: middle;
     margin-right: 5px;
   }
-  a {
-    color: @text-color;
-    &:hover, &:focus {
-      color: @brand-primary;
-    }
-  }
 }
 .campus-intro {
   grid-template-columns: 1fr 2fr;
-  align-items: center;
+  > * { align-self: center }
   :first-child {
     align-self: flex-start;
   }

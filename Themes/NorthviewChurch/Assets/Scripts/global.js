@@ -6,12 +6,14 @@ $(function() { //document.ready
   // Then we set the value in the --vh custom property to the root of the document
   document.documentElement.style.setProperty('--vh', `${vh}px`);
   
+/*
   // We listen to the resize event
   window.addEventListener('resize', () => {
     // We execute the same script as before
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   });
+*/
   
   
   var navActive = false,
@@ -71,7 +73,7 @@ $(function() { //document.ready
     appendObject.appendChild(newSpan);
   }
   function playHeroVideos(){
-    var heroVideos = document.querySelectorAll('.c-block-hero__background-video.l-aspect-ratio__9-16');
+    var heroVideos = document.querySelectorAll('.c-block-hero__background-video');
     var numVids = heroVideos.length;
     var n = 0;
   
@@ -82,7 +84,9 @@ $(function() { //document.ready
     }
     
     // Initial call
-    if (numVids) recursiveDelay(playVideo, numVids, 600);
+    if (numVids > 1) {
+      recursiveDelay(playVideo, numVids, 600);
+    }
   }
   
   function addOrnament(appendObject,appendIconClass,rangeTop,rangeLeft) {      
@@ -161,4 +165,5 @@ $(function() { //document.ready
     html: 'true'
   });
   new WOW().init();
+  cssVars();
 });

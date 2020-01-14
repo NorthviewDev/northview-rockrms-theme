@@ -3,7 +3,7 @@
     <div class="col-md-8 center-block">
       {% if Event.Photo.Guid %}
       <center>
-        <img src="/GetImage.ashx?Guid={{ Event.Photo.Guid }}" class="title-image img-responsive" />
+        <img src="/GetImage.ashx?Guid={{ Event.Photo.Guid }}&maxWidth=800&maxHeight=800&quality=80" class="title-image img-responsive" />
       </center>
       {% endif %}
     </div>

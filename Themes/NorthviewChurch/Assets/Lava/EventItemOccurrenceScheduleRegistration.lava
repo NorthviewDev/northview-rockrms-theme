@@ -1,12 +1,17 @@
-{% eventitemoccurrence id:'{{ PageParameter.EventOccurrenceId }}' %}
-{% eventitem id:'{{ eventitemoccurrence.EventItemId }}' %}
+{%- if PageParameter.EventOccurrenceId and PageParameter.EventOccurrenceId != '' -%}
+{%- assign PageParameterEventOccurrenceId = PageParameter.EventOccurrenceId -%}
+{%- elseif PageParameter.eventoccurrenceid and PageParameter.eventoccurrenceid != '' -%}
+{%- assign PageParameterEventOccurrenceId = PageParameter.eventoccurrenceid -%}
+{%- endif -%}
+{%- eventitemoccurrence id:'{{ PageParameterEventOccurrenceId }}' -%}
+{%- eventitem id:'{{ eventitemoccurrence.EventItemId }}' -%}
 {%- assign Event = eventitem -%}
 {%- assign eventItemOccurrences = Event.EventItemOccurrences -%}
 
 {%- capture childIds -%}{% for occ in eventItemOccurrences %}{{occ.Campus.Name}}^{{ occ.Id }}{% unless forloop.last %},{% endunless %}{% endfor %}{%- endcapture -%}
 
-{% assign occArray = childIds | Split: ',' %}
-{% assign sortedOccs = occArray | Sort %}
+{%- assign occArray = childIds | Split: ',' -%}
+{%- assign sortedOccs = occArray | Sort -%}
 
 <div class="container">
 	<div class="row">

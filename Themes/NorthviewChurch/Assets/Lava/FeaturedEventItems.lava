@@ -23,7 +23,7 @@
       {%- if eventDetailPage != "" -%}
       <p><a href="{{ event.DetailPage }}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
       {%- else -%}
-      <p><a href="/event?EventOccurrenceId={{event.EventItemOccurrence.Id}}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
+      <p><a href="/event/{{event.EventItemOccurrence.Id}}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
       {%- endif -%}
     </div>
   </div><!--/.c-card-->

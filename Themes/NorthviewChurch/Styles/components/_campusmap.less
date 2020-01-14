@@ -1,9 +1,30 @@
 @mapheight: 550px;
+:root {
+  --scrollbarBG: @gray-lightest;
+  --thumbBG: @gray-light;
+}
+#location-search::-webkit-scrollbar {
+  width: 11px;
+}
+#location-search {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+#location-search::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+#location-search::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
 #campusmap {
   height: @mapheight;
+  display: none;
   @media (min-width: @screen-sm) {
     width: 60%;
     float:left;
+    display: block;
   }
   @media (min-width: @screen-lg) {
     width: 70%;
@@ -52,7 +73,7 @@
     margin-top: 36px;
   }
   .place {
-    padding: var(--s1);
+    //padding: var(--s1);
   }
   .place__name {
     font-size: 25px;

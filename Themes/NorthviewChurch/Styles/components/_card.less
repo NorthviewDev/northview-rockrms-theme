@@ -50,6 +50,12 @@ a.c-card {
   	}
   }
   &.decorated {
+    margin-left: var(--s1);
+    margin-right: var(--s1);
+    @media (min-width: @screen-sm) {
+      margin-left:0;
+    	margin-right: 0;
+    }
     .ornamental {
       position: absolute;
       top:75px;

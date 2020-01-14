@@ -18,7 +18,7 @@
           View Details <i class="fa fa-chevron-right"></i>
         </a>
     		{% else %}
-    		<a href="/event?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}">
+    		<a href="/event/{{ eventItemOccurrence.EventItemOccurrence.Id }}">
           View Details <i class="fa fa-chevron-right"></i>
         </a>
         {% endif %}

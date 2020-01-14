@@ -32,7 +32,7 @@
   					{% if eventItemOccurrence.DetailPage != null %}
   					<a href="{{ eventItemOccurrence.DetailPage }}">{{ eventItemOccurrence.Name }}</a>
   					{% else %}
-  					<a href="/event?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}">{{ eventItemOccurrence.Name }}</a>
+  					<a href="/event/{{ eventItemOccurrence.EventItemOccurrence.Id }}">{{ eventItemOccurrence.Name }}</a>
   					{% endif %}
   					</h2>
   					<p class='event__info'>
@@ -60,7 +60,7 @@
   				{% if eventItemOccurrence.DetailPage != null %}
 				  <a class="c-btn" href="{{ eventItemOccurrence.DetailPage }}">Details <i class="nv-icon nv-icon--carat_right"></i></a>
   				{% else %}
-				  <a class="c-btn" href="/event?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}">Details <i class="nv-icon nv-icon--carat_right"></i></a>
+				  <a class="c-btn" href="/event/{{ eventItemOccurrence.EventItemOccurrence.Id }}">Details <i class="nv-icon nv-icon--carat_right"></i></a>
   				{% endif %}
   
   				{% assign current_start_day = eventItemOccurrence.Date %}
