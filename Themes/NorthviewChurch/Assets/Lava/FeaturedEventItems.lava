@@ -2,7 +2,12 @@
 {%- for eventItems in EventItems limit:3 -%}
 {%- assign numEvents = eventItems | Size -%}
 {%- assign event = eventItems | First -%}
-  <div class="c-card">
+  {%- assign eventDetailPage = event.DetailPage | Trim -%}
+  {%- if eventDetailPage != "" -%}
+  <a class="c-card no-border" href="{{ event.DetailPage }}">
+  {%- else -%}
+  <a class="c-card no-border" href="/event/{{event.EventItemOccurrence.Id}}">
+  {%- endif -%}
     <div class="c-card__header">
     {%- if event.EventItemOccurrence.EventItem.Photo.Guid && event.EventItemOccurrence.EventItem.Photo.Guid != "" -%}
       <img class="c-card__media" src="/GetImage.ashx?guid={{ event.EventItemOccurrence.EventItem.Photo.Guid }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" />
@@ -19,13 +24,14 @@
         <li><i class="nv-icon nv-icon--calendar"></i> {{ event.Date | Date:"M/d/yyyy" }}</li>
         <li><i class="nv-icon nv-icon--clock"></i> {{ event.Time }}</li>
       </ul>
-      {%- assign eventDetailPage = event.DetailPage | Trim -%}
+      <p>
       {%- if eventDetailPage != "" -%}
-      <p><a href="{{ event.DetailPage }}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
+      <button class="c-btn c-btn--dark" onclick="window.location.href='{{ event.DetailPage }}'">
       {%- else -%}
-      <p><a href="/event/{{event.EventItemOccurrence.Id}}" class="c-btn c-btn--dark">Details<i class="nv-icon nv-icon--carat_right"></i></a></p>
+      <button class="c-btn c-btn--dark" onclick="window.location.href='/event/{{event.EventItemOccurrence.Id}}'">
       {%- endif -%}
+        Details<i class="nv-icon nv-icon--carat_right"></i></button></p>
     </div>
-  </div><!--/.c-card-->
+  </a><!--/.c-card-->
 {%- endfor -%}
 </div><!--/.l-grid-->

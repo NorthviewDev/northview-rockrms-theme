@@ -3,6 +3,9 @@ a.c-card {
   border-bottom: solid 13px @color-gray-light;
   transition: all ease-in-out 100ms;
   display: block;
+  &.no-border {
+    border-bottom: none;
+  }
   &:hover, &:focus {
     outline: none;
     box-shadow: none;
@@ -117,7 +120,7 @@ a.c-card {
     background-color: transparent;
     padding: var(--s1) 0 0;
     @media (min-width: @screen-sm) {
-    	padding:0;
+    	padding: var(--s1);
     }
   }
   .c-card--title-highlight & {
@@ -136,7 +139,7 @@ a.c-card {
 	font-size: 14px;
 	line-height: 1.5;
 	font-style: italic;
-	font-weight: 500;
+	font-weight: 600;
 	display: block;
 	+ * {
     margin-top:0;
