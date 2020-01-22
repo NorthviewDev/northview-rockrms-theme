@@ -12,6 +12,30 @@
 
 {%- assign occArray = childIds | Split: ',' -%}
 {%- assign sortedOccs = occArray | Sort -%}
+{%- assign numOccs = 0 -%}
+{% for eioLoop in sortedOccs %}
+  {% assign eioNameId = eioLoop | Split:'^' %}
+  {% assign eioSize = eioNameId | Size %}
+  
+  {% if eioSize == 1 %}
+    {% assign eioId = eioNameId[0] %}
+  {% else %}
+    {% assign eioId = eioNameId[1] %}
+  {% endif %}
+  
+  
+  {% eventitemoccurrence id:'{{eioId}}' %}
+    {% assign eventItemOccurrence = eventitemoccurrence %}
+    {% if eventItemOccurrence.Schedule.NextStartDateTime %}
+    
+      {% assign numOccs = numOccs | Plus:'1' %}
+      {% assign eventItemOccurrenceLinkages = eventItemOccurrence.Linkages %}
+      {% assign eventItemOccurrenceLinkagesCount = eventItemOccurrenceLinkages | Size %}
+      {% assign eventItemOccurrenceRegistrationUrl = eventItemOccurrence | Attribute:'RegistrationURL','RawValue' %}
+  
+    {% endif %}
+  {% endeventitemoccurrence %}
+{% endfor %}
 
 <div class="container">
 	<div class="row">
@@ -33,10 +57,10 @@
           {% eventitemoccurrence id:'{{eioId}}' %}
           {% assign eventItemOccurrence = eventitemoccurrence %}
           {% if eventItemOccurrence.Schedule.NextStartDateTime %}
-  
-  				{% assign scheduledDates = eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:'all' %}
-  		      	{% assign fst = eventItemOccurrence.Schedule.FriendlyScheduleText %}
-  		      	{% capture eioSchedule %}
+            
+  				  {% assign scheduledDates = eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:'all' %}
+  		      {% assign fst = eventItemOccurrence.Schedule.FriendlyScheduleText %}
+  		      {% capture eioSchedule %}
   		      	{% if fst contains 'Weekly' %}
   		      		{{ fst | Remove:'Weekly: ' }}
   		      	{% elseif fst contains 'Daily' %}
@@ -49,11 +73,22 @@
   						{{ fst }}
   		       {% endif %}
   		      {% endcapture %}
+  		      
+          {%- assign ariaExpanded = "false" -%}
+          {%- assign panelCollapseClass = "" -%}
+          {%- if eventItemOccurrence.Id == PageParameterEventOccurrenceId and PageParameter.occs != "all" %}
+            {%- assign ariaExpanded = "true" -%}
+            {%- assign panelCollapseClass = " in" -%}
+          {%- endif -%}  
+          {%- if numOccs == 1 -%}
+            {%- assign ariaExpanded = "true" -%}
+            {%- assign panelCollapseClass = " in" -%}
+          {%- endif -%}
   
   	      <div class="panel panel-default">
   	        <div class="panel-heading" role="tab" id="heading_{{eventItemOccurrence.Id}}">
   	          <h4 class="panel-title">
-  	            <a role="button" data-toggle="collapse" data-parent="#accordion__event-occurrences" href="#collapse_{{eventItemOccurrence.Id}}" aria-controls="collapse_{{eventItemOccurrence.Id}}">
+  	            <a role="button" data-toggle="collapse" data-parent="#accordion__event-occurrences" href="#collapse_{{eventItemOccurrence.Id}}" aria-controls="collapse_{{eventItemOccurrence.Id}}" aria-expanded="{{ariaExpanded}}">
   	                {% assign campusName = eventItemOccurrence.Campus.Name | Trim  %}
   	                {% if campusName == '' %}
   	                    All Campuses: {{ eioSchedule }}
@@ -65,7 +100,7 @@
   	                </a>
   	          </h4>
   	        </div>
-  	        <div id="collapse_{{eventItemOccurrence.Id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_{{eventItemOccurrence.Id}}">
+  	        <div id="collapse_{{eventItemOccurrence.Id}}" class="panel-collapse collapse{{ panelCollapseClass }}" role="tabpanel" aria-labelledby="heading_{{eventItemOccurrence.Id}}">
   	          <div class="panel-body nopad margin-t-sm">
   	
   						  	<div class="row">
@@ -152,7 +187,7 @@
   						
                   </div>
   								<div class="col-md-5 col-md-pull-7">
-  							    <div class="event-info__contact">
+  							    <div class="event-info__contact stack">
                       {% if eventItemOccurrence.Campus.Name != '' %}
                       <h4> {{ eventItemOccurrence.Campus.Name }} Campus</h4>
                       {% endif %}

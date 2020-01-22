@@ -1,18 +1,20 @@
 <div class="events_list">
 {% assign eventItemOccurrenceCount = EventItemOccurrences | Size %}
 {% assign current_start_day = null %}
-
-  {% if eventItemOccurrenceCount == 0 %}
+{% assign num_events = 0 %}
+{% if eventItemOccurrenceCount == 0 %}
   <div class="panel panel-default margin-t-md">
     <div class="margin-all-md"> There are no events in this time frame.</div>
   </div>
-
-  {% else %}
-  
+{% else %}
 	<div class='hide'>
 		<div class='hide'>
 			<div class="hide">
   {% for eventItemOccurrence in EventItemOccurrences %}
+  {% assign currentDate = 'Now' | Date:'yyyyMMdd' %}
+  {% assign eventItemDate = eventItemOccurrence.Date | Date:'yyyyMMdd' %}
+  {% if eventItemDate >= currentDate %}
+  {% assign num_events = num_events | Plus:'1' %}
 	  {% if eventItemOccurrence.Date != current_start_day %}
 			</div>
 		</div>
@@ -66,9 +68,15 @@
   				{% assign current_start_day = eventItemOccurrence.Date %}
   				{% assign current_end_day = eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveEndDate %}
         </div>
-				{% endfor %}
+  {% endif %}
+{% endfor %}
 			</div>
 		</div>
 	</div>
-	{% endif %}
+{% if num_events == 0 %}
+  <div class="panel panel-default margin-t-md">
+    <div class="margin-all-md"> There are no events in this time frame.</div>
+  </div>
+{% endif %}
+{% endif %}
 </div>

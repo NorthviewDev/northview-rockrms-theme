@@ -6,7 +6,7 @@
   {%- if eventDetailPage != "" -%}
   <a class="c-card no-border" href="{{ event.DetailPage }}">
   {%- else -%}
-  <a class="c-card no-border" href="/event/{{event.EventItemOccurrence.Id}}">
+  <a class="c-card no-border" href="/event/{{event.EventItemOccurrence.Id}}?occs=all">
   {%- endif -%}
     <div class="c-card__header">
     {%- if event.EventItemOccurrence.EventItem.Photo.Guid && event.EventItemOccurrence.EventItem.Photo.Guid != "" -%}
@@ -28,7 +28,7 @@
       {%- if eventDetailPage != "" -%}
       <button class="c-btn c-btn--dark" onclick="window.location.href='{{ event.DetailPage }}'">
       {%- else -%}
-      <button class="c-btn c-btn--dark" onclick="window.location.href='/event/{{event.EventItemOccurrence.Id}}'">
+      <button class="c-btn c-btn--dark" onclick="window.location.href='/event/{{event.EventItemOccurrence.Id}}?occs=all'">
       {%- endif -%}
         Details<i class="nv-icon nv-icon--carat_right"></i></button></p>
     </div>
