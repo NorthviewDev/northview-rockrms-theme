@@ -55,7 +55,7 @@
 				  <i> View <i class="fa fa-chevron-right"></i> </i>
 				</a>
 				{% else %}
-				<a href="{{ DetailsPage }}?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}">
+				<a href="/event/{{ eventItemOccurrence.EventItemOccurrence.Id }}">
 					View <i class="fa fa-chevron-right"></i>
 				</a>
 				{% endif %}

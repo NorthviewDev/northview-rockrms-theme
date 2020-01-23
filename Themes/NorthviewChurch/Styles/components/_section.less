@@ -1,10 +1,10 @@
 /*** SECTION COMPONENT ***/
 .c-section {
-  --section-padding-top: calc(@grid-gutter-width * 2);
-  --section-padding-bottom: calc(@grid-gutter-width * 2);
-  @media (min-width: @screen-sm) {
-    --section-padding-top: calc(@grid-gutter-width * 3);
-    --section-padding-bottom: calc(@grid-gutter-width * 3);
+  --section-padding-top: var(--s4);
+  --section-padding-bottom: var(--s4);
+  @media (min-width: @screen-lg) {
+    --section-padding-top: var(--s8);
+    --section-padding-bottom: var(--s8);
   }  
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
@@ -14,6 +14,9 @@
   &.c-section--dark {
     color: @white;
     background-color: @gray-darker;
+  }
+  &.c-section--medium {
+    background-color: @gray-lightest;
   }
   &.c-section--light {
     background-color: @white;
@@ -38,67 +41,109 @@
     }
   }
 }
-.c-section--overlap-bottom {
-  .c-section {
-    padding-bottom: calc(@grid-gutter-width * 3);
-    @media (min-width: @screen-sm) {
-    	padding-bottom: calc(@grid-gutter-width * 4);
+.c-section--overlap-top {
+  .container:first-child {
+    --section-overlap-top: calc(@grid-gutter-width * -3); //translate along negative Y axis
+    @media (min-width: @screen-lg) {
+      --section-overlap-top: calc(@grid-gutter-width * -7); //translate along negative Y axis
     }
+    body.no-title & {
+      @media (min-width: @screen-sm) {
+        --section-overlap-top: calc(@grid-gutter-width * -13); //translate along negative Y axis
+      }
+      @media (min-width: @screen-lg) {
+        --section-overlap-top: calc(@grid-gutter-width * -12); //translate along negative Y axis
+      }      
+    }
+    margin-top: var(--section-overlap-top)
   }
-}
-.c-section--overlap-bottom + * section > .container {
-  --section-overlap-top: calc(@grid-gutter-width * -4); //translate along negative Y axis
-  @media (min-width: @screen-sm) {
-    --section-overlap-top: calc(@grid-gutter-width * -5); //translate along negative Y axis
-  }  
-  margin-top: var(--section-overlap-top)
 }
 .c-section__header {
   text-align: center;
-	margin-bottom: (@grid-gutter-width / 2);
-	@media (min-width: @screen-sm) {
-    margin-bottom: (@grid-gutter-width * 1.5);
+	margin-bottom: var(--s1);
+	@media (min-width: @screen-md) {
+    margin-bottom: var(--s3);
 	}    
-  > * {
-  	color: @gray;
+  h2 {
+  	color: @text-color;
   	font-size: 29px;
-  	letter-spacing: 1px;
-  	text-transform: uppercase;
-  	margin: 0;
-  	@media (min-width: @screen-sm) {
+  	margin-top:0;
+  	@media (min-width: @screen-md) {
     	font-size: 64px;
-    	letter-spacing: 2.21px;
   	}
   }
+  #latest-message &,
+  #featured-events &,
+	.c-section--dark & {
+  	h2 {
+    	color: @gray;
+    	letter-spacing: 1px;
+    	text-transform: uppercase;
+    	@media (min-width: @screen-sm) {
+      	letter-spacing: 2.21px;
+    	}
+    }
+  }
 	.c-section--light & {
-  	> * {
+  	h2 {
       color: @gray-darker;
       display:inline-block;
       position: relative;
     	span {
       	position: relative;
       	z-index: 1;
-      	min-width: 250px;
-      	display: inline-block;
+      	@media (min-width: @screen-sm) {
+      		display: inline-block;
+      	}
     	}
     	&:after {
       	content:"";
       	background-color: @brand-primary;
       	height:0.45em;
       	bottom:0;
-      	left:-20px;
-      	right:-20px;
+      	left:-10px;
+      	right:-10px;
       	position: absolute;
       	z-index: 0;
       	transition: all ease-in-out 150ms;
+      	@media (min-width: @screen-sm) {
+        	left:-20px;
+        	right:-20px;      		
+      	}
     	}
     }
+    &--plain h2:after {
+      content:none;
+    }
+  }
+}
+.c-section__description {
+  color: @text-color;
+	font-size: 24px;
+	line-height: 1.1;
+	text-align: center;
+	text-transform: none;
+	font-family: @headings-font-family;
+	font-weight: 600;
+	margin-top: var(--s1);
+	@media (min-width: @screen-sm) {
+		margin-top: var(--s3);
+    font-size: 36px;
+	}
+	.c-section--light & {
+  	color: @gray-darker;
+  }
+	.c-section--dark & {
+  	color: @white;
   }
 }
 .c-section__footer {
   text-align: center;
-	margin-top: (@grid-gutter-width / 2);
+	margin-top: var(--s1);
 	margin-bottom:0;
+	@media (min-width: @screen-sm) {
+    margin-top: var(--s3);
+	}    
 }
 .ornamental {
   user-select:none;
@@ -110,10 +155,11 @@
     user-select: none;
     transform-origin: top left;
     animation: 1s ease-in-out infinite moveit;
-    z-index: 1;
+    z-index: 10;
     color: @brand-primary;
+    font-size: 14px;
     @media (min-width: @screen-sm) {
-    	z-index: 10;
+    	font-size: 24px;
     }
     .nv-icon {
       position: absolute;
