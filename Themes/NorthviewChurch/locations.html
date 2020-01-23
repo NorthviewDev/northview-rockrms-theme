@@ -6,90 +6,14 @@
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' type='text/css' />
     <!-- Turf.js plugin -->
     <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
-    <style>
-/* Marker tweaks */
-    .marker {
-        border: none;
-        cursor: pointer;
-        height: 36px;
-        width: 36px;
-        background-image: url(/Themes/NorthviewChurch/Assets/_img/Location_Marker.png);
-        background-color: rgba(0, 0, 0, 0);
-        background-size: contain;
-      }
-
-      .mapboxgl-popup {
-        padding-bottom: 50px;
-      }
-
-      .mapboxgl-popup-close-button {
-        display:none;
-      }
-      .mapboxgl-popup-content {
-        font:400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
-        padding:0;
-        width:180px;
-      }
-      .mapboxgl-popup-content-wrapper {
-        padding:1%;
-      }
-      .mapboxgl-popup-content h3 {
-        background:#91c949;
-        color:#fff;
-        margin:0;
-        display:block;
-        padding:10px;
-        border-radius:3px 3px 0 0;
-        font-weight:700;
-        margin-top:-15px;
-      }
-
-      .mapboxgl-popup-content h4 {
-        margin:0;
-        display:block;
-        padding: 10px 10px 10px 10px;
-        font-weight:400;
-      }
-
-      .mapboxgl-popup-content div {
-        padding:10px;
-      }
-
-      .mapboxgl-container .leaflet-marker-icon {
-        cursor:pointer;
-      }
-
-      .mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
-        margin-top: 15px;
-      }
-
-      .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
-        border-bottom-color: #91c949;
-      }
-
-      .mapboxgl-ctrl-geocoder {
-        border: 2px solid #00853e;
-        border-radius: 0;
-        position: relative;
-        top: 0;
-        width: 800px;
-        margin-top: 0;
-        border: 0;
-      }
-
-      .mapboxgl-ctrl-geocoder > div {
-        min-width:100%;
-        margin-left:0;
-      }
-    </style>
     <div id="campus-locations">
       <div id='location-search'>
         <div class='stack'>
           <h2 class="location-search__title">Join Us This Weekend</h2>
-          <div id="addressInput" class="form-group"></div>
+          <div id="address-input" class="form-group"></div>
           <div class="form-group"><button id="searchButton" type="submit" class="c-btn c-btn--primary c-btn--offset-border">Visit<i class="nv-icon nv-icon--carat_right"></i></button></div>        
         </div>
-        <div id='listings' class='listings'></div>
+        <div id='campus-list' class='listings stack'></div>
       </div>
       <div id='campusmap' class='map'></div>
     </div>
@@ -149,7 +73,7 @@
             "type": "Feature",
             "properties": {
                 "campusid": "{{ campus.Id }}",
-                "serviceTimes": "{{ displayServiceTimes }}",
+                "serviceTimes": "<p>{{ displayServiceTimes }}</p>",
                 "locationLink": "{{ displayLocationLink }}",
                 "name": "{{ campus.Name }}",
                 "url": "{{ campus.Url }}",
@@ -197,9 +121,10 @@
             marker: true,
             types: "postcode",
             country: "us",
-            bbox: [-88.11601868813376,37.76202661177915,-84.75420228188288,41.7876939175587]
+            bbox: [-88.11601868813376,37.76202661177915,-84.75420228188288,41.7876939175587],
+            placeholder:'Search by Zip Code'
         });
-
+        
         /**
          * Add all the things to the page:
          * - The location listings on the side of the page
@@ -208,7 +133,7 @@
         */
         buildLocationList(stores);
 //        map.addControl(geocoder, 'top-left');
-        document.getElementById('addressInput').appendChild(geocoder.onAdd(map));
+        document.getElementById('address-input').appendChild(geocoder.onAdd(map));
         addMarkers();
 
         /**
@@ -260,7 +185,7 @@
            * Remove the existing listings and build the location
            * list again using the newly sorted stores.
           */
-          var listings = document.getElementById('listings');
+          var listings = document.getElementById('campus-list');
           while (listings.firstChild) {
             listings.removeChild(listings.firstChild);
           }
@@ -364,7 +289,7 @@
           var prop = store.properties;
 
           /* Add a new listing section to the sidebar. */
-          var listings = document.getElementById('listings');
+          var listings = document.getElementById('campus-list');
           var listing = listings.appendChild(document.createElement('div'));
           /* Assign a unique `id` to the listing. */
           listing.id = "listing-" + prop.id;
@@ -432,10 +357,19 @@
         var popUps = document.getElementsByClassName('mapboxgl-popup');
         if (popUps[0]) popUps[0].remove();
 
-        var popup = new mapboxgl.Popup({closeOnClick: true})
+        var popup = new mapboxgl.Popup({
+          closeOnClick: true,
+          closeButton: true
+        })
           .setLngLat(currentFeature.geometry.coordinates)
-          .setHTML('<h3>' + currentFeature.properties.name + '</h3>' +
-            '<h4>' + currentFeature.properties.serviceTimes + '</h4>')
+          .setHTML('<div style="padding:20px">' +
+            '<h3>' + currentFeature.properties.name + '</h3>' +
+            '<div class="stack" style="padding:10px 10px 0">' +
+            currentFeature.properties.serviceTimes +
+            currentFeature.properties.locationLink +
+            '</div>' +
+            '</div>' +
+						'<div class="location-link"><a href="' + currentFeature.properties.url + '" class="c-btn c-btn--dark c-btn--display-block">Details<i class="nv-icon nv-icon--carat_right"></i></a></div>')
           .addTo(map);
       }
 
