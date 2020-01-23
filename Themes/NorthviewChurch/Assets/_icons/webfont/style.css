@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'northviewchurch';
-  src:  url('fonts/northviewchurch.eot?oyzg4t');
-  src:  url('fonts/northviewchurch.eot?oyzg4t#iefix') format('embedded-opentype'),
-    url('fonts/northviewchurch.ttf?oyzg4t') format('truetype'),
-    url('fonts/northviewchurch.woff?oyzg4t') format('woff'),
-    url('fonts/northviewchurch.svg?oyzg4t#northviewchurch') format('svg');
+  src:  url('fonts/northviewchurch.eot?ti1g89');
+  src:  url('fonts/northviewchurch.eot?ti1g89#iefix') format('embedded-opentype'),
+    url('fonts/northviewchurch.ttf?ti1g89') format('truetype'),
+    url('fonts/northviewchurch.woff?ti1g89') format('woff'),
+    url('fonts/northviewchurch.svg?ti1g89#northviewchurch') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -26,6 +26,9 @@
 }
 
 .nv-icon--carat_right:before {
+  content: "\e905";
+}
+.nv-icon--carat_right_large:before {
   content: "\e903";
 }
 .nv-icon--give:before {
@@ -42,6 +45,9 @@
 }
 .nv-icon--ornament_plus:before {
   content: "\e907";
+}
+.nv-icon--ornament_minus:before {
+  content: "\e904";
 }
 .nv-icon--phone:before {
   content: "\e908";

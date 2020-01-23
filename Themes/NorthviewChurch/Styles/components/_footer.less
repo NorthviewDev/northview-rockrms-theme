@@ -1,12 +1,7 @@
 /*** FOOTER ****/
-footer {
-  background-color: @gray-darker;
-  .c-section {
-    background-color: transparent;
-    padding: 40px 10px 32px;
-  }
-  .l-row--flex .zone-content {
-    @media (min-width: @screen-sm) {
+#zone-footer {
+  .zone-content {
+    @media (min-width: @screen-md) {
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
@@ -20,15 +15,23 @@ footer {
       align-self: auto;
     }
   }
+}
+
+footer {
+  background-color: @gray-darker;
+  .c-section {
+    background-color: transparent;
+    padding: 40px 10px 32px;
+  }
   .l-pad--xs {
     padding: 36px 14px 48px;
-    @media (min-width: @screen-sm) {
+    @media (min-width: @screen-md) {
     	padding: 0;
     }
   }
   .l-col--3up {
     column-count: 3;
-    column-gap: @grid-gutter-width;
+    column-gap: var(--s2);
   }
   .c-logo-link {
     border-bottom:none;  
@@ -42,10 +45,17 @@ footer {
       fill: @white;
       color: @white;
     }
+    &:hover, &:focus {
+      .cls-1 {
+        fill: @color-gray-lightest;
+        color: @color-gray-lightest;      
+      }
+    }
   }
   .c-section__header {
   	margin-bottom:0;
-  	> * {
+  	h2 {
+    	text-transform: uppercase;
     	color: @gray;
     	font-size: 16px;
     	letter-spacing: 2.67px;
@@ -55,10 +65,11 @@ footer {
   .c-list--quick-links {
     li {
     	font-size: 14px;
-    	line-height: 18px;
-    	margin-bottom: 1em;
+    	margin-bottom: 1.35em;
     	a {
       	color: @white;
+      	font-weight: normal;
+      	border-bottom-width: 1px;
     	}
     }
   }
@@ -72,22 +83,28 @@ footer {
       font-size: 25px;
       a {
         color: @white;
-        border-bottom:none;  
+        border-bottom:none;
+      	font-weight: normal;
       }
     }
   }
   .c-block__footer-info {
-    background-color: @gray;
+    background-color: @gray-dark;
     color: @white;
     font-size: 10px;
     line-height: 16px;
     padding: 18px 6px;
+    .l-row--flex {
+      justify-content: space-between;
+    }
     p {
       margin-bottom: 0;
       line-height: 1.1;
     }
     a {
       color: @white;
+    	border-bottom-width: 1px;
+    	font-weight: normal;
     }
   }
 }

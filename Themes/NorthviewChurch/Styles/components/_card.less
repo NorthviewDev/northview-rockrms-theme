@@ -1,22 +1,40 @@
 /*** CARD COMPONENT ***/
-:root {
-  --card-body-padding: @grid-gutter-width;
+a.c-card {
+  border-bottom: solid 13px @color-gray-light;
+  transition: all ease-in-out 100ms;
+  display: block;
+  &.no-border {
+    border-bottom: none;
+  }
+  &:hover, &:focus {
+    outline: none;
+    box-shadow: none;
+  	transform: translateY(-5px);
+  }
 }
 .c-card {
   position: relative;
   background-color: @white;
   margin-bottom: var(--s2);
+  height: 100%;
+  @media (min-width: @screen-sm) {
+  	margin-bottom: 0;
+  }
   &.c-card--title-highlight {
     color: @gray-darker;
     display: inline-block;
     min-width: 50%;
+    margin-bottom: var(--s1);
+    @media (min-width: @screen-sm) {
+      margin-bottom: var(--s4);
+    }
     .c-card__body {
       background-color: @brand-primary;
     }
   	.ornamental {
       line-height: 1;
       position: absolute;
-      bottom: -10px;
+      bottom: -3px;
       width: 80%;
       left: 50%;
       transform: translateX(-50%);
@@ -24,15 +42,39 @@
       overflow: hidden;
       height: 1em;
     	font-size: 15px;
-      letter-spacing: 3px;
+    	letter-spacing: 7px;
       @media (min-width: @screen-sm) {
       	font-size: 30px;
-      	letter-spacing: 6px;
+        bottom: -10px;
       }
       i {
         float: left;
       }
   	}
+  }
+  &.decorated {
+    margin-left: var(--s1);
+    margin-right: var(--s1);
+    @media (min-width: @screen-sm) {
+      margin-left:0;
+    	margin-right: 0;
+    }
+    .ornamental {
+      position: absolute;
+      top:75px;
+      left:0;
+      width: 1em;
+      font-size: 24px;
+      color: @gray-lighter;
+      line-height: 9px;
+      i {
+        border-bottom: solid 2px @gray-lighter;
+        width: 100%;
+        &:before {
+          content: none;
+        }
+      }
+    }
   }
 }
 
@@ -50,7 +92,10 @@
   display: block;
   width: 100%;
   max-width: 100%;
-  height: auto;
+  .c-card--side-by-side:not(.c-card--big) & {
+    object-fit: cover;  
+    height: 100%;    
+  }
 }
 
 /**
@@ -58,8 +103,26 @@
  * 1) Contains the card title and description
  */
 .c-card__body {
-  padding: var(--card-body-padding);
+  padding: var(--s2);
   background-color: @white;
+  color: @text-color;
+  .decorated & {
+    padding: var(--s3) var(--s4);
+  }
+  .c-card--side-by-side & {
+    margin-bottom: var(--s2);
+    @media (min-width: @screen-sm) {
+    	margin-bottom:0;
+	    padding: var(--s4);
+    }
+  }
+  .c-card--big & {
+    background-color: transparent;
+    padding: var(--s1) 0 0;
+    @media (min-width: @screen-sm) {
+    	padding: var(--s1);
+    }
+  }
   .c-card--title-highlight & {
     @media (min-width: @screen-sm) {
 	    padding: 58px 100px;
@@ -76,7 +139,7 @@
 	font-size: 14px;
 	line-height: 1.5;
 	font-style: italic;
-	font-weight: 500;
+	font-weight: 600;
 	display: block;
 	+ * {
     margin-top:0;
@@ -90,21 +153,21 @@
 .c-card__title {
 	font-size: 25px;
 	color: @text-color;
-	@media (min-width: @screen-sm) {
+	@media (min-width: @screen-md) {
   	font-size: 36px;
 	}
 	&.c-card__title--med {
   	font-size: 29px;
-  	text-transform: uppercase;  	
-  	@media (min-width: @screen-sm) {
+  	@media (min-width: @screen-md) {
     	font-size: 48px;
   	}
 	}
 	.c-card--title-highlight & {
+		color: @text-color !important;
   	font-size: 29px;
   	text-transform: uppercase;
   	text-align: center;
-  	@media (min-width: @screen-sm) {
+  	@media (min-width: @screen-md) {
     	font-size: 64px;
   	}
 	}
@@ -116,9 +179,19 @@
  */
 .c-card__description {
   color: @text-color;
+	font-size: 20px;
+	text-transform: none;
+	letter-spacing: normal;
   .c-card--title-highlight & {
+  	color: @text-color;
   	font-size: 20px;
     line-height: 26px;
     text-align: center;
+  }
+}
+
+.c-card--side-by-side {
+  > :first-child {
+    //margin-bottom: 0;
   }
 }

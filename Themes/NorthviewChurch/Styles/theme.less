@@ -1,7 +1,6 @@
 
 // Load Master Styles
 // -------------------------
-@import url("https://use.typekit.net/uzz1nzz.css");
 @import "../../../Styles/FontAwesome/font-awesome.less";
 @import "../../../Styles/Bootstrap/bootstrap.less";
 @import "../../../Styles/_rock-core.less";
@@ -12,68 +11,11 @@
 @import "_variable-overrides.less";
 @import "_print.less";
 
-// 1. HTML Overrides
-// -------------------------
+@import 'global/global';
+@import 'components/components';
+@import 'global/_events';
+@import 'global/_messages';
 
-html {
-  -webkit-font-smoothing: antialiased;
-}
-
-main {
-  display: block;
-}
-
-h1.pagetitle:empty { // hides the page title h1 tag if the page has the title hidden
-  display: none;
-}
-
-.page-icon {
-  display: none;
-}
-
-/* hide block panels */
-.panel.panel-block {
-  border: 0;
-  box-shadow: none;
-
-  & > .panel-heading,
-  & > .rock-panel-drawer {
-    display: none;
-  }
-
-  & > .panel-body {
-    padding: 0;
-
-    .grid.grid-panel {
-      margin: 0;
-    }
-  }
-}
-
-
-.panel-heading {
-  a {
-    border-bottom: 1px dotted @link-color;
-    &:hover {
-      border-bottom-style: solid;
-      text-decoration: none;
-    }
-  }
-
-  .panel-success & {
-    a {
-      color: @panel-success-text;
-      border-color: @panel-success-text;
-    }
-  }
-
-  .panel-warning & {
-    a {
-      color: @panel-warning-text;
-      border-color: @panel-warning-text;
-    }
-  }
-}
-
-
-@import "_css-overrides.less";
+/*** keep these last ***/
+@import "global/_global-spacing"; //these inline styles should override defaults
+@import "_css-overrides.less"; //editable in Rock Theme settings

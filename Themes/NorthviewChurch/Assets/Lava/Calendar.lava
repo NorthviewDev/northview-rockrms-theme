@@ -17,9 +17,9 @@
         <a href="{{ eventItemOccurrence.DetailPage }}">
           View Details <i class="fa fa-chevron-right"></i>
         </a>
-		{% else %}
-		<a href="{{ DetailsPage }}?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}">
-            View Details <i class="fa fa-chevron-right"></i>
+    		{% else %}
+    		<a href="/event/{{ eventItemOccurrence.EventItemOccurrence.Id }}">
+          View Details <i class="fa fa-chevron-right"></i>
         </a>
         {% endif %}
       </div>

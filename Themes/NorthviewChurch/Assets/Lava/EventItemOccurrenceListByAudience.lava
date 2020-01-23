@@ -9,7 +9,7 @@
       {% if occurrence.EventItem.DetailsUrl != '' %}
       <a href="{{ occurrence.EventItem.DetailsUrl }}">
         {% else %}
-        <a href="{{ EventDetailPage }}?EventOccurrenceId={{ occurrence.Id }}">
+        <a href="/event/{{ occurrence.Id }}">
           {% endif %}
           {{ occurrence.EventItem.Name }} <small>({{ occurrence.Schedule.iCalendarContent | DatesFromICal | First | Date: 'M/d ' }})</small>
         </a>

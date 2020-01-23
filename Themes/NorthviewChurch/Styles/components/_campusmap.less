@@ -1,0 +1,181 @@
+@mapheight: 550px;
+:root {
+  --scrollbarBG: @gray-lightest;
+  --thumbBG: @gray-light;
+}
+#location-search::-webkit-scrollbar {
+  width: 11px;
+}
+#location-search {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+#location-search::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+#location-search::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+#campus-locations {
+  @media (min-width: @screen-sm) {
+    height: @mapheight;	
+    overflow: hidden;
+  }
+  #location-search {
+    background-color: @white;
+    padding: 48px 30px;
+    @media (min-width: @screen-sm) {
+      padding: 58px;
+      box-shadow: 0px 0px 10px 0px #8c8c8c;
+      height: @mapheight;	
+      width: 40%;
+      float: left;
+      overflow: auto;
+      position: relative;
+      z-index: 10;
+    }
+    @media (min-width: @screen-lg) {
+      width: 30%;
+    }
+    --space: 2rem;
+    .form-group {
+      text-align: center;
+      .form-control {
+        width: 60%;
+        margin-left: auto;
+        margin-right:auto;
+      }
+    }
+  }
+}
+.location-search__title {
+  font-size: 36px;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+}
+#campus-list {
+  margin-bottom: 48px;
+  @media (min-width: @screen-sm) {
+  	margin-bottom: 58px;
+  }
+  > :first-child{
+    margin-top: 36px;
+  }
+  .place {
+    //padding: var(--s1);
+  }
+  .place__name {
+    font-size: 25px;
+    text-transform: none;
+    margin:0;
+    a {
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      i:after {
+        border-bottom-width: 2px;
+      }
+      .nv-icon--carat_right {
+        &:before {
+          content:"\e903";
+        }
+      }
+    }
+  }
+  .place__distance-text {
+    margin:0;
+  }
+}
+
+//Google Maps InfoWindow overrides
+.gm-style .gm-style-iw-c {
+  //padding:0;
+  border-radius: 0;
+}
+.gm-style .gm-style-iw-t::after {
+  //background: @text-color;
+}
+#campusmap {
+  height: @mapheight;
+  display: none;
+  @media (min-width: @screen-sm) {
+    width: 60%;
+    float:left;
+    display: block;
+  }
+  @media (min-width: @screen-lg) {
+    width: 70%;
+  }
+  a {
+    border-bottom: none;
+  }
+
+  /* Marker tweaks */
+  .marker {
+    border: none;
+    cursor: pointer;
+    height: 36px;
+    width: 36px;
+    background-image: url(/Themes/NorthviewChurch/Assets/_img/Location_Marker.png);
+    background-color: rgba(0, 0, 0, 0);
+    background-size: contain;
+  }
+  .mapboxgl-popup {
+    padding-bottom: 50px;
+  }
+  .mapboxgl-popup-content {
+    padding:0;
+    width:300px;
+  }
+  .mapboxgl-popup-content-wrapper {
+    padding:0;
+  }
+  .mapboxgl-popup-content h3 {
+    margin:0;
+    font-size: 25px;
+  }
+  .mapboxgl-popup-content p {
+    font: 16px/20px @font-family-sans-serif;
+  }
+  .mapboxgl-popup-content div {
+    padding:0;
+  }
+  .mapboxgl-container .leaflet-marker-icon {
+    cursor:pointer;
+  }
+  .mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+    border-radius: 0;
+  }
+  .mapboxgl-popup-anchor-bottom > .mapboxgl-popup-tip {
+    border-top-color: @black;
+  }
+}
+#address-input {
+  .mapboxgl-ctrl-geocoder {
+    width: 100%;
+  }
+  .mapboxgl-ctrl-geocoder > div {
+    min-width:100%;
+    margin-left:0;
+  }
+  .mapboxgl-ctrl-geocoder--input {
+    background-color: #d8d8d8;
+    padding-left: 40px;
+    border-radius: 0;
+    margin-top: 0;
+    border: 0;
+    &:focus {
+      box-shadow: none;
+      outline: solid 3px @brand-primary;
+    }
+  }
+  .suggestions-wrapper {
+    text-align: left;
+    a {
+      
+    }
+  } 
+}
