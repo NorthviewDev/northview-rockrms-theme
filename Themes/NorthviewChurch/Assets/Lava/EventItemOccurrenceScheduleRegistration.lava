@@ -58,7 +58,7 @@
           {% assign eventItemOccurrence = eventitemoccurrence %}
           {% if eventItemOccurrence.Schedule.NextStartDateTime %}
             
-  				  {% assign scheduledDates = eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:'all' %}
+  			  {% assign scheduledDates = eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:'all' %}
   		      {% assign fst = eventItemOccurrence.Schedule.FriendlyScheduleText %}
   		      {% capture eioSchedule %}
   		      	{% if fst contains 'Weekly' %}
@@ -66,14 +66,21 @@
   		      	{% elseif fst contains 'Daily' %}
   		      		{{ fst }}, {{ scheduledDates | First | Date:'MMMM d' }} - {{ scheduledDates | Last | Date:'MMMM d' }}
   		      	{% elseif fst contains 'Once' %}
-  		        {{ eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal | First | Date: 'MMMM d' }} | {{ eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal | First | Date: 'h:mm tt' | Replace:':00','' }}
+					{% assign startDate = eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal | First | Date: 'MMMM d' %}
+					{% assign endDate = eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:1,'enddatetime' | First | Date: 'MMMM d' %}
+					{% if startDate == endDate %}
+						{{startDate}} | {{ eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal | First | Date: 'h:mm tt' | Replace:':00','' }} to {{ eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:1,'enddatetime' | First | Date: 'h:mm tt' | Replace:':00','' }}
+					{% else %}
+						{{ startDate }} | {{ eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal | First | Date: 'h:mm tt' | Replace:':00','' }} to {{endDate}} | {{ eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:1,'enddatetime' | First | Date: 'h:mm tt' | Replace:':00','' }}
+					{% endif %}
+					
   		      	{% elseif fst contains '<li>' %}
   		      		Multiple Dates and Times
   		      	{% else %}
-  						{{ fst }}
+  						{{ fst }} to {{ eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:1,'enddatetime' | First | Date: 'h:mm tt' | Replace:':00','' }}
   		       {% endif %}
   		      {% endcapture %}
-  		      
+
           {%- assign ariaExpanded = "false" -%}
           {%- assign panelCollapseClass = "" -%}
           {%- if eventItemOccurrence.Id == PageParameterEventOccurrenceId and PageParameter.occs != "all" %}
@@ -106,12 +113,21 @@
   						  	<div class="row">
   							  <div class="col-md-7 col-md-push-5 margin-b-md">
   						      {% assign scheduledDates = eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:'all' %}
+							  {% assign scheduledEndDates = eventItemOccurrence.Schedule.iCalendarContent | DatesFromICal:'all','enddatetime' %}
   						      <p class="margin-b-none"><strong>Schedule</strong></p>
   						      <ul class="list-unstyled">
   						        {% for scheduledDate in scheduledDates %}
-  						        <li>
-  						          {{ scheduledDate | Date:'dddd, MMMM d, yyyy @ h:mm tt' }}
+								{% assign i = forloop.index | Minus:1 %}
+								{% assign startDate = scheduledDate | Date:'dddd, MMMM d, yyyy' %}
+								{% assign endDate = scheduledEndDates[i] | Date:'dddd, MMMM d, yyyy' %}
+								<li>
+								{% if startDate == endDate %}
+									{{ scheduledDate | Date:'dddd, MMMM d, yyyy | h:mm tt' }} to {{ scheduledEndDates[i] | Date:'h:mm tt' }}
+								{% else %}
+									{{ scheduledDate | Date:'dddd, MMMM d, yyyy | h:mm tt' }} to {{ scheduledEndDates[i] | Date:'dddd, MMMM d, yyyy | h:mm tt' }}
+								{% endif %}
   						        </li>
+								
   						        {% endfor %}
   						      </ul>
   						
@@ -121,7 +137,15 @@
   						      {% assign eventItemOccurrenceLinkagesCount = eventItemOccurrenceLinkages | Size %}
                     {% assign eventItemOccurrenceRegistrationUrl = eventItemOccurrence | Attribute:'RegistrationURL','RawValue' %}
   						      {% if eventItemOccurrenceLinkagesCount > 0 or eventItemOccurrenceRegistrationUrl != '' %}
-  						      <p><strong>Registration Options for {{eventItemOccurrence.Campus.Name}}</strong></p>
+							  
+								{% assign campusName = eventItemOccurrence.Campus.Name | Trim  %}
+								{% if campusName == '' %}
+									<p><strong>Registration Option for All Campuses</strong></p>
+								{% else %}
+									<p><strong>Registration Option for {{eventItemOccurrence.Campus.Name}}</strong></p>
+								{% endif %}
+					
+  						      
   						        {% for eventItemOccurrenceLinkage in eventItemOccurrenceLinkages %}
   						        						        
   						            {% assign daysTillStartDate = 'Now' | DateDiff:eventItemOccurrenceLinkage.RegistrationInstance.StartDateTime,'m' %}
@@ -188,9 +212,14 @@
                   </div>
   								<div class="col-md-5 col-md-pull-7">
   							    <div class="event-info__contact stack">
-                      {% if eventItemOccurrence.Campus.Name != '' %}
-                      <h4> {{ eventItemOccurrence.Campus.Name }} Campus</h4>
-                      {% endif %}
+								
+								{% assign campusName = eventItemOccurrence.Campus.Name | Trim  %}
+								{% if campusName == '' %}
+									<h4>All Campuses</h4>
+								{% else %}
+									<h4> {{ eventItemOccurrence.Campus.Name }} Campus</h4>
+								{% endif %}
+								
                 
                       {% if eventItemOccurrence.ContactPersonAliasId != null or eventItemOccurrence.ContactEmail != '' or eventItemOccurrence.ContactPhone != '' %}
                       <p>
