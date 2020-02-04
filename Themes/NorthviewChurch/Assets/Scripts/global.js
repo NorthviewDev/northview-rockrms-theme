@@ -34,9 +34,6 @@ $(function() { //document.ready
   	   navOpen.classList.remove("nav-toggle-menu--is-active");
   	}
   });
-  function randPercentRange(range){
-    return Math.floor(Math.random() * (range[1]-range[0])) + range[0] + '%';
-  }
   // Function to execute X function, Y number of times with Z of interval delay 
   function recursiveDelay(functionToCall, executionsNumber, timeoutInMilliseconds) {
       if (executionsNumber) { //exit condition
@@ -88,23 +85,6 @@ $(function() { //document.ready
       recursiveDelay(playVideo, numVids, 600);
     }
   }
-  
-  function addOrnament(appendObject,appendIconClass,rangeTop,rangeLeft) {      
-    // create a new element 
-    var newSpan = document.createElement("span");
-    // add the text node to the newly created div
-    newSpan.classList.add("ornament");  
-    // add the newly created element and its content into the DOM 
-    appendObject.appendChild(newSpan);
-    var newIcon = document.createElement("i");
-    newIcon.classList.add("nv-icon");
-    newIcon.classList.add("wow");
-    newIcon.classList.add("fadeIn");
-    newIcon.classList.add(appendIconClass);
-    newSpan.style.top = randPercentRange(rangeTop);
-    newSpan.style.left = randPercentRange(rangeLeft);
-    newSpan.appendChild(newIcon);
-  }
   function addSlashes(){
     var heroVideo = document.querySelector('.c-block-hero__background-video');
     if (heroVideo) addOrnamentalElem(heroVideo,"nv-icon--ornament_backslash",15);
@@ -122,6 +102,26 @@ $(function() { //document.ready
     });
   }
   
+/*
+  function randPercentRange(range){
+    return Math.floor(Math.random() * (range[1]-range[0])) + range[0] + '%';
+  }
+  function addOrnament(appendObject,appendIconClass,rangeTop,rangeLeft) {      
+    // create a new element 
+    var newSpan = document.createElement("span");
+    // add the text node to the newly created div
+    newSpan.classList.add("ornament");  
+    // add the newly created element and its content into the DOM 
+    appendObject.appendChild(newSpan);
+    var newIcon = document.createElement("i");
+    newIcon.classList.add("nv-icon");
+    newIcon.classList.add("wow");
+    newIcon.classList.add("fadeIn");
+    newIcon.classList.add(appendIconClass);
+    newSpan.style.top = randPercentRange(rangeTop);
+    newSpan.style.left = randPercentRange(rangeLeft);
+    newSpan.appendChild(newIcon);
+  }
   $('.has-ornaments').each(function(){
     var hasOrnaments = this;
     if (window.innerWidth < 768) {
@@ -154,6 +154,7 @@ $(function() { //document.ready
       addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);        
     }
   });
+*/
   
   addSlashes();
   window.onload = function(){

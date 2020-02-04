@@ -195,7 +195,6 @@
                       {% if eventItemOccurrence.ContactPersonAliasId != null or eventItemOccurrence.ContactEmail != '' or eventItemOccurrence.ContactPhone != '' %}
                       <p>
                         <strong>Contact</strong><br />
-              
                         {%- if eventItemOccurrence.ContactEmail != '' -%}
                         <a href="mailto:{{ eventItemOccurrence.ContactEmail }}">
                         {%- endif -%}
@@ -205,21 +204,22 @@
                         {%- if eventItemOccurrence.ContactEmail != ''- %}
                         </a>
                         {%- endif -%}
-                
                         {{ eventItemOccurrence.ContactPhone }}
                       </p>
                       {% endif %}
                 
                       {% if eventItemOccurrence.Location != '' %}
                       <p>
-                        <strong> Location</strong> <br />
+                        <strong> Location</strong><br />
                         {{ eventItemOccurrence.Location }}
                       </p>
                       {% endif %}
                   
                       {% if eventItemOccurrence.Note != '' %}
-                      <strong>Note</strong><br />
-                      {{ eventItemOccurrence.Note }}
+                      <p>
+                        <strong>Note</strong><br />
+                      {{ eventItemOccurrence.Note | StripHtml }}
+                      </p>
                       {% endif %}
   							    </div>
   								</div>

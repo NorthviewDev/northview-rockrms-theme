@@ -5,6 +5,15 @@ This is for the message detail page https://www.northviewchurch.us/message/
 	{% assign videoEmbed = Item | Attribute:'VideoEmbed' %}
 	{% assign audioLink = Item | Attribute:'AudioLink' %}
   {% assign SeriesTitle = Item.ParentItems[0].ContentChannelItem.Title %}
+	{% assign sermonImage = Item | Attribute:'MessageImage', 'RawValue' %}
+        
+  {% if sermonImage != '' %}
+  {% capture shareImage %}https://northviewchurch.us/GetImage.ashx?Guid={{sermonImage}}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both{% endcapture %}
+  {{ shareImage | AddMetaTagToHead:'property','og:image' }}
+  {{ shareImage | AddMetaTagToHead:'property','twitter:image' }}
+  {% endif %}
+
+  {{ Item.Title | AddMetaTagToHead:'property','og:title' }}
       
       <div id="latest-message" class="message-detail">
         <div class="container">
