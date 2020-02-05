@@ -26,7 +26,7 @@
         {% comment %}
           Removing the event time from the feature events block. - TAS 2/5/20
         {% endcomment %}
-        <!--<li><i class="nv-icon nv-icon--clock"></i> {{ event.Time }}</li>-->
+        <li><i class="nv-icon nv-icon--clock"></i> {{ event.Time }}!</li>
         
       </ul>
       <p>
