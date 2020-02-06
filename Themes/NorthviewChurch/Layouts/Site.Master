@@ -89,10 +89,10 @@
   <link type="text/css" href="<%# ResolveRockUrl("~~/Assets/Scripts/jsscrollpane/jquery.jscrollpane-min.css") %>" rel="stylesheet" media="all" />
   
   <!-- the mousewheel plugin - optional to provide mousewheel support -->
-  <script type="text/javascript" src="<%# ResolveRockUrl("~~/Assets/Scripts/jsscrollpane/jquery.mousewheel.js") %>"></script>
+  <script defer type="text/javascript" src="<%# ResolveRockUrl("~~/Assets/Scripts/jsscrollpane/jquery.mousewheel.js") %>"></script>
   
   <!-- the jScrollPane script -->
-  <script type="text/javascript" src="<%# ResolveRockUrl("~~/Assets/Scripts/jsscrollpane/jquery.jscrollpane.min.js") %>"></script>
+  <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jScrollPane/2.2.1/script/jquery.jscrollpane.min.js"></script>
 
   <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
