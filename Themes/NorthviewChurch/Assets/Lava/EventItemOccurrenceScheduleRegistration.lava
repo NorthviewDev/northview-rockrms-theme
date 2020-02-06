@@ -1,3 +1,7 @@
+{% comment %}
+   This is a test comment - TAS 2/4/20
+{% endcomment %}
+
 {%- if PageParameter.EventOccurrenceId and PageParameter.EventOccurrenceId != '' -%}
 {%- assign PageParameterEventOccurrenceId = PageParameter.EventOccurrenceId -%}
 {%- elseif PageParameter.eventoccurrenceid and PageParameter.eventoccurrenceid != '' -%}
