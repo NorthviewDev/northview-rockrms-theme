@@ -22,7 +22,13 @@
       <h3 class="c-card__title">{{ event.Name }}</h3>
       <ul class="c-block__date-time c-list--inline">
         <li><i class="nv-icon nv-icon--calendar"></i> {{ event.Date | Date:"M/d/yyyy" }}</li>
-        <li><i class="nv-icon nv-icon--clock"></i> {{ event.Time }}</li>
+        
+        {% comment %}
+          Removing the event time from the feature events block. - TAS 2/5/20
+          <li><i class="nv-icon nv-icon--clock"></i> {{ event.Time }}!</li>
+        {% endcomment %}
+        
+        
       </ul>
       <p>
       {%- if eventDetailPage != "" -%}
