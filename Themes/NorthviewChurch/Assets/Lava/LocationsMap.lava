@@ -12,7 +12,7 @@
         <div class='stack'>
           <h2 class="location-search__title">Join Us This Weekend</h2>
           <div id="address-input" class="form-group"></div>
-          <div class="form-group"><button id="searchButton" type="submit" class="c-btn c-btn--primary c-btn--offset-border">Visit<i class="nv-icon nv-icon--carat_right"></i></button></div>        
+          <div class="form-group"><button id="searchButton" type="submit" class="c-btn c-btn--primary c-btn--offset-border">Search<i class="nv-icon nv-icon--carat_right"></i></button></div>        
         </div>
         <div id='campus-list' class='listings stack'></div>
         </div>
@@ -314,10 +314,6 @@
 
           /* Add details to the individual listing. */
           var details = listing.appendChild(document.createElement('div'));
-          //details.innerHTML = prop.address;
-          if (prop.phone) {
-            details.innerHTML = prop.phone;
-          }
           if (prop.distance) {
             var roundedDistance = Math.round(prop.distance*100)/100;
             details.innerHTML += '<p><strong>' + roundedDistance + ' miles away</strong></p>';
@@ -359,7 +355,7 @@
       function flyToStore(currentFeature) {
         map.flyTo({
             center: currentFeature.geometry.coordinates,
-            zoom: 11
+            zoom: 8
           });
       }
 
