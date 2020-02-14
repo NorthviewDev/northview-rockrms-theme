@@ -1,18 +1,6 @@
-{% comment %}
-   This is a test comment - TAS 2/4/20
-{% endcomment %}
+{%- assign eventItemOccurrences = Context.EventItemOccurrence.EventItem.EventItemOccurrences -%}
 
-{%- if PageParameter.EventOccurrenceId and PageParameter.EventOccurrenceId != '' -%}
-{%- assign PageParameterEventOccurrenceId = PageParameter.EventOccurrenceId -%}
-{%- elseif PageParameter.eventoccurrenceid and PageParameter.eventoccurrenceid != '' -%}
-{%- assign PageParameterEventOccurrenceId = PageParameter.eventoccurrenceid -%}
-{%- endif -%}
-{%- eventitemoccurrence id:'{{ PageParameterEventOccurrenceId }}' -%}
-{%- eventitem id:'{{ eventitemoccurrence.EventItemId }}' -%}
-{%- assign Event = eventitem -%}
-{%- assign eventItemOccurrences = Event.EventItemOccurrences -%}
-
-{%- capture childIds -%}{% for occ in eventItemOccurrences %}{{occ.Campus.Name}}^{{ occ.Id }}{% unless forloop.last %},{% endunless %}{% endfor %}{%- endcapture -%}
+{%- capture childIds -%}{% for occ in eventItemOccurrences %}{{occ.Campus.Name}}-{{occ.Schedule.NextStartDateTime | Date:'yyyyMMddHHmm'}}^{{ occ.Id }}{% unless forloop.last %},{% endunless %}{% endfor %}{%- endcapture -%}
 
 {%- assign occArray = childIds | Split: ',' -%}
 {%- assign sortedOccs = occArray | Sort -%}
@@ -87,7 +75,7 @@
 
           {%- assign ariaExpanded = "false" -%}
           {%- assign panelCollapseClass = "" -%}
-          {%- if eventItemOccurrence.Id == PageParameterEventOccurrenceId and PageParameter.occs != "all" %}
+          {%- if eventItemOccurrence.Id == Context.EventItemOccurrence.Id and PageParameter.occs != "all" %}
             {%- assign ariaExpanded = "true" -%}
             {%- assign panelCollapseClass = " in" -%}
           {%- endif -%}  
@@ -106,9 +94,7 @@
   	                {% else %}
   	                    {{eventItemOccurrence.Campus.Name}} Campus: {{ eioSchedule }}
   	                {% endif %}
-  	                
-  	                
-  	                </a>
+  	            </a>
   	          </h4>
   	        </div>
   	        <div id="collapse_{{eventItemOccurrence.Id}}" class="panel-collapse collapse{{ panelCollapseClass }}" role="tabpanel" aria-labelledby="heading_{{eventItemOccurrence.Id}}">
@@ -272,5 +258,3 @@
 		</div>
 	</div>
 </div>
-{% endeventitem %}
-{% endeventitemoccurrence %}
