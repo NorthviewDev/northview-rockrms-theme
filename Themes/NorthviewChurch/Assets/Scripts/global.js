@@ -166,5 +166,7 @@ $(function() { //document.ready
     html: 'true'
   });
   new WOW().init();
-  cssVars();
+  //cssVars();
+  
+  console.log(window.innerWidth)
 });

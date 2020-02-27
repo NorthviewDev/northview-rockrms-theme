@@ -68,7 +68,7 @@
 
 <html lang="en-US">
 <head runat="server">
-  <meta http-equiv="X-UA-Compatible" content="IE=10" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta charset="utf-8">
   <title></title>
   <script src="<%# System.Web.Optimization.Scripts.Url("~/Scripts/Bundles/RockJQueryLatest") %>"></script>
@@ -83,8 +83,7 @@
   
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" ></script>
   <script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/global-min.js") %>" ></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
-
+  
   <!-- styles needed by jScrollPane -->
   <link type="text/css" href="<%# ResolveRockUrl("~~/Assets/Scripts/jsscrollpane/jquery.jscrollpane-min.css") %>" rel="stylesheet" media="all" />
   
@@ -93,6 +92,9 @@
   
   <!-- the jScrollPane script -->
   <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jScrollPane/2.2.1/script/jquery.jscrollpane.min.js"></script>
+
+  <!-- the ie11CustomProps script -->
+  <script>window.MSInputMethodContext && document.documentMode && document.write('<script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/ie11CustomProperties.js") %>"><\x2fscript>');</script>
 
   <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>

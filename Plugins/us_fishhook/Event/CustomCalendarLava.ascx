@@ -1,23 +1,37 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="CustomCalendarLava.ascx.cs" Inherits="RockWeb.Blocks.Event.CalendarLava" %>
 
-<asp:UpdatePanel ID="upnlContent" runat="server" class="events-calendar">
+<asp:UpdatePanel ID="upnlContent" runat="server">
     <Triggers>
         <asp:AsyncPostBackTrigger ControlID="cblCampus" />
         <asp:AsyncPostBackTrigger ControlID="cblCategory" />
     </Triggers>
     <ContentTemplate>
 
-        <div class="events-calendar__header">
-          <div class="l-row--flex">
-            <asp:Literal ID="tOutput" runat="server"></asp:Literal>
-            
+        <Rock:NotificationBox ID="nbMessage" runat="server" Visible="false" />
+
+        <asp:Panel id="pnlDetails" runat="server" CssClass="row">
+
+            <asp:Panel ID="pnlFilters" CssClass="col-md-3 hidden-print" runat="server">
+
+                <asp:Panel ID="pnlCalendar" CssClass="calendar" runat="server">
+                    <asp:Calendar ID="calEventCalendar" runat="server" DayNameFormat="FirstLetter" SelectionMode="Day" BorderStyle="None"
+                        TitleStyle-BackColor="#ffffff" NextPrevStyle-ForeColor="#333333" FirstDayOfWeek="Sunday" Width="100%" CssClass="calendar-month" OnSelectionChanged="calEventCalendar_SelectionChanged" OnDayRender="calEventCalendar_DayRender" OnVisibleMonthChanged="calEventCalendar_VisibleMonthChanged">
+                        <DayStyle CssClass="calendar-day" />
+                        <TodayDayStyle CssClass="calendar-today" />
+                        <SelectedDayStyle CssClass="calendar-selected" BackColor="Transparent" />
+                        <OtherMonthDayStyle CssClass="calendar-last-month" />
+                        <DayHeaderStyle CssClass="calendar-day-header" />
+                        <NextPrevStyle CssClass="calendar-next-prev" />
+                        <TitleStyle CssClass="calendar-title" />
+                    </asp:Calendar>
+                </asp:Panel>
+
                 <% if ( CampusPanelOpen || CampusPanelClosed )
                   { %>
-                  <div class="filter">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" href="#collapseOne">Sort by Location
+                                <a role="button" data-toggle="collapse" href="#collapseOne">Campuses
                                 </a>
                             </h4>
                         </div>
@@ -38,16 +52,14 @@
                             </div>
                         </div>
                     </div>
-                  </div>
                 <% } %>
 
                 <% if ( CategoryPanelOpen || CategoryPanelClosed )
                    { %>
-                  <div class="filter">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" href="#collapseTwo">Sort by Ministry
+                                <a role="button" data-toggle="collapse" href="#collapseTwo">Categories
                                 </a>
                             </h4>
                         </div>
@@ -66,38 +78,13 @@
                             </div>
                         </div>
                     </div>
-                  </div>
                 <% } %>
-          </div>
-        </div>
 
-        <Rock:NotificationBox ID="nbMessage" runat="server" Visible="false" />
-
-        <asp:Panel id="pnlDetails" runat="server" CssClass="row">
-
-            <asp:Panel ID="pnlList" CssClass="col-md-9 col-md-push-3" runat="server">
-              
-                <asp:Literal ID="lOutput" runat="server"></asp:Literal>
-                <asp:Literal ID="lDebug" Visible="false" runat="server"></asp:Literal>
+                <Rock:DateRangePicker ID="drpDateRange" runat="server" Label="Select Range" /><asp:LinkButton ID="lbDateRangeRefresh" runat="server" CssClass="btn btn-default btn-sm" Text="Refresh" OnClick="lbDateRangeRefresh_Click" />
 
             </asp:Panel>
 
-            <asp:Panel ID="pnlFilters" CssClass="col-md-3 col-md-pull-9 sidebar hidden-print" runat="server">
-
-                <asp:Panel ID="pnlCalendar" CssClass="calendar" runat="server">
-                    <asp:Calendar ID="calEventCalendar" runat="server" DayNameFormat="FirstLetter" SelectionMode="Day" BorderStyle="None"
-                        TitleStyle-BackColor="#ffffff" NextPrevStyle-ForeColor="#333333" FirstDayOfWeek="Sunday" Width="100%" CssClass="calendar-month" OnSelectionChanged="calEventCalendar_SelectionChanged" OnDayRender="calEventCalendar_DayRender" OnVisibleMonthChanged="calEventCalendar_VisibleMonthChanged">
-                        <DayStyle CssClass="calendar-day" />
-                        <TodayDayStyle CssClass="calendar-today" />
-                        <SelectedDayStyle CssClass="calendar-selected" BackColor="Transparent" />
-                        <OtherMonthDayStyle CssClass="calendar-last-month" />
-                        <DayHeaderStyle CssClass="calendar-day-header" />
-                        <NextPrevStyle CssClass="calendar-next-prev" />
-                        <TitleStyle CssClass="calendar-title" />
-                    </asp:Calendar>
-                </asp:Panel>
-
-                <Rock:DateRangePicker ID="drpDateRange" runat="server" Label="Select Range" /><asp:LinkButton ID="lbDateRangeRefresh" runat="server" CssClass="btn btn-default btn-sm" Text="Refresh" OnClick="lbDateRangeRefresh_Click" />
+            <asp:Panel ID="pnlList" CssClass="col-md-9" runat="server">
 
                 <div class="btn-group hidden-print" role="group">
                     <Rock:BootstrapButton ID="btnDay" runat="server" CssClass="btn btn-default" Text="Day" OnClick="btnViewMode_Click" />
@@ -106,6 +93,9 @@
                     <Rock:BootstrapButton ID="btnYear" runat="server" CssClass="btn btn-default" Text="Year" OnClick="btnViewMode_Click" />
                     <Rock:BootstrapButton ID="btnAll" runat="server" CssClass="btn btn-default" Text="All" OnClick="btnViewMode_Click" />
                 </div>
+
+                <asp:Literal ID="lOutput" runat="server"></asp:Literal>
+                <asp:Literal ID="lDebug" Visible="false" runat="server"></asp:Literal>
 
             </asp:Panel>
 
