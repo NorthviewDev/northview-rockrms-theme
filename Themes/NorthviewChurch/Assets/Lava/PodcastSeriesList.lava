@@ -93,7 +93,7 @@
 	<div class="col-md-4 col-sm-6 margin-b-md">
 		<a class="series-link" href="{{ LinkedPages.DetailPage }}?Item={{ item.Id }}">
 		<article class="series">
-			{% if detailImageGuid != '' %}
+			{% if seriesImageGuid != '' %}
 				<div class="series-image" style="background-image: url('/GetImage.ashx?Guid={{ seriesImageGuid }}');" ></div>
 			{% endif %}
 

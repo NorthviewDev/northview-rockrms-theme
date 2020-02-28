@@ -1,5 +1,8 @@
+{%- if numEvents == null or numEvents == "" -%}
+{%- assign numEvents = 3 -%}
+{%- endif -%}
 <div class="l-grid l-grid--sm-3col">
-{%- for eventItems in EventItems limit:3 -%}
+{%- for eventItems in EventItems limit:numEvents -%}
 {%- assign numEvents = eventItems | Size -%}
 {%- assign event = eventItems | First -%}
   {%- assign eventDetailPage = event.DetailPage | Trim -%}
