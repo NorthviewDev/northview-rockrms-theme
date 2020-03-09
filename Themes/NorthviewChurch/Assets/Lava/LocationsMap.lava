@@ -56,7 +56,8 @@
     "type": "FeatureCollection",
     "features": [
 {%- cache key:'active-campus-json' duration:'3600' -%}
-{%- for campus in Campuses -%}
+{%- assign campusesSorted = Campuses | Sort:'Name' -%}
+{%- for campus in campusesSorted -%}
 {%- assign isActive = campus.IsActive -%}
 {%- assign hasLocation = campus.Location.Latitude -%}
 {%- if isActive and hasLocation -%}
