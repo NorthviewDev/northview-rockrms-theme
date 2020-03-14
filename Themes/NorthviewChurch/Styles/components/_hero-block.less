@@ -37,7 +37,13 @@
       	width: 80%;
       }
       @media (min-width: @screen-lg) {
-      	width: calc(66.6% + 30px);
+      	//width: calc(66.6% + 30px);
+      	width: 100%;
+      	grid-area: 1/1/1/3;
+        -ms-grid-row: 1;
+        -ms-grid-row-span: 1;
+        -ms-grid-column: 1;
+        -ms-grid-column-span: 2;
       }
       #header-video,
       video {
@@ -65,20 +71,24 @@
         max-height: calc(~"100vh" - var(--pwa-menu-height) - var(--s2));
         max-height: calc((var(--vh, 1vh) * 100) - var(--pwa-menu-height) - var(--s2));
       }
+      &:after {
+        content:"";
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+      	opacity: 0.6;
+      	background: linear-gradient(180deg, #FFFFFF 0%, rgba(208,208,208,0.45) 100%);
+      }
     }
-    &:after {
-      content:"";
-      position: absolute;
-      top:0;
-      left:0;
-      right:0;
-      bottom:0;
-    	opacity: 0.6;
-    	background: linear-gradient(180deg, #FFFFFF 0%, rgba(208,208,208,0.45) 100%);
-    }
-    &.nofilter:after {
-      background: none;
-      content:none;
+    &.nofilter {
+      #header-video {
+        &:after {
+          background: none;
+          content:none;
+        }
+      }
     }
     > .ornamental {
       position: absolute;
@@ -124,9 +134,14 @@
       justify-content: center;
     }
     @media (min-width: @screen-lg) {
-    	top: auto;
       justify-content: flex-end;
       align-content: center;
+      position: relative;
+    	grid-area: 1/2/1/4;
+      -ms-grid-row: 1;
+      -ms-grid-row-span: 1;
+      -ms-grid-column: 2;
+      -ms-grid-column-span: 2;
     }
     &.c-block-hero__content--alt1 {
       justify-content: flex-start;
@@ -436,6 +451,11 @@
   @media (min-width: @screen-sm) {
   	z-index: 15;
   }
+  @media (min-width: @screen-lg) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+  }
   > .ornamental {
     position: absolute;
     transform: rotate(-90deg);
@@ -455,7 +475,7 @@
       display: block;
     }
   }
-  .container {
+  &.container {
     @media (min-width: @screen-sm) {
     	position: relative;
     	z-index: 15;

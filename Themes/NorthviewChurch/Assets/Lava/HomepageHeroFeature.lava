@@ -1,9 +1,6 @@
   <section id="homepage-feature" class="c-block-hero__wrapper has-media">
     <div class="c-block-hero has-ornaments">
-      <div class="c-block-hero__container">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
+      <div class="c-block-hero__container container">
           {%- assign numItems = Items | Size -%}
           {%- for item in Items -%}
             {%- assign displayTitle = item.ContentChannel | Attribute:'DisplayTitle' -%}
@@ -54,8 +51,5 @@
                 <p class="c-block-hero__cta"><a href="{{ LinkedPages.DetailPage }}" class="c-btn c-btn--large c-btn--offset-border">Visit<i class="nv-icon nv-icon--carat_right"></i></a></p>
               </div>
             </div>
-          </div>
-        </div>      
-      </div>
     </div><!-- end c-block--hero-->
   </section>

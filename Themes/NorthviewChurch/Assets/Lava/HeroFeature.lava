@@ -1,9 +1,6 @@
 <section id="homepage-feature" class="c-block-hero__wrapper has-media">
   <div class="c-block-hero has-ornaments">
-    <div class="c-block-hero__container">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
+    <div class="c-block-hero__container container">
         {%- for item in Items -%}
           {%- assign displayTitle = item.ContentChannel | Attribute:'DisplayTitle' -%}
             <div class="c-block-hero__background-video l-aspect-ratio__16-9 nofilter">
@@ -14,9 +11,6 @@
               <h2 class="c-block-hero__subhead"><a href="{{ LinkedPages.DetailPage }}">{{item.Title}}</a></h2>
             </div>
         {%- endfor -%}
-          </div>
-        </div>
-      </div>      
     </div>
   </div><!-- end c-block--hero-->
 </section>
