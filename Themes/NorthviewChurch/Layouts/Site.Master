@@ -102,11 +102,10 @@
   
   <form id="form1" runat="server">
     <section id="notification">
-    <Rock:Zone Name="Notification" runat="server" />
+    <Rock:Zone Name="NotificationBar" runat="server" />
     </section>
   
   <!-- Page Header -->
-  <Rock:Zone Name="NotificationBar" runat="server" />
   <header>
     <div class="c-header" role="banner">
       <Rock:Zone Name="Header" runat="server" />
