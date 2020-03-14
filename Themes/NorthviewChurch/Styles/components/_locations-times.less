@@ -1,13 +1,17 @@
 #locations-times {
-  background-color: rgba(@color-brand-primary,0.65);
+  background-color: rgba(124, 173, 209, 0.85);
   background-position: center center;
   background-size: cover;
+  background-blend-mode: darken;
   @media (min-width: @screen-lg) {
   	background-position: right center;
     background-size: 55% auto;
   }
   .tab-content {
-    padding: var(--s4);
+    padding: var(--s2);
+    @media (min-width: @screen-sm) {
+    	padding: var(--s4);
+    }
     ul {
       margin:0;
       padding:0;
@@ -145,7 +149,7 @@
   right:0;
   bottom:0;
   z-index: 1;
-  transform: translateY(50%);
+  transform: translateY(45%);
   opacity:0.5;
   pointer-events: none;
   &.left {
@@ -153,4 +157,7 @@
     left:0;
     background-position: top right;
   }
+}
+.shareables a {
+  border: none;
 }

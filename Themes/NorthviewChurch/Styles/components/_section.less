@@ -135,9 +135,20 @@
       padding-right: 20px;
       padding-bottom: 10px;
       margin-right: 40px;
+      position: relative;
       @media (min-width: @screen-md) {
         padding-left: 90px;
       	margin-right: 80px;
+      }
+      &:after {
+        content:'';
+        height: 70px;
+        width: 320px;
+        background: url('/Content/ExternalSite/bluedots.png') no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: 70%;
+        right: 90%; 
       }
     }
   }
