@@ -101,6 +101,9 @@
 <body runat="server" id="body">
   
   <form id="form1" runat="server">
+    <section id="notification">
+    <Rock:Zone Name="Notification" runat="server" />
+    </section>
   
   <!-- Page Header -->
   <Rock:Zone Name="NotificationBar" runat="server" />
