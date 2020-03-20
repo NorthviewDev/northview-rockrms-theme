@@ -1,4 +1,7 @@
 /*** HEADER, LOGO, NAVIGATION COMPONENTS ***/
+header {
+  position: relative;
+}
 .c-header {
   position: absolute;
   top:0;
@@ -29,7 +32,7 @@
       outline: none;
       box-shadow: none;
       .c-logo-link__img {
-        box-shadow: 0 0 8px rgba(@brand-primary, 0.6);
+        box-shadow: 0 0 8px rgba(@color-brand-primary, 0.6);
       }
     }
     &.no-header {
@@ -130,7 +133,7 @@
     @media (min-width: @screen-lg) {
      color: @white;
       &:after {
-        background-color: @brand-primary;
+        background-color: @color-brand-primary;
       }
     	&:hover, &:focus {
         color: @white;

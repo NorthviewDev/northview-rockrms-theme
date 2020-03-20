@@ -86,10 +86,17 @@ $(function() { //document.ready
     }
   }
   function addSlashes(){
+    var ltHeadline = document.querySelector('.c-locations-times__list div');
+    if (ltHeadline) addOrnamentalElem(ltHeadline,"nv-icon--ornament_backslash",15);
     var heroVideo = document.querySelector('.c-block-hero__background-video');
     if (heroVideo) addOrnamentalElem(heroVideo,"nv-icon--ornament_backslash",15);
     var heroHeadline = document.querySelector('.c-block-hero__headline');
-    if (heroHeadline) addOrnamentalElem(heroHeadline,"nv-icon--ornament_backslash",15);
+    var heroSubHeadline = document.querySelector('.c-block-hero__subhead');
+    if (heroSubHeadline) {
+      addOrnamentalElem(heroSubHeadline,"nv-icon--ornament_backslash",25);
+    } else {
+      addOrnamentalElem(heroHeadline,"nv-icon--ornament_backslash",15);
+    }
     var heroContainer = document.querySelector('.c-block-hero__container');
     if (heroContainer) addOrnamentalElem(heroContainer,"nv-icon--ornament_plus",3);
     var calloutPrimary = document.querySelectorAll('.c-card--title-highlight');
@@ -168,5 +175,5 @@ $(function() { //document.ready
   new WOW().init();
   //cssVars();
   
-  console.log(window.innerWidth)
+  //console.log(window.innerWidth)
 });

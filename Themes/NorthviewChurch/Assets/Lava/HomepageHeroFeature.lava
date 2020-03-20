@@ -1,10 +1,6 @@
-<link rel='stylesheet' href='https://vjs.zencdn.net/7.2.3/video-js.css'>
   <section id="homepage-feature" class="c-block-hero__wrapper has-media">
     <div class="c-block-hero has-ornaments">
-      <div class="c-block-hero__container">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
+      <div class="c-block-hero__container container">
           {%- assign numItems = Items | Size -%}
           {%- for item in Items -%}
             {%- assign displayTitle = item.ContentChannel | Attribute:'DisplayTitle' -%}
@@ -12,15 +8,21 @@
               {%- assign hiddenXs = "" -%}
               {%- if forloop.first != true -%}{%- assign hiddenXs = " hidden-xs" -%}{%- endif -%}
               <div class="c-block-hero__background-video l-aspect-ratio__9-16{{hiddenXs}}">
-                <video poster="/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=450&h=800&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
+                <video style="background: transparent no-repeat center center url(/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=900&h=1600&mode=crop&anchor=middlecenter&scale=both)" loop muted playsinline preload>
                   <source src="/GetFile.ashx?guid={{ item | Attribute:'Video','RawValue' }}" type="video/mp4">
                 </video>
               </div>
             {%- else -%}
               <div class="c-block-hero__background-video l-aspect-ratio__16-9">
-                <video poster="/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" autoplay loop muted playsinline preload>
-                  <source src="/GetFile.ashx?guid={{ item | Attribute:'Video','RawValue' }}" type="video/mp4">
+                <video id='header-video' class="video-js vjs-fluid" style="background:transparent no-repeat center center url(/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=1024&h=576&mode=crop&anchor=middlecenter&scale=both&quality=80);background-size:cover" preload autoplay muted loop playsinline>
+                  <source type="application/x-mpegURL" src="https://d15cfzadw3xvw4.cloudfront.net/565f0cc5-3f32-46e1-9f34-a098e8de9945/hls/2020_0101_WebsiteHeader_Weekend_v03.m3u8">
                 </video>
+                <link rel='stylesheet' href='https://vjs.zencdn.net/7.6.6/video-js.css'>
+                <script src='https://vjs.zencdn.net/7.6.6/video.js'></script>
+                <script id="rendered-js">
+                    var player = videojs('header-video');
+                    player.play();
+                </script>
               </div>
             {%- endif -%}
           {%- endfor -%}
@@ -49,8 +51,5 @@
                 <p class="c-block-hero__cta"><a href="{{ LinkedPages.DetailPage }}" class="c-btn c-btn--large c-btn--offset-border">Visit<i class="nv-icon nv-icon--carat_right"></i></a></p>
               </div>
             </div>
-          </div>
-        </div>      
-      </div>
     </div><!-- end c-block--hero-->
   </section>

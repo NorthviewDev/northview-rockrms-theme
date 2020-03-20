@@ -8,6 +8,10 @@
     Colors from InVision:
 */
 
+:root {
+  --primary-color: #53DAEC;//primary brand color #color
+}
+
 // Theme Colors *show in editor*
 @color-gray-darker: #221f1f;// #color
 @color-gray-dark: #373737;// #color
@@ -16,7 +20,7 @@
 @color-gray-lighter: #d3d3d3;// #color
 @color-gray-lightest: #ebebeb; //#color
 //--
-@color-brand-primary: #53DAEC;//primary brand color #color
+@color-brand-primary: var(--primary-color);
 @color-white: #ffffff;// #color
 
 //
@@ -29,7 +33,7 @@
 @gray:                  @color-gray;
 @gray-light:            @color-gray-light;
 @gray-lighter:          @color-gray-lighter;
-@brand-primary:         @color-brand-primary;
+@brand-primary:         #53DAEC;
 
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;

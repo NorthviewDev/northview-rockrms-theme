@@ -101,12 +101,17 @@
 <body runat="server" id="body">
   
   <form id="form1" runat="server">
+    <section id="notification">
+    <Rock:Zone Name="NotificationBar" runat="server" />
+    </section>
   
   <!-- Page Header -->
-  <header class="c-header" role="banner">
-    <Rock:Zone Name="Header" runat="server" />
-    <Rock:Zone Name="Navigation" runat="server" />  
-    <Rock:Zone Name="Login" runat="server" />
+  <header>
+    <div class="c-header" role="banner">
+      <Rock:Zone Name="Header" runat="server" />
+      <Rock:Zone Name="Navigation" runat="server" />  
+      <Rock:Zone Name="Login" runat="server" />
+    </div>
   </header>
   
   <asp:ContentPlaceHolder ID="feature" runat="server"></asp:ContentPlaceHolder>
