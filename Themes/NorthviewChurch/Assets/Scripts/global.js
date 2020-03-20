@@ -175,5 +175,5 @@ $(function() { //document.ready
   new WOW().init();
   //cssVars();
   
-  console.log(window.innerWidth)
+  //console.log(window.innerWidth)
 });

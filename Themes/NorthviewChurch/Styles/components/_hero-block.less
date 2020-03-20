@@ -266,10 +266,10 @@
   	> .ornamental {
     	display: block;
     	position: absolute;
-    	bottom:0;
-    	left: 50%;
-    	transform: translateX(-50%);
-    	margin-bottom: 50px;
+    	top:100%;
+    	left: 40px;
+//    	transform: translateX(-50%);
+//    	margin-bottom: 50px;
       font-size: 15px;
       white-space: nowrap;
       overflow: hidden;
@@ -496,12 +496,15 @@
 	margin-top: 0;
 	line-height: 1;
 	padding-bottom: 5px;
+	min-height: 44px;
 	@media (min-width: @screen-sm) {
   	font-size: 60px;
   	letter-spacing: 1.11px;
+    min-height: 60px;
 	}
 	@media (min-width: @screen-md) {
   	font-size: 80px;
+    min-height: 80px;
 	}
   .no-header & {
     .ornamental {
@@ -572,6 +575,11 @@
 }
 
 body.easter2020 {
+  .c-block-hero__container {
+    @media (min-width: @screen-lg) {
+      grid-template-columns: 3fr 1fr 1fr;
+    }
+  }
   .c-block-hero__wrapper.has-media:after {
     width: 25%;
     @media (min-width: @screen-lg) {

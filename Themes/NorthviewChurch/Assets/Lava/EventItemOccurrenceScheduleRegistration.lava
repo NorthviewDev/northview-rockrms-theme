@@ -121,7 +121,7 @@
   						        {% endfor %}
   						      </ul>
   						
-  									<p><a class="c-btn c-btn--dark" href="" onclick="return ics_click_{{ eventItemOccurrence.Id }}()" title="" data-original-title="Download Event"><i class="nv-icon nv-icon--calendar"></i> Add to Calendar</a></p>
+  									<p><a class="c-btn c-btn--dark" href="" onclick="return ics_click_{{ eventItemOccurrence.Id }}(event)" title="" data-original-title="Download Event"><i class="nv-icon nv-icon--calendar"></i> Add to Calendar</a></p>
   						
   						      {% assign eventItemOccurrenceLinkages = eventItemOccurrence.Linkages %}
   						      {% assign eventItemOccurrenceLinkagesCount = eventItemOccurrenceLinkages | Size %}
@@ -246,8 +246,11 @@
   	          </div>
   	        </div>
   	      </div>
-  	
-  	    <script>function ics_click_{{ eventItemOccurrence.Id }}() { text = `{{ eventItemOccurrence.Schedule.iCalendarContent }}`.replace('END:VEVENT', 'SUMMARY: {{ Event.Name | Escape }}\r\nLOCATION: {{ eventItemOccurrence.Location | Escape }}\r\nEND:VEVENT'); var element = document.createElement('a'); element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text)); element.setAttribute('download', '{{ Event.Name | ToCssClass }}.ics'); element.style.display = 'none'; document.body.appendChild(element); element.click(); document.body.removeChild(element); }</script>
+
+    <script>function ics_click() { text = `{{ EventItemOccurrence.Schedule.iCalendarContent }}`.replace('END:VEVENT', 'SUMMARY: {{ Event.Name }}\r\nLOCATION: {{ EventItemOccurrence.Location }}\r\nEND:VEVENT'); var element = document.createElement('a'); element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text)); element.setAttribute('download', '{{ Event.Name }}.ics'); element.style.display = 'none'; document.body.appendChild(element); element.click(); document.body.removeChild(element); }</script>
+    <script>function ics_click() { text = `{{ EventItemOccurrence.Schedule.iCalendarContent }}`.replace('END:VEVENT', 'SUMMARY: {{ Event.Name }}\r\nLOCATION: {{ EventItemOccurrence.Location }}\r\nEND:VEVENT'); var element = document.createElement('a'); element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text)); element.setAttribute('download', '{{ Event.Name }}.ics'); element.style.display = 'none'; document.body.appendChild(element); element.click(); document.body.removeChild(element); }</script>
+
+  	    <script>function ics_click_{{ eventItemOccurrence.Id }}(e) { e.preventDefault(); text = `{{ eventItemOccurrence.Schedule.iCalendarContent }}`.replace('END:VEVENT', 'SUMMARY: {{ Event.Name | Escape }}\r\nLOCATION: {{ eventItemOccurrence.Location | Escape }}\r\nEND:VEVENT'); var element = document.createElement('a'); element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text)); element.setAttribute('download', '{{ Event.Name | ToCssClass }}.ics'); element.style.display = 'none'; document.body.appendChild(element); element.click(); document.body.removeChild(element); }</script>
   
   {% endif %}
   {% endeventitemoccurrence %}
