@@ -16,6 +16,7 @@
   justify-content: center;
   transition: all ease-in-out 350ms;
   overflow: auto;
+  align-items: center;
   &.c-primary-nav--is-active {
     transform: translateY(0);
   }
@@ -34,6 +35,12 @@
 .c-primary-nav__content {
   padding-top: var(--s3);
   padding-bottom: var(--s3);
+  padding-left: var(--s3);
+  padding-right: var(--s3);
+  @media (min-width: @screen-sm) {
+  	padding-left:0;
+  	padding-right:0;
+  }
 }
 .c-primary-nav__list {
   margin-left:0;
