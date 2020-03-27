@@ -70,6 +70,7 @@
       @media (max-width:@screen-sm-max) {
         max-height: calc(~"100vh" - var(--pwa-menu-height) - var(--s2));
         max-height: calc((var(--vh, 1vh) * 100) - var(--pwa-menu-height) - var(--s2));
+        transition: all 150ms ease-in-out;
       }
       &:after {
         content:"";
@@ -107,6 +108,64 @@
     		font-size: 34px;
         left: calc(var(--s2) * -1);
     	}
+    }
+  }
+  &.no-video {
+   	@media (max-width: @screen-xs-max) {
+     	.c-block-hero__container {
+       	padding: 0 10% 0 20%;
+     	}
+     	&:before {
+       	content: "";
+       	background-color: #d3d3d3;
+       	position: absolute;
+       	top:10px;
+       	left:10px;
+       	right:10px;
+       	bottom:10px;
+     	}
+     	&:after {
+   	    transform: skew(-20deg);
+     	}
+    }
+   	@media (min-width: @screen-sm) {
+     	&:before {
+       	content: "";
+       	background-color: #d3d3d3;
+       	position: absolute;
+       	top:20px;
+       	left:20px;
+       	right:20px;
+       	bottom:20px;
+     	}
+     	&:after {
+   	    transform: skew(-18deg);
+     	}
+    }
+   	@media (max-width: @screen-md-max) {
+     	.c-block-hero {
+       	z-index: 10;
+        min-height: calc((var(--vh, 1vh) * 100) - var(--pwa-menu-height));
+        transition: all 150ms ease-in-out;
+        display: flex;
+        align-items: center;
+     	}
+      .c-block-hero__headline {
+        width: auto;
+        margin-right:0;
+        font-size: 9vw;
+        >.ornamental {
+          left:0;
+        }
+        .c-block-hero__wrap-text {
+          display: none;
+        }
+      }
+      .c-block-hero__content {
+        position: relative;
+        padding:0;
+        display: block;
+      }
     }
   }
   .c-block-hero__content {
@@ -496,7 +555,7 @@
 	margin-top: 0;
 	line-height: 1;
 	padding-bottom: 5px;
-	min-height: 44px;
+	//min-height: 44px;
 	@media (min-width: @screen-sm) {
   	font-size: 60px;
   	letter-spacing: 1.11px;
@@ -564,6 +623,8 @@
 .c-block-hero__cta {
   align-self: flex-end;
   margin-right: 7%;
+  position: relative;
+  z-index: 10;
 }
 @keyframes rotatingtext {
   100% {
