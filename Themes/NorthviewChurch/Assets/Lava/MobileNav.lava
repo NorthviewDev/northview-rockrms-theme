@@ -1,7 +1,7 @@
 {%- assign pageHeaderImage = CurrentPage | Attribute:'PageHeaderImage','RawValue' -%}
 {%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
 {%- assign sectionClass="" -%}
-{%- if pageHeaderImage != "" || if pageHeaderVideo != "" -%}
+{%- if pageHeaderImage != "" or pageHeaderVideo != "" -%}
   {%- assign sectionClass=" has-media" -%}
 {%- else -%}
   {%- assign sectionClass=" no-header" -%}

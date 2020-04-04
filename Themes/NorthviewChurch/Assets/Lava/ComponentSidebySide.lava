@@ -15,7 +15,7 @@
               <div class="c-section__header">
                 <div class="c-card c-card--title-highlight">
                   <div class="c-card__body stack">
-                    <h2 class="c-card__title">{{ sectionTitle }}</h2>
+                    <h2 class="c-card__title"><span>{{ sectionTitle }}</span></h2>
                     {%- if sectionDescription != '' -%}
                     <p class="c-card__description">{{ sectionDescription }}</p>
                     {%- endif -%}

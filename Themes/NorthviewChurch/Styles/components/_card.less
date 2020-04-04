@@ -30,6 +30,11 @@ a.c-card {
     }
     .c-card__body {
       background-color: @color-brand-primary;
+      .c-section--light &,      
+      .c-section--medium &,
+      .c-section--dark & {
+        background-color: @white;
+      }
     }
   	.ornamental {
       line-height: 1;
