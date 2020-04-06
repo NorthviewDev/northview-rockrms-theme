@@ -1,4 +1,10 @@
 .panel-group {
+  &.accordion {
+    @media (min-width: @screen-md) {
+    	column-count: 2;
+    	column-gap: 60px;
+    }
+  }
   .panel {
     border:none;
     border-radius: 0;
@@ -15,7 +21,7 @@
   }
   .panel-title {
     color: @text-color;
-  	font-size: 20px;
+  	font-size: 25px;
   	font-weight: 600;
   	line-height: 30px;
   	font-family: @font-family-sans-serif;

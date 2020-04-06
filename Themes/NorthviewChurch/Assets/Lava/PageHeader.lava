@@ -3,7 +3,7 @@
 {%- assign sectionClass="" -%}
 {%- assign ornamentClass="" -%}
 {%- assign containerClass="" -%}
-{%- if pageHeaderImage != "" || if pageHeaderVideo != "" -%}
+{%- if pageHeaderImage != "" or pageHeaderVideo != "" -%}
   {%- assign sectionClass=" has-media" -%}
   {%- assign ornamentClass=" has-ornaments" -%}
   {%- assign containerClass="col-lg-9 col-lg-offset-1" -%}
