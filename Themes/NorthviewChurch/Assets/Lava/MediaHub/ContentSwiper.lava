@@ -1,0 +1,22 @@
+<section class="c-section" id="featuredContent">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 left-block">
+                <div class="c-section__header decorated">
+                  <h2><span>RECENT</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="c-section__content">
+{% contentchannelitem where:'ContentChannelTypeId==3' sort:'StartDateTime desc' %}
+{% for Item in contentchannelitemItems %}
+<li>{{ Item.Title }} - {{ Item.StartDateTime }}
+{% endfor %}
+{% endcontentchannelitem %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
