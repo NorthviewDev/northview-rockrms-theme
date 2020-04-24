@@ -1,4 +1,4 @@
-<section class="c-section" id="featuredContent">
+<section class="c-section" id="featuredContent" style="overflow: hidden">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 left-block">
@@ -8,15 +8,104 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="c-section__content">
-{% contentchannelitem where:'ContentChannelTypeId==3' sort:'StartDateTime desc' %}
-{% for Item in contentchannelitemItems %}
-<li>{{ Item.Title }} - {{ Item.StartDateTime }}
-{% endfor %}
-{% endcontentchannelitem %}
+                {% contentchannelitem where:'ContentChannelTypeId==3' sort:'StartDateTime desc' %}
+                  <h3 class="c-section__title">Articles</h3>
+                  <div class="swiper-container overflow-visible">
+                    <div class="swiper-wrapper">
+                      {% for item in contentchannelitemItems %}
+                      <div class="swiper-slide">
+                        {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
+                        <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
+                          <div class="masonry-grid__content">
+                            <div class="masonry-grid__title-link stack">
+                              <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
+                              <p><a class="c-btn c-btn--text-link" href="{{ itemLink }}">Read<i class="nv-icon nv-icon--carat_right"></i></a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endcontentchannelitem %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="c-section__content">
+                {% contentchannelitem where:'ContentChannelTypeId==5' sort:'StartDateTime desc' %}
+                  <h3 class="c-section__title">Podcasts</h3>
+                  <div class="swiper-container overflow-visible">
+                    <div class="swiper-wrapper">
+                      {% for item in contentchannelitemItems %}
+                      <div class="swiper-slide">
+                        {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
+                        <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
+                          <div class="masonry-grid__content">
+                            <div class="masonry-grid__title-link stack">
+                              <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
+                              <p><a class="c-btn c-btn--text-link" href="{{ itemLink }}">Listen<i class="nv-icon nv-icon--carat_right"></i></a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endcontentchannelitem %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="c-section__content">
+                {% contentchannelitem where:'ContentChannelTypeId==10' sort:'StartDateTime desc' %}
+                  <h3 class="c-section__title">Resources</h3>
+                  <div class="swiper-container overflow-visible">
+                    <div class="swiper-wrapper">
+                      {% for item in contentchannelitemItems %}
+                      <div class="swiper-slide">
+                        {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
+                        <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
+                          <div class="masonry-grid__content">
+                            <div class="masonry-grid__title-link stack">
+                              <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
+                              <p><a class="c-btn c-btn--text-link" href="{{ itemLink }}">Read<i class="nv-icon nv-icon--carat_right"></i></a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endcontentchannelitem %}
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+{% assign swiper5css = '~~/Assets/Scripts/swiper-5.3.7/package/css/swiper.min.css' %}
+{% assign swiper5js = '~~/Assets/Scripts/swiper-5.3.7/package/js/swiper.min.js' %}
+<link rel="stylesheet" href="{{ swiper5css | ResolveRockUrl }}">
+<script src="{{ swiper5js | ResolveRockUrl }}"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 12,
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+        },
+      }
+
+    });
+</script>

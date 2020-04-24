@@ -1,0 +1,1 @@
+$((function(){let e=.01*window.innerHeight;document.documentElement.style.setProperty("--vh",e+"px"),window.addEventListener("resize",()=>{let e=.01*window.innerHeight;document.documentElement.style.setProperty("--vh",e+"px")})}));

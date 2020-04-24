@@ -83,6 +83,9 @@
   
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" ></script>
   <script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/global-min.js") %>" ></script>
+<!--[if !IE]>
+  <script defer type="text/javascript" src="<%# ResolveRockUrl("~~/Assets/Scripts/modern-min.js") %>"></script>
+<![endif]-->
   
   <!-- styles needed by jScrollPane -->
   <link type="text/css" href="<%# ResolveRockUrl("~~/Assets/Scripts/jsscrollpane/jquery.jscrollpane-min.css") %>" rel="stylesheet" media="all" />

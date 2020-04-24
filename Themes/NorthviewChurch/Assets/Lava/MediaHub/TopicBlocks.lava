@@ -1,0 +1,26 @@
+<section class="c-section" id="featuredContent" style="overflow: hidden">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 left-block">
+                <div class="c-section__header decorated">
+                  <h2><span>TOPICS</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="c-section__content">
+                <div class="flex-row">
+                  {%- topic where:'TopicCategory == 1' -%}
+                  {%- for item in topicItems -%}
+                  <div class="flex-item">
+                    {{ item.Title }}
+                  </div>
+                  {%- endfor -%}
+                  {%- endtopic -%}
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
