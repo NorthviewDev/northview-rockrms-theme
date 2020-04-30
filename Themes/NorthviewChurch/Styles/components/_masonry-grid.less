@@ -152,6 +152,7 @@
   border-bottom: solid 8px @color-gray-darker;
   .aspect-ratio(437,244);
   margin-bottom: var(--s2);
+  transition: all ease-in-out 300ms;
   @media (min-width: @screen-sm) {
   	margin-bottom: 0;
   }
@@ -167,9 +168,15 @@
   }
   &:hover {
     border-bottom-color: @color-brand-primary;
+    .c-btn.c-btn--text-link {
+      color: @color-brand-primary;
+    }
   }
   .c-btn.c-btn--text-link {
     color: @white;
+    &:hover {
+      color: @color-brand-primary;
+    }
   }
 }
 .masonry-grid__content {
@@ -181,6 +188,9 @@
 .masonry-grid__title-link {
   position: relative;
   z-index: 1;
+  p {
+    margin: 0;
+  }
 }
 .masonry-grid__item-title {
   color: @white;
