@@ -149,7 +149,7 @@
 .masonry-grid__grid-item {
   background-size: cover;
   background-position: center center;
-  border-bottom: solid 8px @color-brand-primary;
+  border-bottom: solid 8px @color-gray-darker;
   .aspect-ratio(437,244);
   margin-bottom: var(--s2);
   @media (min-width: @screen-sm) {
@@ -164,6 +164,12 @@
     bottom:0;
   	opacity: 0.9;
   	background: linear-gradient(180deg, rgba(27,27,27,0.33) 0%, rgba(24,24,24,0.9) 100%);
+  }
+  &:hover {
+    border-bottom-color: @color-brand-primary;
+  }
+  .c-btn.c-btn--text-link {
+    color: @white;
   }
 }
 .masonry-grid__content {

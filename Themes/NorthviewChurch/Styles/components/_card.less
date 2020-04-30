@@ -86,7 +86,6 @@ a.c-card {
       color: @white;
       background-size: cover;
       background-position: center center;
-      border-bottom: solid 8px @color-brand-primary;
       .aspect-ratio(100,100);
       margin-bottom: var(--s2);
       @media (min-width: @screen-sm) {
@@ -118,6 +117,21 @@ a.c-card {
       .c-card__summary {
         font-style: italic;
         font-size: 19px;
+      }
+    }
+    &.--bigCTA {
+      .c-card__body {
+        text-align: center;
+        &:after {
+          content:none;
+        }
+        >div {
+          position: relative;
+          padding: 65px;
+          .c-card__summary {
+            font-size: 20px;
+          }
+        }
       }
     }
   }

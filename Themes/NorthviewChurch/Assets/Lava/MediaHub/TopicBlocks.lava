@@ -11,13 +11,13 @@
             <div class="col-lg-12">
               <div class="c-section__content">
                 <div class="flex-row">
-                  {%- topic where:'TopicCategory == 1' -%}
-                  {%- for item in topicItems -%}
+                  {%- tag where:'CategoryId==630' -%}
+                  {%- for item in tagItems -%}
                   <div class="flex-item">
-                    {{ item.Title }}
+                    {{ item.Name }}
                   </div>
                   {%- endfor -%}
-                  {%- endtopic -%}
+                  {%- endtag -%}
                 </div>
               </div>
             </div>
