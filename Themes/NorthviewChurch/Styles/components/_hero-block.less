@@ -104,6 +104,7 @@
       white-space: nowrap;
       overflow: hidden;
       letter-spacing: 2.5px;
+      pointer-events: none;
     	@media (min-width: @screen-sm) {
     		font-size: 34px;
         left: calc(var(--s2) * -1);
@@ -186,6 +187,7 @@
     align-items: flex-end;
     padding: var(--s3);
     z-index: 20;
+    pointer-events: none;
     @media (orientation: landscape) and (max-width:@screen-xs-max) {
       flex-direction: row;
     }
@@ -440,6 +442,7 @@
       white-space: nowrap;
       overflow: hidden;
       letter-spacing: 2.5px;
+      pointer-events: none;
     	@media (min-width: @screen-sm) {
     		font-size: 34px;
     	}
@@ -514,6 +517,7 @@
   	z-index: 15;
   }
   @media (min-width: @screen-lg) {
+    display: -ms-grid;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
@@ -532,6 +536,7 @@
     white-space: nowrap;
     overflow: hidden;
     display: none;
+    pointer-events: none;
     @media (min-width: @screen-lg) {
       font-size: 24px;
       display: block;
@@ -612,6 +617,7 @@
       white-space: nowrap;
       overflow: hidden;
       letter-spacing: 2.5px;
+      pointer-events: none;
     	@media (min-width: @screen-sm) {
     		font-size: 24px;
         bottom:-15px;
@@ -628,6 +634,7 @@
   margin-right: 7%;
   position: relative;
   z-index: 10;
+  pointer-events: all;
 }
 @keyframes rotatingtext {
   100% {

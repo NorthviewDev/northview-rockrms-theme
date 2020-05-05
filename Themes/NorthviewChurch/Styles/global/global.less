@@ -3,8 +3,8 @@
   .sizeBase12(); //12px size increments
   --font-family-primary: @font-family-sans-serif;
   --font-family-condensed: @headings-font-family;
-  --pwa-menu-height: 64px;
-  --vh: 450px; //set initial vh before js calculates it
+  --pwa-menu-height: 62px;
+  --vh: 1vh; //set initial vh before js calculates it
 }
 // 1. HTML Overrides
 // -------------------------
@@ -27,6 +27,13 @@ h1.pagetitle:empty { // hides the page title h1 tag if the page has the title hi
 
 .nv-icon {
   display: inline-block;
+}
+
+.twoCol {
+  @media (min-width: @screen-md) {
+  	column-count: 2;
+  	column-gap: 60px;
+  }
 }
 
 /* Rock Overrides */
@@ -75,8 +82,20 @@ h1.pagetitle:empty { // hides the page title h1 tag if the page has the title hi
   }
 }
 .well {
-  padding: var(--s2);
   border: none;
+  padding: var(--s2);
+  @media (min-width: @screen-sm) {
+  	padding: 32px;
+  }
+  .form-control {
+    &[type="text"] {
+      background-color: @color-gray-lighter;
+      height: 50px;
+      padding: 15px;
+      border-radius: 2px;
+      box-shadow: none;
+    }
+  }
 }
 .well--lg {
   @media (min-width: @screen-sm) {
@@ -247,6 +266,7 @@ button:focus {
     }
   }
   @media (min-width: @screen-sm) {
+    display: -ms-grid;
     display: grid;
     grid-gap: var(--s2);
     grid-template-columns: 1fr 1fr;
@@ -260,12 +280,14 @@ button:focus {
     }
   }
   &.l-grid--2col {
+    display: -ms-grid;
     display: grid;
     grid-gap: var(--s2);
     grid-template-columns: 1fr 1fr;
   }
   @media (min-width: @screen-sm-min) {
     &.l-grid--sm-2col {
+      display: -ms-grid;
       display: grid;
       grid-gap: var(--s2);
       grid-template-columns: 1fr 1fr;      
@@ -291,6 +313,7 @@ button:focus {
   }
   @media (min-width: @screen-md-min) {
     &.l-grid--md-2col {
+      display: -ms-grid;
       display: grid;
       grid-gap: var(--s2);
       grid-template-columns: 1fr 1fr;      
@@ -324,6 +347,7 @@ button:focus {
   }
   @media (min-width: @screen-lg-min) {
     &.l-grid--lg-2col {
+      display: -ms-grid;
       display: grid;
       grid-gap: var(--s2);
       grid-template-columns: 1fr 1fr;      

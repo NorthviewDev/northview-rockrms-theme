@@ -64,6 +64,12 @@
 .c-section__header {
   text-align: center;
 	margin-bottom: var(--s1);
+	.left-block & {
+  	text-align: left;
+	}
+	.right-block & {
+  	text-align: right;
+	}
 	@media (min-width: @screen-md) {
     margin-bottom: var(--s3);
 	}    
@@ -88,7 +94,8 @@
     }
   }
   .c-section--alt2 &,
-	.c-section--light & {
+	.c-section--light &,
+	&.decorated {
   	h2 {
       color: @gray-darker;
       display:inline-block;

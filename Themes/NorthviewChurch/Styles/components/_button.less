@@ -37,7 +37,7 @@
       display: inline-block;
       width: 1.3em;
       height: 1em;
-      transition: all ease-in-out 300ms;
+      transition: width ease-in-out 300ms;
       margin-left: 12px;
       //margin-top:3px;
       vertical-align: text-top;
@@ -155,6 +155,14 @@
       color: @white;      
     }
   }
+  &.c-btn--white {
+    color: @text-color;
+    background-color: @white;
+    border:none;
+    &:hover, &:focus {
+      background-color: @brand-primary;
+    }
+  }
   &.c-btn--text-link {
     background: none;
     border:none;
@@ -165,5 +173,27 @@
   &.c-btn--display-block {
     display: block;
     padding: 10px 30px 8px;
+  }
+}
+
+.c-filter__buttons {
+  margin-left: -4px;
+  margin-right: -4px;
+  .c-filter__button {
+    color: @color-gray;
+    font-family: @headings-font-family;
+    font-weight: normal;
+    font-size: 20px;
+    letter-spacing: 0.89px;
+    line-height: 1;
+    border: solid 2px @color-gray-lighter;
+    border-radius: 2px;
+    text-transform: uppercase;
+    padding: 12px 13px;
+    margin: 8px 4px 8px;
+    &:hover, &:focus, &:active {
+      border: solid 2px @brand-primary;
+      color: @text-color;
+    }
   }
 }
