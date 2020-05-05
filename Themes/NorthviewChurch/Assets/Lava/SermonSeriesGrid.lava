@@ -36,7 +36,9 @@
           </article>
   		    </a>
         </div>
-  	  {% if loopIndex == 2 or loopIndex.last %}		
+  	  
+{% if loopIndex == 2 or forloop.last %}		
+
       </div>
 
 {% endif %}	
