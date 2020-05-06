@@ -1,4 +1,4 @@
-<section class="c-section" id="featuredContent" style="overflow: hidden">
+<section class="c-section" id="relatedContent" style="overflow: hidden">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 left-block">
@@ -13,6 +13,11 @@
                 {% contentchannelitem where:'ContentChannelTypeId==3' sort:'StartDateTime desc' %}
                   <h3 class="c-section__title">Articles</h3>
                   <div class="swiper-container overflow-visible">
+                    <!-- Add Arrows -->
+                    <div class="swiper-buttons">
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                    </div>
                     <div class="swiper-wrapper">
                       {% for item in contentchannelitemItems %}
                       <div class="swiper-slide">
@@ -39,6 +44,11 @@
                 {% contentchannelitem where:'ContentChannelTypeId==5' sort:'StartDateTime desc' %}
                   <h3 class="c-section__title">Podcasts</h3>
                   <div class="swiper-container overflow-visible">
+                    <!-- Add Arrows -->
+                    <div class="swiper-buttons">
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                    </div>
                     <div class="swiper-wrapper">
                       {% for item in contentchannelitemItems %}
                       <div class="swiper-slide">
@@ -65,6 +75,11 @@
                 {% contentchannelitem where:'ContentChannelTypeId==10' sort:'StartDateTime desc' %}
                   <h3 class="c-section__title">Resources</h3>
                   <div class="swiper-container overflow-visible">
+                    <!-- Add Arrows -->
+                    <div class="swiper-buttons">
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                    </div>
                     <div class="swiper-wrapper">
                       {% for item in contentchannelitemItems %}
                       <div class="swiper-slide">
@@ -94,6 +109,20 @@
 <script src="{{ swiper5js | ResolveRockUrl }}"></script>
 <script>
     var swiper = new Swiper('.swiper-container', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      mousewheel: {
+        forceToAxis: true,
+        releaseOnEdges: true,
+        invert: true
+      },
+      keyboard: true,
+      watchSlidesProgress: true,
+      watchSlidesVisibility: true,
+      freeMode: true,
+      freeModeSticky: true,
       slidesPerView: 1,
       spaceBetween: 12,
       breakpoints: {

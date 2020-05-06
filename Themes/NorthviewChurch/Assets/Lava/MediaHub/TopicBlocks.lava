@@ -1,4 +1,4 @@
-<section class="c-section" id="featuredContent" style="overflow: hidden">
+<section class="c-section" id="topicBlocks" style="overflow: hidden">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 left-block">
@@ -10,11 +10,17 @@
         <div class="row">
             <div class="col-lg-12">
               <div class="c-section__content">
-                <div class="flex-row">
+                <div class="l-grid l-grid--sm-3col l-grid--md-6col">
                   {%- tag where:'CategoryId==630' -%}
                   {%- for item in tagItems -%}
-                  <div class="flex-item">
-                    {{ item.Name }}
+                  <div class="l-grid__item">
+                    <div class="c-card --bgImage">
+                      <div class="c-card__body" style="background-image:url('{{ item.EntityTypeQualifierValue }}')">
+                        <div class="stack text-center">
+                          <h3 class="c-card__title"><a href="{{ itemLink }}">{{ item.Name }}</a></h3>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   {%- endfor -%}
                   {%- endtag -%}

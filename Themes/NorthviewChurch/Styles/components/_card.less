@@ -91,6 +91,9 @@ a.c-card {
       @media (min-width: @screen-sm) {
       	margin-bottom: 0;
       }
+      #topicBlocks & {
+        .aspect-ratio(206, 340)
+      }
       &:before {
         content:"";
         position: absolute;
@@ -113,6 +116,16 @@ a.c-card {
         color: @white;
       	font-size: 54px;
       	font-weight: 700;
+        #topicBlocks & {
+          font-size: 29px;
+          text-transform: uppercase;
+        }
+      	a {
+          color: inherit;
+        	font-size: inherit;
+        	font-weight: inherit;
+        	border: none;        	
+      	}
       }
       .c-card__summary {
         font-style: italic;
