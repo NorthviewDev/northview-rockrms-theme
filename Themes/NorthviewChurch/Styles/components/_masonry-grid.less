@@ -178,6 +178,62 @@
       color: @color-brand-primary;
     }
   }
+  #featuredContent & {
+    > .masonry-grid__content {
+      &:after {
+        content:attr(data-content-type);
+        position: absolute;
+        top:0;
+        left:0;
+        font-size: 12px;
+        color: @white;
+        padding: 3px;
+        background-color: @color-gray-darker;
+      }
+    }
+  }
+  &.podcast {
+    .masonry-grid__content {
+      &:before {
+        .nv-icon("\e91c");
+      }
+    }
+  }
+  &.article {
+    .masonry-grid__content {
+      &:before {
+        .nv-icon("\e913");
+      }
+    }
+  }
+  &.video {
+    .masonry-grid__content {
+      &:before {
+        .nv-icon("\e91a");
+      }
+    }
+  }
+  &.music {
+    .masonry-grid__content {
+      &:before {
+        .nv-icon("\e919");
+      }
+    }
+  }
+  &.resource {
+    .masonry-grid__content {
+      &:before {
+        .nv-icon("\e91b");
+      }
+    }
+  }
+  &.message {
+    .masonry-grid__content {
+      &:before {
+        .nv-icon("\e91c");
+      }
+    }
+  }
 }
 .masonry-grid__content {
   padding: 32px;

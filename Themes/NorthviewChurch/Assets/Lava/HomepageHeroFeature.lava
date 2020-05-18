@@ -15,7 +15,7 @@
             {%- else -%}
               <div class="c-block-hero__background-video l-aspect-ratio__16-9">
                 <video id='header-video' class="video-js vjs-fluid" style="background:transparent no-repeat center center url(/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=1024&h=576&mode=crop&anchor=middlecenter&scale=both&quality=80);background-size:cover" preload autoplay muted loop playsinline>
-                  <source type="application/x-mpegURL" src="https://d15cfzadw3xvw4.cloudfront.net/565f0cc5-3f32-46e1-9f34-a098e8de9945/hls/2020_0101_WebsiteHeader_Weekend_v03.m3u8">
+                  <source type="application/x-mpegURL" src="{{ item | Attribute:'Videom3u8Url','RawValue' }}">
                 </video>
                 <link rel='stylesheet' href='https://vjs.zencdn.net/7.6.6/video-js.css'>
                 <script src='https://vjs.zencdn.net/7.6.6/video.js'></script>

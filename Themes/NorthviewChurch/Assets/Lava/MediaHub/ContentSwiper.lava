@@ -22,7 +22,7 @@
                       {% for item in contentchannelitemItems %}
                       <div class="swiper-slide">
                         {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
-                        <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
+                        <div class="masonry-grid__grid-item article" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
                           <div class="masonry-grid__content">
                             <div class="masonry-grid__title-link stack">
                               <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
@@ -53,7 +53,7 @@
                       {% for item in contentchannelitemItems %}
                       <div class="swiper-slide">
                         {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
-                        <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
+                        <div class="masonry-grid__grid-item podcast" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
                           <div class="masonry-grid__content">
                             <div class="masonry-grid__title-link stack">
                               <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
@@ -84,7 +84,7 @@
                       {% for item in contentchannelitemItems %}
                       <div class="swiper-slide">
                         {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
-                        <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
+                        <div class="masonry-grid__grid-item resource" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
                           <div class="masonry-grid__content">
                             <div class="masonry-grid__title-link stack">
                               <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
