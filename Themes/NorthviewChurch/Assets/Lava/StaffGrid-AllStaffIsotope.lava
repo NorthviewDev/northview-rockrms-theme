@@ -1,0 +1,204 @@
+{% assign staffGroupId = "(gm.GroupId = '318383')" %}
+{% assign staffGroupTitle = "All Staff" %}
+{% assign campusFilter = 'Global' | PageParameter:'campus' | SanatizeSQL %}
+{% assign deptFilter = 'Global' | PageParameter:'department' | SanatizeSQL %}
+
+{%- sql -%}
+Declare @CampusSlug nvarchar(max) = '{{ 'Global' | PageParameter:'campus' | SanatizeSQL }}';
+Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department' | SanatizeSQL }}';
+
+  SELECT
+	gm.GroupId,
+	g.Name,
+	gt.Id as GroupTypeId,
+	gtr.IsLeader,
+	gm.GroupRoleId,
+	p.Id as PersonId,
+	p.NickName, 
+	p.FirstName, 
+	p.LastName,
+	p.Email
+  FROM [Person] p 
+  LEFT OUTER JOIN [GroupMember] gm ON p.Id = gm.PersonId
+  LEFT OUTER JOIN [Group] g ON gm.GroupId = g.Id
+  LEFT OUTER JOIN [GroupType] gt ON g.GroupTypeId = gt.Id
+  LEFT OUTER JOIN [GroupTypeRole] gtr ON gt.Id = gtr.GroupTypeId
+  WHERE
+	{{staffGroupId}} and (gm.GroupRoleId = gtr.Id)
+  ORDER BY gm.GroupId, gtr.IsLeader desc, p.LastName
+{%- endsql -%}
+
+<div class="staff-list">
+	<h2 class="section__title">{{ staffGroupTitle }}</h2>
+    <div class="filters form-inline text-center">
+    
+      <div class="form-group">
+        <label for="campusSelect">Campus</label>
+        <select class="filter-select" value-group="campus" id="campusSelect">
+          <option value="">any</option>
+          {% definedvalue where:'DefinedTypeId==119' sort:'Value' %}
+          {% for item in definedvalueItems %}
+          {% assign selected = "" %}
+          {% assign itemValue = item.Value | ToCssClass %}
+          {% if campusFilter == itemValue %}{% assign selected = "selected" %}{% endif %}
+            <option value=".{{ itemValue }}" {{selected}}>{{ item.Value }}</option>
+          {% endfor %}
+          {% enddefinedvalue %}
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label for="departmentSelect">Department</label>
+        <select class="filter-select" value-group="department" id="departmentSelect">
+          <option value="">any</option>
+          {% definedvalue where:'DefinedTypeId==120' sort:'Value' %}
+          {% for item in definedvalueItems %}
+          {% assign itemValue = item.Value | ToCssClass %}
+          {% assign selected = "" %}
+          {% if deptFilter == itemValue %}{% assign selected = "selected" %}{% endif %}
+            <option value=".{{ itemValue }}" {{selected}}>{{ item.Value }}</option>
+          {% endfor %}
+          {% enddefinedvalue %}
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search by Name or Position" />
+      </div>
+    
+    </div>
+    <div class="staff-grid">
+	{%- for item in results -%}
+	{%- assign personId = item.PersonId -%}
+	{%- assign groupId = item.GroupId -%}
+	{%- assign nickName = item.NickName -%}
+	{%- assign firstName = item.FirstName -%}
+	{%- assign lastName = item.LastName -%}
+	{%- assign email = item.Email -%}
+	{%- assign extension = '' -%}
+	{%- person id:'{{personId}}' -%}
+		{%- for phoneNumber in person.PhoneNumbers -%}
+			{%comment%} /*** Internal Extension ***/ {%endcomment%}
+			{%- if phoneNumber.NumberTypeValueId == '1104' -%}	{%- assign extension = phoneNumber.Number -%}{%- endif -%}
+		{%- endfor -%}
+    	{%- assign title = person | Attribute:'StaffPosition' -%}
+	{%- endperson -%}
+	{%- groupmember where:'GroupId == {{groupId}} && PersonId == {{personId}}' -%}
+
+	{%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
+	{%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
+	
+	{%- for item in groupmemberItems -%}
+	
+    {%- assign phone = item | Attribute:'Phone' -%}
+	{%- assign bio = item | Attribute:'Bio' -%}
+
+	<div class='staff-grid__item {{ item | Attribute:'MemberCampus' | ToCssClass }} {{ item | Attribute:'MemberDepartment' | ToCssClass }}'>
+			<div class="staff__item">
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+      		  <div class="staff__photo">
+      			  {%- if bio != "" -%}
+      				  <a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
+      				{%- endif -%}
+                <img class="staff__detail-image" src="/GetImage.ashx?id={{ person.PhotoId }}&w=300&h=300&mode=crop&scale=both" alt="{{ person.FullName }}" 
+                    onerror="null"
+                    />
+      				{%- if bio != "" -%}
+                <span class="vc">Read Bio</span>
+                </a>
+      				{%- endif -%}
+      		  </div>
+            <div class="staff__name">{{ person.FullName }}</div>
+      			<div class="staff__title">{{ title }}</div>
+        			<ul class="staff__meta">
+        			  {% if email != '' %}
+        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a></li>
+                {% endif %}
+                {% if phone != '' %}
+                  <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+                {% endif %}
+        		  </ul>  
+      		  </div>              	 
+          </div>
+  		  </div>
+		</div>
+	{%- endfor -%}
+	{%- endgroupmember -%}
+	{%- endfor -%}
+	</div>
+</div>
+<script src="https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<script>
+// external js: isotope.pkgd.js
+
+// store filter for each group
+var filters = {};
+var filterValue = '';
+
+// quick search regex
+var qsRegex;
+
+{% if campusFilter and campusFilter != "" %}
+filterValue += ".{{campusFilter}}";
+{% endif %}
+{% if deptFilter and deptFilter != "" %}
+filterValue += ".{{deptFilter}}";
+{% endif %}
+
+//alert(filterValue);
+
+// init Isotope
+var $grid = $('.staff-grid').isotope({
+    layoutMode: 'fitRows',
+    itemSelector: '.staff-grid__item',
+    filter: function() {
+        var $this = $(this);
+        var menuResult = filterValue ? $this.is( filterValue ) : true;
+        var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
+        return searchResult && menuResult;
+  },
+});
+
+$('.filters').on( 'change', function( event ) {
+  var $select = $( event.target );
+  // get group key
+  var filterGroup = $select.attr('value-group');
+  // set filter for group
+  filters[ filterGroup ] = event.target.value;
+  // combine filters
+  filterValue = concatValues( filters );
+  // set filter for Isotope
+  $grid.isotope();
+});
+
+// use value of search field to filter
+var $quicksearch = $('#searchInput').keyup( debounce( function() {
+  qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+  $grid.isotope();
+}) );
+
+// debounce so filtering doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  var timeout;
+  threshold = threshold || 100;
+  return function debounced() {
+    clearTimeout( timeout );
+    var args = arguments;
+    var _this = this;
+    function delayed() {
+      fn.apply( _this, args );
+    }
+    timeout = setTimeout( delayed, threshold );
+  };
+}
+
+// flatten object by concatting values
+function concatValues( obj ) {
+  var value = '';
+  for ( var prop in obj ) {
+    value += obj[ prop ];
+  }
+  return value;
+}
+</script>
