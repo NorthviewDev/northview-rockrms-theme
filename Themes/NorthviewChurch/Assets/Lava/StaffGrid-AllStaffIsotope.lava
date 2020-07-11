@@ -101,9 +101,7 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
       			  {%- if bio != "" -%}
       				  <a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
       				{%- endif -%}
-                <img class="staff__detail-image" src="/GetImage.ashx?id={{ person.PhotoId }}&w=300&h=300&mode=crop&scale=both" alt="{{ person.FullName }}" 
-                    onerror="null"
-                    />
+                <img class="staff__detail-image lazyload" data-src="/GetImage.ashx?id={{ person.PhotoId }}" alt="{{ person.FullName }}" loading="lazy" />
       				{%- if bio != "" -%}
                 <span class="vc">Read Bio</span>
                 </a>
@@ -201,4 +199,19 @@ function concatValues( obj ) {
   }
   return value;
 }
+</script>
+<script>
+  if ('loading' in HTMLImageElement.prototype) {
+      const images = document.querySelectorAll("img.lazyload");
+      images.forEach(img => {
+          img.src = img.dataset.src;
+      });
+  } else {
+      // Dynamically import the LazySizes library
+    let script = document.createElement("script");
+    script.async = true;
+    script.src =
+      "https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js";
+    document.body.appendChild(script);
+  }
 </script>

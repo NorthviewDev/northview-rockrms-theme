@@ -58,7 +58,7 @@
       			  {%- if bio != "" -%}
       				  <a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
       				{%- endif -%}
-                <img class="staff__detail-image" src="/GetImage.ashx?id={{ person.PhotoId }}" alt="{{ person.FullName }}" />
+                <img class="staff__detail-image lazyload" data-src="/GetImage.ashx?id={{ person.PhotoId }}" alt="{{ person.FullName }}" loading="lazy" />
       				{%- if bio != "" -%}
                 <span class="vc">Read Bio</span>
                 </a>
