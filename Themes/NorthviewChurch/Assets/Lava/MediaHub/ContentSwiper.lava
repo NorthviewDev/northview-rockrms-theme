@@ -88,10 +88,10 @@
     </div>
 </section>
 
-{% assign swiper5css = '~~/Assets/Scripts/swiper-5.3.8/package/css/swiper.min.css' %}
-{% assign swiper5js = '~~/Assets/Scripts/swiper-5.3.8/package/js/swiper.min.js' %}
-<link rel="stylesheet" href="{{ swiper5css | ResolveRockUrl }}">
-<script src="{{ swiper5js | ResolveRockUrl }}"></script>
+{% assign swiper6css = '~~/node_modules/swiper/swiper-bundle.min.css' %}
+{% assign swiper6js = '~~/node_modules/swiper/swiper-bundle.min.js' %}
+<link rel="stylesheet" href="{{ swiper6css | ResolveRockUrl }}">
+<script src="{{ swiper6js | ResolveRockUrl }}"></script>
 <script>
     var swiper = new Swiper('.swiper-container', {
       slidesPerView: 1,
