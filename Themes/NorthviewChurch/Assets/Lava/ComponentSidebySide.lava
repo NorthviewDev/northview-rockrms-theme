@@ -5,7 +5,9 @@
 {%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
 {%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
 {%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
-<section class="c-section c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}&maxWidth=800&maxHeight=800');{% endif %}">
+{%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
+
+<section class="c-section c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}&maxWidth=800&maxHeight=800');{% endif %}">
   <div class="container">
     <div class="row">
       <div class='{%- if sectionTitleStyle == "highlight" -%}col-lg-12{% else %}col-lg-10 center-block{%- endif %}'>

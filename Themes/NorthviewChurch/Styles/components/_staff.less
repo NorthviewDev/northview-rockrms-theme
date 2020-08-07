@@ -159,8 +159,12 @@
   align-content: stretch;
   align-items: flex-start;
   .staff-grid__item {
+    //opacity:0;
     flex: 0 1 100%;
     padding: var(--s1);
+    .is-showing-items& {
+      //opacity: 1;
+    }
     @media (min-width: @screen-sm) {
     	flex: 0 1 50%;
     	width: 50%;

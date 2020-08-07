@@ -68,6 +68,7 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
     
     </div>
     <div class="staff-grid">
+      {{ results | Size }}
 	{%- for item in results -%}
 	{%- assign personId = item.PersonId -%}
 	{%- assign groupId = item.GroupId -%}
@@ -101,7 +102,9 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
       			  {%- if bio != "" -%}
       				  <a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
       				{%- endif -%}
-                <img class="staff__detail-image lazyload" data-src="/GetImage.ashx?id={{ person.PhotoId }}" alt="{{ person.FullName }}" loading="lazy" />
+      				{%- comment -%}
+                <img class="staff__detail-image lazyload" src="/GetImage.ashx?id={{ person.PhotoId }}&w=300&h=300" width="300" height="300" alt="{{ person.FullName }}" loading="lazy" />
+              {%- endcomment -%}
       				{%- if bio != "" -%}
                 <span class="vc">Read Bio</span>
                 </a>
@@ -127,6 +130,7 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
 	</div>
 </div>
 <script src="https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <script>
 // external js: isotope.pkgd.js
 
@@ -146,16 +150,31 @@ filterValue += ".{{deptFilter}}";
 
 //alert(filterValue);
 
+  // reveal all items after init
+//  var $items = $grid.find('.isotope_item');
+//  $grid.imagesLoaded().progress( function() {
+//    $grid.addClass('is-showing-items').isotope('layout');
+//  });
+//  $grid.isotope( 'revealItemElements', $items );
+
 // init Isotope
 var $grid = $('.staff-grid').isotope({
     layoutMode: 'fitRows',
     itemSelector: '.staff-grid__item',
+    initLayout: false,
     filter: function() {
         var $this = $(this);
         var menuResult = filterValue ? $this.is( filterValue ) : true;
         var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
         return searchResult && menuResult;
-  },
+    }
+});
+$grid.isotope({ filter: '.central-lead-team' });
+
+// reveal all items after init
+var $items = $grid.find('.staff-grid__item');
+$grid.imagesLoaded().progress( function() {
+  $grid.addClass('is-showing-items').isotope('layout');
 });
 
 $('.filters').on( 'change', function( event ) {
@@ -167,13 +186,13 @@ $('.filters').on( 'change', function( event ) {
   // combine filters
   filterValue = concatValues( filters );
   // set filter for Isotope
-  $grid.isotope();
+  $grid.isotope('layout');
 });
 
 // use value of search field to filter
 var $quicksearch = $('#searchInput').keyup( debounce( function() {
   qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-  $grid.isotope();
+  $grid.isotope('layout');
 }) );
 
 // debounce so filtering doesn't happen every millisecond
@@ -201,6 +220,7 @@ function concatValues( obj ) {
 }
 </script>
 <script>
+/*
   if ('loading' in HTMLImageElement.prototype) {
       const images = document.querySelectorAll("img.lazyload");
       images.forEach(img => {
@@ -214,4 +234,5 @@ function concatValues( obj ) {
       "https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js";
     document.body.appendChild(script);
   }
+*/
 </script>
