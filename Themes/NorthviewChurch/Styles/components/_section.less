@@ -6,6 +6,24 @@
     --section-padding-top: var(--s8);
     --section-padding-bottom: var(--s8);
   }  
+  &.-padTopSmall {
+    --section-padding-top: var(--s2);
+    @media (min-width: @screen-lg) {
+      --section-padding-top: var(--s4);
+    }
+  }
+  &.-padTopNone {
+    --section-padding-top: 0;
+  }
+  &.-padBottomSmall {
+    --section-padding-bottom: var(--s2);
+    @media (min-width: @screen-lg) {
+      --section-padding-bottom: var(--s4);
+    }
+  }
+  &.-padBottomNone {
+    --section-padding-bottom: 0;
+  }
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
   background-color: @gray-lighter;
