@@ -1,0 +1,1870 @@
+/*
+    Used to manage styles related to the person details page
+
+    1. Page Styles
+    2. Header
+    3. Badge Bar
+    4. Family Bar
+    5. Page Tabs
+    6. Edit Group Page
+    7. Styles for Page Tabs
+    8. Add Family Page
+    9. Fluidbox
+    10. Responsive Overrides
+    11. Person Merge
+    12. Person Page Views
+    13. Deceased / Inactive Styles
+    14. Bulk Update
+    15. Photo Upload
+    16. Duplicate Pages
+    17. DISC & Assessments
+    19. Edit Person
+*/
+
+// 1. Page Styles
+// -------------------------
+
+.personprofile {
+  // offset pageheader margin
+  small {
+    // lighten up small elements a bit
+    opacity: .7;
+  }
+}
+
+.personprofilebar-bio,
+.personprofilebar-badge,
+.personprofilebar-family,
+.pagetabs,
+.person-content {
+  padding: 15px;
+}
+
+// 2. Header
+// -------------------------
+
+.personprofilebar-bio {
+  position: relative;
+  padding-top: 50px;
+  color: @persondetails-bio-color;
+  background-color: @persondetails-bio-bg;
+  border-bottom: 1px solid darken(@persondetails-bio-bg, @const-border-darken-amt);
+
+  .action-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 401; // get this above the fluid-box photo
+    height: 39px;
+
+    .action {
+      float: left;
+      width: 45px;
+      height: 100%;
+      color: lighten(@persondetails-bio-color, 15%);
+      text-align: center;
+      cursor: pointer;
+      border-color: darken(@persondetails-bio-bg, @const-border-darken-amt);
+      border-style: solid;
+      border-width: 0 0 1px 1px;
+
+      & > i {
+        position: relative;
+        top: 50%;
+        height: 20px;
+        transform: translateY(-50%);
+      }
+    }
+
+    .action-extended {
+      width: auto;
+      padding-top: 6px;
+    }
+  }
+
+  .name {
+    margin-top: 0;
+    margin-bottom: 4px;
+    text-align: center;
+
+    .full-name,
+    .previous-names {
+      display: none;
+      font-size: 18px;
+    }
+
+    .firstname {
+      font-size: .6em;
+    }
+  }
+
+  .labels {
+    margin-bottom: @spacing-sm-px;
+    text-align: center;
+  }
+
+  .nav li .persondetails-actions {
+    padding: 2px 15px 0;
+    color: lighten(@persondetails-bio-color, 15%);
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+  }
+
+  .photo {
+    position: relative;
+    max-width: 200px;
+    padding: 5px;
+    margin: 0 auto;
+    background-color: @persondetails-bio-photo-border;
+
+    .following-status {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 500;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border-top: 70px solid @persondetails-bio-photo-following;
+      border-right: 70px solid transparent;
+      opacity: .4;
+      transition: 1s;
+
+      i {
+        position: absolute;
+        top: -61px;
+        left: 8px;
+        font-size: 24px;
+        color: #fff;
+        opacity: 0;
+        transition: 1s;
+      }
+
+      &:hover i {
+        opacity: .5;
+      }
+
+      &.following {
+        opacity: 1;
+
+        i {
+          opacity: 1;
+        }
+      }
+    }
+
+    a.fluidbox-opened + .following-status {
+      // hide the following fold if the photo is zoomed
+      opacity: 0 !important;
+    }
+
+    img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      max-height: 200px;
+    }
+
+    .fluidbox-ghost {
+      cursor: -webkit-zoom-in;
+      cursor: -moz-zoom-in;
+    }
+
+    .fluidbox-opened .fluidbox-ghost {
+      cursor: -webkit-zoom-out;
+      cursor: -moz-zoom-out;
+    }
+  }
+
+  .social-icons {
+    text-align: center;
+
+    .btn {
+      display: inline-block;
+      font-size: 16px;
+      color: #fff;
+      background-color: @gray;
+      border: 0;
+      border-radius: @border-radius-base;
+
+      &:hover {
+        opacity: .8;
+      }
+
+      &.btn-facebook {
+        color: #fff;
+        background-color: #44619d;
+      }
+
+      &.btn-twitter {
+        color: #fff;
+        background-color: #55acee;
+      }
+
+      &.btn-instagram {
+        color: #fff;
+        background-color: #39688f;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .taglist {
+    margin-top: @spacing-md-px;
+  }
+
+  .demographics {
+    margin-top: @spacing-md-px;
+    text-align: center;
+
+    @media @md {
+      float: left;
+      width: 50%;
+    }
+  }
+
+  .personcontact {
+    padding-bottom: 30px;
+    margin-top: @spacing-md-px;
+    text-align: center;
+
+    @media @md {
+      float: left;
+      width: 50%;
+    }
+
+    .email {
+      .email-status {
+        i {
+          color: @persondetails-bio-color;
+        }
+
+        &.do-not-email i {
+          color: @brand-danger;
+        }
+
+        &.not-active i {
+          color: @brand-warning;
+        }
+      }
+    }
+  }
+}
+
+.originate-call {
+  &::before {
+    margin-right: 6px;
+    font-family: @fa-font-face;
+    font-weight: @fa-theme-weight;
+    content: @fa-var-phone-square;
+  }
+}
+
+
+// 3. Badge Bar
+// -------------------------
+@badge-icon-height: 45px;
+@badge-count-width: 18px;
+
+.personprofilebar-badge {
+  min-height: 64px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 0; // Fixes Inconsistent Spacing
+  color: @persondetails-badge-color;
+  background-color: @persondetails-badge-bg;
+  border-bottom: 1px solid darken(@persondetails-badge-bg, @const-border-darken-amt);
+
+  --badge-size: @badge-icon-height;
+
+  .config-bar {
+    font-size: @font-size-base;
+  }
+
+  .badge-group {
+    margin: @spacing-sm-px 0;
+    text-align: center;
+
+    .badge {
+      display: inline-block; // fixes issue in default browser on Android
+      padding: 3px 6px 0;
+      background-color: inherit;
+
+      &:empty {
+        display: none;
+      }
+
+      .tooltip-inner {
+        max-width: 300px;
+        padding: 12px;
+      }
+    }
+
+    .badge-debug {
+      position: absolute;
+      right: 12px;
+      z-index: 9999;
+      width: 900px;
+      text-align: left;
+    }
+
+    .badge-grid {
+      margin: -5px 0;
+    }
+  }
+}
+
+.badge-grid {
+  font-size: 0;
+
+  .badge {
+    width: 1em;
+    height: 1em;
+    padding: 0 !important;
+    margin: 0 .08333em .08333em;
+    font-size: 24px;
+    font-size: ~"calc(var(--badge-size, 45px) * 0.533)";
+    line-height: 1;
+
+    .fa-stack {
+      width: 1em;
+      line-height: 1em;
+    }
+
+    .fa-stack-1x {
+      font-size: .5em;
+      color: #fff;
+    }
+
+    .fa-stack-2x {
+      font-size: 1em;
+    }
+  }
+
+  .badge-row:last-child .badge {
+    padding-bottom: 0;
+  }
+}
+
+// Used to provide background in :before
+.badge-background {
+  display: block;
+  width: 1em;
+  height: 1em;
+  content: " ";
+  background: currentColor;
+  border-radius: .1em;
+}
+
+.badge-step {
+  position: relative;
+  padding: 0 !important;
+  margin: 0 4px;
+  font-size: 45px;
+  font-size: var(--badge-size, 45px);
+
+  &::before {
+    &:extend(.badge-background);
+  }
+
+  .badge-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: .5777em;
+    line-height: 1.85em;
+    color: #fff;
+  }
+
+  .badge-count {
+    position: absolute;
+    top: -(@badge-count-width/3);
+    right: -(@badge-count-width/3);
+    width: @badge-count-width;
+    height: @badge-count-width;
+    font-size: .266em;
+    font-weight: @font-weight-normal;
+    line-height: @badge-count-width;
+    color: #fff;
+    background-color: @brand-danger;
+    border-radius: 50%;
+  }
+}
+
+.badge-baptism {
+  color: #23a5c5;
+}
+
+.badge-era {
+  position: relative;
+  font-size: 45px;
+  font-size: var(--badge-size, 45px);
+  color: @brand-success;
+
+  &::before {
+    &:extend(.badge-background);
+    border-radius: 50%;
+  }
+
+  &.era-loss {
+    color: #ee7624;
+  }
+
+  span {
+    position: absolute;
+    top: 1.0625em;
+    right: 0;
+    left: 0;
+    font-size: .3555em; // 16px
+    color: #fff;
+  }
+}
+
+.badge-icon {
+  font-size: @badge-icon-height;
+  font-size: var(--badge-size, 45px);
+
+  &.badge-disabled {
+    color: #939393;
+    opacity: .2;
+  }
+}
+
+.attendance-chart {
+  //http://codepen.io/Victa/pen/xDqbf
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  &-sm {
+    height: 20px;
+  }
+
+  &-block {
+    height: 18px;
+
+    li span {
+      width: ~"calc(100% - 3px)";
+      background: @brand-info !important;
+    }
+  }
+
+  .badge-attendance & {
+    width: 220px;
+    height: 40px;
+    height: var(--badge-size, 40px);
+  }
+
+  li {
+    position: relative;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    -ms-flex-preferred-size: 0;
+    -ms-flex-positive: 1;
+    overflow: hidden;
+
+    &:hover {
+      opacity: .85;
+    }
+
+    &.has-exclusion {
+      opacity: .3;
+    }
+
+    span {
+      position: absolute;
+      bottom: 0;
+      display: block;
+      width: 8px;
+      width: ~"calc(100% - 2px)";
+      min-width: 2px;
+      min-height: 1px;
+      max-height: 100%;
+      background: @persondetails-badge-color;
+
+      .animate & {
+        -webkit-animation: bar-grow 1s ease-in-out;
+        -moz-animation: bar-grow 1s ease-in-out;
+        -o-animation: bar-grow 1s ease-in-out;
+        animation: bar-grow 1s ease-in-out;
+      }
+    }
+  }
+}
+
+.streak-chart {
+  width: 100%;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  list-style: none;
+
+  li {
+    position: relative;
+    display: table-cell;
+    float: right;
+    width: 9px;
+    height: 100%;
+    margin-right: 2px;
+    vertical-align: bottom;
+
+    span {
+      display: block;
+      width: 100%;
+      min-height: 1px;
+      background: @brand-info;
+
+      @media screen and (-webkit-min-device-pixel-ratio: 0) {
+        // needed for chrome but kills ie
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.badge-disc {
+  position: relative;
+
+  .badge-disc-chart {
+    display: table;
+    width: 1em;
+    height: .888em;
+    margin: 0 auto;
+    //http://codepen.io/Victa/pen/xDqbf
+    font-size: 45px;
+    font-size: var(--badge-size, 45px);
+    table-layout: fixed;
+
+    li {
+      position: relative;
+      display: table-cell;
+      width: 3px;
+      height: 100%;
+      vertical-align: bottom;
+
+      span {
+        display: block;
+        width: .2222em;
+        min-height: 2px;
+        background: lighten(#4f89bd, 20%);
+
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+          // needed for chrome but kills ie
+          position: absolute;
+          bottom: 0;
+        }
+      }
+
+      &.badge-disc-primary {
+        span {
+          background: #4f89bd;
+        }
+      }
+
+      &.badge-disc-disabled {
+        span {
+          background-color: #939393;
+          opacity: .2;
+        }
+      }
+    }
+  }
+
+  .requested {
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    padding: 1px 5px;
+    font-size: 24px;
+    background-color: #e3ded7;
+    border-radius: 99px;
+    opacity: .8;
+  }
+
+  &.animate {
+    ul.badge-disc-chart li span {
+      -webkit-animation: bar-grow 1s ease-in-out;
+      -moz-animation: bar-grow 1s ease-in-out;
+      -o-animation: bar-grow 1s ease-in-out;
+      animation: bar-grow 1s ease-in-out;
+    }
+  }
+}
+
+.badge-attendingduration {
+  font-size: 45px;
+  font-size: var(--badge-size, 45px);
+
+  .duration-metric {
+    position: relative;
+    &::before {
+      &:extend(.badge-background);
+      border-radius: 50%;
+    }
+
+    &.duration-new {
+      color: #d25555;
+    }
+
+    &.duration-months {
+      color: #69ad5e;
+    }
+
+    &.duration-years {
+      color: #56789e;
+    }
+
+    .metric-value {
+      position: absolute;
+      top: .6em; // 14px
+      right: 0;
+      left: 0;
+      font-size: .444em; // 20px
+      font-weight: @font-weight-bold;
+      line-height: .6em; //12px
+      color: #fff;
+      text-align: center;
+    }
+
+    .metric-unit {
+      display: block;
+      font-size: .55em;
+      font-weight: @font-weight-normal;
+    }
+
+    &.duration-new .metric-value {
+      top: 0; //18px
+      font-size: .3111em; //14px
+      font-weight: @font-weight-semibold;
+      line-height: 3.2142em;
+    }
+  }
+}
+
+.badge-weeksattendanceduration {
+  .weeks-metric {
+    position: relative;
+    font-size: 40px;
+    font-size: ~"calc(var(--badge-size, 45px) *.888)";
+    color: #686576;
+
+    &::before {
+      &:extend(.badge-background);
+      background-color: @brand-warning;
+    }
+
+    .weeks-attended {
+      position: absolute;
+      top: .388em; // 7px
+      left: .2em; // 4px
+      display: block;
+      width: 1em; // 18px
+      font-size: .45em; //20px
+      font-weight: @font-weight-bold;
+      text-align: center;
+      letter-spacing: -2px;
+    }
+
+    .week-duration {
+      position: absolute;
+      right: .363em;
+      bottom: .9em;
+      font-size: .275em; // 11px
+      font-weight: @font-weight-semibold;
+    }
+  }
+}
+
+.badge-content {
+  &.fa-layers {
+    width: 50px;
+    height: 43px;
+    font-size: 4em;
+  }
+}
+
+.badge-lastvisitonsite {
+  .badge-content {
+    position: relative;
+    font-size: 40px;
+    font-size: ~"calc(var(--badge-size, 45px) *.888)";
+    color: #4f89bd;
+
+    .badge-icon {
+      font-size: inherit;
+    }
+
+    &.today {
+      .duration {
+        top: 1em;
+        font-size: .275em;
+      }
+    }
+
+    &.recent {
+      opacity: .8;
+    }
+
+    &.moderate {
+      opacity: .6;
+    }
+
+    &.not-recent {
+      opacity: .4;
+    }
+
+    &.old {
+      opacity: .2;
+    }
+
+    .duration {
+      position: absolute;
+      top: .5em; // 8px
+      right: .3em;
+      left: .3em;
+      font-size: .4em; // 16px
+      font-weight: @font-weight-bold;
+      text-align: center;
+    }
+  }
+}
+
+.badge-signal {
+  .badge-content {
+    position: relative;
+    font-size: 45px;
+    font-size: var(--badge-size, 45px);
+
+    .badge-icon {
+      font-size: inherit;
+    }
+
+    .signal {
+      position: absolute;
+      top: .875em; //10px
+      right: 0;
+      left: 0;
+      padding-left: .5em;
+      font-size: .355em; //16px
+      font-weight: @font-weight-bold;
+      color: @persondetails-badge-bg;
+      text-align: center;
+    }
+  }
+}
+
+.badge-assessment {
+  a {
+    color: inherit;
+  }
+
+  // Incomplete and Pending have !important to allow for additional assessments with embedded CSS
+  &.not-requested {
+    color: @ui-4 !important;
+  }
+
+  &.requested {
+    color: @ui-5 !important;
+  }
+
+  .fa-stack-1x {
+    color: #fff;
+  }
+
+  .fa-stack-2x {
+    color: currentColor;
+  }
+}
+
+@-webkit-keyframes bar-grow {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes bar-grow {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@-o-keyframes bar-grow {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes bar-grow {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.badge-personaldevice {
+  .badge-content {
+    position: relative;
+    font-size: 40px;
+    font-size: ~"calc(var(--badge-size, 45px) *.888)";
+    color: #4f89bd;
+
+    .badge-icon {
+      font-size: inherit;
+    }
+
+    .deviceCount {
+      position: absolute;
+      top: .7142em;
+      right: 0;
+      left: 0;
+      font-size: .35em; // 14px
+      font-weight: @font-weight-bold;
+      text-align: center;
+    }
+  }
+}
+
+// 4. Family Bar
+// -------------------------
+
+.personprofilebar-family {
+  min-height: 60px;
+  color: @persondetails-familybar-color;
+  background: @persondetails-familybar-bg;
+  border-bottom: 1px solid darken(@persondetails-familybar-bg, @const-border-darken-amt);
+
+  a {
+    color: @persondetails-familybar-color;
+  }
+}
+
+.persondetails-group {
+  header {
+    position: relative;
+    padding: 10px 15px;
+    margin: 0 -15px;
+    background-color: @persondetails-bio-bg;
+    border-top: 1px solid darken(@persondetails-bio-bg, @const-border-darken-amt);
+    border-bottom: 1px solid darken(@persondetails-bio-bg, @const-border-darken-amt);
+    .clearfix();
+
+    h1 {
+      float: left;
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 25px;
+    }
+
+    .action-wrapper {
+      float: right;
+      height: 45px;
+      margin: -10px -15px -10px 0;
+
+      .action {
+        display: block;
+        float: right;
+        width: 45px;
+        height: 100%;
+        text-align: center;
+        cursor: pointer;
+        border-left: 1px solid darken(@persondetails-bio-bg, @const-border-darken-amt);
+
+        i {
+          position: relative;
+          top: 50%;
+          height: 20px;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
+  // Fix Extra Padding On the First Family
+  .group-members:first-child &:first-child {
+    header {
+      margin: -15px -15px 0;
+      border-top-width: 0;
+    }
+  }
+
+  .group-details {
+    margin-bottom: 12px;
+  }
+
+  .groupmembers {
+    .member {
+      a {
+        display: block;
+        padding: 8px;
+        border-radius: @border-radius-base;
+        .clearfix();
+      }
+
+      .person-image {
+        position: relative;
+        overflow: hidden;
+        background-color: #fafafa;
+        background-position: center;
+        background-size: cover;
+        border: none;
+        border-color: @persondetails-familybar-photo-bg;
+        border-radius: 50%;
+
+        &::after {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          pointer-events: none;
+          content: "";
+          border: 1px solid rgba(0,0,0,.0975);
+          border-radius: 50%;
+        }
+      }
+
+      &:hover {
+        background-color: darken(@persondetails-familybar-bg, 8%);
+        border-radius: @border-radius-base;
+
+      }
+    }
+  }
+
+  .addresses ul {
+    margin: 0;
+    list-style: none;
+
+    li {
+      display: block;
+      margin-bottom: @spacing-md-px;
+      clear: both;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: @font-weight-semibold;
+    }
+
+    .address {
+      .actions {
+        a {
+          padding: 1px;
+        }
+      }
+    }
+
+    & a.map,
+    & div.actions,
+    & div.address {
+      float: left;
+      margin-right: 12px;
+    }
+  }
+}
+
+// 5. Page Tabs
+// -------------------------
+
+
+// 6. Edit Group Page
+// -------------------------
+.editgroup-list {
+  li.member {
+    min-width: 200px;
+
+    .radio {
+      margin: 0;
+    }
+  }
+
+  .groupmembers h4 {
+    margin-bottom: 4px;
+  }
+}
+
+// 7. Styles for Page Tabs
+// -------------------------
+
+.person-content {
+  padding-top: 0;
+}
+
+// history page
+span.field-name {
+  padding: 2px 4px;
+  font-family: @font-family-monospace;
+  font-size: 90%;
+  color: @pagetitle-text-color;
+  white-space: nowrap;
+  background-color: @pagetitle-bg;
+  border-radius: 4px;
+}
+
+/* white-space was nowrap but changed to inherit; see discussion at https://github.com/SparkDevNetwork/Rock/commit/e4230496c8a1dc199f1bbb26f95dfa025d64dd02#r28278277 */
+span.field-value {
+  padding: 2px 4px;
+  font-family: @font-family-monospace;
+  font-size: 90%;
+  color: @pagetitle-text-color;
+  white-space: inherit;
+  background-color: @pagetitle-bg;
+  border-radius: 4px;
+}
+
+// 8. Add Family Page
+// -------------------------
+
+.table-groupmembers .radio:first-child {
+  margin-top: 0 !important;
+}
+
+@media (max-width: @screen-sm) {
+  /* Force table to not be like tables anymore */
+  table.table-groupmembers,
+  .table-groupmembers thead,
+  .table-groupmembers tbody,
+  .table-groupmembers th,
+  .table-groupmembers td,
+  .table-groupmembers tr,
+  table.table-groupcontactinfo,
+  .table-groupcontactinfo thead,
+  .table-groupcontactinfo tbody,
+  .table-groupcontactinfo th,
+  .table-groupcontactinfo td,
+  .table-groupcontactinfo tr {
+    display: block;
+  }
+
+  .table-groupmembers {
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    > thead > tr > th,
+    > tbody > tr > th,
+    > tfoot > tr > th,
+    > thead > tr > td,
+    > tbody > tr > td,
+    > tfoot > tr > td {
+      border: 0;
+    }
+
+    > tbody > tr > td {
+      position: relative;
+      padding-left: 35%;
+
+      /* Behave  like a "row" */
+      border-bottom: 1px solid @gray-lighter;
+    }
+
+    td::before {
+      /* Now like a table header */
+      position: absolute;
+
+      /* Top/left values mimic padding */
+      top: 8px;
+      left: 6px;
+      width: 35%;
+      padding-right: 10px;
+      font-weight: @grid-column-header-font-weight;
+    }
+
+    > tbody > tr {
+      counter-increment: rowNumber;
+
+      &::before {
+        /* Now like a table header */
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 10px;
+
+        /* Top/left values mimic padding */
+        font-size: @grid-column-header-font-size;
+        font-weight: @grid-column-header-font-weight;
+        color: @grid-column-header-text-color;
+        content: "Person #" counter(rowNumber);
+        background-color: @grid-column-header-bg;
+        border-bottom: 2px solid @grid-column-header-border-color;
+      }
+    }
+
+    /* Label the data */
+    tbody {
+      td::before {
+        content: attr(data-label);
+      }
+
+      td:empty {
+        display: none;
+      }
+    }
+
+    > tfoot,
+    > tfoot > tr > td {
+      display: block;
+      width: 100%;
+      padding: 0;
+    }
+
+    > tfoot > tr > td > .btn-action {
+      display: block;
+      width: 100%;
+      margin: 8px 0 16px;
+      .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
+    }
+
+    > tbody > tr > td > .form-group {
+      &:last-of-type,
+      .radio:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    .pull-right {
+      float: none !important;
+    }
+  }
+
+  .table-groupcontactinfo {
+    margin-bottom: 12px;
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    > thead > tr > th,
+    > tbody > tr > th,
+    > tfoot > tr > th,
+    > thead > tr > td,
+    > tbody > tr > td,
+    > tfoot > tr > td {
+      border: 0;
+    }
+
+    > tbody > tr > td {
+      position: relative;
+
+      /* Behave  like a "row" */
+      border: 0;
+      border-bottom: 1px solid @gray-lighter;
+    }
+
+    /* Label the data */
+    tbody {
+      .person-name {
+        /* Now like a table header */
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 10px;
+
+        /* Top/left values mimic padding */
+        font-size: @grid-column-header-font-size;
+        font-weight: @grid-column-header-font-weight;
+        color: @grid-column-header-text-color;
+        background-color: @grid-column-header-bg;
+        border-bottom: 2px solid @grid-column-header-border-color;
+
+        &::before {
+          content: "Contact Info: ";
+        }
+      }
+
+      .person-sms {
+        position: relative;
+        padding-left: 35%;
+
+        /* Behave  like a "row" */
+        border: 0;
+        border-bottom: 1px solid @gray-lighter;
+
+        &::before {
+          /* Now like a table header */
+          position: absolute;
+
+          /* Top/left values mimic padding */
+          top: 14px;
+          left: 6px;
+          width: 35%;
+          padding-right: 10px;
+          font-weight: @grid-column-header-font-weight;
+          content: "Enable SMS";
+        }
+      }
+
+      > tr > td > .form-group {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+// 8. Add Groups
+// -------------------------
+
+.row-duplicate {
+  padding-top: 12px;
+  border-top: 1px solid @panel-border;
+}
+
+.row-duplicate:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+// 9. Fluidbox
+// -------------------------
+
+#fluidbox-overlay {
+  background: @modal-backdrop-bg;
+}
+
+
+// 10. Responsive Overrides
+// -------------------------
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min), print {
+  // bio bar
+  .personprofilebar-bio {
+    padding: @spacing-md-px;
+
+    .name {
+      text-align: left;
+
+      .full-name,
+      .previous-names {
+        display: inline;
+      }
+    }
+
+    .labels {
+      text-align: right;
+    }
+
+    .photo {
+      margin: 0;
+    }
+
+    .demographics {
+      text-align: left;
+    }
+
+    .personcontact {
+      padding-bottom: 0;
+      text-align: left;
+    }
+
+    .social-icons {
+      text-align: left;
+
+      .icon {
+        float: left;
+      }
+    }
+  }
+
+  .personprofilebar-badge {
+    .badge-group {
+      text-align: left;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+}
+
+// 11. Person Merge
+// -------------------------
+
+/* DT Make the header of the merge field columns have a pointer since it can be used to select checkbox */
+.person-merge .merge-header-summary {
+  cursor: pointer;
+}
+
+// 12. Person Page Views
+// -------------------------
+.panel-widget.pageviewsession {
+  .pageviewsession-client {
+    line-height: 1;
+    text-align: right;
+  }
+}
+
+// 13. Deceased / Inactive Styles
+// -------------------------
+
+.person-bio {
+  div.deceased h1.title.name::after {
+    margin-left: 12px;
+    font-size: 14px;
+    color: @brand-danger;
+    content: "Deceased";
+  }
+}
+
+.groupmembers {
+  .member.deceased {
+    &:hover {
+      background-color: darken(@gray-light, 10%);
+    }
+
+    .person-info::after {
+      font-size: 10px;
+      color: @brand-danger;
+      content: "Deceased";
+    }
+  }
+}
+
+//tr.deceased {
+//    td {
+//    }
+//}
+
+tr.inactive {
+  td {
+    color: lighten(@text-color, 30%);
+  }
+}
+
+// 14. Bulk Update
+// -------------------------
+
+.bulk-update {
+  .no-select {
+    .form-group {
+      opacity: 1;
+    }
+  }
+
+  .fade-inactive {
+    .form-group {
+      opacity: .5;
+
+      .control-label {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .form-group.bulk-item-selected {
+    padding: 12px;
+    background-color: @gray-lighter;
+    border-radius: @border-radius-base;
+    opacity: 1;
+  }
+}
+
+// 15. Photo Requests
+// -------------------------
+.photoupload-photo {
+  .image-editor {
+    float: left;
+    margin-right: 48px;
+
+    label {
+      width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+// 16. Duplicate Pages
+// -------------------------
+
+.grid-table tbody tr.duplicate-source {
+  td,
+  &:hover > td {
+    color: @gray-dark;
+    background-color: @gray-light;
+  }
+}
+
+// 17. DISC & Assessments
+// -------------------------
+.disc-assessment {
+  th {
+    padding: 6px;
+
+    &:last-child {
+      border-radius: 0 @border-radius-base 0 0;
+    }
+
+    &.disc-question {
+      padding: 6px;
+      font-weight: 700;
+      border-radius: @border-radius-base 0 0 0;
+    }
+  }
+
+  td {
+    vertical-align: middle;
+  }
+
+  .disc-answer {
+    width: 20%;
+    min-width: (@custom-control-indicator-size + 30px);
+    text-align: center;
+  }
+}
+
+.disc-heading {
+  text-align: center;
+}
+
+.disc-row {
+  margin-bottom: @disc-question-spacing;
+
+  &::after {
+    display: block;
+    width: 100%;
+    margin: @disc-question-spacing 0;
+    content: " ";
+    border-bottom: 1px solid @ui-4;
+  }
+}
+
+
+@disc-chart-height: 425px;
+.discchart {
+  position: relative;
+  width: 80%;
+  max-width: 650px;
+  height: @disc-chart-height;
+  padding: 0;
+  margin: 36px auto;
+  clear: both;
+  font-size: 0;
+  background-image:
+    linear-gradient(
+      to bottom,
+      @ui-4 0%,
+      transparent 2%,
+      transparent 100%
+    );
+  background-size: 100% (@disc-chart-height/10);
+
+  li {
+    position: relative;
+    display: inline-block;
+    width: 22.5%;
+    height: 425px;
+    padding: 0;
+    margin: 0 2% 0 0;
+    color: @btn-primary-color;
+    text-align: center;
+    vertical-align: bottom;
+    background-color: lighten(@brand-primary, 10%);
+
+    &.discchart-midpoint {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 70%;
+      margin: 0;
+      background-color: transparent;
+      border-top: 2px solid @brand-danger;
+      border-radius: 0;
+    }
+  }
+
+  .discbar-label {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    overflow: hidden;
+    font-size: 28px;
+    font-weight: @font-weight-bold;
+    text-shadow: 0 0 3px @brand-primary;
+  }
+
+  .discbar {
+    &::before {
+      position: absolute;
+      top: -25px;
+      right: 0;
+      left: 0;
+      z-index: 1;
+      display: block;
+      font-size: 20px;
+      line-height: 1em;
+      color: @text-color;
+      text-align: center;
+      word-wrap: break-word;
+      content: attr(title);
+    }
+
+    &.discbar-primary {
+      background: @brand-primary;
+    }
+  }
+}
+
+.question-row {
+  margin-bottom: @padding-base-vertical * 8;
+
+  .answered {
+    color: @text-muted;
+  }
+
+  .likert > .control-label {
+    margin-bottom: @padding-base-vertical * 1.5;
+  }
+
+  .likert {
+    .radio-inline {
+      padding: 5px @padding-base-horizontal 7px (@custom-control-indicator-size + @padding-base-horizontal + 4px);
+      margin-right: @padding-base-horizontal;
+      margin-left: -@padding-base-horizontal;
+      cursor: pointer;
+      background-clip: padding-box;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: @gray-lighter;
+      }
+
+      .label-text::before,
+      .label-text::after {
+        top: 50%;
+        left: 8px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .likert-7 > span {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+
+
+    @media (max-width: @likert-screen-column) {
+      -ms-flex-align: start;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .radio-inline {
+      flex: 0 0 14.28571428571429%;
+    }
+  }
+}
+
+// 18. Edit Person
+// -------------------------
+.phonegroup-label {
+  margin-bottom: 5px;
+
+  @media @sm {
+    padding-top: 4px;
+  }
+}
+
+// 19. Event Calendar Item Personalized Registration
+// -------------------------
+.eventitem {
+  cursor: pointer;
+}
+
+.eventitem-select {
+  font-family: @fa-font-face;
+  font-size: 38px;
+  font-weight: @fa-theme-weight;
+}
+
+.eventitem-select::after {
+  content: @fa-var-square;
+}
+
+.eventitem.selected .eventitem-select::after {
+  content: @fa-var-check-square;
+}
+
+// STEPS
+@steps-breakpoint: @screen-lg-min;
+
+.add-step-buttons {
+  padding: 8px 0;
+  margin: -16px -16px 0;
+  background: @drawer-bg;
+  border-bottom: 1px solid @panel-border;
+
+  + .row {
+    margin-top: 16px;
+  }
+
+  .add-step-label {
+    float: left;
+    padding: (@padding-small-vertical + 1) 0;
+    margin: 0 6px 0 0;
+    font-size: @font-size-small;
+  }
+}
+
+.col-steps {
+  position: relative;
+  float: left;
+  width: 25%;
+  width: ~"calc(100% / var(--stepsPerRowMobile))";
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  @media (min-width: @steps-breakpoint) {
+    width: 100%;
+    width: ~"calc(100% / var(--stepsPerRow))";
+  }
+}
+
+.step-card {
+  position: relative;
+  height: 260px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid @panel-border;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+
+  .card-info {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    padding: 12px 0;
+    text-align: center;
+    transition-duration: .25s;
+    will-change: transform;
+  }
+
+  .step-status {
+    margin: 12px 0 0;
+  }
+
+  .step-name {
+    display: -webkit-box;
+    margin: 0 0 12px;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 1.3;
+  }
+
+  @media (min-width: @steps-breakpoint) {
+    .card-info {
+      -ms-flex-pack: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .card-top {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: end;
+      -ms-flex-pack: center;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .card-top,
+    .card-bottom {
+      -ms-flex: 1 1 50%;
+      flex: 1 1 50%;
+    }
+  }
+
+  &.no-steps .card-info {
+    opacity: .75;
+  }
+
+  &.has-prerequisite .step-card-hover {
+    background: @ui-2;
+  }
+
+
+  p:empty {
+    display: none;
+  }
+
+  .badge {
+    background-color: @brand-info;
+  }
+
+  > .step-card-hover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 100%;
+    overflow-y: auto;
+    opacity: 0;
+    transition-duration: .25s;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    will-change: opacity, transform;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  &:hover > .step-card-hover {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+
+  .btn-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 49px;
+    color: inherit;
+
+    &:hover {
+      background-color: darken(@btn-default-bg, 10%);
+    }
+  }
+
+  .btn-delete:hover {
+    color: #fff;
+    background-color: @btn-danger-bg;
+  }
+}
+
+.has-overflow {
+  .step-records-table-container,
+  .card-add-step-button {
+    position: relative;
+    display: block;
+  }
+
+  .card-add-step-button > span {
+    transform: none;
+  }
+}
+
+.step-records-table-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+}
+
+.step-records-table {
+  width: 100%;
+
+  td {
+    width: 50px;
+    vertical-align: middle;
+    border: 1px solid @panel-border;
+
+    &.steps-status {
+      width: auto;
+      height: 49px;
+      border-left: none;
+    }
+  }
+
+  tr:last-child td {
+    border-bottom: 0;
+  }
+
+  td:last-of-type {
+    border-right: none;
+  }
+}
+
+.prereq-list-info {
+  padding: 20px 20px 0;
+}
+
+.card-add-step-button {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 28px;
+  background: @ui-2;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+
+  > span {
+    position: relative;
+    top: 50%;
+    display: block;
+    transform: perspective(1px) translateY(-50%);
+  }
+}
+
+// 20. Rapid Attendance Entry
+// -------------------------
+
+.rapid-attendance-entry {
+  .mh-300 {
+    min-height: 300px;
+  }
+}
+
+.family-select-item {
+  margin-bottom: 12px;
+  color: @text-color;
+  border: 1px solid @panel-border;
+
+  &.active {
+    border-color: var(--brand-color);
+    border-color: @brand-primary;
+  }
+
+  a {
+    display: block;
+    padding: 15px 18px;
+    color: @text-color !important;
+  }
+}
