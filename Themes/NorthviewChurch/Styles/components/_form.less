@@ -1,16 +1,123 @@
-.form-control {
-  background-color: @gray-lightest;
-  color: @text-color;
-  font-weight: 600;
-  border: none;
-  border-radius: 0;
-  &:focus {
+.block-content > div:not(.modal-open) {
+  .form-control {
+    background-color: none;
+    color: @text-color;
+    font-weight: 600;
+    border:none;
+    border-bottom: solid 3px #D3D3D3;
+    border-radius: 0;
     box-shadow: none;
-    outline: solid 3px @color-brand-primary;
+    padding: 6px 0;
+    transition: border-bottom 0;
+    &:focus {
+      border-bottom: none;
+      outline: solid 3px @color-brand-primary;
+      padding: 6px 12px;
+    }
+    .searchbox & {
+      box-sizing: border-box;
+      padding: 10px;
+    }
   }
-  .searchbox & {
-    box-sizing: border-box;
-    padding: 10px;
+  .form-group {
+    position: relative;
+    margin-bottom: 2em;
+    margin-top:20px;
+    .dropdown-toggle {
+      border: solid 2px @black;
+      font-weight: bold;
+      color: @black;
+      padding: 10px 40px 10px 15px;
+      position: relative;
+      .fa-caret-down {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        &:before {
+          content: "\f078";
+        }
+      }
+    } 
+    label {
+      color: @black;
+      transition: all .2s ease-in-out;    
+      position: absolute;
+      z-index: 5;
+      white-space: nowrap;
+      top: -20px;
+      font-size: 0.85em;
+      display: inline-block;
+      margin: 0;
+      line-height: 1.4em;
+      padding: 0;
+    }
+    &.date-picker {
+      label {
+        
+      }
+    }
+    .radio,
+    .checkbox {
+      label {
+        position: relative;
+        top:0;
+        padding-left: 20px;
+        .label-text {
+          vertical-align: middle;
+        }
+      }
+    }
+    &.focused {
+      label {
+        top: -20px;
+        font-size: 0.85em;
+        margin:0;
+      }
+    }
+    &.blurred {
+      label {
+        color: @color-gray-light;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 1em;
+        top: 0px;
+        display: inline-block;
+        margin: 6px 0;
+        line-height: 1.4em;
+        padding: 0;
+        user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+      }
+    }
+  }
+.contribution-payment .tab-content {
+  margin-top: 32px;
+}
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    color: #777576;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: solid 3px #D3D3D3;
+}
+}
+#ctl00_main_ctl10_ctl02_ctl00_divRepeatingPayments {
+  display: flex;
+  .date-picker {
+    margin-left: 30px;
+    .form-control {
+      padding: 20px 12px;
+      margin-top: 3px;
+    }
   }
 }
 #addressInput {

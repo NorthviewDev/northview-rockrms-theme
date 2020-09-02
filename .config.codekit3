@@ -9,12 +9,28 @@
 	],
 "creatorBuild": "32186",
 "files": {
-	"/.gitignore": {
+	"/.nova/Configuration.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/.nova/Configuration-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/.nova/Publishing/Northview Church.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/.nova/Publishing/Northview Church-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/northview-church.code-workspace": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/.gitignore",
+		"oAP": "/northview-church.code-workspace",
 		"oF": 0
 		},
 	"/Plugins/us_fishhook/Event/CustomCalendarLava.ascx": {
@@ -33,13 +49,11 @@
 		"oAP": "/Plugins/us_fishhook/Event/CustomCalendarLava.ascx.cs",
 		"oF": 0
 		},
-	"/Styles/.csscomb.json": {
-		"ft": 524288,
+	"/Styles": {
+		"ft": 65536,
 		"oA": 1,
-		"oAP": "/Styles/.csscomb-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
+		"oAP": "/build/Styles",
+		"oF": 0
 		},
 	"/Styles/_blocks-checkinadmin.less": {
 		"aP": 1,
@@ -249,38 +263,6 @@
 		"sI": 0,
 		"sU": 0
 		},
-	"/Styles/_checkin-core.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 1,
-		"oAP": "/Styles/_checkin-core.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/Styles/_checkin-mobile.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 1,
-		"oAP": "/Styles/_checkin-mobile.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
 	"/Styles/_components.less": {
 		"aP": 1,
 		"bl": 0,
@@ -371,22 +353,6 @@
 		"mS": 0,
 		"oA": 1,
 		"oAP": "/Styles/_helpers.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/Styles/_kiosk-core.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 1,
-		"oAP": "/Styles/_kiosk-core.css",
 		"oF": 0,
 		"oS": 1,
 		"rwU": 0,
@@ -562,32 +528,6 @@
 		"oAP": "/Styles/bootstrap-modal/bootstrap-modal-min.css",
 		"oF": 0,
 		"oS": 3
-		},
-	"/Styles/bootstrap-sortable.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/Styles/bootstrap-sortable-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/Styles/Bootstrap/.csscomb.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "/Styles/Bootstrap/.csscomb-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
-		},
-	"/Styles/Bootstrap/.csslintrc": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/Styles/Bootstrap/.csslintrc",
-		"oF": 0
 		},
 	"/Styles/Bootstrap/alerts.less": {
 		"aP": 1,
@@ -791,22 +731,6 @@
 		"mS": 0,
 		"oA": 1,
 		"oAP": "/Styles/Bootstrap/forms.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/Styles/Bootstrap/glyphicons.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 0,
-		"oAP": "/Styles/Bootstrap/glyphicons.css",
 		"oF": 0,
 		"oS": 1,
 		"rwU": 0,
@@ -1629,40 +1553,6 @@
 		"sI": 0,
 		"sU": 0
 		},
-	"/Styles/Bootstrap/theme.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/Styles/Bootstrap/theme-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/Styles/Bootstrap/theme.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/Styles/Bootstrap/theme.css.map",
-		"oF": 0
-		},
-	"/Styles/Bootstrap/theme.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 0,
-		"oAP": "/Styles/Bootstrap/theme.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
 	"/Styles/Bootstrap/thumbnails.less": {
 		"aP": 1,
 		"bl": 0,
@@ -1790,48 +1680,6 @@
 		"rwU": 0,
 		"sI": 0,
 		"sU": 0
-		},
-	"/Styles/chosen/chosen-sprite.png": {
-		"ft": 32768,
-		"iS": 617,
-		"oA": 0,
-		"oAP": "/Styles/chosen/chosen-sprite.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/Styles/chosen/chosen-sprite@2x.png": {
-		"ft": 32768,
-		"iS": 813,
-		"oA": 0,
-		"oAP": "/Styles/chosen/chosen-sprite@2x.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/Styles/developer.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/Styles/developer-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/Styles/fluidbox.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/Styles/fluidbox-min.css",
-		"oF": 0,
-		"oS": 3
 		},
 	"/Styles/FontAwesome/_animated.less": {
 		"aP": 1,
@@ -2041,22 +1889,6 @@
 		"sI": 0,
 		"sU": 0
 		},
-	"/Styles/FontAwesome/_shims.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 1,
-		"oAP": "/Styles/FontAwesome/_shims.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
 	"/Styles/FontAwesome/_stacked.less": {
 		"aP": 1,
 		"bl": 0,
@@ -2083,70 +1915,6 @@
 		"mS": 0,
 		"oA": 1,
 		"oAP": "/Styles/FontAwesome/_variables.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/Styles/FontAwesome/brands.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 1,
-		"oAP": "/Styles/FontAwesome/brands.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/Styles/FontAwesome/fa-brands.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 0,
-		"oAP": "/Styles/FontAwesome/fa-brands.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/Styles/FontAwesome/fa-regular.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 0,
-		"oAP": "/Styles/FontAwesome/fa-regular.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/Styles/FontAwesome/fa-solid.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 0,
-		"oAP": "/Styles/FontAwesome/fa-solid.css",
 		"oF": 0,
 		"oS": 1,
 		"rwU": 0,
@@ -2201,54 +1969,6 @@
 		"sI": 0,
 		"sU": 0
 		},
-	"/Styles/FontAwesome/regular.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 1,
-		"oAP": "/Styles/FontAwesome/regular.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/Styles/FontAwesome/solid.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 1,
-		"oAP": "/Styles/FontAwesome/solid.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/Styles/FontAwesome/v4-shims.less": {
-		"aP": 1,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 0,
-		"oAP": "/Styles/FontAwesome/v4-shims.css",
-		"oF": 0,
-		"oS": 1,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
 	"/Styles/FontAwesome/variables.less": {
 		"aP": 1,
 		"bl": 0,
@@ -2264,16 +1984,6 @@
 		"rwU": 0,
 		"sI": 0,
 		"sU": 0
-		},
-	"/Styles/JCrop/jcrop.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/Styles/JCrop/jcrop-min.css",
-		"oF": 0,
-		"oS": 3
 		},
 	"/Styles/JCrop/jcrop.less": {
 		"aP": 1,
@@ -3010,58 +2720,6 @@
 		"rwU": 0,
 		"sI": 0,
 		"sU": 0
-		},
-	"/Styles/RockFont/style.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/Styles/RockFont/style-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/Styles/screenkeyboard/screen-keyboard.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/Styles/screenkeyboard/screen-keyboard-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"/Styles/summernote/font/summernote.eot": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/Styles/summernote/font/summernote.eot",
-		"oF": 0
-		},
-	"/Styles/summernote/font/summernote.ttf": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/Styles/summernote/font/summernote.ttf",
-		"oF": 0
-		},
-	"/Styles/summernote/font/summernote.woff": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/Styles/summernote/font/summernote.woff",
-		"oF": 0
-		},
-	"/Styles/summernote/font/summernote.woff2": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/Styles/summernote/font/summernote.woff2",
-		"oF": 0
 		},
 	"/Styles/summernote/summernote.css": {
 		"aP": 1,
@@ -5005,6 +4663,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/Themes/NorthviewChurch/Layouts/RightSidebar.aspx",
+		"oF": 0
+		},
+	"/Themes/NorthviewChurch/Layouts/RightSidebarNarrow.aspx": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/Themes/NorthviewChurch/Layouts/RightSidebarNarrow.aspx",
 		"oF": 0
 		},
 	"/Themes/NorthviewChurch/Layouts/Site.Master": {
@@ -7805,11 +7471,11 @@
 	"npmSaveExactVersion": 0,
 	"npmTargetDependencyListType": 1,
 	"overrideExternalServerCSS": 1,
-	"previewPathAddition": "/page/2546",
+	"previewPathAddition": "/page/2861",
 	"rollupExternals": "",
 	"rollupReplacements": "process.env.NODE_ENV:::$NODE_ENV,,,ENVIRONMENT:::$NODE_ENV",
 	"rollupTreeshakingEnabled": 1,
-	"skippedFoldersString": "/storage/framework/sessions,node_modules,_logs,logs,log,.idea,_cache,cache",
+	"skippedFoldersString": "/storage/framework/sessions, node_modules, _logs, logs, log, .idea, _cache, cache, /styles",
 	"sourceFolderName": "source",
 	"susyVersion": 3,
 	"tsAllowSyntheticDefaultImports": 0,

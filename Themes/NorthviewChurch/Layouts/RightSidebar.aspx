@@ -2,24 +2,16 @@
 
 <asp:Content ID="ctMain" ContentPlaceHolderID="main" runat="server">
 
-    <main class="container">
+    <main id="site-content">
 
         <!-- Start Content Area -->
 
-        <!-- Page Title -->
-        <Rock:PageIcon ID="PageIcon" runat="server" /> <h1 class="pagetitle"><Rock:PageTitle ID="PageTitle" runat="server" /></h1>
-        <Rock:PageBreadCrumbs ID="PageBreadCrumbs" runat="server" />
+		<Rock:Zone Name="Feature" runat="server" />
 
         <!-- Ajax Error -->
         <div class="alert alert-danger ajax-error no-index" style="display:none">
             <p><strong>Error</strong></p>
             <span class="ajax-error-message"></span>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <Rock:Zone Name="Feature" runat="server" />
-            </div>
         </div>
 
         <div class="row">

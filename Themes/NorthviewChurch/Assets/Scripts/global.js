@@ -1,6 +1,39 @@
 //Global Scripts
 $(function () { //document.ready
-
+  $('.rock-text-box .form-control').each(function(){
+    if ($(this).is(':focus')) {
+      $(this).closest('.form-group').addClass('focused');      
+    } else {
+      $(this).closest('.form-group').addClass('blurred');      
+    }
+  });
+  $('.rock-text-box .form-control').on('focus', function(){
+    $(this).closest('.form-group').removeClass('blurred');
+    $(this).closest('.form-group').addClass('focused');
+  });
+  $('.rock-text-box .form-control').on('blur', function(){
+    if  ( $(this).val() === '') {
+      $(this).closest('.form-group').addClass('blurred');
+      $(this).closest('.form-group').removeClass('focused');
+    }
+  });
+  
+  $('.address-control .form-control[type="text"]').each(function(){    
+    $(this).closest('.form-group').prepend("<label class='control-label'>"+$(this).attr("placeholder")+"</label>");
+    $(this).wrap("<div class='control-wrapper'></div>").attr("placeholder","");
+    $(this).closest('.form-group').addClass('blurred');
+  });
+  $('.address-control .form-control[type="text"]').on('focus', function(){
+    $(this).closest('.form-group').removeClass('blurred');
+    $(this).closest('.form-group').addClass('focused');
+  });
+  $('.address-control .form-control[type="text"]').on('blur', function(){
+    if  ( $(this).val() === '') {
+      $(this).closest('.form-group').addClass('blurred');
+      $(this).closest('.form-group').removeClass('focused');
+    }
+  });
+   
   var navActive = false,
     navOpen = document.querySelector('.nav-toggle-menu'),
     navListOpen = document.querySelector('.c-primary-nav');
