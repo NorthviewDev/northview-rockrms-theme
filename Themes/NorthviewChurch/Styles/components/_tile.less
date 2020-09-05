@@ -1,0 +1,31 @@
+/** Tile Element for Media Hub **/
+.c-tile {
+  position: relative;
+  margin-bottom: var(--s2);
+  .c-tile__body {
+    padding: var(--s2);
+    background-color: @white;
+    color: @text-color;
+    display: flex;
+    flex-direction: row-reverse;
+    .c-tile__link,
+    .c-tile__info {
+      flex: 0 1 50%;
+    }
+    .c-tile__title {
+      font-size: 29px;
+      letter-spacing: 0;
+      line-height: 1;
+      margin:0;
+    }
+    .c-tile__summary {
+        color: @color-gray;
+        font-size: 18px;
+        letter-spacing: 0;
+        line-height: 22px;
+    }
+    a {
+      border: none;
+    }
+  }
+}
