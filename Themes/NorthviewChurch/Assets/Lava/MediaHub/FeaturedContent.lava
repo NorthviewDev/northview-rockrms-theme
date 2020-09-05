@@ -1,87 +1,23 @@
-<section class="c-section" id="featuredContent">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 left-block">
-                <div class="c-section__header decorated">
-                  <h2><span>FEATURED</span></h2>
-                </div>
-            </div>
+<div id="featuredContent">
+  <div class="masonry-grid">
+  {%- for item in Items -%}
+  {%- assign itemContentChannelItem = item.ChildItems | First %}
+  {%- assign itemBgImage = itemContentChannelItem.ChildContentChannelItem | Attribute:'Image','RawValue' %}
+  {%- assign itemId = itemContentChannelItem.ChildContentChannelItem.Id | Trim -%}
+  {%- assign itemPrimarySlug = itemContentChannelItem.ChildContentChannelItem.PrimarySlug | Trim -%}
+  {%- assign itemContentChannelId = itemContentChannelItem.ChildContentChannelItem.ContentChannelId -%}
+  {% assign linkUrl = item.LinkUrl, 'RawValue' | Trim %}
+  {%- if linkUrl =="" %}
+  {% assign linkUrl = itemContentChannelItem.ChildContentChannelItem.ContentChannel.ItemUrl | Replace:'{Id}',itemId | Replace:'{Slug}',itemPrimarySlug %}
+  {%- endif -%}
+    <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&maxWidth=800&maxHeight=800')">
+      <div class="masonry-grid__content">
+        <div class="masonry-grid__title-link stack">
+          <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
+          <p><a class="c-btn c-btn--text-link" href="{{ linkUrl }}">{{ item | Attribute:'ButtonText' }}<i class="nv-icon nv-icon--carat_right"></i></a></p>
         </div>
-        <div class="row">
-          <div class="col-sm-8">
-              <div class="c-section__content">
-                  <div class="masonry-grid">
-                  {%- for item in Items -%}
-                  {%- assign itemContentChannelItem = item.ChildItems | First %}
-                  {%- assign itemBgImage = itemContentChannelItem.ChildContentChannelItem | Attribute:'MessageImage','RawValue' %}
-                  {%- assign itemPrimarySlug = itemContentChannelItem.ChildContentChannelItem.PrimarySlug | Trim -%}
-                  {%- assign itemContentChannelId = itemContentChannelItem.ChildContentChannelItem.ContentChannelId -%}
-                  {% contentchannel id:'{{itemContentChannelId}}' %}
-                    <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&maxWidth=800&maxHeight=800')">
-                      <div class="masonry-grid__content">
-                        <div class="masonry-grid__title-link stack">
-                          <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
-                          <p><a class="c-btn c-btn--text-link" href="{{ itemLink }}">{{ item | Attribute:'ButtonText' }}<i class="nv-icon nv-icon--carat_right"></i></a></p>
-                        </div>
-                      </div>
-                    </div>
-                  {%- endcontentchannel -%}
-                  {%- endfor -%}
-                  </div>
-              </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="well">
-              <h3>Explore by Type</h3>
-              <div class="c-filter__buttons">
-                <a href="#videos" class="c-filter__button">Videos</a>
-                <a href="#videos" class="c-filter__button">Articles</a>
-                <a href="#videos" class="c-filter__button">Messages</a>
-                <a href="#videos" class="c-filter__button">Podcasts</a>
-                <a href="#videos" class="c-filter__button">Music</a>
-                <a href="#videos" class="c-filter__button">Resources</a>                  
-              </div>
-          </div>
-          <div class="well">
-            <h3>Current Series</h3>
-            {% contentchannelitem where:'ContentChannelId==5' sort:'StartDateTime desc' limit:'1' %}
-              {%- for message in contentchannelitemItems -%}
-              {%- assign messageSeries = message.ParentItems | First -%}
-              {%- assign seriesImageGuid = messageSeries.ContentChannelItem | Attribute:'SeriesImage','RawValue' -%}
-              <div class="c-card__header">
-               <img class="c-card__media" src="/GetImage.ashx?guid={{ seriesImageGuid }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" />
-              </div>
-              <div class="c-card__body --noPad">
-                <div class="stack g-margin--top-s2">
-                  <span class="c-card__callout">{{ messageSeries.ContentChannelItem.Title }}</span>
-                  <h3 class="c-card__title">{{ message.Title }}</h3>
-                  <p><a href="{{ DetailPage }}/{{ message.PrimarySlug }}" class="c-btn c-btn--dark">Watch<i class="nv-icon nv-icon--carat_right"></i></a></p>
-                </div>
-              </div>
-              {%- endfor -%}
-              {%- if allmessagesurl -%}
-              <p class="c-section__footer"><a href="{{ allmessagesurl }}" class="c-btn">All Messages<i class="nv-icon nv-icon--carat_right"></i></a></p>
-              {%- endif -%}
-            {% endcontentchannelitem %}
-          </div>
-          <div class="well">
-            <h3>Subscribe</h3>
-            <input type="text" placeholder="Email Address" class="form-control" />
-          </div>
-          {% contentchannelitem where:'ContentChannelId==1' sort:'StartDateTime desc' limit:'1' %}
-            {%- for item in contentchannelitemItems -%}
-            {%- assign itemBgImage = item | Attribute:'DetailImage','RawValue' -%}
-            <div class="c-card --bgImage">
-              <div class="c-card__body" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&maxWidth=800&maxHeight=800')">
-                <div class="stack">
-                  <h3 class="c-card__title">{{ item.Title }}</h3>
-                  <p class="c-card__summary">{{ item | Attribute:'SummaryText' }}</p>
-                  <p><a class="c-btn c-btn--white" href="{{ item | Attribute:'ButtonLink','RawValue' }}">{{ item | Attribute:'ButtonText' }}<i class="nv-icon nv-icon--carat_right"></i></a></p>
-                </div>
-              </div>
-            </div>
-            {%- endfor -%}
-          {% endcontentchannelitem %}
-        </div>
+      </div>
     </div>
-</section>
+  {%- endfor -%}
+  </div>
+</div>

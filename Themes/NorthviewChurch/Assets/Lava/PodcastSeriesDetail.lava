@@ -33,7 +33,7 @@
 {% if item %}
 
 	<article class="series-detail">
-		{% assign seriesImageGuid = item | Attribute:'SeriesImage','RawValue' %}
+		{% assign seriesImageGuid = item | Attribute:'Image','RawValue' %}
 		<div class="series-banner" style="background-image: url('/GetImage.ashx?Guid={{ seriesImageGuid }}');" ></div>
 
 		<h1 class="series-title">{{ item.Title }}</h1>

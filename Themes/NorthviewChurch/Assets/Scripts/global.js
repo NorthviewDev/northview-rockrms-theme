@@ -1,25 +1,25 @@
 //Global Scripts
 $(function () { //document.ready
-  $('.rock-text-box .form-control').each(function(){
+  $('.rock-text-box input.form-control').each(function(){
     if ($(this).is(':focus')) {
       $(this).closest('.form-group').addClass('focused');      
-    } else {
+    } else if ($(this).val() === '') {
       $(this).closest('.form-group').addClass('blurred');      
     }
   });
-  $('.rock-text-box .form-control').on('focus', function(){
+  $('.rock-text-box input.form-control').on('focus', function(){
     $(this).closest('.form-group').removeClass('blurred');
     $(this).closest('.form-group').addClass('focused');
   });
-  $('.rock-text-box .form-control').on('blur', function(){
+  $('.rock-text-box input.form-control').on('blur', function(){
     if  ( $(this).val() === '') {
       $(this).closest('.form-group').addClass('blurred');
       $(this).closest('.form-group').removeClass('focused');
     }
   });
   
-  $('.address-control .form-control[type="text"]').each(function(){    
-    $(this).closest('.form-group').prepend("<label class='control-label'>"+$(this).attr("placeholder")+"</label>");
+  $('.address-control .form-control[type="text"]:not(.js-street1)').each(function(){    
+    $(this).closest('.form-group').prepend("<label class='control-label' for='"+$(this).attr("id")+"'>"+$(this).attr("placeholder")+"</label>");
     $(this).wrap("<div class='control-wrapper'></div>").attr("placeholder","");
     $(this).closest('.form-group').addClass('blurred');
   });

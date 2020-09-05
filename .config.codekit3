@@ -4095,6 +4095,14 @@
 		"oAP": "/Themes/NorthviewChurch/Assets/Lava/LocationsMap_GoogleMapsAPI_deprecated.lava",
 		"oF": 0
 		},
+	"/Themes/NorthviewChurch/Assets/Lava/MediaHub/BigCTA.lava": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/Themes/NorthviewChurch/Assets/Lava/MediaHub/BigCTA.lava",
+		"oF": 0
+		},
 	"/Themes/NorthviewChurch/Assets/Lava/MediaHub/ContentSwiper.lava": {
 		"cB": 0,
 		"ft": 8192,
@@ -4655,6 +4663,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/Themes/NorthviewChurch/Layouts/LeftSidebar.aspx",
+		"oF": 0
+		},
+	"/Themes/NorthviewChurch/Layouts/MediaHub.aspx": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/Themes/NorthviewChurch/Layouts/MediaHub.aspx",
 		"oF": 0
 		},
 	"/Themes/NorthviewChurch/Layouts/RightSidebar.aspx": {
@@ -6835,7 +6851,7 @@
 			}
 		},
 	"esLintSourceType": 0,
-	"externalServerAddress": "https://northviewchurch.us",
+	"externalServerAddress": "https://www.northviewchurch.us",
 	"gitIgnoreBuildFolder": 1,
 	"hideConfigFile": 1,
 	"jsCheckerReservedNamesString": "",

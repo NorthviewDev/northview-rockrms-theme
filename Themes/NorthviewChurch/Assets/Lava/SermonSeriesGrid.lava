@@ -1,6 +1,6 @@
 {% for item in Items %}
 
-{% assign seriesImageGuid = item | Attribute:'SeriesImage','RawValue' %}
+{% assign seriesImageGuid = item | Attribute:'Image','RawValue' %}
 {% assign startDate = item.StartDateTime | Date:'MMMM' %}
 {% assign endDate = item.ExpireDateTime | Date:'MMMM' %}
 {% assign startDateYear = item.StartDateTime | Date:'yyyy' %}
