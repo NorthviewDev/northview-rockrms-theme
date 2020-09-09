@@ -2,18 +2,26 @@
   "metadata": {
     "name": "Northview Church",
     "lastOpened": 0,
-    "created": 1574865266842
+    "created": 1599481762136
   },
   "iconSets": [
     {
       "selection": [
+        {
+          "order": 85,
+          "id": 5,
+          "name": "messages",
+          "prevSize": 32,
+          "code": 59677,
+          "tempChar": ""
+        },
         {
           "order": 84,
           "id": 4,
           "name": "articles",
           "prevSize": 32,
           "code": 59667,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 83,
@@ -21,7 +29,7 @@
           "name": "music",
           "prevSize": 32,
           "code": 59673,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 82,
@@ -29,7 +37,7 @@
           "name": "videos",
           "prevSize": 32,
           "code": 59674,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 81,
@@ -37,7 +45,7 @@
           "name": "resources",
           "prevSize": 32,
           "code": 59675,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 80,
@@ -45,20 +53,42 @@
           "name": "podcasts",
           "prevSize": 32,
           "code": 59676,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 2,
       "metadata": {
         "name": "Untitled Set",
         "importSize": {
-          "width": 14,
+          "width": 17,
           "height": 16
         }
       },
       "height": 1024,
       "prevSize": 32,
       "icons": [
+        {
+          "id": 5,
+          "paths": [
+            "M846.72 622.209l134.221-66.65v255.040l-133.699-66.327c-8.461 55.34-8.88 84.901-1.257 88.683 34.928 17.331 87.321 43.327 157.177 77.988 24.816 12.313 53.641-3.715 57.374-30.040l0.405-5.792v-384c0-27.703-27.17-46.399-52.41-38.043l-5.368 2.211-158.794 78.791 2.352 88.139z",
+            "M768 320c70.692 0 128 57.308 128 128v448c0 70.692-57.308 128-128 128h-640c-70.692 0-128-57.308-128-128v-448c0-70.692 57.308-128 128-128h640zM768 400h-640c-24.301 0-44.383 18.058-47.562 41.487l-0.438 6.513v448c0 24.301 18.058 44.383 41.487 47.562l6.513 0.438h640c24.301 0 44.383-18.058 47.562-41.487l0.438-6.513v-448c0-24.301-18.058-44.383-41.487-47.562l-6.513-0.438z",
+            "M256 0c106.039 0 192 85.961 192 192s-85.961 192-192 192c-106.039 0-192-85.961-192-192s85.961-192 192-192zM256 80c-61.856 0-112 50.144-112 112s50.144 112 112 112c61.856 0 112-50.144 112-112s-50.144-112-112-112z",
+            "M544 64c88.366 0 160 71.634 160 160s-71.634 160-160 160c-88.366 0-160-71.634-160-160s71.634-160 160-160zM544 144c-44.183 0-80 35.817-80 80s35.817 80 80 80c44.183 0 80-35.817 80-80s-35.817-80-80-80z"
+          ],
+          "attrs": [
+            {},
+            {},
+            {},
+            {}
+          ],
+          "width": 1088,
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "Messages"
+          ]
+        },
         {
           "id": 4,
           "paths": [
@@ -164,7 +194,7 @@
           "name": "carat_right",
           "prevSize": 20,
           "code": 59653,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 1,
@@ -211,7 +241,7 @@
           "name": "carat_right_large",
           "prevSize": 20,
           "code": 59651,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 75,
@@ -219,7 +249,7 @@
           "name": "give",
           "prevSize": 20,
           "code": 59650,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 50,
@@ -227,7 +257,7 @@
           "name": "close",
           "prevSize": 20,
           "code": 59648,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 51,
@@ -235,7 +265,7 @@
           "name": "ornament_backslash",
           "prevSize": 20,
           "code": 59649,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 56,
@@ -243,7 +273,7 @@
           "name": "likes",
           "prevSize": 20,
           "code": 59654,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 57,
@@ -251,7 +281,7 @@
           "name": "ornament_plus",
           "prevSize": 20,
           "code": 59655,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 78,
@@ -259,7 +289,7 @@
           "prevSize": 20,
           "code": 59652,
           "name": "ornament_minus",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 58,
@@ -267,7 +297,7 @@
           "name": "phone",
           "prevSize": 20,
           "code": 59656,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 59,
@@ -275,7 +305,7 @@
           "name": "email",
           "prevSize": 20,
           "code": 59657,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 60,
@@ -283,7 +313,7 @@
           "name": "share",
           "prevSize": 20,
           "code": 59658,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 61,
@@ -291,7 +321,7 @@
           "name": "subscribe",
           "prevSize": 20,
           "code": 59659,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 62,
@@ -299,7 +329,7 @@
           "name": "audio",
           "prevSize": 20,
           "code": 59660,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 63,
@@ -307,7 +337,7 @@
           "name": "download",
           "prevSize": 20,
           "code": 59661,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 64,
@@ -315,7 +345,7 @@
           "name": "location_marker",
           "prevSize": 20,
           "code": 59662,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 65,
@@ -323,7 +353,7 @@
           "name": "account",
           "prevSize": 20,
           "code": 59663,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 66,
@@ -331,7 +361,7 @@
           "name": "search",
           "prevSize": 20,
           "code": 59664,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 67,
@@ -339,7 +369,7 @@
           "name": "menu",
           "prevSize": 20,
           "code": 59665,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 68,
@@ -347,7 +377,7 @@
           "name": "church_logomark",
           "prevSize": 20,
           "code": 59666,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 70,
@@ -355,7 +385,7 @@
           "name": "ornament_square",
           "prevSize": 20,
           "code": 59668,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 71,
@@ -363,7 +393,7 @@
           "name": "ornament_triangle",
           "prevSize": 20,
           "code": 59669,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 72,
@@ -371,7 +401,7 @@
           "name": "clock",
           "prevSize": 20,
           "code": 59670,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 73,
@@ -379,7 +409,7 @@
           "name": "ornament_circle",
           "prevSize": 20,
           "code": 59671,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 74,
@@ -387,7 +417,7 @@
           "name": "calendar",
           "prevSize": 20,
           "code": 59672,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 0,
@@ -689,7 +719,6 @@
       "colorThemeIdx": 0
     }
   ],
-  "uid": -1,
   "preferences": {
     "showGlyphs": true,
     "showCodes": true,
@@ -733,5 +762,5 @@
     "gridSize": 16,
     "showGrid": true
   },
-  "time": 1588870749672
+  "uid": -1
 }

@@ -10,7 +10,7 @@
 
 	<main id="site-content">
 
-      <section class="c-section c-section--white" style="">
+      <section class="c-section c-section--light" style="">
           <div class="container">
               <div class="row">
                   <div class="col-lg-12">

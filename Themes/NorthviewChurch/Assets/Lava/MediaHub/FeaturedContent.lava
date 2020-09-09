@@ -10,8 +10,24 @@
   {%- if linkUrl =="" %}
   {% assign linkUrl = itemContentChannelItem.ChildContentChannelItem.ContentChannel.ItemUrl | Replace:'{Id}',itemId | Replace:'{Slug}',itemPrimarySlug %}
   {%- endif -%}
+  {%- assign itemMediaTypeId = itemContentChannelItem.ChildContentChannelItem.ContentChannel.ContentChannelType.Id -%}
+  {% case itemMediaTypeId %}
+  {% when 3 %}
+    {%- assign itemMediaType = "Articles" -%}
+  {% when 5 %}
+    {%- assign itemMediaType = "Messages" -%}
+  {% when 17 %}
+    {%- assign itemMediaType = "Podcasts" -%}
+  {% when 19 %}
+    {%- assign itemMediaType = "Videos" -%}
+  {% when 15 %}
+    {%- assign itemMediaType = "Resources" -%}
+  {% when 20 %}
+    {%- assign itemMediaType = "Music" -%}
+  {% endcase %}
     <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&maxWidth=800&maxHeight=800')">
       <div class="masonry-grid__content">
+        <div class="badge__mediaType"><span class="nv-icon nv-icon--{{ itemMediaType | ToCssClass }}"></span>{{ itemMediaType }}</div>
         <div class="masonry-grid__title-link stack">
           <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
           <p><a class="c-btn c-btn--text-link" href="{{ linkUrl }}">{{ item | Attribute:'ButtonText' }}<i class="nv-icon nv-icon--carat_right"></i></a></p>

@@ -194,6 +194,17 @@
   --swiper-navigation-color: @color-gray;
   --swiper-theme-color: @color-gray;
 }
+.c-item.-audio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  img {
+    margin-right: 20px;
+  }
+  audio {
+    width: 100%;
+  }
+}
 #topicBlocks {
   overflow: hidden;
   .c-item {
@@ -211,9 +222,8 @@
         left:0;
         right:0;
         bottom:0;
-          opacity: 0.9;
-          background: linear-gradient(180deg, rgba(27,27,27,0.33) 0%, rgba(24,24,24,0.9) 100%);
-
+        opacity: 0.9;
+        background: linear-gradient(180deg, rgba(27,27,27,0.33) 0%, rgba(24,24,24,0.9) 100%);
       }
     }
     .c-item__title {
@@ -231,6 +241,32 @@
         line-height: 32px;
         text-align: center;
     }
+  }
+}
+.badge__mediaType {
+  position: absolute;
+  top:0;
+  left:0;
+  right: auto;
+  bottom: auto;
+  z-index: 5;
+  padding: 3px 7px;
+  background-color: @black;
+  color: @white;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.86px;
+  line-height: 22.4px;
+  transition: all ease-in-out 300ms;
+  span {
+    display: inline-block;
+    margin: 0 4px 0 0;
+  }
+  .swiper-slide:hover &,
+  .masonry-grid__grid-item:hover &,
+  .c-tile:hover & {
+    background-color: @brand-primary;
+    color: @white;
   }
 }
 .swiper-container {

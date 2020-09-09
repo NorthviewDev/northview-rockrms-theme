@@ -1,4 +1,4 @@
-﻿{%- assign videoUrl = Item | Attribute:'VideoURL','RawValue' -%}
+﻿{%- assign videoUrl = Item | Attribute:'VideoLink','RawValue' -%}
 {%- assign videoEmbed = Item | Attribute:'VideoEmbed','RawValue' -%}
 <div class="container">
   <div class="row">

@@ -27,7 +27,7 @@ ORDER BY t.Name
                   {%- for tag in rows -%}
                   <div class="c-item flex-item">
                     <a class="c-item__link" href="{{ tag.Name | Replace:' ','-' | Downcase | Prepend:'/topic/' }}">
-                    <img class="c-item__image" src="/GetImage.ashx?Guid={{ tag.Value }}&w=206&h=340&mode=crop&anchor=middlecenter&scale=both" />
+                    <img class="c-item__image" src="/GetImage.ashx?Guid={{ tag.Value }}&w=300&h=500&mode=crop&anchor=middlecenter&scale=both" width="300" height="500" />
                     <span class="c-item__title">
                     {{ tag.Name }}
                     </span>
