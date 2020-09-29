@@ -20,7 +20,7 @@
                 <div class="stack">
                   <span class="c-card__callout">{{ messageSeries.ContentChannelItem.Title }}</span>
                   <h3 class="c-card__title">{{ message.Title }}</h3>
-                  <p><a href="{{ DetailPage }}/{{ message.PrimarySlug }}" class="c-btn c-btn--dark">Watch<i class="nv-icon nv-icon--carat_right"></i></a></p>
+                  <p><a href="https://northviewchurch.us/message/{{ message.PrimarySlug }}" class="c-btn c-btn--dark">Watch<i class="nv-icon nv-icon--carat_right"></i></a></p>
                 </div>
               </div>
               {%- endfor -%}
