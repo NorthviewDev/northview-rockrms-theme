@@ -1,0 +1,79 @@
+{% for item in Items %}
+
+{% assign seriesImageGuid = item | Attribute:'Image','RawValue' %}
+{% assign startDate = item.StartDateTime | Date:'MMMM' %}
+{% assign endDate = item.ExpireDateTime | Date:'MMMM' %}
+{% assign startDateYear = item.StartDateTime | Date:'yyyy' %}
+{% assign endDateYear = item.ExpireDateTime | Date:'yyyy' %}
+
+{% assign loopIndex = forloop.index0 | Modulo:3 %}
+{% if loopIndex == 0 %}
+
+      <div class="block-grid block-grid-xs-1 block-grid-sm-2 block-grid-md-3 row-eq-height">
+        
+  {% endif %}
+  
+        <div class="block-grid-item series__item">
+          <a class="series__link" href="https://northviewchurch.us/familyministry/message/{{ item.PrimarySlug  }}">
+            <article class="series">
+            {% if seriesImageGuid != '' %}
+    				  <img class="series__image img-responsive" src="/GetImage.ashx?Guid={{ seriesImageGuid }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
+            {% endif %}
+<!--
+              <div class="series__body">
+                <h3>{{ item.Title }}</h3>
+                <p class="series__dates">
+       					  {% if item.ExpireDateTime == null  %}
+                    {{ startDate }} {{ startDateYear }}
+      					  {% elseif item.StartDateTime != item.ExpireDateTime %}
+                    {{ startDate }}	- {{ endDate }} {{ endDateYear }}
+                  {% elseif item.StartDateTime == item.ExpireDateTime %}
+                    {{ startDate }} {{ startDateYear }}
+                  {% endif %}
+      				  </p>
+              </div>
+-->
+          </article>
+  		    </a>
+        </div>
+  	  
+{% if loopIndex == 2 or forloop.last %}		
+
+      </div>
+
+{% endif %}	
+
+{% endfor -%}
+
+<div class="pagination">
+  <div class="row container">
+		<div class="col-sm-10 col-md-12">
+
+      <div class="clearfix">
+        {% assign nextPageString = Pagination.NextPage | ToString %}
+        {% assign prevPageString = Pagination.PreviousPage | ToString %}
+      
+        {% if Pagination.PreviousPage == -1 %}
+        <div class="btn btn--default --tan pull-left disabled">
+          <i class="fa fa-chevron-left"></i> Prev
+        </div>
+        {% else %}
+        <a class="btn btn--primary pull-left" href="{{ Pagination.UrlTemplate | Replace:'PageNum', prevPageString }}">
+          <i class="fa fa-chevron-left"></i> Prev
+        </a>
+        {% endif %}
+      
+        {% if Pagination.NextPage == -1 %}
+        <div class="btn btn--default --tan pull-right disabled">
+          Next <i class="fa fa-chevron-right"></i>
+        </div>
+        {% else %}
+        <a class="btn btn--primary pull-right" href="{{ Pagination.UrlTemplate | Replace:'PageNum', nextPageString }}">
+          Next <i class="fa fa-chevron-right"></i>
+        </a>
+        {% endif %}
+      </div>
+
+		</div>
+  </div>
+</div>
