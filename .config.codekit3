@@ -3785,6 +3785,14 @@
 		"oAP": "/Themes/NorthviewChurch/Assets/Email/emailtemplate1.html",
 		"oF": 0
 		},
+	"/Themes/NorthviewChurch/Assets/Email/emailtemplate2.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/Themes/NorthviewChurch/Assets/Email/emailtemplate2.html",
+		"oF": 0
+		},
 	"/Themes/NorthviewChurch/Assets/Json/CampusLocations.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -5392,8 +5400,8 @@
 	},
 "projectAttributes": {
 	"creationDate": 609453322.088606,
-	"displayValue": "northview-rockrms-theme",
-	"displayValueWasSetByUser": 0,
+	"displayValue": "Northview Church",
+	"displayValueWasSetByUser": 1,
 	"iconImageName": "/Themes/NorthviewChurch/Assets/_img/favicon.png",
 	"iconImageWasSetByUser": 1
 	},
