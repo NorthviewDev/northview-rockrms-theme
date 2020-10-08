@@ -1,7 +1,19 @@
+<style>
+.overlay {
+  position: absolute;
+  bottom: 50%; 
+  color: #000000; 
+  width: 100%;
+  opacity:1;
+  text-align: center;
+  transform: translate(0, 50%)
+}
+</style>
+
 {% if Item %}
 	{%- assign videoEmbed = Item | Attribute:'VideoEmbed' -%}
 	{%- assign audioLink = Item | Attribute:'AudioLink' -%}
-    {%- assign videoLink = Item | Attribute:'VideoLink' -%}
+  {%- assign videoLink = Item | Attribute:'VideoLink' -%}
   {%- assign SeriesTitle = Item.ParentItems[0].ContentChannelItem.Title -%}
 	{%- assign sermonImage = Item | Attribute:'Image', 'RawValue' -%}
   {%- assign seriesImageGuid = Item.ParentItems[0].ContentChannelItem | Attribute:'SeriesImage','RawValue' -%}
@@ -28,6 +40,9 @@
                         <div class="embed-responsive embed-responsive-16by9">
                             <a href="{{videoLink}}" target="_blank">
                                 <img src="{{shareImage}}" alt="image">
+								
+                            
+							<div class="overlay"><i class="far fa-play-circle fa-6x"></i></div>	
                             </a>
                         </div>
             		{% endif %}
