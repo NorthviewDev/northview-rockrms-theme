@@ -379,7 +379,7 @@
             currentFeature.properties.locationLink +
             '</div>' +
             '</div>' +
-						'<div class="location-link"><a href="' + currentFeature.properties.url + '" class="c-btn c-btn--dark c-btn--display-block">Details<i class="nv-icon nv-icon--carat_right"></i></a></div>')
+						'<div class="location-link"><a href="' + currentFeature.properties.url + '" class="c-btn c-btn--dark c-btn--display-block">Campus Page<i class="nv-icon nv-icon--carat_right"></i></a></div>')
           .addTo(map);
       }
 
