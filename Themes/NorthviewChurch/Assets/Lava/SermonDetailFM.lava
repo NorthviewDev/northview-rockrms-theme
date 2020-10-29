@@ -16,6 +16,7 @@
   {%- assign videoLink = Item | Attribute:'VideoLink' -%}
   {%- assign SeriesTitle = Item.ParentItems[0].ContentChannelItem.Title -%}
 	{%- assign sermonImage = Item | Attribute:'Image', 'RawValue' -%}
+  test
   {%- assign seriesImageGuid = Item.ParentItems[0].ContentChannelItem | Attribute:'SeriesImage','RawValue' -%}
   
   {%- if sermonImage != '' -%}
