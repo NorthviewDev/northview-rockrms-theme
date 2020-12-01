@@ -1,0 +1,16 @@
+{%- assign pageHeaderImage = CurrentPage | Attribute:'PageHeaderImage','RawValue' -%}
+{%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
+{%- assign sectionClass="" -%}
+{%- if pageHeaderImage != "" or pageHeaderVideo != "" -%}
+  {%- assign sectionClass=" has-media" -%}
+{%- else -%}
+  {%- assign sectionClass=" no-header" -%}
+{%- endif -%}
+  	<div class="c-header__controls{{ sectionClass }}">
+  		<a href="/" class="c-header__control dark hidden-md hidden-lg"><i class="nv-icon nv-icon--church_logomark"></i><span class="sr-only">Home</span></a>
+  		<a href="#nav" class="c-header__control nav-toggle nav-toggle-menu hidden-md hidden-lg"><i class="nv-icon nv-icon--menu"></i><span class="sr-only">Menu</span></a>
+  		<a href="/locations" class="c-header__control hidden-md hidden-lg"><i class="nv-icon nv-icon--location_marker"></i><span class="sr-only">Locations</span></a>
+  		<a href="/give" class="c-header__control visible-md-inline-block visible-lg-inline-block" style="-ms-grid-row:1; -ms-grid-column:1;"><span class="" style="text-transform: uppercase;font-family: var(--font-family-condensed);font-size: 25px;">Give</span></a>
+  		<a href="/myaccount" class="c-header__control" style="-ms-grid-row:1; -ms-grid-column:2;"><i class="nv-icon nv-icon--account"></i><span class="sr-only">My Account</span></a>
+  		<a href="/search" class="c-header__control nav-toggle nav-toggle-search" style="-ms-grid-row:1; -ms-grid-column:3;"><i class="nv-icon nv-icon--search"></i><span class="sr-only">Search</span></a>
+  	</div><!-- end c-header__controls -->
