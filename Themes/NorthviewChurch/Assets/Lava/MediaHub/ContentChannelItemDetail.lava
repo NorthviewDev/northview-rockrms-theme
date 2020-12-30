@@ -1,4 +1,14 @@
-﻿{% for row in rows %} {% contentchannelitem id:'{{ row.Id }}' %}{% assign item = contentchannelitem %}{% endcontentchannelitem %} {%- assign ccTypeId = item.ContentChannelType.Id -%} {%- assign audioUrl = item | Attribute:'AudioLink','RawValue' -%} {%- assign videoUrl = item | Attribute:'VideoLink','RawValue' -%} {%- assign videoEmbed = item | Attribute:'VideoEmbed','RawValue' -%} {%- assign PDFLink = item | Attribute:'PDFLink','RawValue' -%} {%- assign PDFFile = item | Attribute:'PDFFile','RawValue' -%}
+﻿{% for row in rows %}
+{% contentchannelitem id:'{{ row.Id }}' %}
+{% assign item = contentchannelitem %}
+{% endcontentchannelitem %}
+{%- assign author = item | Attribute:'Author' %}
+{%- assign ccTypeId = item.ContentChannelType.Id -%}
+{%- assign audioUrl = item | Attribute:'AudioLink','RawValue' -%}
+{%- assign videoUrl = item | Attribute:'VideoLink','RawValue' -%}
+{%- assign videoEmbed = item | Attribute:'VideoEmbed','RawValue' -%}
+{%- assign PDFLink = item | Attribute:'PDFLink','RawValue' -%}
+{%- assign PDFFile = item | Attribute:'PDFFile','RawValue' -%}
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-lg-7 center-block">
@@ -21,7 +31,9 @@
 		<div class="col-md-8 col-lg-7 center-block">
 			<div class="well well--lg stack g-margin--bottom-s0">
 				<h2>{{ item.Title }}</h2>
-				{{ item.Content }} {%- if PDFLink != '' -%}
+				<p><strong>{{ author }}</strong></p>
+				{{ item.Content }} 
+				{%- if PDFLink != '' -%}
 				<a class="btn" href="{{ PDFLink }}" target="_blank">Download Resource</a>
 				{%- elseif PDFFile != '' -%}
 				<a class="c-btn c-btn--primary" href="/GetFile.ashx?guid={{ PDFFile }}" target="_blank">Download Resource</a>

@@ -2,7 +2,7 @@
 
 <asp:Content ID="ctMain" ContentPlaceHolderID="main" runat="server">
 
-    <main class="container">
+    <main class="container" class="sidebar-left">
 
         <!-- Start Content Area -->
 

@@ -269,6 +269,21 @@ ol {
       }
     }
   }
+  &.-light {
+    background-color: @white;
+    color: @text-color;
+    ul {
+      li {
+        a {
+          color: @text-color;
+          &:hover,
+          &:focus {
+            color: @color-brand-primary;
+          }
+        }
+      }
+    } 
+  }
 }
 .center-block {
   float: none;
