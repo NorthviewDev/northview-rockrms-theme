@@ -76,7 +76,7 @@
 </style>
 
 {% assign currentSeries = Items | First %}
-{% assign currentSeriesImageGuid = currentSeries | Attribute:'SeriesImage','RawValue' %}
+{% assign currentSeriesImageGuid = currentSeries | Attribute:'Image','RawValue' %}
 
 {% if Pagination.CurrentPage == 1 %}
 <a href="{{ LinkedPages.DetailPage }}?Item={{ currentSeries.Id }}">
@@ -88,7 +88,7 @@
 
 <div class="row margin-t-lg">
 	{% for item in Items %}
-	{% assign seriesImageGuid = item | Attribute:'SeriesImage','RawValue' %}
+	{% assign seriesImageGuid = item | Attribute:'Image','RawValue' %}
 
 	<div class="col-md-4 col-sm-6 margin-b-md">
 		<a class="series-link" href="{{ LinkedPages.DetailPage }}?Item={{ item.Id }}">

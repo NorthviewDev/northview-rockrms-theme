@@ -6,9 +6,9 @@
               <div class="c-section__header"><h2>Latest Message</h2></div>
               {%- for message in Items -%}
               {%- assign DetailPage = LinkedPages.DetailPage -%}
-              {%- assign messageImageGuid = message | Attribute:'MessageImage','RawValue' -%}
+              {%- assign messageImageGuid = message | Attribute:'Image','RawValue' -%}
               {%- assign messageSeries = message.ParentItems | First -%}
-              {%- assign seriesImageGuid = messageSeries.ContentChannelItem | Attribute:'SeriesImage','RawValue' -%}
+              {%- assign seriesImageGuid = messageSeries.ContentChannelItem | Attribute:'Image','RawValue' -%}
               <div class="c-card__header">
               {%- if messageImageGuid != "" -%}
                <img class="c-card__media" src="/GetImage.ashx?guid={{ messageImageGuid }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" />

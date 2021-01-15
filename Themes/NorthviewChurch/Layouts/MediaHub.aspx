@@ -8,7 +8,7 @@
 
 <asp:Content ID="ctMain" ContentPlaceHolderID="main" runat="server">
 
-    <main id="site-content" class="sidebar-right">
+	<main id="site-content">
 
         <!-- Start Content Area -->
 
@@ -25,16 +25,26 @@
         <section class="c-section c-section--light">
           <div class="container">
             <div class="row">
+                <div class="col-lg-12">
+                  <Rock:Zone Name="Sub Feature Title" runat="server" />
+                </div>
+            </div>
+            <div class="row">
               <div class="col-sm-8">
                 <div class="c-section__content">
-                  <Rock:Zone Name="Main" runat="server" />
+                  <Rock:Zone Name="Sub Feature" runat="server" />
                 </div>
               </div>
               <div class="col-sm-4">
-                <Rock:Zone Name="Sidebar 1" runat="server" />
+                <Rock:Zone Name="Feature Sidebar" runat="server" />
               </div>
             </div>
           </div>
+        </section>
+        <section class="c-section" id="contentSwiper" style="overflow: hidden">
+            <div class="container">
+              <Rock:Zone Name="Content Swiper" runat="server" />
+            </div>
         </section>
 
         <Rock:Zone Name="Section A" runat="server" />
@@ -44,6 +54,6 @@
 
         <!-- End Content Area -->
 
-    </main>
+	</main>
 
 </asp:Content>

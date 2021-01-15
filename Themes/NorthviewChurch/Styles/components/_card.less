@@ -142,6 +142,13 @@ a.c-card {
  * 1) Contains the card media
  */
 .c-card__header {
+  a {
+    transition: all ease-in-out 300ms;
+    border-bottom: solid 8px @color-gray-darker;
+    &:hover {
+      border-bottom-color: @color-brand-primary;
+    }
+  }
 }
 /**
  * Card Media

@@ -1,6 +1,39 @@
 //Global Scripts
 $(function () { //document.ready
-
+  $('.rock-text-box input.form-control').each(function(){
+    if ($(this).is(':focus')) {
+      $(this).closest('.form-group').addClass('focused');      
+    } else if ($(this).val() === '') {
+      $(this).closest('.form-group').addClass('blurred');      
+    }
+  });
+  $('.rock-text-box input.form-control').on('focus', function(){
+    $(this).closest('.form-group').removeClass('blurred');
+    $(this).closest('.form-group').addClass('focused');
+  });
+  $('.rock-text-box input.form-control').on('blur', function(){
+    if  ( $(this).val() === '') {
+      $(this).closest('.form-group').addClass('blurred');
+      $(this).closest('.form-group').removeClass('focused');
+    }
+  });
+  
+  $('.address-control .form-control[type="text"]:not(.js-street1)').each(function(){    
+    $(this).closest('.form-group').prepend("<label class='control-label' for='"+$(this).attr("id")+"'>"+$(this).attr("placeholder")+"</label>");
+    $(this).wrap("<div class='control-wrapper'></div>").attr("placeholder","");
+    $(this).closest('.form-group').addClass('blurred');
+  });
+  $('.address-control .form-control[type="text"]').on('focus', function(){
+    $(this).closest('.form-group').removeClass('blurred');
+    $(this).closest('.form-group').addClass('focused');
+  });
+  $('.address-control .form-control[type="text"]').on('blur', function(){
+    if  ( $(this).val() === '') {
+      $(this).closest('.form-group').addClass('blurred');
+      $(this).closest('.form-group').removeClass('focused');
+    }
+  });
+   
   var navActive = false,
     navOpen = document.querySelector('.nav-toggle-menu'),
     navListOpen = document.querySelector('.c-primary-nav');

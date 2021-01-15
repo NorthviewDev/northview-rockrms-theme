@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'northviewchurch';
-  src:  url('fonts/northviewchurch.eot?ti1g89');
-  src:  url('fonts/northviewchurch.eot?ti1g89#iefix') format('embedded-opentype'),
-    url('fonts/northviewchurch.ttf?ti1g89') format('truetype'),
-    url('fonts/northviewchurch.woff?ti1g89') format('woff'),
-    url('fonts/northviewchurch.svg?ti1g89#northviewchurch') format('svg');
+  src:  url('fonts/northviewchurch.eot?qwmys8');
+  src:  url('fonts/northviewchurch.eot?qwmys8#iefix') format('embedded-opentype'),
+    url('fonts/northviewchurch.ttf?qwmys8') format('truetype'),
+    url('fonts/northviewchurch.woff?qwmys8') format('woff'),
+    url('fonts/northviewchurch.svg?qwmys8#northviewchurch') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -13,7 +13,7 @@
 .nv-icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'northviewchurch' !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -25,6 +25,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.nv-icon--messages:before {
+  content: "\e91d";
+}
+.nv-icon--articles:before {
+  content: "\e913";
+}
+.nv-icon--music:before {
+  content: "\e919";
+}
+.nv-icon--videos:before {
+  content: "\e91a";
+}
+.nv-icon--resources:before {
+  content: "\e91b";
+}
+.nv-icon--podcasts:before {
+  content: "\e91c";
+}
 .nv-icon--carat_right:before {
   content: "\e905";
 }

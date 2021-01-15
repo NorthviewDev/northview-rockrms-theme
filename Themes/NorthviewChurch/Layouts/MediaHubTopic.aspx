@@ -8,7 +8,12 @@
 
 <asp:Content ID="ctMain" ContentPlaceHolderID="main" runat="server">
 
-    <main id="site-content" class="sidebar-right">
+	<main id="site-content">
+
+      <section class="c-section c-section--light" style="">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
 
         <!-- Start Content Area -->
 
@@ -22,20 +27,7 @@
           </div>
         </div>
 
-        <section class="c-section c-section--light">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-8">
-                <div class="c-section__content">
-                  <Rock:Zone Name="Main" runat="server" />
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <Rock:Zone Name="Sidebar 1" runat="server" />
-              </div>
-            </div>
-          </div>
-        </section>
+        <Rock:Zone Name="Sub Feature" runat="server" />
 
         <Rock:Zone Name="Section A" runat="server" />
         <Rock:Zone Name="Section B" runat="server" />
@@ -43,7 +35,11 @@
         <Rock:Zone Name="Section D" runat="server" />
 
         <!-- End Content Area -->
+                  </div>
+              </div>
+          </div>
+      </section>
 
-    </main>
+	</main>
 
 </asp:Content>
