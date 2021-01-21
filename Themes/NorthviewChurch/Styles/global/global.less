@@ -92,10 +92,10 @@ h1.pagetitle:empty {
   @media (min-width: @screen-sm) {
     padding: 32px;
   }
-  > h1,
-  > h2,
-  > h3,
-  > h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     margin-top: var(--space);
     &:first-child {
       margin-top: 0;
@@ -220,6 +220,9 @@ a {
   }
   .config-bar & {
     border: none;
+  }
+  .imageupload-thumbnail & {
+    display: contents;
   }
 }
 ul,

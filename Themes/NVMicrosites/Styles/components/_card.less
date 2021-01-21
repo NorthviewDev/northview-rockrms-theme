@@ -1,0 +1,264 @@
+/*** CARD COMPONENT ***/
+a.c-card {
+  border-bottom: solid 13px @color-gray-light;
+  transition: all ease-in-out 100ms;
+  display: block;
+  &.no-border {
+    border-bottom: none;
+  }
+  &:hover, &:focus {
+    outline: none;
+    box-shadow: none;
+  	transform: translateY(-5px);
+  }
+}
+.c-card {
+  position: relative;
+  background-color: @white;
+  margin-bottom: var(--s2);
+  height: 100%;
+  @media (min-width: @screen-sm) {
+  	margin-bottom: 0;
+  }
+  &.c-card--title-highlight {
+    color: @gray-darker;
+    display: inline-block;
+    min-width: 50%;
+    margin-bottom: var(--s1);
+    @media (min-width: @screen-sm) {
+      margin-bottom: var(--s4);
+    }
+    .c-card__body {
+      background-color: @color-brand-primary;
+      .c-section--light &,      
+      .c-section--medium &,
+      .c-section--dark & {
+        background-color: @white;
+      }
+    }
+  	.ornamental {
+      line-height: 1;
+      position: absolute;
+      bottom: -3px;
+      width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      overflow: hidden;
+      height: 1em;
+    	font-size: 15px;
+    	letter-spacing: 7px;
+      @media (min-width: @screen-sm) {
+      	font-size: 30px;
+        bottom: -10px;
+      }
+      i {
+        float: left;
+      }
+  	}
+  }
+  &.decorated {
+    margin-left: var(--s1);
+    margin-right: var(--s1);
+    @media (min-width: @screen-sm) {
+      margin-left:0;
+    	margin-right: 0;
+    }
+    .ornamental {
+      position: absolute;
+      top:75px;
+      left:0;
+      width: 1em;
+      font-size: 24px;
+      color: @gray-lighter;
+      line-height: 9px;
+      i {
+        border-bottom: solid 2px @gray-lighter;
+        width: 100%;
+        &:before {
+          content: none;
+        }
+      }
+    }
+  }
+  &.--bgImage {
+    .c-card__body {
+      color: @white;
+      background-size: cover;
+      background-position: center center;
+      .aspect-ratio(100,100);
+      margin-bottom: var(--s2);
+      @media (min-width: @screen-sm) {
+      	margin-bottom: 0;
+      }
+      &:before {
+        content:"";
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+      	opacity: 0.9;
+      	background: linear-gradient(180deg, rgba(27,27,27,0.33) 0%, rgba(24,24,24,0.9) 100%);
+      }
+      > .stack {
+        --space:var(--s2);
+        padding: 45px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 1;
+      }
+      .c-card__title {
+        color: @white;
+      	font-size: 54px;
+      	font-weight: 700;
+      }
+      .c-card__summary {
+        font-style: italic;
+        font-size: 19px;
+      }
+    }
+    &.--bigCTA {
+      .c-card__body {
+        text-align: center;
+        &:after {
+          content:none;
+        }
+        >div {
+          position: relative;
+          padding: 65px;
+          .c-card__summary {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Card Header
+ * 1) Contains the card media
+ */
+.c-card__header {
+  a {
+    transition: all ease-in-out 300ms;
+    border-bottom: solid 8px @color-gray-darker;
+    &:hover {
+      border-bottom-color: @color-brand-primary;
+    }
+  }
+}
+/**
+ * Card Media
+ * 1) Typically an image, but could be a video or iframe
+ */
+.c-card__media {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  .c-card--side-by-side:not(.c-card--big) & {
+    object-fit: cover;  
+    height: 100%;    
+  }
+}
+
+/**
+ * Card Body
+ * 1) Contains the card title and description
+ */
+.c-card__body {
+  padding: var(--s2);
+  background-color: @white;
+  color: @text-color;
+  &.--noPad {
+    padding:0;
+  }
+  .decorated & {
+    padding: var(--s3) var(--s4);
+  }
+  .c-card--side-by-side & {
+    margin-bottom: var(--s2);
+    @media (min-width: @screen-sm) {
+	    padding: var(--s4);
+    }
+  }
+  &.l-grid__item {
+    @media (min-width: @screen-sm) {
+    	margin-bottom: 0;
+    }
+  }
+  .c-card--big & {
+    background-color: transparent;
+    padding: var(--s1) 0 0;
+    @media (min-width: @screen-sm) {
+    	padding: var(--s1);
+    }
+  }
+  .c-card--title-highlight & {
+    @media (min-width: @screen-sm) {
+	    padding: 58px 100px;
+    }
+  }
+}
+
+/**
+ * Card Callout
+ * 1) A <span> tag that contains the card's callout text
+ */
+.c-card__callout {
+	color: @gray;
+	font-size: 14px;
+	line-height: 1.5;
+	font-style: italic;
+	font-weight: 600;
+	display: block;
+	+ * {
+    margin-top:0;
+	}
+}
+
+/**
+ * Card Title
+ * 1) The heading for a card (can be an h2, h3, or h4)
+ */
+.c-card__title {
+	font-size: 25px;
+	color: @text-color;
+	@media (min-width: @screen-md) {
+  	font-size: 36px;
+	}
+	&.c-card__title--med {
+  	font-size: 29px;
+  	@media (min-width: @screen-md) {
+    	font-size: 48px;
+  	}
+	}
+	.c-card--title-highlight & {
+		color: @text-color !important;
+  	font-size: 29px;
+  	text-transform: uppercase;
+  	text-align: center;
+  	@media (min-width: @screen-md) {
+    	font-size: 64px;
+  	}
+	}
+}
+
+/**
+ * Card Description
+ * 1) A <p> tag that contains the card's primary text
+ */
+.c-card__description {
+  color: @text-color;
+	font-size: 20px;
+	text-transform: none;
+	letter-spacing: normal;
+  .c-card--title-highlight & {
+  	color: @text-color;
+  	font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+  }
+}

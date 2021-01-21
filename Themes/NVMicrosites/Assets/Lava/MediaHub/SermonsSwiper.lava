@@ -1,0 +1,46 @@
+{% assign swiperTitle="Messages" %}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="c-section__content">
+                  <h3 class="c-section__title">{{ swiperTitle }}</h3>
+                  <div id="article-swiper" class="swiper-container overflow-visible">
+                    <div class="swiper-buttons">
+                      <a class="c-btn-prev c-btn c-btn--text-link"><i class="nv-icon nv-icon--carat_left"></i></a>
+                      <a class="c-btn-next c-btn c-btn--text-link"><i class="nv-icon nv-icon--carat_right"></i></a>
+                    </div>
+                    <div class="swiper-wrapper">
+                      {% for item in Items %}
+                      <div class="swiper-slide">
+{%- assign itemMediaTypeId = item.ContentChannel.ContentChannelType.Id -%}
+{% case itemMediaTypeId %}
+{% when 3 %}
+{%- assign itemMediaType = "Articles" -%}
+{% when 5 %}
+{%- assign itemMediaType = "Messages" -%}
+{% when 17 %}
+{%- assign itemMediaType = "Podcasts" -%}
+{% when 19 %}
+{%- assign itemMediaType = "Videos" -%}
+{% when 15 %}
+{%- assign itemMediaType = "Resources" -%}
+{% when 20 %}
+{%- assign itemMediaType = "Music" -%}
+{% endcase %}
+<div class="badge__mediaType"><span class="nv-icon nv-icon--{{ itemMediaType | ToCssClass }}"></span>{{ itemMediaType }}</div>
+                        {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
+                        {% assign linkUrl = item.ContentChannel.ItemUrl | Replace:'{Id}',item.Id | Replace:'{Slug}',item.PrimarySlug %}
+                        <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
+                          <div class="masonry-grid__content">
+                            <div class="masonry-grid__title-link stack">
+                              <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
+                              <p><a class="c-btn c-btn--text-link" href="{{ linkUrl }}">Watch<i class="nv-icon nv-icon--carat_right"></i></a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,78 @@
+{% comment %}
+{% include "~/Themes/NorthviewChurch/Assets/Lava/Components/Accordion.lava" %}
+{% endcomment %}
+{%- assign sectionBackgroundImage =  ContentChannel | Attribute:'SectionBackgroundImage','RawValue' -%}
+{%- assign sectionTitle  =  ContentChannel | Attribute:'SectionTitle','RawValue' -%}
+{%- assign sectionTitleStyle  =  ContentChannel | Attribute:'SectionTitleStyle','RawValue' -%}
+{%- assign sectionDescription  =  ContentChannel | Attribute:'SectionDescription' -%}
+{%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
+{%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
+{%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
+{%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
+
+<section class="c-section c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{ sectionPadding }}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-{{ sectionTitleWidth }} {{ sectionTitleAlignment }}-block'>
+{%- if sectionTitleStyle == "highlight" -%}
+                <div class="c-section__header">
+                  <div class="c-card c-card--title-highlight">
+                    <div class="c-card__body stack">
+                      {%- if sectionTitle != '' -%}
+                      <h2 class="c-card__title"><span>{{ sectionTitle }}</span></h2>
+                      {%- endif -%}
+                      {%- if sectionDescription != '' -%}
+                      <p class="c-card__description">{{ sectionDescription }}</p>
+                      {%- endif -%}
+                    </div>
+                  </div><!--/.c-card-->
+                </div>
+{%- elseif sectionTitleStyle == "hidden" -%}
+                <h2 class="sr-only">{{ sectionTitle }}</h2>
+                <p class="sr-only">{{ sectionDescription }}</p>
+{%- else -%}
+                <div class="c-section__header {{sectionTitleStyle}}">
+                  {%- if sectionTitle != '' -%}
+                  <h2><span>{{ sectionTitle }}</span></h2>
+                  {%- endif -%}
+                  {%- if sectionDescription != '' -%}
+                  <p class="c-section__description">{{ sectionDescription }}</p>
+                  {%- endif -%}
+                </div>
+{%- endif -%}
+            </div>
+        </div>
+{%- assign numItems = Items | Size -%}
+{%- assign numItemsHalf = numItems | DividedBy:2,0 -%}
+{%- assign FirstItem = Items | First -%}
+{%- assign contentAlignment  =  FirstItem | Attribute:'ContentAlignment','RawValue' -%}
+{%- assign contentWidth  =  FirstItem | Attribute:'ContentWidth','RawValue' -%}
+        <div class="row g-margin--bottom-s4">
+            <div class='col-md-{{ contentWidth }} {{ contentAlignment }}-block'>
+            {%- assign accordionUniqueId = FirstItem.Guid -%}
+            <div class="panel-group accordion" id="accordion__{{ accordionUniqueId }}" role="tablist" aria-multiselectable="true">
+            {%- for item in Items -%}
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading_{{item.Title | ToCssClass}}_{{item.Id}}">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion__{{ accordionUniqueId }}" href="#collapse_{{item.Title | ToCssClass}}_{{item.Id}}" aria-controls="collapse_{{item.Title | ToCssClass}}_{{item.Id}}">{{ item.Title }}</a>
+                  </h4>
+                </div>
+                <div id="collapse_{{item.Title | ToCssClass}}_{{item.Id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_{{item.Title | ToCssClass}}_{{item.Id}}">
+                  <div class="panel-body">
+                  {{ item.Content }}
+                  </div>
+                </div>
+              </div>
+            {%- if forloop.index == numItemsHalf and numItems > 3 -%}
+            </div>
+            </div>
+            <div class='col-md-{{ contentWidth }} {{ contentAlignment }}-block'>
+            <div class="panel-group accordion" id="accordion__{{ accordionUniqueId }}" role="tablist" aria-multiselectable="true">
+            {%- endif -%}
+            {%- endfor -%}
+            </div>
+            </div>
+        </div>
+    </div>
+</section>

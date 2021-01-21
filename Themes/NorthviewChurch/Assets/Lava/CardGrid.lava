@@ -1,0 +1,56 @@
+{%comment%}
+{% include "~~/Assets/Lava/CardGrid.lava" %}
+{%endcomment%}
+<section class="c-section c-section--medium -padTopNone">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 center-block">
+        <div class="isotope-grid c-card__grid clearfix">
+          <div class="isotope-grid-sizer"></div>
+          {% for Item in Items %}
+          <div class="c-card isotope-item {{Item | Attribute:'Campus' | ToCssClass}}" data-category="{{Item.Attribute:'Campus' | ToCssClass}}">
+            <img src="/GetImage.ashx?guid={{Item | Attribute:'Image','RawValue'}}&w=437&h=247&mode=crop&scale=both" alt="" />
+            <div class="c-card__content">
+              <h3>{{Item.Title}}</h3>
+              <div class="readmore">
+                {{Item.Content}}
+                <p><a href="/joinateam?team=16&note={{Item.Title | EscapeDataString}}" class="c-btn c-btn--primary c-btn--offset-border">Get Connected<i class="nv-icon nv-icon--carat_right"></i></a></p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.2.1/readmore.min.js" integrity="sha512-HzK/KDSaVfdeH8AynloB8uceDESseASuyy/tOU/2fM3lDJlQN289yZ6UsB9p7EFRpGnDRg49p3UKGfE7ulr2Vg==" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script>
+  $(function() {
+    $('.readmore').readmore({
+      collapsedHeight: 0,
+      moreLink: '<a href="#"><i class="c-icon icon--carat-down"></i>Read more</a>',
+      lessLink: '<a href="#"><i class="c-icon icon--carat-up"></i>Close</a>'
+    });
+    // init Isotope
+    var $grid = $('.isotope-grid').isotope({
+      itemSelector: '.isotope-item',
+      percentPosition: true,
+      layoutMode: 'fitRows',
+    });
+    $grid.imagesLoaded().progress(function() {
+      $grid.isotope('layout');
+    });
+
+    // bind filter on select change
+    $('.filters-select').on('change', function() {
+      // get filter value from option value
+      var filterValue = this.value;
+      $grid.isotope({
+        filter: filterValue
+      });
+    });
+  });
+</script>

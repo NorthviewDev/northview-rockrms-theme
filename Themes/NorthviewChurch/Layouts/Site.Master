@@ -130,7 +130,7 @@ var BrowserDetect = {
     if (BrowserDetect.browser !== "Explorer") {
       document.write('<script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/modern.js") %>"><\x2fscript>');
       //document.write("You are using <b>" + BrowserDetect.browser + "</b> with version <b>" + BrowserDetect.version + "</b>");
-      console.log("You are not using IE")
+      console.log("👏 You are not using IE. Bravo 👏")
     } else {
       console.log("You are using Internet Explorer")
     }
