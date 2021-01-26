@@ -1,4 +1,4 @@
 {
-  "prettier.format-on-save" : false,
+  "prettier.format-on-save" : "Global Default",
   "workspace.name" : "Northview Church"
 }

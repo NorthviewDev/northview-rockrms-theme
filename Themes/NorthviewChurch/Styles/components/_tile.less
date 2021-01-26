@@ -10,9 +10,9 @@
     border-bottom-color: @color-brand-primary;
   }
   .well & {
-    padding:0;
+    padding: 0;
     background-color: transparent;
-    margin:0;
+    margin: 0;
     border: none;
   }
   &.flex-row {
@@ -22,7 +22,7 @@
       flex-direction: row-reverse;
       align-items: flex-start;
       .c-tile__info {
-        padding:0
+        padding: 0;
       }
       .c-tile__link {
         padding-left: 30px;
@@ -31,7 +31,9 @@
   }
   .c-tile__body {
     .c-tile__info {
-      padding: 20px 35px 35px;
+      @media screen and (min-width: @screen-sm) {
+        padding: 20px 35px 35px;
+      }
     }
     .c-tile__link {
       flex: 0 1 45%;
@@ -43,13 +45,13 @@
       font-size: 29px;
       letter-spacing: 0;
       line-height: 1;
-      margin:0;
+      margin: 0;
     }
     .c-tile__summary {
-        color: @color-gray;
-        font-size: 18px;
-        letter-spacing: 0;
-        line-height: 22px;
+      color: @color-gray;
+      font-size: 18px;
+      letter-spacing: 0;
+      line-height: 22px;
     }
     a {
       border: none;
