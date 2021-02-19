@@ -107,18 +107,14 @@ a.c-card {
         .aspect-ratio(100, 100);
       }
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         opacity: 0.9;
-        background: linear-gradient(
-          180deg,
-          rgba(27, 27, 27, 0.33) 0%,
-          rgba(24, 24, 24, 0.9) 100%
-        );
+        background: linear-gradient(180deg, rgba(27, 27, 27, 0.33) 0%, rgba(24, 24, 24, 0.9) 100%);
       }
       > .stack {
         --space: var(--s2);
@@ -202,6 +198,7 @@ a.c-card {
   padding: var(--s2);
   background-color: @white;
   color: @text-color;
+  font-size: 16px;
   &.--noPad {
     padding: 0;
   }
@@ -212,11 +209,6 @@ a.c-card {
     margin-bottom: var(--s2);
     @media (min-width: @screen-sm) {
       padding: var(--s4);
-    }
-    .c-btn {
-      + .c-btn {
-        margin: 10px 0 0;
-      }
     }
   }
 
@@ -387,7 +379,8 @@ a.c-card {
   }
 }
 .c-card__grid {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
   .c-card {
     border-radius: 5px;
     margin: 0 calc((@grid-gutter-width / 2)) @grid-gutter-width;
@@ -402,7 +395,7 @@ a.c-card {
       border-top-right-radius: 5px;
     }
     .c-card__content {
-      margin: 26px 30px 0;
+      margin: 26px 30px;
       position: relative;
     }
     .c-card__footer {
@@ -431,7 +424,7 @@ a.c-card {
     .readmore-toggle {
       border: none;
       position: absolute;
-      bottom: 10px;
+      bottom: 0;
       right: 0;
       text-indent: -999em;
       height: 38px;
@@ -442,7 +435,13 @@ a.c-card {
         position: absolute;
         top: 50%;
         left: 50%;
+        transition: transform 300ms ease-in-out;
         transform: translate(-50%, -50%);
+      }
+      &.-close {
+        i {
+          transform: translate(-50%, -50%) rotate(180deg);          
+        }
       }
     }
     p {
@@ -479,7 +478,7 @@ a.c-card {
       }
     }
     &:before {
-      content: "";
+      content: '';
       width: 20px;
       height: 20px;
       background-color: #979797;
@@ -495,7 +494,7 @@ a.c-card {
       }
     }
     &:after {
-      content: "";
+      content: '';
       width: 2px;
       height: 50px;
       background-color: #979797;
@@ -558,6 +557,6 @@ a.c-card {
 .readmore {
   overflow: hidden;
   .js-focus-visible & {
-    height: 0;
+    display: none;
   }
 }

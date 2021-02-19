@@ -14,11 +14,11 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
 	gtr.IsLeader,
 	gm.GroupRoleId,
 	p.Id as PersonId,
-	p.NickName, 
-	p.FirstName, 
+	p.NickName,
+	p.FirstName,
 	p.LastName,
 	p.Email
-  FROM [Person] p 
+  FROM [Person] p
   LEFT OUTER JOIN [GroupMember] gm ON p.Id = gm.PersonId
   LEFT OUTER JOIN [Group] g ON gm.GroupId = g.Id
   LEFT OUTER JOIN [GroupType] gt ON g.GroupTypeId = gt.Id
@@ -31,7 +31,7 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
 <div class="staff-list">
 	<h2 class="section__title">{{ staffGroupTitle }}</h2>
     <div class="filters form-inline text-center">
-    
+
       <div class="form-group">
         <label for="campusSelect">Campus</label>
         <select class="filter-select" value-group="campus" id="campusSelect">
@@ -46,7 +46,7 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
           {% enddefinedvalue %}
         </select>
       </div>
-    
+
       <div class="form-group">
         <label for="departmentSelect">Department</label>
         <select class="filter-select" value-group="department" id="departmentSelect">
@@ -61,11 +61,11 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
           {% enddefinedvalue %}
         </select>
       </div>
-      
+
       <div class="form-group">
         <input type="text" class="form-control" id="searchInput" placeholder="Search by Name or Position" />
       </div>
-    
+
     </div>
     <div class="staff-grid">
       {{ results | Size }}
@@ -88,9 +88,9 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
 
 	{%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
 	{%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
-	
+
 	{%- for item in groupmemberItems -%}
-	
+
     {%- assign phone = item | Attribute:'Phone' -%}
 	{%- assign bio = item | Attribute:'Bio' -%}
 
@@ -114,13 +114,13 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
       			<div class="staff__title">{{ title }}</div>
         			<ul class="staff__meta">
         			  {% if email != '' %}
-        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a></li>
+        			    obfuscate this
                 {% endif %}
                 {% if phone != '' %}
-                  <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+                  <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' | Replace:'-','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
                 {% endif %}
-        		  </ul>  
-      		  </div>              	 
+        		  </ul>
+      		  </div>
           </div>
   		  </div>
 		</div>

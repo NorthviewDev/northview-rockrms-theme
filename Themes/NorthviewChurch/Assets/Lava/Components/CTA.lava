@@ -31,9 +31,10 @@
 {%- else -%}
 								<div class="c-section__header {{ sectionTitleStyle }}">
 									<h2><span>{{ sectionTitle }}</span></h2>
-									{%- if sectionDescription != '' -%}
+								{% assign sectionDescriptionStripped = sectionDescription | StripHTML | StripNewlines | Trim %}
+								{%- if sectionDescriptionStripped != '' -%}
 									<div class="c-section__description">{{ sectionDescription }}</div>
-									{%- endif -%}
+								{%- endif -%}
 								</div>
 {%- endif -%}
 						</div>

@@ -8,8 +8,10 @@
         <div class="isotope-grid c-card__grid clearfix">
           {% for Item in Items %}
           <div class="c-card isotope-item {{Item | Attribute:'Campus' | ToCssClass}}" data-category="{{Item.Attribute:'Campus' | ToCssClass}}">
+            <div class="c-card__wrapper">
             <img src="/GetImage.ashx?guid={{Item | Attribute:'Image','RawValue'}}&w=437&h=247&mode=crop&scale=both" alt="" />
-            <div class="c-card__content">              
+            <div class="c-card__content">
+              <a class="readmore-toggle" href="#">Read more<i class="fa fa-angle-down"></i></a>
               <h3 class="c-card__title">
                 {%- assign itemLocation = Item | Attribute:'Location' -%}
                 {%- if itemLocation != '' -%}
@@ -18,10 +20,9 @@
                   {{Item.Title}}</h3>
               <div class="readmore">
                 {{Item.Content}}
+                <p><a href="/joinateam?team=16&note={{Item.Title | EscapeDataString}}" class="c-btn c-btn--dark">Get Connected</a></p>
               </div>
             </div>
-            <div class="c-card__footer">
-              <p><a href="/joinateam?team=16&note={{Item.Title | EscapeDataString}}" class="c-btn c-btn--primary c-btn--offset-border">Get Connected<i class="nv-icon nv-icon--carat_right"></i></a></p>
             </div>
           </div>
           {% endfor %}
@@ -30,43 +31,55 @@
     </div>
   </div>
 </section>
-<script src="/Themes/NorthviewChurch/node_modules/readmore-js/dist/readmore.js"></script>
+<link rel="stylesheet" href="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/css/select2.min.css" />
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/js/select2.min.js"></script>
 <script>
-  $(function() {
+  $(document).ready(function() {
+    /** Select2 **/
+    $('.filters-select').select2({
+      theme:'northview'
+    });
+    
+    $('.readmore-toggle').on('click',function(e){
+      e.preventDefault();
+      var btn = $(this);
+      $(btn).siblings('.readmore').slideToggle(300,function(){
+        $(btn).toggleClass('-close');
+        $grid.isotope('layout');        
+      });
+    });
+
+    /** Isotope **/
     var isoOptions = {
       itemSelector: '.isotope-item',
       percentPosition: true,
-      layoutMode: 'fitRows'
+      layoutMode: 'fitRows',
+      filter: 'none'
     };
-
     // init Isotope
     var $grid = $('.isotope-grid').isotope(isoOptions);
-    // reveal all items after init
     var $items = $grid.find('.isotope_item');
+
     $grid.imagesLoaded().progress(function() {
+      $('.isotope-grid').each(function(){
+        var wrapper = $(this).find('.c-card__wrapper');
+        $(wrapper).css('min-height',$(this).height());
+      });
       $grid.addClass('is-showing-items').isotope('layout');
     });
-    //$grid.isotope( 'revealItemElements', $items );
 
     // bind filter on select change
     $('.filters-select').on('change', function() {
       // get filter value from option value
       var filterValue = this.value;
+      $('.readmore').hide();
       $grid.isotope({
         filter: filterValue
       });
     });    
 
-    new Readmore('.readmore', {
-      collapsedHeight: 0,
-      moreLink: '<a class="readmore-toggle -open" href="#">Read more<i class="fa fa-angle-down"></i></a>',
-      lessLink: '<a class="readmore-toggle -close" href="#">Close<i class="fa fa-angle-up"></i></a>',
-      afterToggle: function(trigger, element, expanded) {
-        $grid.isotope('layout'); // re-initialize
-      }
-    });
 
   });
 </script>

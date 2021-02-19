@@ -50,11 +50,7 @@
       }
     }
     &:after {
-      background: linear-gradient(
-        180deg,
-        rgba(27, 27, 27, 0.17) 0%,
-        #181818 100%
-      );
+      background: linear-gradient(180deg, rgba(27, 27, 27, 0.17) 0%, #181818 100%);
     }
   }
   &.c-section--bgimg {
@@ -74,7 +70,7 @@
       z-index: 1;
     }
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -87,13 +83,9 @@
   &.sidebar-right {
     .content-marginTop-negative.no-title & {
       #zone-main {
-        --section-overlap-top: calc(
-          @grid-gutter-width * -3
-        ); //translate along negative Y axis
+        --section-overlap-top: calc(@grid-gutter-width * -3); //translate along negative Y axis
         @media (min-width: @screen-lg) {
-          --section-overlap-top: calc(
-            @grid-gutter-width * -14
-          ); //translate along negative Y axis
+          --section-overlap-top: calc(@grid-gutter-width * -14); //translate along negative Y axis
         }
         margin-top: var(--section-overlap-top);
       }
@@ -113,13 +105,9 @@
     .content-marginTop-negative & {
       > .container {
         &:first-child {
-          --section-overlap-top: calc(
-            @grid-gutter-width * -3
-          ); //translate along negative Y axis
+          --section-overlap-top: calc(@grid-gutter-width * -3); //translate along negative Y axis
           @media (min-width: @screen-lg) {
-            --section-overlap-top: calc(
-              @grid-gutter-width * -8
-            ); //translate along negative Y axis
+            --section-overlap-top: calc(@grid-gutter-width * -8); //translate along negative Y axis
           }
           margin-top: var(--section-overlap-top);
           #zone-main .html-content,
@@ -239,7 +227,7 @@
               text-transform: uppercase;
               background-color: @black;
               &:after {
-                content: "\f054";
+                content: '\f054';
                 box-sizing: border-box;
                 -moz-osx-font-smoothing: grayscale;
                 font-family: FontAwesome;
@@ -299,7 +287,7 @@
               padding: 10px 0;
               position: relative;
               &:after {
-                content: "\f054";
+                content: '\f054';
                 box-sizing: border-box;
                 -moz-osx-font-smoothing: grayscale;
                 font-family: FontAwesome;
@@ -368,24 +356,16 @@
 }
 .c-section--overlap-top {
   .container:first-child {
-    --section-overlap-top: calc(
-      @grid-gutter-width * -3
-    ); //translate along negative Y axis
+    --section-overlap-top: calc(@grid-gutter-width * -3); //translate along negative Y axis
     @media (min-width: @screen-lg) {
-      --section-overlap-top: calc(
-        @grid-gutter-width * -7
-      ); //translate along negative Y axis
+      --section-overlap-top: calc(@grid-gutter-width * -7); //translate along negative Y axis
     }
     body.no-title & {
       @media (min-width: @screen-sm) {
-        --section-overlap-top: calc(
-          @grid-gutter-width * -13
-        ); //translate along negative Y axis
+        --section-overlap-top: calc(@grid-gutter-width * -13); //translate along negative Y axis
       }
       @media (min-width: @screen-lg) {
-        --section-overlap-top: calc(
-          @grid-gutter-width * -12
-        ); //translate along negative Y axis
+        --section-overlap-top: calc(@grid-gutter-width * -12); //translate along negative Y axis
       }
     }
     margin-top: var(--section-overlap-top);
@@ -423,8 +403,6 @@
       }
     }
   }
-  .c-section--alt2 &,
-  .c-section--light &,
   &.decorated {
     h2 {
       color: @gray-darker;
@@ -438,7 +416,7 @@
         }
       }
       &:after {
-        content: "";
+        content: '';
         background-color: @color-brand-primary;
         height: 0.45em;
         bottom: 0;
@@ -481,10 +459,10 @@
         margin-right: 80px;
       }
       &:after {
-        content: "";
+        content: '';
         height: 70px;
         width: 320px;
-        background: url("/Content/ExternalSite/bluedots.png") no-repeat;
+        background: url('/Content/ExternalSite/bluedots.png') no-repeat;
         background-size: contain;
         position: absolute;
         top: 70%;
@@ -494,7 +472,7 @@
   }
 }
 .c-section__description {
-  color: @text-color;
+  color: @color-gray-dark;
   font-size: 24px;
   line-height: 1.1;
   text-align: center;
@@ -503,7 +481,6 @@
   font-weight: 600;
   margin-top: var(--s1);
   @media (min-width: @screen-sm) {
-    margin-top: var(--s3);
     font-size: 36px;
   }
   .c-section--light & {
@@ -511,6 +488,12 @@
   }
   .c-section--dark & {
     color: @white;
+  }
+  p {
+    margin: 1em 0 0;
+    &:first-child {
+      margin-top:0;
+    }
   }
 }
 .c-section__footer {
