@@ -77,7 +77,7 @@
   
   <!-- Included CSS Files -->
 	<link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/_icons/webfont/style.css") %>"/>
-  <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/_fonts/webFonts/NVChristmas.css", true) %>"/>
+  <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/bootstrap.css", false) %>"/>
   <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", true) %>"/>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"/>

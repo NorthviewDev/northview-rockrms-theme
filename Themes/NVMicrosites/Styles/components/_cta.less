@@ -1,0 +1,51 @@
+.c-section {
+  &.-ctaBanner {
+    color: @white;
+    font-size: 22px;
+    border-bottom: solid 12px var(--primary-color);
+    .c-section__content {
+      padding: 90px 35px;
+      @media screen and (min-width: @screen-lg) {
+        padding: 96px 18px;
+      }
+    }
+    .c-section--bgimg {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .c-section__item-title {
+      color: @white;
+      font-size: 40px;
+      margin-bottom: 20px;
+      em {
+        text-transform: uppercase;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+      @media (min-width: @screen-sm) {
+        font-size: 48px;
+        em {
+          text-transform: none;
+          font-size: 18px;
+        }
+      }
+    }
+    .c-button {
+      --buttonBackgroundColor: var(--primary-color);
+      --buttonTextColor: @black;
+      --buttonBorderColor: var(--primary-color);
+      --buttonHoverBackgroundColor: transparent;
+      --buttonHoverTextColor: var(--primary-color);
+      --buttonHoverBorderColor: var(--primary-color);
+      .c-section__sidebar & {
+        --buttonBackgroundColor: #fff;
+        --buttonTextColor: #000;
+        --buttonBorderColor: #fff;
+        --buttonHoverBackgroundColor: var(--primary-color);
+        --buttonHoverTextColor: #000;
+        --buttonHoverBorderColor: var(--primary-color);
+      }
+    }
+  }
+}

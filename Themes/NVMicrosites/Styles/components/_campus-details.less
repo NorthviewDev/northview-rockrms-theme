@@ -1,20 +1,3 @@
-#campus-details {
-  overflow: hidden;
-  &:before {
-    content:"";
-    background-color: rgba(211,211,211,0.15);
-    position: absolute;
-    top:0;
-    left:0;
-    bottom:0;
-    width: 50%;
-    transform: skew(15deg);
-    transform-origin: bottom left;
-    @media (min-width: @screen-sm) {
-      transform: skew(38deg);
-    }
-  }
-}
 .location-details,
 .campus-intro {
   background-color: @white;
@@ -34,14 +17,33 @@
 }
 .campus-intro {
   grid-template-columns: 1fr 2fr;
-  > * { align-self: center }
+  > * {
+    align-self: center;
+  }
   :first-child {
     align-self: flex-start;
   }
   h2 {
     font-size: floor((@font-size-base * 1.5625)); // ~25px
     @media (min-width: @screen-sm) {
-    	font-size: 36px;
+      font-size: 36px;
+    }
+  }
+}
+#campus-details {
+  overflow: hidden;
+  &:before {
+    content: '';
+    background-color: rgba(@color-gray-lightest, 0.15);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    transform: skew(15deg);
+    transform-origin: bottom left;
+    @media (min-width: @screen-sm) {
+      transform: skew(38deg);
     }
   }
 }

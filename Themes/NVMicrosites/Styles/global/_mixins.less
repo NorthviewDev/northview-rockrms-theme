@@ -10,57 +10,64 @@
 //         </div>
 //     </div>
 .block-grid,
-[class*="block-grid-"] {
+[class*='block-grid-'] {
   display: -ms-grid;
   display: grid;
   margin: 0 0 12px;
   padding: 0;
-  grid-gap: 12px;
+  gap: 12px;
   width: 100%;
   @media (min-width: @screen-md) {
-	  margin: 0 0 var(--s2);
-  		grid-gap: var(--s2);
+    margin: 0 0 var(--s2);
+    gap: var(--s2);
   }
   .block-grid-item {
     display: block;
-    margin: 0;  
+    margin: 0;
     padding: 0;
     height: auto;
     width: 100%;
-    list-style: none;  // for those who like to use `li` elements as block-grid-items
+    list-style: none; // for those who like to use `li` elements as block-grid-items
   }
   &.nopad {
-	  grid-gap:0;
-	  margin: 0;
+    gap: 0;
+    margin: 0;
   }
 }
 
 .block-grid (@per-row) {
-	grid-template-columns: repeat(@per-row, 1fr);
+  grid-template-columns: repeat(@per-row, 1fr);
 }
 
 // Recursive loop that produces rules for block grids of @per-row many items
 // per row down to 1 many items per row.
 .block-grids(@size, @per-row: @grid-columns) when (@per-row > 0) {
-  .block-grid-@{size}-@{per-row} { .block-grid(@per-row); }
+  .block-grid-@{size}-@{per-row} {
+    .block-grid(@per-row);
+  }
   .block-grids(@size, (@per-row - 1));
 }
 
 .block-grids(xs);
-@media (min-width: @screen-sm-min) { .block-grids(sm) }
-@media (min-width: @screen-md-min) { .block-grids(md) }
-@media (min-width: @screen-lg-min) { .block-grids(lg) }
-
-
-.sizeBase12(@index: 0) when (@index =< 10) {
-  .sizeBase12((@index + 1)); 
-  --s@{index}: calc(@index * 12px);
+@media (min-width: @screen-sm-min) {
+  .block-grids(sm);
 }
+@media (min-width: @screen-md-min) {
+  .block-grids(md);
+}
+@media (min-width: @screen-lg-min) {
+  .block-grids(lg);
+}
+
+// .sizeBase12(@index: 0) when (@index =< 10) {
+//   .sizeBase12((@index + 1));
+//   --s@{index}: calc(@index * 12px);
+// }
 .aspect-ratio(@width, @height) {
   position: relative;
   &:after {
     display: block;
-    content: "";
+    content: '';
     width: 100%;
     padding-top: (@height / @width) * 100%;
   }
@@ -85,5 +92,5 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  content:@content;
+  content: @content;
 }

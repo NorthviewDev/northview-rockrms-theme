@@ -14,20 +14,20 @@
   background: var(--scrollbarBG);
 }
 #location-search::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG) ;
+  background-color: var(--thumbBG);
   border-radius: 6px;
   border: 3px solid var(--scrollbarBG);
 }
 #campus-locations {
   @media (min-width: @screen-sm) {
-    height: @mapheight;	
+    height: @mapheight;
     overflow: hidden;
   }
   #location-search {
     background-color: @white;
     @media (min-width: @screen-sm) {
       box-shadow: 0px 0px 10px 0px #8c8c8c;
-      height: @mapheight;	
+      height: @mapheight;
       width: 40%;
       float: left;
       overflow: auto;
@@ -42,14 +42,14 @@
       padding: 48px 30px;
       @media (min-width: @screen-sm) {
         padding: 58px;
-      }      
+      }
     }
     .form-group {
       text-align: center;
       .form-control {
         width: 60%;
         margin-left: auto;
-        margin-right:auto;
+        margin-right: auto;
       }
     }
   }
@@ -63,9 +63,9 @@
 #campus-list {
   margin-bottom: 48px;
   @media (min-width: @screen-sm) {
-  	margin-bottom: 58px;
+    margin-bottom: 58px;
   }
-  > :first-child{
+  > :first-child {
     margin-top: 36px;
   }
   .place {
@@ -74,7 +74,7 @@
   .place__name {
     font-size: 25px;
     text-transform: none;
-    margin:0;
+    margin: 0;
     a {
       color: inherit;
       font-size: inherit;
@@ -84,13 +84,13 @@
       }
       .nv-icon--carat_right {
         &:before {
-          content:"\e903";
+          content: '\e903';
         }
       }
     }
   }
   .place__distance-text {
-    margin:0;
+    margin: 0;
   }
 }
 
@@ -107,7 +107,7 @@
   display: none;
   @media (min-width: @screen-sm) {
     width: 60%;
-    float:left;
+    float: left;
     display: block;
   }
   @media (min-width: @screen-lg) {
@@ -131,24 +131,24 @@
     padding-bottom: 50px;
   }
   .mapboxgl-popup-content {
-    padding:0;
-    width:300px;
+    padding: 0;
+    width: 300px;
   }
   .mapboxgl-popup-content-wrapper {
-    padding:0;
+    padding: 0;
   }
   .mapboxgl-popup-content h3 {
-    margin:0;
+    margin: 0;
     font-size: 25px;
   }
   .mapboxgl-popup-content p {
     font: 16px/20px @font-family-sans-serif;
   }
   .mapboxgl-popup-content div {
-    padding:0;
+    padding: 0;
   }
   .mapboxgl-container .leaflet-marker-icon {
-    cursor:pointer;
+    cursor: pointer;
   }
   .mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
     border-radius: 0;
@@ -162,8 +162,8 @@
     width: 100%;
   }
   .mapboxgl-ctrl-geocoder > div {
-    min-width:100%;
-    margin-left:0;
+    min-width: 100%;
+    margin-left: 0;
   }
   .mapboxgl-ctrl-geocoder--input {
     background-color: #d8d8d8;
@@ -173,13 +173,12 @@
     border: 0;
     &:focus {
       box-shadow: none;
-      outline: solid 3px @color-brand-primary;
+      outline: solid 3px @brand-primary;
     }
   }
   .suggestions-wrapper {
     text-align: left;
     a {
-      
     }
-  } 
+  }
 }

@@ -1,51 +1,20 @@
-#locations-times {
-  background-color: rgba(124, 173, 209, 0.85);
-  background-position: center center;
-  background-size: cover;
-  background-blend-mode: darken;
-  @media (min-width: @screen-lg) {
-  	background-position: right center;
-    background-size: 55% auto;
-  }
-  .tab-content {
-    padding: var(--s2);
-    @media (min-width: @screen-sm) {
-    	padding: var(--s4);
-    }
-    ul {
-      margin:0;
-      padding:0;
-      list-style-type: none;
-      font-size: 20px;
-      @media (min-width: @screen-sm) {
-      	width: 70%;
-      }
-      li {
-        border-bottom: solid 1px @white;
-        padding: 0.5em 0;
-        display: flex;
-        justify-content: space-between;
-      }
-    }
-  }
-}
 .c-locations-times__list {
   position: relative;
   z-index: 5;
   padding: var(--s4);
   background: white;
-	margin-top: -50px;
+  margin-top: -50px;
   @media (min-width: @screen-md) {
     padding: var(--s4) var(--s8);
-  	margin-top: -50px;
-  	display: flex;
-  	> * {
-    	width: 50%;
-    	position: relative;
-  	}
+    margin-top: -50px;
+    display: flex;
+    > * {
+      width: 50%;
+      position: relative;
+    }
   }
   h2 {
-    margin-top:0;
+    margin-top: 0;
     @media (min-width: @screen-md) {
       font-size: 98px;
       text-transform: uppercase;
@@ -54,7 +23,7 @@
       position: absolute;
       z-index: 5;
       bottom: 0;
-      left:0;
+      left: 0;
       width: 10ch;
     }
   }
@@ -66,20 +35,20 @@
     left: 60%;
     bottom: 0;
     z-index: 1;
-    color:@color-brand-primary;
+    color: @brand-primary;
     line-height: 1;
     font-size: 15px;
     white-space: nowrap;
     overflow: hidden;
     letter-spacing: 2.5px;
     display: none;
-  	@media (min-width: @screen-sm) {
-  		font-size: 34px;
-  		display: block;
-  	}
-  	@media (min-width: @screen-xl) {
-  		left: 50%;
-  	}
+    @media (min-width: @screen-sm) {
+      font-size: 34px;
+      display: block;
+    }
+    @media (min-width: @screen-xl) {
+      left: 50%;
+    }
   }
   .nav-pills {
     li {
@@ -92,7 +61,7 @@
           transform: translateY(-50%);
           display: block;
           &:after {
-            content: "";
+            content: '';
             height: 0;
             width: 150%;
             border-style: solid;
@@ -102,14 +71,16 @@
             position: absolute;
             top: 50%;
             right: 0;
-            transform: translate(-2px,0);
+            transform: translate(-2px, 0);
           }
         }
       }
-      &:hover, &:focus, &.active {
+      &:hover,
+      &:focus,
+      &.active {
         a {
           color: @white;
-          background-color: @color-brand-primary;
+          background-color: @brand-primary;
         }
       }
     }
@@ -117,47 +88,43 @@
 }
 #cta_buttons {
   position: relative;
-  &:after {
-    content:"";
-    height: 391px;
-    width: 400px;
-    background-image: url('/Content/ExternalSite/cloud.png');
-    background-position: top left;
-    background-size: cover;
-    background-blend-mode: screen;
-    position: absolute;
-    right:0;
-    bottom:0;
-    z-index: 1;
-    transform: translateY(50%);
-    opacity:0.5;
-    pointer-events: none;
-  }
   @media (max-width: @screen-sm-max) {
-  	.c-btn {
-    	display: block;
-  	}
-  }
-}
-.cloudbg {
-  height: 391px;
-  width: 400px;
-  max-width: 90%;
-  background-position: top left;
-  background-size: cover;
-  position: absolute;
-  right:0;
-  bottom:0;
-  z-index: 1;
-  transform: translateY(45%);
-  opacity:0.5;
-  pointer-events: none;
-  &.left {
-    right: auto;
-    left:0;
-    background-position: top right;
+    .c-btn {
+      display: block;
+    }
   }
 }
 .shareables a {
   border: none;
+}
+#locations-times {
+  background-color: rgba(124, 173, 209, 0.85);
+  background-position: center center;
+  background-size: cover;
+  background-blend-mode: darken;
+  @media (min-width: @screen-lg) {
+    background-position: right center;
+    background-size: 55% auto;
+  }
+  .tab-content {
+    padding: var(--s2);
+    @media (min-width: @screen-sm) {
+      padding: var(--s4);
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      font-size: 20px;
+      @media (min-width: @screen-sm) {
+        width: 70%;
+      }
+      li {
+        border-bottom: solid 1px @white;
+        padding: 0.5em 0;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
 }
