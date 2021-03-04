@@ -7,11 +7,11 @@
 		gtr.IsLeader,
 		gm.GroupRoleId,
 		p.Id as PersonId,
-		p.NickName, 
-		p.FirstName, 
+		p.NickName,
+		p.FirstName,
 		p.LastName,
 		p.Email
-  FROM [Person] p 
+  FROM [Person] p
   LEFT OUTER JOIN [GroupMember] gm ON p.Id = gm.PersonId
   LEFT OUTER JOIN [Group] g ON gm.GroupId = g.Id
   LEFT OUTER JOIN [GroupType] gt ON g.GroupTypeId = gt.Id
@@ -29,25 +29,25 @@
 	{%- assign nickName = item.NickName -%}
 	{%- assign firstName = item.FirstName -%}
 	{%- assign lastName = item.LastName -%}
-  {%- assign title = item.Position -%}
+  	{%- assign title = item.Position -%}
 	{%- assign email = item.Email -%}
+	{% assign emailParts = email | Split:'@' %}
 	{%- assign extension = '' -%}
 	{%- person id:'{{personId}}' -%}
 		{%- for phoneNumber in person.PhoneNumbers -%}
 			{%comment%} /*** Internal Extension ***/ {%endcomment%}
-			{%- if phoneNumber.NumberTypeValueId == '1104' -%}	{%- assign extension = phoneNumber.Number -%}{%- endif -%}
+			{%- if phoneNumber.NumberTypeValueId == '1104' -%}{%- assign extension = phoneNumber.Number -%}{%- endif -%}
 		{%- endfor -%}
 	{%- endperson -%}
 	{%- groupmember where:'GroupId == {{groupId}} && PersonId == {{personId}}' -%}
 
 	{%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
 	{%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
-	
-	{%- for item in groupmemberItems -%}
-	
-	{%- assign title = item | Attribute:'Title' -%}
-  {%- assign phone = item | Attribute:'Phone' -%}
 
+	{%- for item in groupmemberItems -%}
+
+	{%- assign title = item | Attribute:'Title' -%}
+  	{%- assign phone = item | Attribute:'Phone' -%}
 	{%- assign bio = item | Attribute:'Bio' -%}
 
 	<div class='staff-grid__item'>
@@ -67,14 +67,22 @@
             <div class="staff__name">{{ person.FullName }}</div>
       			<div class="staff__title">{{ title }}</div>
         			<ul class="staff__meta">
-        			  {% if email != '' %}
-        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a></li>
-                {% endif %}
-                {% if phone != '' %}
-                  <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
-                {% endif %}
-        		  </ul>  
-      		  </div>              	 
+        			{% if email != '' %}
+						<li class="staff__email" id="contact-{{ person.FullName | ToCssClass }}" class="mailtolink">
+							<a href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>
+						</li>
+						<script>
+						var linkelement = document.getElementById('contact-{{person.FullName | ToCssClass}}'),
+						u{{personId}}="{{emailParts[0]}}",
+						h{{personId}}="{{emailParts[1]}}";
+						linkelement.innerHTML = '<a href="' + 'mail' + 'to:'+u{{personId}}+'@'+h{{personId}}+'" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>';
+						</script>
+                	{% endif %}
+					{% if phone != '' %}
+						<li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' | Replace:'-','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+					{% endif %}
+        		  </ul>
+      		  </div>
           </div>
   		  </div>
 		</div>

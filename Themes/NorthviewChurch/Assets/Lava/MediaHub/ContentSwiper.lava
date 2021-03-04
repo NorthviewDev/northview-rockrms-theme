@@ -99,12 +99,17 @@
         </div>
     </div>
 </section>
-
+{% comment %}
 {% assign swiper6css = '~~/node_modules/swiper/swiper-bundle.min.css' %}
 {% assign swiper6js = '~~/node_modules/swiper/swiper-bundle.min.js' %}
 <link rel="stylesheet" href="{{ swiper6css | ResolveRockUrl }}">
 <script src="{{ swiper6js | ResolveRockUrl }}"></script>
+{% endcomment %}
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
+$(document).ready(function() {
+    //Swiper
     var swiper = new Swiper('.swiper-container', {
       navigation: {
         nextEl: '.c-btn-next',
@@ -117,11 +122,11 @@
           slidesPerView: 2,
           spaceBetween: 24,
         },
-        768: {
+        1024: {
           slidesPerView: 3,
           spaceBetween: 24,
         },
       }
-
     });
+});
 </script>

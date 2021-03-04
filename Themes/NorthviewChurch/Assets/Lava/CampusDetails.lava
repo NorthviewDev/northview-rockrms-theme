@@ -16,7 +16,7 @@
           <p>{{ displayServiceTimes }}</p>
           <ul class="location-details__info-list stack list-unstyled">
           <li><i class="nv-icon nv-icon--email fa-fw"></i> <a href="mailto:{{ 'Global' | Attribute:'OrganizationEmail' }}">{{ 'Global' | Attribute:'OrganizationEmail' }}</a></li>
-          <li><i class="nv-icon nv-icon--phone fa-fw"></i> <a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' }}">{{ campus.PhoneNumber }}</a></li>
+          <li><i class="nv-icon nv-icon--phone fa-fw"></i> <a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' | Replace:'-','' }}">{{ campus.PhoneNumber }}</a></li>
           {%- location id:'{{ campus.LocationId }}' -%}
           {%- for location in locationItems -%}
           {%- assign campusLocation = location.Street1 | Trim -%}
@@ -50,10 +50,29 @@
                 <div class="staff__name">{{ person.FullName }}</div>
     						<div class="staff__title">{{ campus.Name }} Campus Pastor</div>
     						<ul class="staff__meta list-unstyled list-inline">
-    							{% if email != '' %}<li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}"><i class="nv-icon nv-icon--email"></i></a></li>{% endif %}
-    							{% if extension != '' %}<li class="staff__phone"><a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' }},{{ extension }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>{% endif %}
-    						</ul>  
-    					</div>              	 
+                {%- assign personId = person.Id -%}
+                {%- assign email = person.Email -%}
+                {% if email != '' %}
+                	{% assign emailParts = email | Split:'@' %}
+                  <li class="staff__email" id="contact-{{ person.FullName | ToCssClass }}" class="mailtolink">
+                    <a href="/contact-us" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>
+                  </li>
+                  <script>
+                  var
+                  linkelement = document.getElementById('contact-{{person.FullName | ToCssClass}}'),
+                  u{{personId}}="{{emailParts[0]}}",
+                  h{{personId}}="{{emailParts[1]}}";
+                  linkelement.innerHTML = '<a href="' + 'mail' + 'to:'+u{{personId}}+'@'+h{{personId}}+'" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>';
+                  </script>
+                {% endif %}
+              	{%- assign extension = '' -%}
+                {%- for phoneNumber in person.PhoneNumbers -%}
+                  {%comment%} /*** Internal Extension ***/ {%endcomment%}
+                  {%- if phoneNumber.NumberTypeValueId == '1104' -%}{%- assign extension = phoneNumber.Number -%}{%- endif -%}
+                {%- endfor -%}
+                  <li class="staff__phone"><a href="tel:+1{{ campus.PhoneNumber | Replace:'.','' | Replace:'-','' }}{%- if extension != '' -%},{{ extension }}{%- endif -%}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+    						</ul>
+    					</div>
     				</div>
 			    </div>
         {%- endperson -%}

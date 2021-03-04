@@ -71,6 +71,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta charset="utf-8">
   <title></title>
+  <script src="<%# ResolveRockUrl("~/Scripts/modernizr.js", true) %>"></script>
   <script src="<%# System.Web.Optimization.Scripts.Url("~/Scripts/Bundles/RockJQueryLatest") %>"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <asp:ContentPlaceHolder ID="css" runat="server" />
@@ -130,7 +131,7 @@ var BrowserDetect = {
     if (BrowserDetect.browser !== "Explorer") {
       document.write('<script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/modern.js") %>"><\x2fscript>');
       //document.write("You are using <b>" + BrowserDetect.browser + "</b> with version <b>" + BrowserDetect.version + "</b>");
-      console.log("You are not using IE")
+      console.log("👏 You are not using IE. Bravo 👏")
     } else {
       console.log("You are using Internet Explorer")
     }

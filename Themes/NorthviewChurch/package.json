@@ -7,6 +7,9 @@
   "license": "UNLICENSED",
   "repository": {},
   "dependencies": {
+    "colcade": "^0.2.0",
+    "readmore-js": "^3.0.0-beta-1",
+    "select2": "^4.1.0-rc.0",
     "swiper": "^6.1.1"
   }
 }

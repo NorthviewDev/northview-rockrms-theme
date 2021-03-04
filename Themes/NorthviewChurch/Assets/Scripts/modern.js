@@ -2,7 +2,7 @@
 $(function () { // document.ready
   /** * Clickable Card layout ***/
   /** * https://inclusive-components.design/cards/#theredundantclickevent ***/
-  const cards = document.querySelectorAll('.c-card,.masonry-grid__grid-item,.c-tile')
+  const cards = document.querySelectorAll('.masonry-grid__grid-item,.c-tile')
   Array.prototype.forEach.call(cards, card => {
     card.style.cursor = 'pointer'
     let down; let up; let link = card.querySelector('a')
