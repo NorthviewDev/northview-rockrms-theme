@@ -42,10 +42,13 @@
   &.c-section--white {
     background-color: #fff;
   }
+  .c-section--bgimg,
   &.c-section--bgimg {
+    position: relative;
     background-size: cover;
     color: @white;
     background-color: @gray-darker;
+    .c-section__content,
     .container {
       position: relative;
       z-index: 1;
@@ -53,12 +56,17 @@
     &:after {
       content: '';
       background-color: @gray-darker;
-      opacity: 0.9;
+      opacity: 0.1;
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
+    }
+    &.c-section--dark {
+      &:after {
+        opacity: 0.9;
+      }
     }
   }
 }
