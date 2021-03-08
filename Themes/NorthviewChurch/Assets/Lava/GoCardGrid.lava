@@ -1,7 +1,7 @@
 {%comment%}
 {% include "~~/Assets/Lava/GoCardGrid.lava" %}
 {%endcomment%}
-<section id="go-teams-process" class="c-section" style="background-image:url('/Themes/NorthviewChurch/Assets/_img/background-topography2.png');background-color:#ECECEC;background-size:cover;">
+<section id="go-teams-process" class="c-section" style="background-image:url('/Themes/NorthviewChurch/Assets/_img/background-topography2.png');background-color:#D3D3D3;background-size:cover;">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -18,7 +18,36 @@
           </div>
           {% endfor %}
         </div>
+        <p class="text-center" style="margin:26px 0 0">
+          <a class="c-btn c-btn--large" href="/gotrips" target="">
+          View Trips
+          </a>
+          <a id="prep-opener" class="c-btn c-btn--large" href="#go-teams-process-timeline" target="">
+          I’m Accepted. What’s Next?
+          </a>
+        </p>
       </div>
     </div>
   </div>
 </section>
+<script>
+  $(function() {
+    var isoOptions = {
+      itemSelector: '.grid-item',
+      percentPosition: true,
+      masonry: {
+        horizontalOrder: true,
+      }
+    };
+    $('.grid-items').isotope(isoOptions);
+    $('#prep-opener').on('click',function(e){
+      e.preventDefault();
+      var jump = $(this).attr('href');
+      $('#go-teams-process-timeline').slideDown('fast', function(){
+        var new_position = $(jump).offset();
+        $('.grid-items').isotope(isoOptions);
+        $('html, body').stop().animate({ scrollTop: new_position.top }, 500);
+      });
+    });
+  });
+</script>

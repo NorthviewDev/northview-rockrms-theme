@@ -32,22 +32,23 @@
   </div>
 </section>
 <link rel="stylesheet" href="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/css/select2.min.css" />
-<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-<script src="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/js/select2.min.js"></script>
-<script>
+<no src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></no>
+<no src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></no>
+<no src="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/js/select2.min.js"></no>
+<noscript>
+<!-- config added in Advanced Block settings to allow customization
   $(document).ready(function() {
     /** Select2 **/
     $('.filters-select').select2({
       theme:'northview'
     });
-    
+
     $('.readmore-toggle').on('click',function(e){
       e.preventDefault();
       var btn = $(this);
       $(btn).siblings('.readmore').slideToggle(300,function(){
         $(btn).toggleClass('-close');
-        $grid.isotope('layout');        
+        $grid.isotope('layout');
       });
     });
 
@@ -78,8 +79,7 @@
       $grid.isotope({
         filter: filterValue
       });
-    });    
-
-
+    });
   });
-</script>
+  -->
+</noscript>

@@ -353,17 +353,18 @@ a.c-card {
   }
 }
 .c-card__row {
+  margin: 0 0 @grid-gutter-width;
   @media (min-width: @screen-md) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin: 0 calc((@grid-gutter-width / 2) * -1);
+    margin: 0 calc((@grid-gutter-width / 2) * -1) @grid-gutter-width;
   }
   .c-card {
     border-radius: 5px;
     font-size: 18px;
     margin: 0 0 @grid-gutter-width;
     @media (min-width: @screen-md) {
-      margin: 0 calc((@grid-gutter-width / 2));
+      margin: 0 calc((@grid-gutter-width / 2)) calc((@grid-gutter-width / 2));
     }
   }
   .c-card__title {
@@ -375,7 +376,7 @@ a.c-card {
     }
   }
   .c-card__content {
-    padding: 26px 30px 34px;
+    padding: 50px;
   }
 }
 .c-card__grid {
@@ -440,7 +441,7 @@ a.c-card {
       }
       &.-close {
         i {
-          transform: translate(-50%, -50%) rotate(180deg);          
+          transform: translate(-50%, -50%) rotate(180deg);
         }
       }
     }
@@ -547,11 +548,14 @@ a.c-card {
     letter-spacing: 0;
     font-size: 24px;
     @media (min-width: @screen-sm) {
+      font-size: 32px;
+    }
+    @media (min-width: @screen-xl) {
       font-size: 42px;
     }
   }
   .c-card__content {
-    padding: 26px 30px 34px;
+    padding: 50px;
   }
 }
 .readmore {

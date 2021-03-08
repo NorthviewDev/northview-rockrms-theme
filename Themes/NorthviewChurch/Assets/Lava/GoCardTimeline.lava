@@ -2,7 +2,7 @@
 {% assign sectionTitle="Preparing for Your Trip" %}
 {% include "~~/Assets/Lava/GoCardTimeline.lava" %}
 {%endcomment%}
-<section id="go-teams-process-timeline" class="c-section -light">
+<section id="go-teams-process-timeline" class="c-section -light" style="display:none">
   <div class="container">
     <div class="row">
       <div class="col-sm-10 center-block">
@@ -28,15 +28,3 @@
   </div>
 </section>
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-<script>
-  $(function() {
-    var isoOptions = {
-      itemSelector: '.grid-item',
-      percentPosition: true,
-      masonry: {
-        horizontalOrder: true,
-      }
-    };
-    $('.grid-items').isotope(isoOptions);
-  });
-</script>
