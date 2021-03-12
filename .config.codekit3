@@ -7,7 +7,7 @@
       "uuidString" : "81FFF24F-4165-4769-9B64-9C531E5FCA5A"
     }
   ],
-  "creatorBuild" : "34018",
+  "creatorBuild" : "34081",
   "files" : {
     "\/.nova\/Configuration.json" : {
       "ft" : 524288,
@@ -44,7 +44,7 @@
     "\/Styles" : {
       "ft" : 65536,
       "oA" : 1,
-      "oAP" : "\/build\/Styles",
+      "oAP" : "\/Styles",
       "oF" : 0
     },
     "\/Styles\/_blocks-checkinadmin.less" : {
@@ -4636,6 +4636,14 @@
       "oAP" : "\/Themes\/NorthviewChurch\/Assets\/Lava\/MediaHub\/FeaturedContent.lava",
       "oF" : 0
     },
+    "\/Themes\/NorthviewChurch\/Assets\/Lava\/MediaHub\/FilterBar.lava" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/Themes\/NorthviewChurch\/Assets\/Lava\/MediaHub\/FilterBar.lava",
+      "oF" : 0
+    },
     "\/Themes\/NorthviewChurch\/Assets\/Lava\/MediaHub\/PodcastSwiper.lava" : {
       "cB" : 0,
       "ft" : 8192,
@@ -7548,7 +7556,7 @@
     "\/Themes\/NorthviewChurch\/node_modules" : {
       "ft" : 65536,
       "oA" : 2,
-      "oAP" : "\/build\/Themes\/NorthviewChurch\/node_modules",
+      "oAP" : "\/Themes\/NorthviewChurch\/node_modules",
       "oF" : 0
     },
     "\/Themes\/NorthviewChurch\/package-lock.json" : {
@@ -7826,6 +7834,24 @@
       "mS" : 0,
       "oA" : 1,
       "oAP" : "\/Themes\/NorthviewChurch\/Styles\/components\/_cta.css",
+      "oF" : 0,
+      "oS" : 1,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
+    },
+    "\/Themes\/NorthviewChurch\/Styles\/components\/_filters.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 1,
+      "mS" : 0,
+      "oA" : 1,
+      "oAP" : "\/Themes\/NorthviewChurch\/Styles\/components\/_filters.css",
       "oF" : 0,
       "oS" : 1,
       "pg" : 0,
@@ -8168,24 +8194,6 @@
       "mS" : 0,
       "oA" : 1,
       "oAP" : "\/Themes\/NorthviewChurch\/Styles\/global\/_mixins.css",
-      "oF" : 0,
-      "oS" : 1,
-      "pg" : 0,
-      "rwU" : 0,
-      "sI" : 0,
-      "sU" : 0
-    },
-    "\/Themes\/NorthviewChurch\/Styles\/global\/global.less" : {
-      "aP" : 1,
-      "bl" : 0,
-      "co" : 0,
-      "eJ" : 0,
-      "ft" : 1,
-      "iI" : 0,
-      "ma" : 1,
-      "mS" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NorthviewChurch\/Styles\/global\/global.css",
       "oF" : 0,
       "oS" : 1,
       "pg" : 0,
@@ -10249,7 +10257,7 @@
     "\/Themes\/NVMicrosites\/node_modules" : {
       "ft" : 65536,
       "oA" : 2,
-      "oAP" : "\/build\/Themes\/NVMicrosites\/node_modules",
+      "oAP" : "\/Themes\/NVMicrosites\/node_modules",
       "oF" : 0
     },
     "\/Themes\/NVMicrosites\/package-lock.json" : {
@@ -13059,27 +13067,27 @@
     "npmSaveExactVersion" : 0,
     "npmTargetDependencyListType" : 1,
     "overrideExternalServerCSS" : 1,
-    "previewPathAddition" : "\/page\/3032?id=1213",
+    "previewPathAddition" : "\/page\/3092",
     "purgeCSS" : {
       "blocklistEntries" : [
 
       ],
       "contentEntries" : [
-        "!(node_modules)\/**\/*.html",
-        "!(node_modules)\/**\/*.htm",
-        "!(node_modules)\/**\/*.shtml",
-        "!(node_modules)\/**\/*.xhtml",
-        "!(node_modules)\/**\/*.php",
-        "!(node_modules)\/**\/*.js",
-        "!(node_modules)\/**\/*.ts",
-        "!(node_modules)\/**\/*.coffee",
-        "!(node_modules)\/**\/*.erb",
-        "!(node_modules)\/**\/*.pug",
-        "!(node_modules)\/**\/*.jade",
-        "!(node_modules)\/**\/*.slim",
-        "!(node_modules)\/**\/*.haml",
-        "!(node_modules)\/**\/*.md",
-        "!(node_modules)\/**\/*.kit"
+        "**\/*.html",
+        "**\/*.htm",
+        "**\/*.shtml",
+        "**\/*.xhtml",
+        "**\/*.php",
+        "**\/*.js",
+        "**\/*.ts",
+        "**\/*.coffee",
+        "**\/*.erb",
+        "**\/*.pug",
+        "**\/*.jade",
+        "**\/*.slim",
+        "**\/*.haml",
+        "**\/*.md",
+        "**\/*.kit"
       ],
       "removeFontFace" : 0,
       "removeKeyframes" : 0,
