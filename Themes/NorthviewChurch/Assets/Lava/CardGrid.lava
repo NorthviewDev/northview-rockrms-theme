@@ -32,11 +32,11 @@
   </div>
 </section>
 <link rel="stylesheet" href="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/css/select2.min.css" />
-<no src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></no>
-<no src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></no>
-<no src="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/js/select2.min.js"></no>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/js/select2.min.js"></script>
 <noscript>
-<!-- config added in Advanced Block settings to allow customization
+<!-- HIDDEN HERE FOR DOCUMENTATION, actual config added in Advanced Block settings to allow for customization
   $(document).ready(function() {
     /** Select2 **/
     $('.filters-select').select2({

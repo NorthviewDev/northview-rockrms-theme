@@ -24,7 +24,17 @@
 .c-filter-bar {
   padding: 16px;
   .btn-group {
-    margin-right: 13px;
+    margin-top: 13px;
+    display: block;
+    @media screen and (min-width: @screen-sm) {
+      margin-right: 13px;
+      display: inline-block;
+    }
+    > .btn {
+      display: block;
+      float: none;
+      width: 100%;
+    }
     &.open {
       .nv-icon.-down {
         transform: rotate(90deg);
@@ -59,11 +69,16 @@
     }
   }
   .dropdown-menu {
-    width: 660px;
     padding: 0 4px;
     border-radius: 3px;
     border: none;
-    transform: translateY(20px);
+    //transform: translateY(20px);
+    @media screen and (min-width: @screen-sm) {
+      width: 200%;      
+    }
+    @media screen and (min-width: @screen-md) {
+      width: 300%;      
+    }
   }
   .c-filter__buttons {
     padding: 32px;
@@ -73,9 +88,16 @@
     margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
     width: calc(100% + var(--gap));
     > * {
-      display: inline-block;
-      width: calc(25% - var(--gap));
+      display: block;
+      width: 100%;
       margin: var(--gap) 0 0 var(--gap) !important;
+      @media screen and (min-width: @screen-sm) {
+        display: inline-block;
+        width: calc(50% - var(--gap));
+      }
+      @media screen and (min-width: @screen-md) {
+        width: calc(33.33333% - var(--gap));        
+      }
     }
     .btn-default {
       color: @color-gray;
