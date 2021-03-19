@@ -1,0 +1,23 @@
+<ul class="list-unstyled">
+  {% for result in Results %}
+  {% assign resultIconCssClass = result.IconCssClass %}
+  <li>
+    <div class="row model-cannavigate" data-href="{{ result.Url }}">
+        <div class="col-sm-1 text-center">
+            <i class="fa {{ resultIconCssClass }} fa-2x"></i>
+        </div>
+        <div class="col-sm-11">
+            <strong>{{ resultType }}{{ result.DocumentName }}</strong>
+            {{ result.Url }}<br>
+            {% assign resultSummary = result.PageSummary | Trim %}
+            {% if resultSummary != "" %}
+            {{ result.PageSummary | TruncateWords:60 }}
+            {% else %}
+            {{ result.Content | TruncateWords:60 }}
+            {% endif %}
+        </div>
+    </div>
+  </li>
+  <hr />
+  {% endfor %}
+</ul>

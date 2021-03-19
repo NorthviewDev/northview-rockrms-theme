@@ -1,0 +1,93 @@
+{%- comment -%}{%- assign staffGroupId = "gm.GroupId = '1234'" -%}{%- endcomment -%}
+{%- sql -%}
+	SELECT
+		gm.GroupId,
+		g.Name,
+		gt.Id as GroupTypeId,
+		gtr.IsLeader,
+		gm.GroupRoleId,
+		p.Id as PersonId,
+		p.NickName,
+		p.FirstName,
+		p.LastName,
+		p.Email
+  FROM [Person] p
+  LEFT OUTER JOIN [GroupMember] gm ON p.Id = gm.PersonId
+  LEFT OUTER JOIN [Group] g ON gm.GroupId = g.Id
+  LEFT OUTER JOIN [GroupType] gt ON g.GroupTypeId = gt.Id
+  LEFT OUTER JOIN [GroupTypeRole] gtr ON gt.Id = gtr.GroupTypeId
+  WHERE
+		{{staffGroupId}} and (gm.GroupRoleId = gtr.Id)
+  ORDER BY gm.GroupId, gtr.IsLeader desc, p.LastName
+{%- endsql -%}
+<div class="staff-list">
+	<h2 class="section__title">{{ staffGroupTitle }}</h2>
+	<div class="staff-grid">
+	{%- for item in results -%}
+	{%- assign personId = item.PersonId -%}
+	{%- assign groupId = item.GroupId -%}
+	{%- assign nickName = item.NickName -%}
+	{%- assign firstName = item.FirstName -%}
+	{%- assign lastName = item.LastName -%}
+  	{%- assign title = item.Position -%}
+	{%- assign email = item.Email -%}
+	{% assign emailParts = email | Split:'@' %}
+	{%- assign extension = '' -%}
+	{%- person id:'{{personId}}' -%}
+		{%- for phoneNumber in person.PhoneNumbers -%}
+			{%comment%} /*** Internal Extension ***/ {%endcomment%}
+			{%- if phoneNumber.NumberTypeValueId == '1104' -%}{%- assign extension = phoneNumber.Number -%}{%- endif -%}
+		{%- endfor -%}
+	{%- endperson -%}
+	{%- groupmember where:'GroupId == {{groupId}} && PersonId == {{personId}}' -%}
+
+	{%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
+	{%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
+
+	{%- for item in groupmemberItems -%}
+
+	{%- assign title = item | Attribute:'Title' -%}
+  	{%- assign phone = item | Attribute:'Phone' -%}
+	{%- assign bio = item | Attribute:'Bio' -%}
+
+	<div class='staff-grid__item'>
+			<div class="staff__item">
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+      		  <div class="staff__photo">
+      			  {%- if bio != "" -%}
+      				  <a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
+      				{%- endif -%}
+                <img class="staff__detail-image" src="/GetImage.ashx?id={{ person.PhotoId }}" alt="{{ person.FullName }}" />
+      				{%- if bio != "" -%}
+                <span class="vc">Read Bio</span>
+                </a>
+      				{%- endif -%}
+      		  </div>
+            <div class="staff__name">{{ person.FullName }}</div>
+      			<div class="staff__title">{{ title }}</div>
+        			<ul class="staff__meta">
+        			{% if email != '' %}
+						<li class="staff__email" id="contact-{{ person.FullName | ToCssClass }}" class="mailtolink">
+							<a href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>
+						</li>
+						<script>
+						var linkelement = document.getElementById('contact-{{person.FullName | ToCssClass}}'),
+						u{{personId}}="{{emailParts[0]}}",
+						h{{personId}}="{{emailParts[1]}}";
+						linkelement.innerHTML = '<a href="' + 'mail' + 'to:'+u{{personId}}+'@'+h{{personId}}+'" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>';
+						</script>
+                	{% endif %}
+					{% if phone != '' %}
+						<li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' | Replace:'-','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+					{% endif %}
+        		  </ul>
+      		  </div>
+          </div>
+  		  </div>
+		</div>
+	{%- endfor -%}
+	{%- endgroupmember -%}
+	{%- endfor -%}
+	</div>
+</div>

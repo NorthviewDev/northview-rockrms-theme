@@ -28,7 +28,7 @@
 {% endcase %}
 <div class="badge__mediaType"><span class="nv-icon nv-icon--{{ itemMediaType | ToCssClass }}"></span>{{ itemMediaType }}</div>
                         {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
-                        {% assign linkUrl = item.ContentChannel.ItemUrl | Replace:'{Id}',item.Id | Replace:'{Slug}',item.PrimarySlug %}
+                        {% assign linkUrl = item.ContentChannel.ItemUrl | Replace:'{Id}',item.Id | Replace:'{{Slug}}',item.PrimarySlug %}
                         <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
                           <div class="masonry-grid__content">
                             <div class="masonry-grid__title-link stack">

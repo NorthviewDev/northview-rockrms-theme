@@ -1,0 +1,43 @@
+{%- assign pageHeaderImage = CurrentPage | Attribute:'PageHeaderImage','RawValue' -%}
+{%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
+{%- assign sectionClass="" -%}
+{%- assign ornamentClass="" -%}
+{%- assign containerClass="" -%}
+{%- if pageHeaderImage != "" or pageHeaderVideo != "" -%}
+  {%- assign sectionClass=" has-media" -%}
+  {%- assign ornamentClass=" has-ornaments" -%}
+  {%- assign containerClass="col-lg-9 col-lg-offset-1" -%}
+{%- else -%}
+  {%- assign sectionClass=" no-header" -%}
+  {%- assign containerClass="col-xs-12" -%}
+{%- endif -%}
+  <section id="main-feature" class="c-block-hero__wrapper{{ sectionClass }}">
+    <div class="c-block-hero{{ ornamentClass }}">
+      <div class="c-block-hero__container">
+        <div class="container">
+          <div class="row">
+            <div class="{{ containerClass }} c-block-hero__header">
+              <div class="l-row--flex">
+                <div class="l-col--flex">
+                  <div class="c-block-hero__content">
+                    <h1 class="c-block-hero__headline"><span>{{ CurrentPage.PageTitle }}</span></h1>
+                  </div>
+                </div>
+                {%- if pageHeaderImage != "" || if pageHeaderVideo != "" -%}
+                <div class="l-col">
+                  <div class="c-block-hero__background-video g-aspect-ratio__16-9">
+                    <video poster="/GetImage.ashx?guid={{ pageHeaderImage }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
+                    {%- if pageHeaderVideo != "" -%}
+                      <source src="/GetFile.ashx?guid={{ pageHeaderVideo }}" type="video/mp4">
+                    {%- endif -%}
+                    </video>
+                  </div>
+                </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div><!-- end c-block--hero-->
+  </section>

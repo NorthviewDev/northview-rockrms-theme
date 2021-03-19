@@ -1,0 +1,132 @@
+<section class="c-section" id="contentSwiper" style="overflow: hidden">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 left-block">
+                <div class="c-section__header decorated">
+                  <h2><span>RECENT</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="c-section__content">
+                {% contentchannelitem where:'ContentChannelTypeId==3' sort:'StartDateTime desc' %}
+                  <h3 class="c-section__title">Articles</h3>
+                  <div id="article-swiper" class="swiper-container overflow-visible">
+                    <div class="swiper-buttons">
+                      <a class="c-btn-prev c-btn c-btn--text-link"><i class="nv-icon nv-icon--carat_left"></i></a>
+                      <a class="c-btn-next c-btn c-btn--text-link"><i class="nv-icon nv-icon--carat_right"></i></a>
+                    </div>
+                    <div class="swiper-wrapper">
+                      {% for item in contentchannelitemItems %}
+                      <div class="swiper-slide">
+                        {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
+                        <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
+                          <div class="masonry-grid__content">
+                            <div class="masonry-grid__title-link stack">
+                              <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
+                              <p><a class="c-btn c-btn--text-link" href="{{ itemLink }}">Read<i class="nv-icon nv-icon--carat_right"></i></a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endcontentchannelitem %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="c-section__content">
+                {% contentchannelitem where:'ContentChannelTypeId==5' sort:'StartDateTime desc' %}
+                  <h3 class="c-section__title">Podcasts</h3>
+                  <div id="podcast-swiper" class="swiper-container overflow-visible">
+                    <div class="swiper-buttons">
+                      <a class="c-btn-prev c-btn c-btn--text-link"><i class="nv-icon nv-icon--carat_left"></i></a>
+                      <a class="c-btn-next c-btn c-btn--text-link"><i class="nv-icon nv-icon--carat_right"></i></a>
+                    </div>
+                    <div class="swiper-wrapper">
+                      {% for item in contentchannelitemItems %}
+                      <div class="swiper-slide">
+                        {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
+                        <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
+                          <div class="masonry-grid__content">
+                            <div class="masonry-grid__title-link stack">
+                              <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
+                              <p><a class="c-btn c-btn--text-link" href="{{ itemLink }}">Listen<i class="nv-icon nv-icon--carat_right"></i></a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endcontentchannelitem %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="c-section__content">
+                {% contentchannelitem where:'ContentChannelTypeId==10' sort:'StartDateTime desc' %}
+                  <h3 class="c-section__title">Resources</h3>
+                  <div id="resource-swiper" class="swiper-container overflow-visible">
+                    <div class="swiper-buttons">
+                      <a class="c-btn-prev c-btn c-btn--text-link"><i class="nv-icon nv-icon--carat_left"></i></a>
+                      <a class="c-btn-next c-btn c-btn--text-link"><i class="nv-icon nv-icon--carat_right"></i></a>
+                    </div>
+                    <div class="swiper-wrapper">
+                      {% for item in contentchannelitemItems %}
+                      <div class="swiper-slide">
+                        {%- assign itemBgImage = item | Attribute:'Image','RawValue' -%}
+                        <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=500&height=300&mode=crop')">
+                          <div class="masonry-grid__content">
+                            <div class="masonry-grid__title-link stack">
+                              <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
+                              <p><a class="c-btn c-btn--text-link" href="{{ itemLink }}">Read<i class="nv-icon nv-icon--carat_right"></i></a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endcontentchannelitem %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% comment %}
+{% assign swiper6css = '~~/node_modules/swiper/swiper-bundle.min.css' %}
+{% assign swiper6js = '~~/node_modules/swiper/swiper-bundle.min.js' %}
+<link rel="stylesheet" href="{{ swiper6css | ResolveRockUrl }}">
+<script src="{{ swiper6js | ResolveRockUrl }}"></script>
+{% endcomment %}
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+$(document).ready(function() {
+    //Swiper
+    var swiper = new Swiper('.swiper-container', {
+      navigation: {
+        nextEl: '.c-btn-next',
+        prevEl: '.c-btn-prev',
+      },
+      slidesPerView: 1,
+      spaceBetween: 12,
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+        },
+      }
+    });
+});
+</script>

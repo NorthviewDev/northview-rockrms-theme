@@ -32,7 +32,7 @@
 {% endcase %}
 <div class="badge__mediaType"><span class="nv-icon nv-icon--{{ itemMediaType | ToCssClass }}"></span>{{ itemMediaType }}</div>
                         {%- assign itemImage = item | Attribute:'Image','RawValue' -%}
-                        {% assign linkUrl = item.ContentChannel.ItemUrl | Replace:'{Id}',item.Id | Replace:'{Slug}',item.PrimarySlug %}
+                        {% assign linkUrl = item.ContentChannel.ItemUrl | Replace:'{Id}',item.Id | Replace:'{{Slug}}',item.PrimarySlug %}
                         <div class="c-tile flex-row">
                           <div class="c-tile__body">
                             <a class="c-tile__link" href="{{ linkUrl }}"><img src='/GetImage.ashx?guid={{itemImage}}&width=300&height=300&mode=crop&scale=both' /></a>

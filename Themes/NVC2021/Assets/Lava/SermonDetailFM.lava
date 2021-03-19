@@ -1,0 +1,83 @@
+<style>
+.overlay {
+  position: absolute;
+  bottom: 50%; 
+  color: #000000; 
+  width: 100%;
+  opacity:1;
+  text-align: center;
+  transform: translate(0, 50%)
+}
+</style>
+
+{% if Item %}
+	{%- assign videoEmbed = Item | Attribute:'VideoEmbed' -%}
+	{%- assign audioLink = Item | Attribute:'AudioLink' -%}
+  {%- assign videoLink = Item | Attribute:'VideoLink' -%}
+  {%- assign SeriesTitle = Item.ParentItems[0].ContentChannelItem.Title -%}
+	{%- assign sermonImage = Item | Attribute:'Image', 'RawValue' -%}
+  {%- assign seriesImageGuid = Item.ParentItems[0].ContentChannelItem | Attribute:'SeriesImage','RawValue' -%}
+  
+  {%- if sermonImage != '' -%}
+  {%- capture shareImage -%}https://northviewchurch.us/GetImage.ashx?Guid={{sermonImage}}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both{%- endcapture -%}
+  {%- else -%}
+  {%- capture shareImage -%}https://northviewchurch.us/GetImage.ashx?Guid={{seriesImageGuid}}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both{%- endcapture -%}
+  {% endif %}
+  {{ shareImage | AddMetaTagToHead:'property','og:image' }}
+  {{ shareImage | AddMetaTagToHead:'property','twitter:image' }}
+
+  {{ Item.Title | AddMetaTagToHead:'property','og:title' }}
+      
+      <div id="latest-message" class="message-detail">
+        <div class="container">
+        <div class="row">
+          <div class="col-sm-9 col-md-10 center-block">
+            <div id="recent-message-grid">
+              <div class="c-card__header">
+            		{% if videoEmbed != '' %}
+            			<div class="embed-responsive embed-responsive-16by9">{{ videoEmbed }}</div>
+                    {% else %}
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <a href="{{videoLink}}" target="_blank">
+                                <img src="{{shareImage}}" alt="image">
+								
+                            
+							<div class="overlay"><i class="far fa-play-circle fa-6x"></i></div>	
+                            </a>
+                        </div>
+            		{% endif %}
+              </div><!-- end .c-card__header -->
+              <div class="c-card__body">
+                <div class="stack">
+                <span class="c-card__callout">{{ SeriesTitle }}</span>
+                  <h3 class="c-card__title">{{ Item.Title }}</h3>
+                  <p>Weekend of {{ Item.StartDateTime | Date:'MMMM d, yyyy'  }}</p>
+                  
+                <ul class="sermon-media">
+                  {% if audioLink != '' %}
+                  <li><a href="{{ audioLink }}" target="_blank" rel="noopener" title="Listen to {{ item.Title }}"><span class="nv-icon nv-icon--audio"></span>Audio Only</a></li> 
+        				  {% endif %}
+        				  
+        				  {% if audioLink != '' %}
+                  <li><a href="{{ audioLink }}" target="_blank" rel="noopener" title="right-click and save as"><span class="nv-icon nv-icon--download"></span>Download</a></li>
+                   {% endif %}
+                  <li><a href="#" target="_blank" rel="noopener" title="right-click and save as" class="addthis_button_compact"><span class="nv-icon nv-icon--share"></span>Share</a></li>
+                </ul>
+							  
+                </div>
+              </div><!-- end .c-card__body -->
+					</div> <!-- Latest Message Grid -->
+        		<div class="row">
+        			<div class="col-md-12">
+          			<h2>{{ SeriesTitle }}</h2>
+        				{{ Item.Content }}
+
+    
+
+        			</div>	
+            </div>
+          </div>
+        </div>
+      </div>
+			
+{% endif %}

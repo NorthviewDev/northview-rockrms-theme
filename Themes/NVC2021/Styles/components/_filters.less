@@ -1,0 +1,113 @@
+.block-content>div:not(.modal-open) {
+  .c-block-hero__search {
+    margin-top: 30px;
+    .form-control.input-text {
+      background-color: @color-gray-lighter;
+      color: @color-gray;
+      font-size: 20px;
+      padding: 15px 15px 15px 40px;
+      border-width: 0;
+      border-radius: 2px !important;
+      height: auto;
+    }
+    .input-group-addon {
+      color: @color-gray;
+      font-size: 20px;
+      position: absolute;
+      top:50%;
+      left:0;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+  }
+}
+.c-filter-bar {
+  padding: 16px;
+  .btn-group {
+    margin-top: 13px;
+    display: block;
+    @media screen and (min-width: @screen-sm) {
+      margin-right: 13px;
+      display: inline-block;
+    }
+    > .btn {
+      display: block;
+      float: none;
+      width: 100%;
+    }
+    &.open {
+      .nv-icon.-down {
+        transform: rotate(90deg);
+      }
+      > .btn-default {
+        color: @white;
+        background-color: @color-gray-darker;
+        border-color: @color-gray-darker;
+      }
+    }
+  }
+  .nv-icon.-down {
+    transform: rotate(90deg);
+    margin-left: 5px;
+    font-size: 11px;
+    vertical-align: top;
+  }
+  .btn-default {
+    border: 2px solid @color-gray-darker;
+    border-radius: 3px;
+    color: @color-gray-darker;
+    font-size: 15px;
+    letter-spacing: 0.67px;
+    line-height: 1;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: @headings-font-family;
+    &:hover, &:focus, &:active {
+      color: @white;
+      background-color: @color-gray-darker;    
+    }
+  }
+  .dropdown-menu {
+    padding: 0 4px;
+    border-radius: 3px;
+    border: none;
+    //transform: translateY(20px);
+    @media screen and (min-width: @screen-sm) {
+      width: 200%;      
+    }
+    @media screen and (min-width: @screen-md) {
+      width: 300%;      
+    }
+  }
+  .c-filter__buttons {
+    padding: 32px;
+    --gap: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
+    width: calc(100% + var(--gap));
+    > * {
+      display: block;
+      width: 100%;
+      margin: var(--gap) 0 0 var(--gap) !important;
+      @media screen and (min-width: @screen-sm) {
+        display: inline-block;
+        width: calc(50% - var(--gap));
+      }
+      @media screen and (min-width: @screen-md) {
+        width: calc(33.33333% - var(--gap));        
+      }
+    }
+    .btn-default {
+      color: @color-gray;
+      border-color: @color-gray-lighter;
+      text-transform: none;
+      &:hover, &:focus, &:active {
+        color: @color-gray-darker;
+        background-color: @white;
+        border-color: var(--primary-color);
+      }
+    }
+  }
+}

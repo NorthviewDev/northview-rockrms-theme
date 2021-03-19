@@ -1,0 +1,55 @@
+.panel-group {
+  &.accordion {
+    margin-bottom: 0;
+    padding: 0;
+    @media (min-width: @screen-sm) {
+      padding: 0 30px;
+    }
+    .panel {
+      border-bottom: solid 2px @color-gray-light;
+    }
+  }
+  .panel {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .panel-body {
+    border-top: none;
+    padding: 0 var(--s2) var(--s2);
+  }
+  .panel-heading {
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .panel-title {
+    color: @text-color;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+    font-family: @font-family-sans-serif;
+    a {
+      display: block;
+      position: relative;
+      border: none;
+      padding-right: 50px;
+      &:after {
+        font-size: 18px;
+        .nv-icon('\e907');
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+      }
+      &[aria-expanded='true']:after {
+        .nv-icon('\e904');
+      }
+      &:hover,
+      &:focus {
+        color: @color-gray;
+      }
+    }
+  }
+}

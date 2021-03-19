@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 center-block">
+    {% if Event.Photo.Guid %}
+      <center>
+        <img src="/GetImage.ashx?Guid={{ Event.Photo.Guid }}&maxWidth=800&maxHeight=800&quality=80" class="title-image img-responsive" />
+      </center>
+      {% capture metaimg %}{{'Global' | Attribute:'PublicApplicationRoot'}}GetImage.ashx?Guid={{ Event.Photo.Guid }}&width=1200&height=630&mode=crop&scale=both{% endcapture %}
+      {{ metaimg | AddMetaTagToHead:'property','og:image' }}
+      {{ metaimg | AddMetaTagToHead:'name','twitter:image' }}
+      {{ 'summary_large_image' | AddMetaTagToHead:'name','twitter:card' }}
+    {% endif %}
+    </div>
+  </div>
+  <div class="row g-margin--y-s2">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="well well--lg stack g-margin--bottom-s0">
+        <h2>{{ Event.Name }}</h2>
+        {{ Event.Description }}
+        {% if Event.Summary and Event.Summary != '' %}
+        {{ Event.Summary | AddMetaTagToHead:'property','description' }}
+        {{ Event.Summary | AddMetaTagToHead:'property','og:description' }}
+        {{ Event.Summary | AddMetaTagToHead:'name','twitter:description' }}
+        {% else %}
+        {{ Event.Description | StripHtml | AddMetaTagToHead:'property','description' }}
+        {{ Event.Description | StripHtml | AddMetaTagToHead:'property','og:description' }}
+        {{ Event.Description | StripHtml | AddMetaTagToHead:'name','twitter:description' }}
+        {% endif %}
+        
+        {{ Event.Name | AddMetaTagToHead:'property','twitter:title' }}
+        {{ Event.Name | AddMetaTagToHead:'property','og:title' }}    
+      </div>
+      <div class="addthis_toolbox">
+        <ul>
+          <li class="text-uppercase"><strong>Share This</strong></li>
+          <!-- Sharingbutton Facebook -->
+          <li><a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.northviewchurch.us%2Fevent%2F{{EventItemOccurrence.Id}}%3Foccs%3Dall" target="_blank" rel="noopener" aria-label="">
+            <i class="fab fa-facebook"></i>
+          </a></li>
+          <!-- Sharingbutton Twitter -->
+          <li><a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text={{ Event.Name | EscapeDataString }}&amp;url=https%3A%2F%2Fwww.northviewchurch.us%2Fevent%2F{{EventItemOccurrence.Id}}%3Foccs%3Dall" target="_blank" rel="noopener" aria-label="">
+            <i class="fab fa-twitter"></i>
+          </a></li>
+          <!-- Sharingbutton LinkedIn -->
+          <li><a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.northviewchurch.us%2Fevent%2F{{EventItemOccurrence.Id}}%3Foccs%3Dall&amp;title={{ Event.Name | EscapeDataString }}&amp;summary={{ Event.Name | EscapeDataString }}&amp;source=https%3A%2F%2Fwww.northviewchurch.us%2Fevent%2F{{EventItemOccurrence.Id}}%3Foccs%3Dall" target="_blank" rel="noopener" aria-label="">
+            <i class="fab fa-linkedin"></i>
+          </a></li>
+          <!-- Sharingbutton E-Mail -->
+          <li><a class="resp-sharing-button__link" href="mailto:?subject={{ Event.Name | EscapeDataString }}&amp;body=https%3A%2F%2Fwww.northviewchurch.us%2Fevent%2F{{EventItemOccurrence.Id}}%3Foccs%3Dall" target="_self" rel="noopener" aria-label="">
+            <i class="nv-icon nv-icon--email"></i>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

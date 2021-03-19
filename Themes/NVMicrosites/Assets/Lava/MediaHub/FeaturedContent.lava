@@ -15,7 +15,7 @@
   {%- assign itemContentChannelId = itemContentChannelItem.ChildContentChannelItem.ContentChannelId -%}
   {% assign linkUrl = item.LinkUrl, 'RawValue' | Trim %}
   {%- if linkUrl =="" %}
-  {% assign linkUrl = itemContentChannelItem.ChildContentChannelItem.ContentChannel.ItemUrl | Replace:'{Id}',itemId | Replace:'{Slug}',itemPrimarySlug %}
+  {% assign linkUrl = itemContentChannelItem.ChildContentChannelItem.ContentChannel.ItemUrl | Replace:'{Id}',itemId | Replace:'{{Slug}}',itemPrimarySlug %}
   {%- endif -%}
   {%- assign itemMediaTypeId = itemContentChannelItem.ChildContentChannelItem.ContentChannel.ContentChannelType.Id -%}
   {% case itemMediaTypeId %}

@@ -1,0 +1,30 @@
+{%comment%}
+{% assign sectionTitle="Preparing for Your Trip" %}
+{% include "~~/Assets/Lava/GoCardTimeline.lava" %}
+{%endcomment%}
+<section id="go-teams-process-timeline" class="c-section -light" style="display:none">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 center-block">
+        <div class="c-section__header">
+          <h2>{{sectionTitle}}</h2>
+        </div>
+        <div class="c-timeline -vertical">
+          <div class="grid-items">
+          {% for Item in Items %}
+          {% if forloop.index > 3 %}
+          <div class="c-card grid-item">
+            <div class="c-card__content">
+              <h3 class="c-card__title">{{Item.Title}}</h3>
+              {{Item.Content}}
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>

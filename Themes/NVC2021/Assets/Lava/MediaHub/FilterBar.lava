@@ -1,0 +1,48 @@
+<div class="c-filter-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Explore by Topic <span class="nv-icon nv-icon--carat_right -down"></span>
+          </button>
+          <div class="dropdown-menu">
+            <div class="c-filter__buttons">
+            {%- sql -%}
+            DECLARE @TagCategoryId AS Int = 630;
+            DECLARE @TagAttributeId AS Int = 45360;
+            SELECT
+                DISTINCT t.Name,
+                av.Value
+            FROM Tag t
+            JOIN AttributeValue av
+            ON t.Id = av.EntityId
+            WHERE t.CategoryId = @TagCategoryId and av.AttributeId = @TagAttributeId and t.IsActive = 'true'
+            ORDER BY t.Name
+            {%- endsql -%}
+            {%- for tag in results -%}
+              <a class="btn btn-default btn-lg" href="{{ tag.Name | Replace:' ','-' | Downcase | Prepend:'/topic/' }}">{{ tag.Name }}</a>
+            {%- endfor -%}
+            </div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Explore by Type <span class="nv-icon nv-icon--carat_right -down"></span>
+          </button>
+          <div class="dropdown-menu">
+            <div class="c-filter__buttons">
+              <a href="/media/videos" class="btn btn-default btn-lg">Videos</a>
+              <a href="/media/articles" class="btn btn-default btn-lg">Articles</a>
+              <a href="/messages" class="btn btn-default btn-lg">Messages</a>
+              <a href="/media/podcasts" class="btn btn-default btn-lg">Podcasts</a>
+              {%comment%}<a href="/media/music" class="btn btn-default btn-lg">Music</a>{%endcomment%}
+              <a href="/media/resources" class="btn btn-default btn-lg">Resources</a>
+              <a href="/stories" class="btn btn-default btn-lg">Stories</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
