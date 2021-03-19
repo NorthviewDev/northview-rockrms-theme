@@ -3996,14 +3996,6 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/Themes\/NorthviewChurch\/Assets\/_img\/demo.mp4" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NorthviewChurch\/Assets\/_img\/demo.mp4",
-      "oF" : 0
-    },
     "\/Themes\/NorthviewChurch\/Assets\/_img\/favicon.png" : {
       "ft" : 32768,
       "iS" : 2174,
@@ -13916,50 +13908,11 @@
       "oF" : 0,
       "pg" : 0
     },
-    "\/Themes\/NVMicrosites\/Assets\/_img\/1920x1080-B_W-BKGD.png" : {
-      "ft" : 32768,
-      "iS" : 867940,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/1920x1080-B_W-BKGD.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/Themes\/NVMicrosites\/Assets\/_img\/1920x1080-Color-BKGD.jpg" : {
-      "ft" : 16384,
-      "iS" : 197233,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/1920x1080-Color-BKGD.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/Themes\/NVMicrosites\/Assets\/_img\/background-topography.png" : {
       "ft" : 32768,
       "iS" : 84640,
       "oA" : 0,
       "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/background-topography.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/Themes\/NVMicrosites\/Assets\/_img\/background-topography2.png" : {
-      "ft" : 32768,
-      "iS" : 418917,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/background-topography2.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -14004,14 +13957,6 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/Themes\/NVMicrosites\/Assets\/_img\/demo.mp4" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/demo.mp4",
-      "oF" : 0
-    },
     "\/Themes\/NVMicrosites\/Assets\/_img\/Easter-Logo-Color.png" : {
       "ft" : 32768,
       "iS" : 66482,
@@ -14050,16 +13995,6 @@
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
-    },
-    "\/Themes\/NVMicrosites\/Assets\/_img\/gifts.svg" : {
-      "ft" : 2097152,
-      "miP" : 0,
-      "oA" : 2,
-      "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/gifts.svg",
-      "oF" : 0,
-      "opt" : 0,
-      "plM" : 52780316221407,
-      "prP" : 0
     },
     "\/Themes\/NVMicrosites\/Assets\/_img\/Location_Marker.png" : {
       "ft" : 32768,
@@ -14207,58 +14142,6 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/sky.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/Themes\/NVMicrosites\/Assets\/_img\/True North Social 1-01.jpg" : {
-      "ft" : 16384,
-      "iS" : 880144,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/True North Social 1-01.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/Themes\/NVMicrosites\/Assets\/_img\/True North Social 1-02.jpg" : {
-      "ft" : 16384,
-      "iS" : 1352407,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/True North Social 1-02.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/Themes\/NVMicrosites\/Assets\/_img\/True North Social 3-01.jpg" : {
-      "ft" : 16384,
-      "iS" : 3901309,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/True North Social 3-01.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/Themes\/NVMicrosites\/Assets\/_img\/True North Social 3-02.jpg" : {
-      "ft" : 16384,
-      "iS" : 6120121,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVMicrosites\/Assets\/_img\/True North Social 3-02.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -15293,12 +15176,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/Themes\/NVMicrosites\/next.html",
-      "oF" : 0
-    },
-    "\/Themes\/NVMicrosites\/node_modules" : {
-      "ft" : 65536,
-      "oA" : 2,
-      "oAP" : "\/Themes\/NVMicrosites\/node_modules",
       "oF" : 0
     },
     "\/Themes\/NVMicrosites\/package-lock.json" : {
