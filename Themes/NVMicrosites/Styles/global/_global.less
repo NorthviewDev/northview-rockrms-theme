@@ -1,17 +1,18 @@
 @import '_mixins';
+
+@increment: 12px;
 :root {
-  // .sizeBase12(); //12px size increments
-  // Rock LESS Compiler crashes with mixin loop so doing this by hand
-  --s1: calc(1 * 12px);
-  --s2: calc(2 * 12px);
-  --s3: calc(3 * 12px);
-  --s4: calc(4 * 12px);
-  --s5: calc(5 * 12px);
-  --s6: calc(6 * 12px);
-  --s7: calc(7 * 12px);
-  --s8: calc(8 * 12px);
-  --s9: calc(9 * 12px);
-  --s10: calc(10 * 12px);
+  --s0: 0;
+  --s1: calc(1 * @increment);
+  --s2: calc(2 * @increment);
+  --s3: calc(3 * @increment);
+  --s4: calc(4 * @increment);
+  --s5: calc(5 * @increment);
+  --s6: calc(6 * @increment);
+  --s7: calc(7 * @increment);
+  --s8: calc(8 * @increment);
+  --s9: calc(9 * @increment);
+  --s10: calc(10 * @increment);
 
   --font-family-primary: @font-family-sans-serif;
   --font-family-condensed: @headings-font-family;

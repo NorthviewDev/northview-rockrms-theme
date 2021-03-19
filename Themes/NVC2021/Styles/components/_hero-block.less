@@ -37,7 +37,6 @@
         width: 80%;
       }
       @media (min-width: @screen-lg) {
-        //width: calc(66.6% + 30px);
         width: 100%;
         grid-area: 1/1/1/3;
         -ms-grid-row: 1;
@@ -68,10 +67,8 @@
     #header-video,
     video {
       @media (max-width: @screen-sm-max) {
-        max-height: calc(~"100vh" - var(--pwa-menu-height) - var(--s2));
-        max-height: calc(
-          (var(--vh, 1vh) * 100) - var(--pwa-menu-height) - var(--s2)
-        );
+        max-height: ~'calc(100vh - var(--pwa-menu-height) - var(--s2))';
+        max-height: ~'calc((var(--vh, 1vh) * 100) - var(--pwa-menu-height) - var(--s2))';
         transition: all 150ms ease-in-out;
       }
       &:after {
@@ -102,7 +99,7 @@
       transform: rotate(-90deg);
       transform-origin: top left;
       bottom: 0;
-      left: calc(var(--s1) * -1);
+      left: ~'calc(var(--s1) * -1)';
       z-index: 10;
       color: @color-brand-primary;
       line-height: 1;
@@ -113,7 +110,7 @@
       pointer-events: none;
       @media (min-width: @screen-sm) {
         font-size: 34px;
-        left: calc(var(--s2) * -1);
+        left: ~'calc(var(--s2) * -1)';
       }
     }
   }
@@ -155,7 +152,7 @@
     @media (max-width: @screen-md-max) {
       .c-block-hero {
         z-index: 10;
-        min-height: calc((var(--vh, 1vh) * 100) - var(--pwa-menu-height));
+        min-height: ~'calc((var(--vh, 1vh) * 100) - var(--pwa-menu-height))';
         transition: all 150ms ease-in-out;
         display: flex;
         align-items: center;
@@ -505,7 +502,7 @@
   }
 }
 .c-block-hero {
-  //min-height: calc(~"100vh" - var(--pwa-menu-height));
+  //min-height: ~'calc(~"100vh" - var(--pwa-menu-height))';
   position: relative;
   @media (min-width: @screen-sm) {
     padding: 151px 0 119px 96px;

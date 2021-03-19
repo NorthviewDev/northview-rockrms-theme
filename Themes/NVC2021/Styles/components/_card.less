@@ -305,8 +305,8 @@ a.c-card {
 .c-card__deck {
   @media (min-width: @screen-sm) {
     display: flex;
-    margin-left: calc((@grid-gutter-width / 2) * -1);
-    margin-right: calc((@grid-gutter-width / 2) * -1);
+    margin-left: ~'calc((@grid-gutter-width / 2) * -1)';
+    margin-right: ~'calc((@grid-gutter-width / 2) * -1)';
   }
   .c-card {
     --button-background-color: @white;
@@ -317,7 +317,7 @@ a.c-card {
     font-size: 18px;
     letter-spacing: 0;
     @media (min-width: @screen-sm) {
-      margin: 0 calc((@grid-gutter-width / 2));
+      margin: ~'0 calc((@grid-gutter-width / 2))';
       font-size: 22px;
       line-height: 28px;
     }
@@ -345,11 +345,11 @@ a.c-card {
 
 .isotope-grid-sizer {
   @media (min-width: @screen-sm) {
-    width: calc(50% - @grid-gutter-width);
+    width: ~'calc(50% - @grid-gutter-width)';
   }
 
   @media (min-width: @screen-md) {
-    width: calc(33.33% - @grid-gutter-width);
+    width: ~'calc(33.33% - @grid-gutter-width)';
   }
 }
 .c-card__row {
@@ -357,14 +357,14 @@ a.c-card {
   @media (min-width: @screen-md) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin: 0 calc((@grid-gutter-width / 2) * -1) @grid-gutter-width;
+    margin: ~'0 calc((@grid-gutter-width / 2) * -1) @grid-gutter-width';
   }
   .c-card {
     border-radius: 5px;
     font-size: 18px;
     margin: 0 0 @grid-gutter-width;
     @media (min-width: @screen-md) {
-      margin: 0 calc((@grid-gutter-width / 2)) calc((@grid-gutter-width / 2));
+      margin: ~'0 calc((@grid-gutter-width / 2)) calc((@grid-gutter-width / 2))';
     }
   }
   .c-card__title {
@@ -384,7 +384,7 @@ a.c-card {
   flex-wrap: wrap;
   .c-card {
     border-radius: 5px;
-    margin: 0 calc((@grid-gutter-width / 2)) @grid-gutter-width;
+    margin: ~'0 calc((@grid-gutter-width / 2)) @grid-gutter-width';
     font-size: 18px;
     letter-spacing: 0;
     line-height: 28px;
@@ -406,10 +406,10 @@ a.c-card {
       float: left;
       height: auto;
       @media (min-width: @screen-sm) {
-        width: calc(50% - @grid-gutter-width);
+        width: ~'calc(50% - @grid-gutter-width)';
       }
       @media (min-width: @screen-md) {
-        width: calc(33.33% - @grid-gutter-width);
+        width: ~'calc(33.33% - @grid-gutter-width)';
       }
     }
     .c-card__title {
@@ -454,7 +454,7 @@ a.c-card {
 }
 .c-timeline {
   @media (min-width: @screen-sm) {
-    margin: 0 calc((@grid-gutter-width) * -1);
+    margin: ~'0 calc((@grid-gutter-width) * -1)';
   }
   .grid-items {
     @media (min-width: @screen-md) {
@@ -473,7 +473,7 @@ a.c-card {
     @media (min-width: @screen-md) {
       margin: 45px 35px 0;
       float: left;
-      width: calc(50% - 70px);
+      width: ~'calc(50% - 70px)';
       &:nth-child(2) {
         margin-top: 123px;
       }

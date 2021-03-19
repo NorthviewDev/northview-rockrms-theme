@@ -85,18 +85,18 @@
     --gap: 13px;
     display: flex;
     flex-wrap: wrap;
-    margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
-    width: calc(100% + var(--gap));
+    margin: ~'calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap))';
+    width: ~'calc(100% + var(--gap))';
     > * {
       display: block;
       width: 100%;
       margin: var(--gap) 0 0 var(--gap) !important;
       @media screen and (min-width: @screen-sm) {
         display: inline-block;
-        width: calc(50% - var(--gap));
+        width: ~'calc(50% - var(--gap))';
       }
       @media screen and (min-width: @screen-md) {
-        width: calc(33.33333% - var(--gap));        
+        width: ~'calc(33.33333% - var(--gap))';
       }
     }
     .btn-default {

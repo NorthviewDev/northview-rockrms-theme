@@ -12606,14 +12606,6 @@
       "sI" : 0,
       "sU" : 0
     },
-    "\/Themes\/NVC2021\/Styles\/.nocompile" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVC2021\/Styles\/.nocompile",
-      "oF" : 0
-    },
     "\/Themes\/NVC2021\/Styles\/animate.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -13197,36 +13189,6 @@
       "mS" : 0,
       "oA" : 1,
       "oAP" : "\/Themes\/NVC2021\/Styles\/global\/global.css",
-      "oF" : 0,
-      "oS" : 1,
-      "pg" : 0,
-      "rwU" : 0,
-      "sI" : 0,
-      "sU" : 0
-    },
-    "\/Themes\/NVC2021\/Styles\/theme copy.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVC2021\/Styles\/theme copy-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
-    "\/Themes\/NVC2021\/Styles\/theme copy.less" : {
-      "aP" : 1,
-      "bl" : 0,
-      "co" : 0,
-      "eJ" : 0,
-      "ft" : 1,
-      "iI" : 0,
-      "ma" : 1,
-      "mS" : 0,
-      "oA" : 0,
-      "oAP" : "\/Themes\/NVC2021\/Styles\/theme copy.css",
       "oF" : 0,
       "oS" : 1,
       "pg" : 0,
@@ -17985,7 +17947,7 @@
     "npmSaveExactVersion" : 0,
     "npmTargetDependencyListType" : 1,
     "overrideExternalServerCSS" : 1,
-    "previewPathAddition" : "\/page\/3092",
+    "previewPathAddition" : "page\/3108",
     "purgeCSS" : {
       "blocklistEntries" : [
 

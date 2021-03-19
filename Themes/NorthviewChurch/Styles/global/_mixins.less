@@ -51,11 +51,6 @@
 @media (min-width: @screen-md-min) { .block-grids(md) }
 @media (min-width: @screen-lg-min) { .block-grids(lg) }
 
-
-.sizeBase12(@index: 0) when (@index =< 10) {
-  .sizeBase12((@index + 1)); 
-  --s@{index}: calc(@index * 12px);
-}
 .aspect-ratio(@width, @height) {
   position: relative;
   &:after {

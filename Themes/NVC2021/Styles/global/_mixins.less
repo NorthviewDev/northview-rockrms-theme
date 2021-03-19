@@ -51,10 +51,19 @@
 @media (min-width: @screen-md-min) { .block-grids(md) }
 @media (min-width: @screen-lg-min) { .block-grids(lg) }
 
-
-.sizeBase12(@index: 0) when (@index =< 10) {
-  .sizeBase12((@index + 1)); 
-  --s@{index}: calc(@index * 12px);
+@increment: 12px;
+:root {
+  --s0: 0;
+  --s1: calc(1 * @increment);
+  --s2: calc(2 * @increment);
+  --s3: calc(3 * @increment);
+  --s4: calc(4 * @increment);
+  --s5: calc(5 * @increment);
+  --s6: calc(6 * @increment);
+  --s7: calc(7 * @increment);
+  --s8: calc(8 * @increment);
+  --s9: calc(9 * @increment);
+  --s10: calc(10 * @increment);
 }
 .aspect-ratio(@width, @height) {
   position: relative;

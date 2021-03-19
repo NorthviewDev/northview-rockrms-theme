@@ -67,8 +67,8 @@
     #header-video,
     video {
       @media (max-width: @screen-sm-max) {
-        max-height: calc(~"'100vh' - var(--pwa-menu-height) - @s2");
-        max-height: calc(~'(var(--vh, 1vh) * 100) - var(--pwa-menu-height) - @s2');
+        max-height: ~'calc(100vh - var(--pwa-menu-height) - @s2)';
+        max-height: ~'calc((var(--vh, 1vh) * 100) - var(--pwa-menu-height) - @s2)';
         transition: all 150ms ease-in-out;
       }
       &:after {
@@ -148,7 +148,7 @@
     @media (max-width: @screen-md-max) {
       .c-block-hero {
         z-index: 10;
-        min-height: calc(~'(var(--vh, 1vh) * 100) - var(--pwa-menu-height)');
+        min-height: ~'calc((var(--vh, 1vh) * 100) - var(--pwa-menu-height))';
         transition: all 150ms ease-in-out;
         display: flex;
         align-items: center;
@@ -498,7 +498,7 @@
   }
 }
 .c-block-hero {
-  min-height: calc(~"'100vh' - var(--pwa-menu-height)");
+  min-height: ~'calc(100vh - var(--pwa-menu-height))';
   position: relative;
   @media (min-width: @screen-sm) {
     padding: 151px 0 119px 96px;
