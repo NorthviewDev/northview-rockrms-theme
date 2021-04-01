@@ -7505,6 +7505,14 @@
       "oAP" : "\/Themes\/NorthviewChurch\/Layouts\/MediaHubTopic.aspx",
       "oF" : 0
     },
+    "\/Themes\/NorthviewChurch\/Layouts\/MediaHubType.aspx" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/Themes\/NorthviewChurch\/Layouts\/MediaHubType.aspx",
+      "oF" : 0
+    },
     "\/Themes\/NorthviewChurch\/Layouts\/RightSidebar.aspx" : {
       "cB" : 0,
       "ft" : 8192,

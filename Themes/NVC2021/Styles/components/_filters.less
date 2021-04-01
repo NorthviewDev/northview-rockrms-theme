@@ -1,4 +1,4 @@
-.block-content>div:not(.modal-open) {
+.block-content > div:not(.modal-open) {
   .c-block-hero__search {
     margin-top: 30px;
     .form-control.input-text {
@@ -14,8 +14,8 @@
       color: @color-gray;
       font-size: 20px;
       position: absolute;
-      top:50%;
-      left:0;
+      top: 50%;
+      left: 0;
       transform: translateY(-50%);
       z-index: 10;
     }
@@ -28,6 +28,7 @@
     display: block;
     @media screen and (min-width: @screen-sm) {
       margin-right: 13px;
+      margin-top: 0;
       display: inline-block;
     }
     > .btn {
@@ -63,9 +64,11 @@
     text-transform: uppercase;
     font-weight: 600;
     font-family: @headings-font-family;
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       color: @white;
-      background-color: @color-gray-darker;    
+      background-color: @color-gray-darker;
     }
   }
   .dropdown-menu {
@@ -74,10 +77,10 @@
     border: none;
     //transform: translateY(20px);
     @media screen and (min-width: @screen-sm) {
-      width: 200%;      
+      width: 200%;
     }
     @media screen and (min-width: @screen-md) {
-      width: 300%;      
+      width: 300%;
     }
   }
   .c-filter__buttons {
@@ -103,7 +106,9 @@
       color: @color-gray;
       border-color: @color-gray-lighter;
       text-transform: none;
-      &:hover, &:focus, &:active {
+      &:hover,
+      &:focus,
+      &:active {
         color: @color-gray-darker;
         background-color: @white;
         border-color: var(--primary-color);

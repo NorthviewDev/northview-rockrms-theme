@@ -1,4 +1,4 @@
-@import "_mixins";
+@import '_mixins';
 
 @increment: 12px;
 :root {
@@ -115,7 +115,7 @@ h1.pagetitle:empty {
     }
   }
   .form-control {
-    &[type="text"] {
+    &[type='text'] {
       background-color: @color-gray-lighter;
       height: 50px;
       padding: 15px;
@@ -298,7 +298,7 @@ ol {
           }
         }
       }
-    } 
+    }
   }
 }
 .center-block {
@@ -338,7 +338,7 @@ button:focus {
   @media (min-width: @screen-sm) {
     display: -ms-grid;
     display: grid;
-    grid-gap: var(--s2);
+    gap: var(--s2);
     grid-template-columns: 1fr 1fr;
     > :nth-child(1) {
       -ms-grid-row: 1;
@@ -352,14 +352,14 @@ button:focus {
   &.l-grid--2col {
     display: -ms-grid;
     display: grid;
-    grid-gap: var(--s2);
+    gap: var(--s2);
     grid-template-columns: 1fr 1fr;
   }
   @media (min-width: @screen-sm-min) {
     &.l-grid--sm-2col {
       display: -ms-grid;
       display: grid;
-      grid-gap: var(--s2);
+      gap: var(--s2);
       grid-template-columns: 1fr 1fr;
     }
     &.l-grid--sm-3col {
@@ -385,7 +385,7 @@ button:focus {
     &.l-grid--md-2col {
       display: -ms-grid;
       display: grid;
-      grid-gap: var(--s2);
+      gap: var(--s2);
       grid-template-columns: 1fr 1fr;
       > :nth-child(1) {
         -ms-grid-row: 1;
@@ -419,7 +419,7 @@ button:focus {
     &.l-grid--lg-2col {
       display: -ms-grid;
       display: grid;
-      grid-gap: var(--s2);
+      gap: var(--s2);
       grid-template-columns: 1fr 1fr;
       > :nth-child(1) {
         -ms-grid-row: 1;
