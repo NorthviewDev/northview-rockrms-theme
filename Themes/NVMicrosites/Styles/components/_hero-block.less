@@ -67,8 +67,8 @@
     #header-video,
     video {
       @media (max-width: @screen-sm-max) {
-        max-height: ~'calc(100vh - var(--pwa-menu-height) - @s2)';
-        max-height: ~'calc((var(--vh, 1vh) * 100) - var(--pwa-menu-height) - @s2)';
+        max-height: ~'calc(100vh - var(--pwa-menu-height) - @{s2})';
+        max-height: ~'calc((var(--vh, 1vh) * 100) - var(--pwa-menu-height) - @{s2})';
         transition: all 150ms ease-in-out;
       }
       &:after {

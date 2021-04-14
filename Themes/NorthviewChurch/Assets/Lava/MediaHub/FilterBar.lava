@@ -10,14 +10,17 @@
             <div class="c-filter__buttons">
             {%- sql -%}
             DECLARE @TagCategoryId AS Int = 630;
-            DECLARE @TagAttributeId AS Int = 45360;
+            DECLARE @TagImageAttributeId AS Int = 45360;
+            DECLARE @TagShowAttributeId AS Int = 51699;
             SELECT
                 DISTINCT t.Name,
                 av.Value
             FROM Tag t
-            JOIN AttributeValue av
+            INNER JOIN AttributeValue av
             ON t.Id = av.EntityId
-            WHERE t.CategoryId = @TagCategoryId and av.AttributeId = @TagAttributeId and t.IsActive = 'true'
+            INNER JOIN AttributeValue av2
+            ON t.Id = av2.EntityId
+            WHERE t.CategoryId = @TagCategoryId and t.IsActive = 'true' and av.AttributeId = @TagImageAttributeId and av2.AttributeId = @TagShowAttributeId and av2.Value = 'true'
             ORDER BY t.Name
             {%- endsql -%}
             {%- for tag in results -%}

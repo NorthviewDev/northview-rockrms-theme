@@ -64,9 +64,10 @@
     var $items = $grid.find('.isotope_item');
 
     $grid.imagesLoaded().progress(function() {
-      $('.isotope-grid').each(function(){
-        var wrapper = $(this).find('.c-card__wrapper');
-        $(wrapper).css('min-height',$(this).height());
+      var maxHeight = 0;
+      $('.isotope-item').each(function(){
+        if ($(this).height() > maxHeight) maxHeight = $(this).height();
+        $('.isotope-item .c-card__wrapper').css('min-height',maxHeight);
       });
       $grid.addClass('is-showing-items').isotope('layout');
     });

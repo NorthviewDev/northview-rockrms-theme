@@ -75,9 +75,9 @@
   &.sidebar-right {
     .content-marginTop-negative.no-title & {
       #zone-main {
-        --section-overlap-top: ~'calc(@grid-gutter-width * -3)'; //translate along negative Y axis
+        --section-overlap-top: ~'calc(@{grid-gutter-width} * -3)'; //translate along negative Y axis
         @media (min-width: @screen-lg) {
-          --section-overlap-top: ~'calc(@grid-gutter-width * -14)'; //translate along negative Y axis
+          --section-overlap-top: ~'calc(@{grid-gutter-width} * -14)'; //translate along negative Y axis
         }
         margin-top: var(--section-overlap-top);
       }
@@ -97,9 +97,9 @@
     .content-marginTop-negative & {
       > .container {
         &:first-child {
-          --section-overlap-top: ~'calc(@grid-gutter-width * -3)'; //translate along negative Y axis
+          --section-overlap-top: ~'calc(@{grid-gutter-width} * -3)'; //translate along negative Y axis
           @media (min-width: @screen-lg) {
-            --section-overlap-top: ~'calc(@grid-gutter-width * -8)'; //translate along negative Y axis
+            --section-overlap-top: ~'calc(@{grid-gutter-width} * -8)'; //translate along negative Y axis
           }
           margin-top: var(--section-overlap-top);
           #zone-main .html-content,
@@ -310,16 +310,16 @@
 }
 .c-section--overlap-top {
   .container:first-child {
-    --section-overlap-top: ~'calc(@grid-gutter-width * -3)'; //translate along negative Y axis
+    --section-overlap-top: ~'calc(@{grid-gutter-width} * -3)'; //translate along negative Y axis
     @media (min-width: @screen-lg) {
-      --section-overlap-top: ~'calc(@grid-gutter-width * -7)'; //translate along negative Y axis
+      --section-overlap-top: ~'calc(@{grid-gutter-width} * -7)'; //translate along negative Y axis
     }
     body.no-title & {
       @media (min-width: @screen-sm) {
-        --section-overlap-top: ~'calc(@grid-gutter-width * -13)'; //translate along negative Y axis
+        --section-overlap-top: ~'calc(@{grid-gutter-width} * -13)'; //translate along negative Y axis
       }
       @media (min-width: @screen-lg) {
-        --section-overlap-top: ~'calc(@grid-gutter-width * -12)'; //translate along negative Y axis
+        --section-overlap-top: ~'calc(@{grid-gutter-width} * -12)'; //translate along negative Y axis
       }
     }
     margin-top: var(--section-overlap-top);
