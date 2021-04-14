@@ -1,0 +1,42 @@
+  <section id="homepage-feature" class="c-block-hero__wrapper has-media">
+    <div class="c-block-hero has-ornaments">
+      <div class="c-block-hero__container container">
+          {%- assign numItems = Items | Size -%}
+          {%- for item in Items -%}
+            {%- assign displayTitle = item.ContentChannel | Attribute:'DisplayTitle' -%}
+            {%- assign itemContent = item.Content -%}
+            {%- if numItems > 1 -%}
+              {%- assign hiddenXs = "" -%}
+              {%- if forloop.first != true -%}{%- assign hiddenXs = " hidden-xs" -%}{%- endif -%}
+              <div class="c-block-hero__background-video l-aspect-ratio__9-16{{hiddenXs}}">
+                <video style="background: transparent no-repeat center center url(/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=900&h=1600&mode=crop&anchor=middlecenter&scale=both)" loop muted playsinline preload>
+                  <source src="/GetFile.ashx?guid={{ item | Attribute:'Video','RawValue' }}" type="video/mp4">
+                </video>
+              </div>
+            {%- else -%}
+              <div class="c-block-hero__background-video l-aspect-ratio__16-9">
+                <video id='header-video' class="video-js vjs-fluid" style="background:transparent no-repeat center center url(/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=1024&h=576&mode=crop&anchor=middlecenter&scale=both&quality=80);background-size:cover" preload autoplay muted loop playsinline>
+                  <source type="application/x-mpegURL" src="{{ item | Attribute:'Videom3u8Url','RawValue' }}">
+                </video>
+                <link rel='stylesheet' href='https://vjs.zencdn.net/7.6.6/video-js.css'>
+                <script src='https://vjs.zencdn.net/7.6.6/video.js'></script>
+                <script id="rendered-js">
+                    var player = videojs('header-video');
+                    player.play();
+                </script>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+              <div class="c-block-hero__content">
+                <h1 class="c-block-hero__headline">
+                  <span class="c-block-hero__wrap-text">
+                  {% assign circleTextImage = '~~/Assets/_img/circle-text.svg' %}
+                    <img src="{{ circleTextImage | ResolveRockUrl }}" alt="Wherever you're going" id="circle" />
+                  </span>
+                  <span>{{ displayTitle }}</span>
+                </h1>
+                {{ itemContent }}
+              </div>
+            </div>
+    </div><!-- end c-block--hero-->
+  </section>

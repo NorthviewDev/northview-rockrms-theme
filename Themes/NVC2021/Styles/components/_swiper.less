@@ -1,0 +1,52 @@
+.swiper-container {
+  --swiper-navigation-size: 18px;
+  --swiper-navigation-color: @color-gray-dark;
+  &.overflow-visible {
+    overflow: visible;
+  }
+  .swiper-slide {
+    opacity: 0.5;
+    transition: opacity 300ms ease-in-out;
+  }
+  .swiper-slide-visible {
+    opacity: 1;
+  }
+  .swiper-buttons {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    width: 91px;
+    height: 17px;
+    .swiper-button-prev,
+    .swiper-button-next {
+      width:30px;
+      &:before {
+        content:"";
+        position: absolute;
+        top: 50%;
+        width: 30px;
+        border-bottom: solid 1px var(--swiper-navigation-color);
+        left: 1px;
+      }
+      &:after {
+        position: absolute;
+        left: 0;
+        top:0;
+      }
+    }
+    .swiper-button-next {
+      right: 0;
+      &:before {
+        left: auto;
+        right: 1px;
+      }
+      &:after {
+        left: auto;
+        right: 0;
+      }
+    }
+    .swiper-button-prev {
+      left: 0;
+    }
+  }
+}

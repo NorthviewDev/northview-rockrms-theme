@@ -1,6 +1,8 @@
 {
-  "identifier" : "F953E4B1-5BEE-4641-8393-1646115186C1",
-  "remotePath" : "\/",
+  "identifier" : "E30D466A-3AD7-4337-BD03-51B174FF4608",
+  "ignoredFilePatterns" : [
+    "Themes\/NVC2021"
+  ],
   "server" : "Northview Church",
   "usesPublishing" : true
 }
