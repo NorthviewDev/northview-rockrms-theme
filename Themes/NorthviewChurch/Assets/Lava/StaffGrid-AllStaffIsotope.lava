@@ -103,7 +103,7 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
       				  <a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
       				{%- endif -%}
       				{%- comment -%}
-                <img class="staff__detail-image lazyload" src="/GetImage.ashx?id={{ person.PhotoId }}&w=300&h=300" width="300" height="300" alt="{{ person.FullName }}" loading="lazy" />
+                <img class="staff__detail-image lazyload" src="https://rock.northviewchurch.us/GetImage.ashx?id={{ person.PhotoId }}&w=300&h=300" width="300" height="300" alt="{{ person.FullName }}" loading="lazy" />
               {%- endcomment -%}
       				{%- if bio != "" -%}
                 <span class="vc">Read Bio</span>
