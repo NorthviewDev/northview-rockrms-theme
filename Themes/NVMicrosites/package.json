@@ -7,6 +7,6 @@
   "license": "UNLICENSED",
   "repository": {},
   "dependencies": {
-    "swiper": "^6.1.1"
+    "swiper": "^6.5.1"
   }
 }
