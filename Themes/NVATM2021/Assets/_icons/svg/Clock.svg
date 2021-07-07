@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>Clock_Icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-104.000000, -1053.000000)" fill="#221F1F">
+            <g id="Clock_Icon" transform="translate(105.000000, 1054.000000)">
+                <g id="Group-12">
+                    <g id="Group-10" fill-rule="nonzero">
+                        <path d="M8,-1 C3.02943725,-1 -1,3.02943725 -1,8 C-1,12.9705627 3.02943725,17 8,17 C12.9705627,17 17,12.9705627 17,8 C17,3.02943725 12.9705627,-1 8,-1 Z M8,1 C11.8659932,1 15,4.13400675 15,8 C15,11.8659932 11.8659932,15 8,15 C4.13400675,15 1,11.8659932 1,8 C1,4.13400675 4.13400675,1 8,1 Z" id="Rectangle"></path>
+                        <path d="M8,3 C8.51283584,3 8.93550716,3.38604019 8.99327227,3.88337887 L9,4 L9,7.765 L11.6823183,10.2689447 C12.0550112,10.6167915 12.1022723,11.18273 11.8109479,11.5853 L11.7310553,11.6823183 C11.3832085,12.0550112 10.81727,12.1022723 10.4147,11.8109479 L10.3176817,11.7310553 L7,8.6345523 L7,4 C7,3.44771525 7.44771525,3 8,3 Z" id="Path-2"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

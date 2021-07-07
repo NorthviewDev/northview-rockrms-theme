@@ -1,0 +1,20 @@
+{% assign PageHeaderImage = CurrentPage | Attribute:'PageHeaderImage','RawValue' %}
+<section id="homepage-feature" class="c-block-hero__wrapper has-media">
+  <div class="c-block-hero has-ornaments">
+    <div class="c-block-hero__container container">
+      <div class="item overlay" style="background-image:url(/GetImage.ashx?Guid={{ PageHeaderImage }});">
+
+        {%- for item in Items -%}
+          {%- assign displayTitle = item.ContentChannel | Attribute:'DisplayTitle' -%}
+            <div class="c-block-hero__background-video l-aspect-ratio__16-9 nofilter">
+              <img src="/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=943&h=629&mode=crop&anchor=middlecenter&scale=both&quality=90" alt="{{ displayTitle }}" width="943" height="629" />
+            </div>
+            <div class="c-block-hero__content c-block-hero__content--alt1">
+              <h1 class="c-block-hero__headline c-block-hero__headline--small">{{ displayTitle }}</h1>
+              <h2 class="c-block-hero__subhead"><a href="{{ LinkedPages.DetailPage }}">{{item.Title}}</a></h2>
+            </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div><!-- end c-block--hero-->
+</section>
