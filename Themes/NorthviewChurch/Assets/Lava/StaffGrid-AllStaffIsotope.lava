@@ -1,12 +1,16 @@
-{% assign staffGroupId = "(gm.GroupId = '318383')" %}
+{% comment %}
+{% assign staffGroupId = "318383" %}
 {% assign staffGroupTitle = "All Staff" %}
-{% assign campusFilter = 'Global' | PageParameter:'campus' | SanatizeSQL %}
-{% assign deptFilter = 'Global' | PageParameter:'department' | SanatizeSQL %}
+{% endcomment %}
+
+{% assign campusFilter = 'Global' | PageParameter:'campus' | SanitizeSQL %}
+{% assign deptFilter = 'Global' | PageParameter:'department' | SanitizeSQL %}
+
+{% if campusFilter == "" and deptFilter == "" %}
+{% assign deptFilter = 'central-lead-team' %}
+{% endif %}
 
 {%- sql -%}
-Declare @CampusSlug nvarchar(max) = '{{ 'Global' | PageParameter:'campus' | SanatizeSQL }}';
-Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department' | SanatizeSQL }}';
-
   SELECT
 	gm.GroupId,
 	g.Name,
@@ -24,13 +28,13 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
   LEFT OUTER JOIN [GroupType] gt ON g.GroupTypeId = gt.Id
   LEFT OUTER JOIN [GroupTypeRole] gtr ON gt.Id = gtr.GroupTypeId
   WHERE
-	{{staffGroupId}} and (gm.GroupRoleId = gtr.Id)
+	(gm.GroupId = '{{staffGroupId}}') and (gm.GroupRoleId = gtr.Id)
   ORDER BY gm.GroupId, gtr.IsLeader desc, p.LastName
 {%- endsql -%}
 
 <div class="staff-list">
 	<h2 class="section__title">{{ staffGroupTitle }}</h2>
-    <div class="filters form-inline text-center">
+    <div class="filters flex-row-sm">
 
       <div class="form-group">
         <label for="campusSelect">Campus</label>
@@ -68,7 +72,6 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
 
     </div>
     <div class="staff-grid">
-      {{ results | Size }}
 	{%- for item in results -%}
 	{%- assign personId = item.PersonId -%}
 	{%- assign groupId = item.GroupId -%}
@@ -85,16 +88,12 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
     	{%- assign title = person | Attribute:'StaffPosition' -%}
 	{%- endperson -%}
 	{%- groupmember where:'GroupId == {{groupId}} && PersonId == {{personId}}' -%}
-
 	{%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
 	{%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
-
 	{%- for item in groupmemberItems -%}
-
     {%- assign phone = item | Attribute:'Phone' -%}
-	{%- assign bio = item | Attribute:'Bio' -%}
-
-	<div class='staff-grid__item {{ item | Attribute:'MemberCampus' | ToCssClass }} {{ item | Attribute:'MemberDepartment' | ToCssClass }}'>
+  	{%- assign bio = item | Attribute:'Bio' -%}
+  	<div class='staff-grid__item {{ item | Attribute:'MemberCampus' | ToCssClass }} {{ item | Attribute:'MemberDepartment' | ToCssClass }}'>
 			<div class="staff__item">
 				<div class="row">
 					<div class="col-sm-12 col-md-12">
@@ -102,9 +101,7 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
       			  {%- if bio != "" -%}
       				  <a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
       				{%- endif -%}
-      				{%- comment -%}
-                <img class="staff__detail-image lazyload" src="https://rock.northviewchurch.us/GetImage.ashx?id={{ person.PhotoId }}&w=300&h=300" width="300" height="300" alt="{{ person.FullName }}" loading="lazy" />
-              {%- endcomment -%}
+                <img class="staff__detail-image lazyload" src="/GetImage.ashx?id={{ person.PhotoId }}&w=300&h=300&mode=crop" width="300" height="300" alt="{{ person.FullName }}" loading="lazy" />
       				{%- if bio != "" -%}
                 <span class="vc">Read Bio</span>
                 </a>
@@ -112,45 +109,63 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
       		  </div>
             <div class="staff__name">{{ person.FullName }}</div>
       			<div class="staff__title">{{ title }}</div>
-        			<ul class="staff__meta">
-        			  {% if email != '' %}
-        			    obfuscate this
-                {% endif %}
-                {% if phone != '' %}
-                  <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' | Replace:'-','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
-                {% endif %}
-        		  </ul>
-      		  </div>
-          </div>
-  		  </div>
+      			<ul class="staff__meta">
+      			  {% if email != '' %}
+              <li class="staff__email" id="contact-{{ person.FullName | ToCssClass }}" class="mailtolink">
+                <a href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>
+              </li>
+              <script>
+              var linkelement = document.getElementById('contact-{{person.FullName | ToCssClass}}'),
+              u{{personId}}="{{emailParts[0]}}",
+              h{{personId}}="{{emailParts[1]}}";
+              linkelement.innerHTML = '<a href="' + 'mail' + 'to:'+u{{personId}}+'@'+h{{personId}}+'" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>';
+              </script>
+              {% endif %}
+              {% if phone != '' %}
+                <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' | Replace:'-','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+              {% endif %}
+      		  </ul>
+    		  </div>
+        </div>
+  		</div>
 		</div>
-	{%- endfor -%}
+  {%- endfor -%}
 	{%- endgroupmember -%}
 	{%- endfor -%}
 	</div>
 </div>
-<script src="https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<link rel="stylesheet" href="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/css/select2.min.css" />
+<script src="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/js/select2.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script>
+  $(document).ready(function() {
+    /** Select2 **/
+    $('.filter-select').select2({
+      theme:'northview'
+    });
+  });
+</script>
 <script>
 // external js: isotope.pkgd.js
 
 // store filter for each group
 var filters = {};
 var filterValue = '';
-
+var initFilter = false;
 // quick search regex
 var qsRegex;
 
 {% if campusFilter and campusFilter != "" %}
 filterValue += ".{{campusFilter}}";
+initFilter = true;
 {% endif %}
 {% if deptFilter and deptFilter != "" %}
 filterValue += ".{{deptFilter}}";
+initFilter = true;
 {% endif %}
 
-//alert(filterValue);
-
-  // reveal all items after init
+// reveal all items after init
 //  var $items = $grid.find('.isotope_item');
 //  $grid.imagesLoaded().progress( function() {
 //    $grid.addClass('is-showing-items').isotope('layout');
@@ -159,17 +174,20 @@ filterValue += ".{{deptFilter}}";
 
 // init Isotope
 var $grid = $('.staff-grid').isotope({
-    layoutMode: 'fitRows',
-    itemSelector: '.staff-grid__item',
-    initLayout: false,
-    filter: function() {
-        var $this = $(this);
-        var menuResult = filterValue ? $this.is( filterValue ) : true;
-        var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
-        return searchResult && menuResult;
-    }
+  layoutMode: 'fitRows',
+  itemSelector: '.staff-grid__item',
+  initLayout: initFilter,
+  filter: function() {
+    var $this = $(this);
+    var menuResult = filterValue ? $this.is( filterValue ) : true;
+    var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
+    return searchResult && menuResult;
+  }
 });
-$grid.isotope({ filter: '.central-lead-team' });
+
+if (!initFilter) {
+  $grid.isotope({ filter: '.central-lead-team' });
+}
 
 // reveal all items after init
 var $items = $grid.find('.staff-grid__item');
@@ -186,14 +204,24 @@ $('.filters').on( 'change', function( event ) {
   // combine filters
   filterValue = concatValues( filters );
   // set filter for Isotope
-  $grid.isotope('layout');
+  $grid.isotope({ filter:filterValue });
+
+//  alert(filterValue);
+
 });
+
+// quick search regex
+var qsRegex;
 
 // use value of search field to filter
 var $quicksearch = $('#searchInput').keyup( debounce( function() {
   qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-  $grid.isotope('layout');
-}) );
+  $grid.isotope({
+    filter: function() {
+      return qsRegex ? $(this).text().match( qsRegex ) : true;
+    }
+  });
+}, 200 ) );
 
 // debounce so filtering doesn't happen every millisecond
 function debounce( fn, threshold ) {

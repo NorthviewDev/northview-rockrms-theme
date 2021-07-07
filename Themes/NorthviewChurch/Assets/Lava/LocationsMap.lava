@@ -60,7 +60,8 @@
 {%- for campus in campusesSorted -%}
 {%- assign isActive = campus.IsActive -%}
 {%- assign hasLocation = campus.Location.Latitude -%}
-{%- if isActive and hasLocation -%}
+{%- assign campusTypeId = campus.CampusTypeValueId -%}
+{%- if isActive and hasLocation and campusTypeId == '1455' -%}
 {%- assign serviceDay = "" -%}
 {%- assign displayServiceTimes = "" -%}
 {%- assign campusDescription = campus.Description | Trim -%}

@@ -1,11 +1,11 @@
 {% assign staffGroupId = "(gm.GroupId = '318383')" %}
 {% assign staffGroupTitle = "All Staff" %}
-{% assign campusFilter = 'Global' | PageParameter:'campus' | SanatizeSQL %}
-{% assign deptFilter = 'Global' | PageParameter:'department' | SanatizeSQL %}
+{% assign campusFilter = 'Global' | PageParameter:'campus' | SanitizeSQL %}
+{% assign deptFilter = 'Global' | PageParameter:'department' | SanitizeSQL %}
 
 {%- sql -%}
-Declare @CampusSlug nvarchar(max) = '{{ 'Global' | PageParameter:'campus' | SanatizeSQL }}';
-Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department' | SanatizeSQL }}';
+Declare @CampusSlug nvarchar(max) = '{{ 'Global' | PageParameter:'campus' | SanitizeSQL }}';
+Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department' | SanitizeSQL }}';
 
   SELECT
 	gm.GroupId,
