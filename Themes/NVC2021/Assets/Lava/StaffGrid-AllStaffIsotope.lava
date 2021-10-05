@@ -1,35 +1,52 @@
-{% assign staffGroupId = "(gm.GroupId = '318383')" %}
+{% comment %}
+{% assign staffGroupId = "318383" %}
 {% assign staffGroupTitle = "All Staff" %}
-{% assign campusFilter = PageParameter.campus | SanitizeSQL | ToLowerCase %}
-{% assign deptFilter = PageParameter.department | SanitizeSQL | ToLowerCase %}
-{%- sql -%}
-Declare @CampusSlug nvarchar(max) = '{{ 'Global' | PageParameter:'campus' | SanitizeSQL }}';
-Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department' | SanitizeSQL }}';
+{% endcomment %}
 
+{% assign campusFilter = PageParameter.campus | SanitizeSQL | Downcase %}
+{% assign deptFilter = PageParameter.department | SanitizeSQL | Downcase %}
+
+{% if campusFilter == "" and deptFilter == "" %}
+{% assign deptFilter = 'central-lead-team' %}
+{% endif %}
+
+{%- sql -%}
   SELECT
-	gm.GroupId,
-	g.Name,
-	gt.Id as GroupTypeId,
-	gtr.IsLeader,
-	gm.GroupRoleId,
-	p.Id as PersonId,
-	p.NickName,
-	p.FirstName,
-	p.LastName,
-	p.Email
+  gm.GroupId,
+  g.Name,
+  gt.Id as GroupTypeId,
+  gtr.IsLeader,
+  gm.GroupRoleId,
+  p.Id as PersonId,
+  p.NickName,
+  p.FirstName,
+  p.LastName,
+  p.Email,
+  AVPosition.Value as 'Position',
+  AVPhone.Value as 'Phone',
+  AVBio.Value as 'Bio',
+  DVCampus.Value as 'Campus',
+  DVDept.Value as 'Department'
   FROM [Person] p
   LEFT OUTER JOIN [GroupMember] gm ON p.Id = gm.PersonId
   LEFT OUTER JOIN [Group] g ON gm.GroupId = g.Id
   LEFT OUTER JOIN [GroupType] gt ON g.GroupTypeId = gt.Id
   LEFT OUTER JOIN [GroupTypeRole] gtr ON gt.Id = gtr.GroupTypeId
+  LEFT OUTER JOIN AttributeValue AVPosition ON AVPosition.EntityId = p.Id AND AVPosition.AttributeId = 2707
+  LEFT OUTER JOIN AttributeValue AVPhone ON AVPhone.EntityId = gm.Id AND AVPhone.AttributeId = 37099
+  LEFT OUTER JOIN AttributeValue AVBio ON AVBio.EntityId = gm.Id AND AVBio.AttributeId = 37100
+  LEFT OUTER JOIN AttributeValue AVCampus ON AVCampus.EntityId = gm.Id AND AVCampus.AttributeId = 42479
+  LEFT OUTER JOIN AttributeValue AVDept ON AVDept.EntityId = gm.Id AND AVDept.AttributeId = 42480
+  LEFT OUTER JOIN DefinedValue DVCampus ON CONVERT(VARCHAR(255), DVCampus.Guid) = AVCampus.Value
+  LEFT OUTER JOIN DefinedValue DVDept ON CONVERT(VARCHAR(255), DVDept.Guid) = AVDept.Value
   WHERE
-	{{staffGroupId}} and (gm.GroupRoleId = gtr.Id)
+  (gm.GroupId = '{{staffGroupId}}') and (gm.GroupRoleId = gtr.Id)
   ORDER BY gm.GroupId, gtr.IsLeader desc, p.LastName
 {%- endsql -%}
 
 <div class="staff-list">
-	<h2 class="section__title">{{ staffGroupTitle }}</h2>
-    <div class="filters form-inline text-center">
+  <h2 class="section__title">{{ staffGroupTitle }}</h2>
+    <div class="filters flex-row-sm">
 
       <div class="form-group">
         <label for="campusSelect">Campus</label>
@@ -67,89 +84,96 @@ Declare @DepartmentSlug nvarchar(max) = '{{ 'Global' | PageParameter:'department
 
     </div>
     <div class="staff-grid">
-      {{ results | Size }}
-	{%- for item in results -%}
-	{%- assign personId = item.PersonId -%}
-	{%- assign groupId = item.GroupId -%}
-	{%- assign nickName = item.NickName -%}
-	{%- assign firstName = item.FirstName -%}
-	{%- assign lastName = item.LastName -%}
-	{%- assign email = item.Email -%}
-	{%- assign extension = '' -%}
-	{%- person id:'{{personId}}' -%}
-		{%- for phoneNumber in person.PhoneNumbers -%}
-			{%comment%} /*** Internal Extension ***/ {%endcomment%}
-			{%- if phoneNumber.NumberTypeValueId == '1104' -%}	{%- assign extension = phoneNumber.Number -%}{%- endif -%}
-		{%- endfor -%}
-    	{%- assign title = person | Attribute:'StaffPosition' -%}
-	{%- endperson -%}
-	{%- groupmember where:'GroupId == {{groupId}} && PersonId == {{personId}}' -%}
+  {%- for item in results -%}
+  {%- assign personId = item.PersonId -%}
+  {%- assign groupId = item.GroupId -%}
+  {%- assign nickName = item.NickName -%}
+  {%- assign firstName = item.FirstName -%}
+  {%- assign lastName = item.LastName -%}
+  {%- assign email = item.Email -%}
+  {%- assign emailParts = email | Split:'@' -%}
+  {%- assign extension = '' -%}
+  {%- assign title = item.Position -%}
+  {%- assign phone = item.Phone -%}
+    {%- assign bio = item.Bio -%}
+  {%- assign memberCampus = item.Campus -%}
+  {%- assign memberDepartment = item.Department -%}
+  {%- assign person = item.PersonId | PersonById -%}
+  {%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
+  {%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
 
-	{%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
-	{%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
-
-	{%- for item in groupmemberItems -%}
-
-    {%- assign phone = item | Attribute:'Phone' -%}
-	{%- assign bio = item | Attribute:'Bio' -%}
-
-	<div class='staff-grid__item {{ item | Attribute:'MemberCampus' | ToCssClass }} {{ item | Attribute:'MemberDepartment' | ToCssClass }}'>
-			<div class="staff__item">
-				<div class="row">
-					<div class="col-sm-12 col-md-12">
-      		  <div class="staff__photo">
-      			  {%- if bio != "" -%}
-      				  <a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
-      				{%- endif -%}
-      				{%- comment -%}
-                <img class="staff__detail-image lazyload" src="/GetImage.ashx?id={{ person.PhotoId }}&w=300&h=300" width="300" height="300" alt="{{ person.FullName }}" loading="lazy" />
-              {%- endcomment -%}
-      				{%- if bio != "" -%}
+    <div class='staff-grid__item {{ memberCampus | ToCssClass }} {{ memberDepartment | ToCssClass }}'>
+      <div class="staff__item">
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <div class="staff__photo">
+              {%- if bio != "" and bio != null -%}
+                <a class="staff__detail-link" href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="{{ person.FullName }}">
+              {%- endif -%}
+                <img class="staff__detail-image lazyload" src="/GetImage.ashx?id={{ person.PhotoId }}&w=300&h=300&mode=crop" width="300" height="300" alt="{{ person.FullName }}" loading="lazy" />
+              {%- if bio != "" and bio != null -%}
                 <span class="vc">Read Bio</span>
                 </a>
-      				{%- endif -%}
-      		  </div>
+              {%- endif -%}
+            </div>
             <div class="staff__name">{{ person.FullName }}</div>
-      			<div class="staff__title">{{ title }}</div>
-        			<ul class="staff__meta">
-        			  {% if email != '' %}
-        			    obfuscate this
-                {% endif %}
-                {% if phone != '' %}
-                  <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' | Replace:'-','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
-                {% endif %}
-        		  </ul>
-      		  </div>
+            <div class="staff__title">{{ title }}</div>
+            <ul class="staff__meta">
+              {% if email != '' %}
+              <li class="staff__email" id="contact-{{ person.FullName | ToCssClass }}" class="mailtolink">
+                <a href="/staff/{{groupId}}/{{firstName}}-{{lastName}}" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>
+              </li>
+              <script>
+              var linkelement = document.getElementById('contact-{{person.FullName | ToCssClass}}'),
+              u{{personId}}="{{emailParts[0]}}",
+              h{{personId}}="{{emailParts[1]}}";
+              linkelement.innerHTML = '<a href="' + 'mail' + 'to:'+u{{personId}}+'@'+h{{personId}}+'" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>';
+              </script>
+              {% endif %}
+              {% if phone != '' and phone != null %}
+                <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' | Replace:'-','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+              {% endif %}
+            </ul>
           </div>
-  		  </div>
-		</div>
-	{%- endfor -%}
-	{%- endgroupmember -%}
-	{%- endfor -%}
-	</div>
+        </div>
+      </div>
+    </div>
+
+  {%- endfor -%}
+  </div>
 </div>
-<script src="https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<link rel="stylesheet" href="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/css/select2.min.css" />
+<script src="/Themes/NorthviewChurch/Assets/Scripts/select2/dist/js/select2.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script>
+  $(document).ready(function() {
+    /** Select2 **/
+    $('.filter-select').select2({
+      theme:'northview'
+    });
+  });
+</script>
 <script>
 // external js: isotope.pkgd.js
 
 // store filter for each group
 var filters = {};
 var filterValue = '';
-
+var initFilter = false;
 // quick search regex
 var qsRegex;
 
 {% if campusFilter and campusFilter != "" %}
 filterValue += ".{{campusFilter}}";
+initFilter = true;
 {% endif %}
 {% if deptFilter and deptFilter != "" %}
 filterValue += ".{{deptFilter}}";
+initFilter = true;
 {% endif %}
 
-//alert(filterValue);
-
-  // reveal all items after init
+// reveal all items after init
 //  var $items = $grid.find('.isotope_item');
 //  $grid.imagesLoaded().progress( function() {
 //    $grid.addClass('is-showing-items').isotope('layout');
@@ -158,17 +182,20 @@ filterValue += ".{{deptFilter}}";
 
 // init Isotope
 var $grid = $('.staff-grid').isotope({
-    layoutMode: 'fitRows',
-    itemSelector: '.staff-grid__item',
-    initLayout: false,
-    filter: function() {
-        var $this = $(this);
-        var menuResult = filterValue ? $this.is( filterValue ) : true;
-        var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
-        return searchResult && menuResult;
-    }
+  layoutMode: 'fitRows',
+  itemSelector: '.staff-grid__item',
+  initLayout: initFilter,
+  filter: function() {
+    var $this = $(this);
+    var menuResult = filterValue ? $this.is( filterValue ) : true;
+    var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
+    return searchResult && menuResult;
+  }
 });
-$grid.isotope({ filter: '.central-lead-team' });
+
+if (!initFilter) {
+  $grid.isotope({ filter: '.central-lead-team' });
+}
 
 // reveal all items after init
 var $items = $grid.find('.staff-grid__item');
@@ -185,14 +212,24 @@ $('.filters').on( 'change', function( event ) {
   // combine filters
   filterValue = concatValues( filters );
   // set filter for Isotope
-  $grid.isotope('layout');
+  $grid.isotope({ filter:filterValue });
+
+//  alert(filterValue);
+
 });
+
+// quick search regex
+var qsRegex;
 
 // use value of search field to filter
 var $quicksearch = $('#searchInput').keyup( debounce( function() {
   qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-  $grid.isotope('layout');
-}) );
+  $grid.isotope({
+    filter: function() {
+      return qsRegex ? $(this).text().match( qsRegex ) : true;
+    }
+  });
+}, 200 ) );
 
 // debounce so filtering doesn't happen every millisecond
 function debounce( fn, threshold ) {
