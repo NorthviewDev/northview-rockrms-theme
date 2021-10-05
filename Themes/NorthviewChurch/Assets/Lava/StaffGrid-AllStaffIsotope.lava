@@ -91,6 +91,7 @@
 	{%- assign firstName = item.FirstName -%}
 	{%- assign lastName = item.LastName -%}
 	{%- assign email = item.Email -%}
+	{%- assign emailParts = email | Split:'@' -%}
 	{%- assign extension = '' -%}
 	{%- assign title = item.Position -%}
 	{%- assign phone = item.Phone -%}
@@ -129,7 +130,7 @@
               linkelement.innerHTML = '<a href="' + 'mail' + 'to:'+u{{personId}}+'@'+h{{personId}}+'" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>';
               </script>
               {% endif %}
-              {% if phone != '' %}
+              {% if phone != '' and phone != null %}
                 <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' | Replace:'-','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
               {% endif %}
       		  </ul>
