@@ -5,13 +5,13 @@
     color: @text-color;
     font-weight: 600;
     border: none;
+    border-top: solid 3px transparent;
     border-bottom: solid 3px #d3d3d3;
     border-radius: 0;
     box-shadow: none;
-    padding: 6px 0;
-    transition: border-bottom 0;
+    padding: 6px 12px;
     &:focus {
-      border-bottom: none;
+      border-color: transparent;
       outline: solid 3px @color-brand-primary;
       padding: 6px 12px;
     }
@@ -164,6 +164,27 @@
       text-align: right;
       .btn {
         display: block;
+      }
+    }
+  }
+}
+.filters {
+  &.flex-row-sm {
+    @media (min-width: @screen-sm-min) {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .form-group {
+      //margin: 0 15px;
+      flex-basis: 33%;
+      select {
+        background-color: transparent;
+        border: 1px solid #221f1f;
+        border-radius: 2px;
+        height: 41px;
+        display: block;
+        width: 100%;
       }
     }
   }

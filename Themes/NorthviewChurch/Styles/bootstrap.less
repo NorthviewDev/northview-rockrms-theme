@@ -2,10 +2,13 @@
 // -------------------------
 @import "../../../Styles/FontAwesome/font-awesome.less";
 @import "../../../Styles/Bootstrap/bootstrap.less";
+@import "../../../Styles/_rock-core.less";
+@import "../../../Styles/_store.less";
 
-@import "../../../Styles/_rock-variables.less";
-@import "_variables.less";
-@import "_variable-overrides.less";
+@import (reference) "../../../Styles/_rock-variables.less";
+@import (reference) "_variables.less";
+@import (reference) "_variable-overrides.less";
+@import (reference) "_css-overrides.less";
 
 // custom variable switchbox
 @navbar-inverse-link-color: @nav-color;
