@@ -23,6 +23,7 @@
         </div>
 
         <Rock:Zone Name="Sub Feature" runat="server" />
+        <Rock:Zone Name="Main" runat="server" />
 
         <Rock:Zone Name="Section A" runat="server" />
         <Rock:Zone Name="Section B" runat="server" />

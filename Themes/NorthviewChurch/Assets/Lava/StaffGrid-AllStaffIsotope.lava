@@ -3,8 +3,8 @@
 {% assign staffGroupTitle = "All Staff" %}
 {% endcomment %}
 
-{% assign campusFilter = 'Global' | PageParameter:'campus' | SanitizeSQL %}
-{% assign deptFilter = 'Global' | PageParameter:'department' | SanitizeSQL %}
+{% assign campusFilter = PageParameter.campus | SanitizeSQL | Downcase %}
+{% assign deptFilter = PageParameter.department | SanitizeSQL | Downcase %}
 
 {% if campusFilter == "" and deptFilter == "" %}
 {% assign deptFilter = 'central-lead-team' %}
