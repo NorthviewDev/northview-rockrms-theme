@@ -6,7 +6,7 @@
   {%- assign itemId = itemContentChannelItem.ChildContentChannelItem.Id | Trim -%}
   {%- assign itemPrimarySlug = itemContentChannelItem.ChildContentChannelItem.PrimarySlug | Trim -%}
   {%- assign itemContentChannelId = itemContentChannelItem.ChildContentChannelItem.ContentChannelId -%}
-  {% assign linkUrl = item.LinkUrl, 'RawValue' | Trim %}
+  {% assign linkUrl = item | Attribute:'LinkUrl', 'RawValue' | Trim %}
   {%- if linkUrl =="" %}
   {% assign linkUrl = itemContentChannelItem.ChildContentChannelItem.ContentChannel.ItemUrl | Replace:'{Id}',itemId | Replace:'{{Slug}}',itemPrimarySlug %}
   {%- endif -%}

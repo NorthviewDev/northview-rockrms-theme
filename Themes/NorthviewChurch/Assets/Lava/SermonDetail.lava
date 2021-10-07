@@ -52,21 +52,6 @@ This is for the message detail page https://www.northviewchurch.us/message/
         			<div class="col-md-12">
           			<h2>{{ SeriesTitle }}</h2>
         				{{ Item.Content }}
-
-                {% comment %}
-                  Adding in life group content that goes with each message.
-                  Thomas Stephens 5/5/20
-                {% endcomment %}
-
-                {% assign content = Item.LifeGroupContent %}
-                {% assign video = Item.LifeGroupVideo %}
-                {% if content != '' %}
-                  <a href="{{content}}" target="_blank" class="c-btn c-btn--primary c-btn--offset-border">Life Group Guide<i class="nv-icon nv-icon--carat_right"></i></a>
-                {% endif %}
-                {% if video != '' %}
-                  <a href="{{video}}" target="_blank" class="c-btn c-btn--primary c-btn--offset-border">Life Group Video<i class="nv-icon nv-icon--carat_right"></i></a>
-                {% endif %}
-
         			</div>	
             </div>
           </div>
