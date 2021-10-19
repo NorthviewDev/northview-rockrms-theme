@@ -85,23 +85,22 @@
     </div>
     <div class="staff-grid">
   {%- for item in results -%}
-  {%- assign personId = item.PersonId -%}
-  {%- assign groupId = item.GroupId -%}
-  {%- assign nickName = item.NickName -%}
-  {%- assign firstName = item.FirstName -%}
-  {%- assign lastName = item.LastName -%}
-  {%- assign email = item.Email -%}
-  {%- assign emailParts = email | Split:'@' -%}
-  {%- assign extension = '' -%}
-  {%- assign title = item.Position -%}
-  {%- assign phone = item.Phone -%}
+    {%- assign personId = item.PersonId -%}
+    {%- assign groupId = item.GroupId -%}
+    {%- assign nickName = item.NickName -%}
+    {%- assign firstName = item.FirstName -%}
+    {%- assign lastName = item.LastName -%}
+    {%- assign email = item.Email -%}
+    {%- assign emailParts = email | Split:'@' -%}
+    {%- assign extension = '' -%}
+    {%- assign title = item.Position -%}
+    {%- assign phone = item.Phone -%}
     {%- assign bio = item.Bio -%}
-  {%- assign memberCampus = item.Campus -%}
-  {%- assign memberDepartment = item.Department -%}
-  {%- assign person = item.PersonId | PersonById -%}
-  {%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
-  {%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
-
+    {%- assign memberCampus = item.Campus -%}
+    {%- assign memberDepartment = item.Department -%}
+    {%- assign person = item.PersonId | PersonById -%}
+    {%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
+    {%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
     <div class='staff-grid__item {{ memberCampus | ToCssClass }} {{ memberDepartment | ToCssClass }}'>
       <div class="staff__item">
         <div class="row">
@@ -138,7 +137,6 @@
         </div>
       </div>
     </div>
-
   {%- endfor -%}
   </div>
 </div>
