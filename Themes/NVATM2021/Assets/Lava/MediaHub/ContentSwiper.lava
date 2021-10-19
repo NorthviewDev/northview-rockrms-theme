@@ -99,11 +99,10 @@
         </div>
     </div>
 </section>
-
-{% assign swiper6css = '~~/node_modules/swiper/swiper-bundle.min.css' %}
-{% assign swiper6js = '~~/node_modules/swiper/swiper-bundle.min.js' %}
-<link rel="stylesheet" href="{{ swiper6css | ResolveRockUrl }}">
-<script src="{{ swiper6js | ResolveRockUrl }}"></script>
+{% assign swipercss = '~/node_modules/swiper/swiper-bundle.min.css' %}
+{% assign swiperjs = '~/node_modules/swiper/swiper-bundle.min.js' %}
+<link rel="stylesheet" href="{{ swipercss | ResolveRockUrl }}">
+<script src="{{ swiperjs | ResolveRockUrl }}"></script>
 <script>
     var swiper = new Swiper('.swiper-container', {
       navigation: {

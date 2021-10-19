@@ -1,3 +1,4 @@
-
 *.mp4
 *.map
+bower_components/
+node_modules/
