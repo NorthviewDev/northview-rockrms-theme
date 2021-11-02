@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 center-block">
+      {% if Event.Photo.Guid %}
+      <center>
+        <img src="/GetImage.ashx?Guid={{ Event.Photo.Guid }}&maxWidth=800&maxHeight=800&quality=80" class="title-image img-responsive" />
+      </center>
+      {% endif %}
+    </div>
+  </div>
+  <div class="row g-margin--y-s2">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="well well--lg stack g-margin--bottom-s0">
+        <h2>{{ Event.Name }}</h2>
+        {{ Event.Description }}
+    
+        {% if Event.Summary != '' %}
+          {{ Event.Summary | StripHtml | AddMetaTagToHead:'name','description' }}
+        {% else %}
+          {{ Event.Description | StripHtml | AddMetaTagToHead:'name','description' }}
+        {% endif %}
+    
+        {{ 'summary_large_image' | AddMetaTagToHead:'property','twitter:card' }}
+        {{ Event.Name | AddMetaTagToHead:'property','twitter:title' }}
+        {{ Event.Description | StripHtml | AddMetaTagToHead:'property','twitter:description' }}
+    
+        {{ Event.Name | AddMetaTagToHead:'property','og:title' }}
+        {{ Event.Description | StripHtml | AddMetaTagToHead:'property','og:description' }}
+    
+        {% assign facebookPhoto = Event.Photo,'Url' %}
+        {% if facebookPhoto != '' %}
+        {{ facebookPhoto | AddMetaTagToHead:'property','og:image' }}
+        {% endif %}
+    
+        {% assign twitterPhoto = Event.Photo,'Url' %}
+        {% if twitterPhoto != '' %}
+        {{ twitterPhoto | AddMetaTagToHead:'property','twitter:image' }}
+        {% endif %}
+      </div>
+      <div class="addthis_toolbox">
+        <ul>
+          <li class="text-uppercase"><strong>Share This</strong></li>
+          <li><a class="addthis_button_facebook"><i class="fab fa-facebook"></i></a></li>
+          <li><a class="addthis_button_twitter"><i class="fab fa-twitter"></i></a></li>
+          <li><a class="addthis_button_email"><i class="nv-icon nv-icon--email"></i></a></li>
+          <li><a class="addthis_button_more"><span class="nv-icon nv-icon--ornament_plus"></span></a></li> 
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

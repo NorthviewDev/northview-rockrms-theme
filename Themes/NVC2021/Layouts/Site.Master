@@ -152,13 +152,12 @@ var BrowserDetect = {
 </head>
 <body runat="server" id="body">
   
-  <form id="form1" runat="server">
-    <section id="notification">
-    <Rock:Zone Name="NotificationBar" runat="server" />
-    </section>
-  
+  <form id="form1" runat="server">  
   <!-- Page Header -->
-  <header>
+  <header id="site-header">
+		<section id="notification">
+			<Rock:Zone Name="NotificationBar" runat="server" />
+		</section>
     <div class="c-header" role="banner">
       <Rock:Zone Name="Header" runat="server" />
       <Rock:Zone Name="Navigation" runat="server" />  

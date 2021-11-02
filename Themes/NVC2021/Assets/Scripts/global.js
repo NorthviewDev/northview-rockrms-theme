@@ -109,15 +109,15 @@ $(function () { //document.ready
     if (ltHeadline) addOrnamentalElem(ltHeadline, "nv-icon--ornament_backslash", 15);
     var heroVideo = document.querySelector('.c-block-hero__background-video');
     if (heroVideo) addOrnamentalElem(heroVideo, "nv-icon--ornament_backslash", 15);
-    var heroHeadline = document.querySelector('.c-block-hero__headline');
-    var heroSubHeadline = document.querySelector('.c-block-hero__subhead');
-    if (heroSubHeadline) {
-      addOrnamentalElem(heroSubHeadline, "nv-icon--ornament_backslash", 25);
-    } else {
-      addOrnamentalElem(heroHeadline, "nv-icon--ornament_backslash", 15);
-    }
-    var heroContainer = document.querySelector('.c-block-hero__container');
-    if (heroContainer) addOrnamentalElem(heroContainer, "nv-icon--ornament_plus", 3);
+    //var heroHeadline = document.querySelector('.c-block-hero__headline');
+    //var heroSubHeadline = document.querySelector('.c-block-hero__subhead');
+    //if (heroSubHeadline) {
+      //addOrnamentalElem(heroSubHeadline, "nv-icon--ornament_backslash", 25);
+   	//} else {
+      //addOrnamentalElem(heroHeadline, "nv-icon--ornament_backslash", 15);
+    //}
+    //var heroContainer = document.querySelector('.c-block-hero__container');
+    //if (heroContainer) addOrnamentalElem(heroContainer, "nv-icon--ornament_plus", 3);
     var calloutPrimary = document.querySelectorAll('.c-card--title-highlight');
     calloutPrimary.forEach(item => {
       addOrnamentalElem(item, "nv-icon--ornament_backslash", 35)

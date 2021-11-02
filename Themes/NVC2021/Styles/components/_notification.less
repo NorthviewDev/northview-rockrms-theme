@@ -50,6 +50,27 @@
     position: relative;
   }
 }
-#notification + .c-header{
-  top: 50px;
+#notification {
+	background-color: @black;
+	color: @white;
+	.zone-content {
+		justify-content: space-between;
+		align-items: flex-start;
+		line-height: 22px;
+		@media (min-width: @screen-sm) {
+			display: flex;
+		}
+		p {
+			margin: 0;
+		}
+		a {
+			color: @white;
+			border: none;
+			text-decoration: none;
+			padding: 10px 15px;
+		}
+	}
+	+ .c-header{
+  	top: 50px;
+	}
 }

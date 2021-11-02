@@ -1,10 +1,12 @@
   <section id="homepage-feature" class="c-block-hero__wrapper has-media">
     <div class="c-block-hero has-ornaments">
-      <div class="c-block-hero__container container">
+			<div class="container">
+      <div class="c-block-hero__container">
           {%- assign numItems = Items | Size -%}
           {%- for item in Items -%}
-            {%- assign displayTitle = item.ContentChannel | Attribute:'DisplayTitle' -%}
-            {%- assign itemContent = item.Content -%}
+            {%- assign displayTitle = item.Title -%}
+						{%- assign itemContent = item.Content -%}
+						{%- assign buttons = item | Attribute:'Buttons' -%}
             {%- if numItems > 1 -%}
               {%- assign hiddenXs = "" -%}
               {%- if forloop.first != true -%}{%- assign hiddenXs = " hidden-xs" -%}{%- endif -%}
@@ -29,14 +31,14 @@
           {%- endfor -%}
               <div class="c-block-hero__content">
                 <h1 class="c-block-hero__headline">
-                  <span class="c-block-hero__wrap-text">
-                  {% assign circleTextImage = '~~/Assets/_img/circle-text.svg' %}
-                    <img src="{{ circleTextImage | ResolveRockUrl }}" alt="Wherever you're going" id="circle" />
-                  </span>
                   <span>{{ displayTitle }}</span>
                 </h1>
-                {{ itemContent }}
+								<div class="c-block-hero__cta">
+	                {{ itemContent }}
+									{{ buttons }}
+								</div>
               </div>
             </div>
+			</div>
     </div><!-- end c-block--hero-->
   </section>

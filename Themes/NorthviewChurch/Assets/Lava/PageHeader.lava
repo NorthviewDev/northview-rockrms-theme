@@ -1,3 +1,11 @@
+{%- assign pagePrimaryColor = CurrentPage | Attribute:'PagePrimaryColor' -%}
+{% if pagePrimaryColor != '' %}
+<style>
+	:root {
+		--primary-color: {{CurrentPage | Attribute:'PagePrimaryColor'}};
+	}
+</style>
+{% endif %}
 {%- assign pageHeaderImage = CurrentPage | Attribute:'PageHeaderImage','RawValue' -%}
 {%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
 {%- assign sectionClass="" -%}
