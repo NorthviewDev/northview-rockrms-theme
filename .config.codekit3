@@ -15398,6 +15398,14 @@
       "oAP" : "\/Themes\/NVC2021\/Assets\/Lava\/PageMegaMenus-output.lava",
       "oF" : 0
     },
+    "\/Themes\/NVC2021\/Assets\/Lava\/PageMenuOffcanvas.lava" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/Themes\/NVC2021\/Assets\/Lava\/PageMenuOffcanvas-output.lava",
+      "oF" : 0
+    },
     "\/Themes\/NVC2021\/Assets\/Lava\/PageNav.lava" : {
       "cB" : 0,
       "ft" : 8192,
@@ -23812,7 +23820,7 @@
     "npmSaveExactVersion" : 0,
     "npmTargetDependencyListType" : 1,
     "overrideExternalServerCSS" : 1,
-    "previewPathAddition" : "\/page\/3273",
+    "previewPathAddition" : "",
     "purgeCSS" : {
       "blocklistEntries" : [
 

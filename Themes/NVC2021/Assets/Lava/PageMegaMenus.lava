@@ -1,3 +1,37 @@
+<div id="collapse0-locations" class="panel-collapse collapse">
+	<div class="row">
+		<div class="col-md-7 col-md-offset-3">
+			<ul class="c-nav__submenu">
+				<div>
+					{% campus where:'IsActive == true' sort:'Order' %}
+					{% for Campus in campusItems %}
+					<li class="c-nav__link" id="menu_{{ Campus.Name | ToCssClass }}">
+						<a href="{{ Campus.Url }}">{{ Campus.Name }}</a>
+					</li>
+					{% assign numItems = forloop.length %}
+					{% assign numCols = 3 %}
+					{% assign numItemsPerCol = numItems | DividedBy:numCols | Ceiling %}
+					{% assign newCol = forloop.index | Modulo:numItemsPerCol %}
+					{% if newCol == '0' %}
+				</div><div>
+					{% endif %}
+					{% endfor %}
+					{% endcampus %}
+				</div>
+				<div>
+					<li class="c-nav__link" id="menu_community-sites">
+						<a href="/locations">Community Sites</a>
+					</li>
+					<li class="c-nav__link" id="menu_god-behind-bars">
+						<a href="/locations">God Behind Bars</a>
+					</li>
+				</div>
+			</ul>
+		</div>
+	</div>
+	<a href="/locations" class="megamenu-footer__link">View Map</a>
+</div>
+{% comment %}
 {% if Page.DisplayChildPages and Page.Pages != empty %}
 	{% for childPage in Page.Pages %}
 		{% if childPage.DisplayChildPages == 'true' and childPage.Pages and childPage.Pages != empty %}
@@ -34,10 +68,8 @@
 				</ul>
 				</div>
 				</div>
-				{% if pageSlug == "locations" %}
-				<a href="/locations" class="megamenu-footer__link">View Map</a>
-				{% endif %}
 			</div>
 		{% endif %}
 	{% endfor %}
 {% endif %}
+{% endcomment %}

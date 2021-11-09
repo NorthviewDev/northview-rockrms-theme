@@ -27,13 +27,14 @@
   transition: all ease-in-out 300ms;
   display: block;
   text-align: center;
-  @media (min-width: @screen-sm) {
+	white-space: nowrap;
+  @media (min-width: @screen-md) {
     display: inline-block;
   }
   + .c-btn {
     margin: 10px 0 0;
     @media (min-width: @screen-sm) {
-      margin: 0 0 0 10px;
+      //margin: 0 0 0 10px;
     }
   }
   .c-section--dark & {

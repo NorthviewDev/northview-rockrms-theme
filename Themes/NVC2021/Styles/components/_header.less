@@ -2,12 +2,17 @@
 #site-header {
   position: fixed;
 	top: 0;
-	left: 50%;
-	z-index: 1000;
-	width: 1680px;
-	z-index: 1000;
+	left: 0;
+	width: 100%;
+	z-index: 1010;
 	max-width: 100%;
-	transform: translateX(-50%);
+	@media (min-width: @screen-md) {
+		//top: 0;
+		left: 50%;
+		width: 1680px;
+		bottom: auto;
+		transform: translateX(-50%);
+	}
 	.c-header {
 		background-color: @white;
 	  @media (min-width: @screen-sm) {
@@ -19,15 +24,15 @@
 	    align-items: center;
 	  }
 	  .c-logo-link {
-	    padding: var(--s2);
-	    float:left;
+	    padding: 15px;
+	    //float:left;
 	    line-height: 0;
 	    border-bottom:none;
 	    box-sizing: content-box;
 	    //width: 20px;
 	    @media (min-width: @screen-sm) {
-	    	//padding: 24px;
-	      float:none;
+	    	padding: 24px;
+	      //float:none;
 	      //width: 46px;
 	    }
 	    &:focus {
@@ -38,25 +43,19 @@
 	      }
 	    }
 	    &.no-header {
-	      display: none;
-	      @media (min-width: @screen-sm) {
-	        display: block;
-	      }
-	      .c-logo-link__img .cls-1 {
-	        //fill: @white;
-	        //color: @white;
+	      display: block;
+				//position: fixed;
+				//top:0;
+				//left:0;
+				//z-index: 100;
+	      @media (min-width: @screen-md) {
+	        //position: relative;
 	      }
 	    }
 	  }
 	  .c-logo-link__img {
-	    //transform: rotate(90deg) translate(-20px);
-	    //transform-origin: bottom left;
-	    //height: 20px;
-	    @media (min-width: @screen-sm) {
-	      //transform: rotate(90deg) translate(-46px);
-	    	height: 38px;
-	    	width: 228px;
-	    }
+			height: 33px;
+			width: 228px;
 	    .cls-1 {
 	      transition: all 150ms ease-in-out;
 	      fill: @text-color;
@@ -97,6 +96,43 @@
 	}
 	.loginstatus {
 		margin:0;
+		.dropdown-menu {
+			position: absolute;
+			top: auto;
+			bottom: 100%;
+			right:0;
+			left: auto;
+			background-color: @white;
+			>li {
+				a {
+					padding: 10px 15px;
+					text-align: left;
+				}
+			}
+		}
+		.dropdown-toggle {
+			font-size: 20px;
+			&:before {
+				content: "\e90f";
+				font-family: 'northviewchurch' !important;
+				speak: never;
+				font-style: normal;
+				font-weight: normal;
+				font-variant: normal;
+				text-transform: none;
+				line-height: 1;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			.profile-photo,
+			b,
+			span {
+				display: none;
+				@media (min-width: @screen-md) {
+					display: inline;
+				}
+			}
+		}
 		>li {
 			min-width: 0;
 		}

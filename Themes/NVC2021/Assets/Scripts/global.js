@@ -36,19 +36,19 @@ $(function () { //document.ready
    
   var navActive = false,
     navOpen = document.querySelector('.nav-toggle-menu'),
-    navListOpen = document.querySelector('.c-primary-nav');
+    navListOpen = document.querySelector('.c-offcanvas-menu');
 
   navOpen.addEventListener("click", function (event) {
     event.preventDefault();
 
     if (navActive === false) {
       navActive = true;
-      navListOpen.classList.add("c-primary-nav--is-active");
+      navListOpen.classList.add("c-offcanvas-menu--is-active");
       navOpen.classList.add("nav-toggle-menu--is-active");
     }
     else {
       navActive = false;
-      navListOpen.classList.remove("c-primary-nav--is-active");
+      navListOpen.classList.remove("c-offcanvas-menu--is-active");
       navOpen.classList.remove("nav-toggle-menu--is-active");
     }
   });
