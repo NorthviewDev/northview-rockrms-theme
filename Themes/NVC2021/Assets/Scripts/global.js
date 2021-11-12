@@ -35,22 +35,28 @@ $(function () { //document.ready
   });
    
   var navActive = false,
-    navOpen = document.querySelector('.nav-toggle-menu'),
+    navOpen = document.querySelectorAll('.nav-toggle-menu'),
     navListOpen = document.querySelector('.c-offcanvas-menu');
 
-  navOpen.addEventListener("click", function (event) {
-    event.preventDefault();
-
-    if (navActive === false) {
-      navActive = true;
-      navListOpen.classList.add("c-offcanvas-menu--is-active");
-      navOpen.classList.add("nav-toggle-menu--is-active");
-    }
-    else {
-      navActive = false;
-      navListOpen.classList.remove("c-offcanvas-menu--is-active");
-      navOpen.classList.remove("nav-toggle-menu--is-active");
-    }
+	navOpen.forEach(function(item) {
+  	item.addEventListener("click", function (event) {
+	    event.preventDefault();
+	
+	    if (navActive === false) {
+	      navActive = true;
+	      navListOpen.classList.add("c-offcanvas-menu--is-active");
+	      navOpen.forEach(function(item){
+					item.classList.add("nav-toggle-menu--is-active");
+				});
+	    }
+	    else {
+	      navActive = false;
+	      navListOpen.classList.remove("c-offcanvas-menu--is-active");
+	      navOpen.forEach(function(item){
+					item.classList.remove("nav-toggle-menu--is-active");
+				});
+	    }
+		});
   });
   // Function to execute X function, Y number of times with Z of interval delay 
   function recursiveDelay(functionToCall, executionsNumber, timeoutInMilliseconds) {
