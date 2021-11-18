@@ -1,12 +1,24 @@
 html {
   scroll-behavior: smooth;
 }
+p {
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+h1, .h1,
+h2, .h2,
+h3, .h3,
+p {	
+	&:first-child {
+		margin-top: 0;
+	}
+}
 .c-block-hero__wrapper {
   background-size: cover;
   background-position: center;
   padding: 20px;
   h1 {
-    color: @white;
+    color: @color-white;
     font-size: 40px;
     text-transform: uppercase;
     margin: 0;
@@ -18,12 +30,13 @@ html {
   p {
 		text-shadow: 0 0 6px @color-gray-dark;
     margin: 1em 0;
-    color: @white;
+    color: @color-white;
     font-size: 36px;
   }
 }
 .nvmicrosite {
   //Global
+	margin-bottom: 0;
   .c-header {
     @media (max-width: @screen-sm) {
       //display: none;
@@ -154,7 +167,7 @@ html {
     &__location {
       display: flex;
       flex-direction: column;
-      background-color: @white;
+      background-color: @color-white;
       border-bottom: 3px @brand-secondary solid;
       box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
       @media (min-width: @screen-sm) {
@@ -200,7 +213,7 @@ html {
       }
       .c-campus__name {
         font-size: 1.5rem;
-        background-color: @white;
+        background-color: @color-white;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -225,7 +238,7 @@ html {
           color: @brand-primary;
           border-bottom: 0;
           @media (min-width: @screen-sm) {
-            color: @white;
+            color: @color-white;
             pointer-events: none;
           }
         }
@@ -356,7 +369,7 @@ html {
     margin-right: 100px;
     display: none;
     align-items: center;
-    color: @white;
+    color: @color-white;
     @media (min-width: @screen-sm) {
       display: flex;
     }
@@ -376,9 +389,9 @@ html {
       text-transform: uppercase;
       letter-spacing: 1.9px;
       padding-left: 10px;
-      color: @white;
+      color: @color-white;
       &:hover {
-        color: @accent2;
+        color: @color-white;
       }
     }
   }
@@ -415,7 +428,7 @@ html {
 			/* Icon */
 			&:hover {
 				background-color: @gray-darker;
-				color: @white;
+				color: @color-white;
 			}
 			&::after {
 				content: '\276F';
@@ -442,7 +455,7 @@ html {
         display: flex;
         justify-content: space-between;
         padding: 10px 20px;
-        background: @white;
+        background: @color-white;
         font-weight: bold;
         cursor: pointer;
         border-right: 2px @gray-darker solid;
@@ -454,7 +467,7 @@ html {
         /* Icon */
         &:hover {
           background-color: @gray-darker;
-          color: @white;
+          color: @color-white;
         }
         &::after {
           content: '\276F';
@@ -493,7 +506,7 @@ html {
     // :checked
     input:checked {
       + .tab-label {
-        background: @white;
+        background: @color-white;
         color: @brand-brown;
         border-right: 2px @color-gray-darker solid;
         border-top: 2px @color-gray-darker solid;

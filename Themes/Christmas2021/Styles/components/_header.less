@@ -41,8 +41,8 @@ header {
         display: block;
       }
       .c-logo-link__img .cls-1 {
-        fill: @white;
-        color: @white;
+        fill: @color-white;
+        color: @color-white;
       }
     }
   }
@@ -57,14 +57,14 @@ header {
     }
     .cls-1 {
       transition: all 150ms ease-in-out;
-      fill: @text-color;
-      color: @text-color;
+			fill: @color-white;
+			color: @color-white;
     }
     &:hover,
     &:focus {
       .cls-1 {
-        fill: @color-gray-dark;
-        color: @color-gray-dark;
+        fill: @color-white;
+        color: @color-white;
       }
     }
   }
@@ -111,7 +111,7 @@ header {
       right: 0;
       width: 0;
       display: block;
-      background-color: @white;
+      background-color: @color-white;
       content: '';
       z-index: 0;
       transition: all ease-in-out 150ms;
@@ -134,18 +134,18 @@ header {
   }
   .no-header & {
     @media (min-width: @screen-lg) {
-      color: @white;
+      color: @color-white;
       &:after {
         background-color: @brand-primary;
       }
       &:hover,
       &:focus {
-        color: @white;
+        color: @color-white;
       }
     }
   }
   &.dark {
     background-color: @color-gray-darker;
-    color: @white;
+    color: @color-white;
   }
 }

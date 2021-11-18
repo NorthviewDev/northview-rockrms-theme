@@ -1,33 +1,33 @@
-.notification{
+.notification {
   position: relative;
   color: #ffffff;
-//   font-size: 1rem;
-  background-color:#FF0000;
+  //   font-size: 1rem;
+  background-color: #ff0000;
   padding: 10px;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
   @media (min-width: @screen-sm) {
-//     right: 10%;
+    //     right: 10%;
     margin-top: 0;
   }
-  strong{
+  strong {
     font-size: 1.25rem;
     font-weight: 600;
     text-transform: uppercase;
   }
-  p{
+  p {
     margin-bottom: 0;
-    & + p{
+    & + p {
       margin-bottom: 15px;
     }
   }
-  a{
+  a {
     color: #ffffff;
     border: none;
   }
-  .closer{
+  .closer {
     position: absolute;
     right: 5%;
     top: 60%;
@@ -37,100 +37,101 @@
     @media (min-width: @screen-sm) {
       right: 8%;
     }
-    .icon{
+    .icon {
       color: #ffffff;
       font-size: 1.25rem;
-      transition: color .5s ease-in-out;
-      &:hover{
+      transition: color 0.5s ease-in-out;
+      &:hover {
         color: #ffffff;
       }
     }
   }
-  & + .c-header{
+  & + .c-header {
     position: relative;
   }
 }
 #notification {
-	background-color: @black;
-	color: @white;
-	.zone-content {
-		justify-content: space-between;
-		align-items: flex-start;
-		line-height: 22px;
-		@media (min-width: @screen-sm) {
-			display: flex;
-		}
-		p {
-			margin: 0;
-		}
-		a {
-			color: @white;
-			border: none;
-			text-decoration: none;
-			padding: 10px 15px;
-		}
-	}
-	+ .c-header{
-  	top: 50px;
-	}
+  background-color: @black;
+  color: @white;
+  .zone-content {
+    justify-content: space-between;
+    align-items: flex-start;
+    line-height: 22px;
+    @media (min-width: @screen-sm) {
+      display: flex;
+    }
+    p {
+      margin: 0;
+    }
+    a {
+      color: @white;
+      border: none;
+      text-decoration: none;
+      padding: 10px 15px;
+    }
+  }
+  // + .c-header{
+  // 	top: 50px;
+  // }
 }
 #notification-banner {
-	display: none; //hidden by default; displayed if no cookie set
-	position: fixed;
-	bottom: 0;
-	left: 50%;
-	width: 1680px;
-	z-index: 1000;
-	max-width: 100%;
-	transform: translateX(-50%);
-	background-color: @white;
-	color: @text-color;
-	padding-top: 60px;
-	padding-bottom: 60px;
-	.closer {
-		position: absolute;
-		color: @text-color;
-		top: 25px;
-		right: 25px;
-		text-decoration: none;
-		border: none;
-		cursor: pointer;
-		&:hover, &:focus {
-			color: @brand-primary;
-		}
-	}
-	.flex {
-		justify-content: space-between;
-		align-items: center;
-		@media (min-width: @screen-sm) {
-			display: flex;
-		}
-		h2 {
-			margin-top: 0;
-			font-size: 36px;
-		}
-		.c-buttons {
-			margin-top: @grid-gutter-width;
-			@media (min-width: @screen-sm) {
-				margin-left: @grid-gutter-width;
-			}
-			@media (min-width: @screen-lg) {
-				white-space: nowrap;
-				margin-top: 0;
-			}
-			.c-button {
-				display: block;
-				margin-top: 5px;
-			}
-		}
-		p {
-			//margin: 0;
-		}
-		a {
-			//color: @white;
-			// border: none;
-			// text-decoration: none;
-			// padding: 10px 15px;
-		}
-	}
+  display: none; //hidden by default; displayed if no cookie set
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  width: 1680px;
+  z-index: 1000;
+  max-width: 100%;
+  transform: translateX(-50%);
+  background-color: @white;
+  color: @text-color;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  .closer {
+    position: absolute;
+    color: @text-color;
+    top: 25px;
+    right: 25px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      color: @brand-primary;
+    }
+  }
+  .flex {
+    justify-content: space-between;
+    align-items: center;
+    @media (min-width: @screen-sm) {
+      display: flex;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 36px;
+    }
+    .c-buttons {
+      margin-top: @grid-gutter-width;
+      @media (min-width: @screen-sm) {
+        margin-left: @grid-gutter-width;
+      }
+      @media (min-width: @screen-lg) {
+        white-space: nowrap;
+        margin-top: 0;
+      }
+      .c-button {
+        display: block;
+        margin-top: 5px;
+      }
+    }
+    p {
+      //margin: 0;
+    }
+    a {
+      //color: @white;
+      // border: none;
+      // text-decoration: none;
+      // padding: 10px 15px;
+    }
+  }
 }

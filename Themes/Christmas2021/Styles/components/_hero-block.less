@@ -498,7 +498,7 @@
   }
 }
 .c-block-hero {
-  min-height: ~'calc(100vh - var(--pwa-menu-height))';
+	min-height: calc(100vw/1.77777778);
   position: relative;
   @media (min-width: @screen-sm) {
     padding: 151px 0 119px 96px;
@@ -506,6 +506,9 @@
   @media (min-width: @screen-md) {
     padding: 151px 96px 119px 96px;
   }
+	@media (min-width: @screen-lg) {
+		min-height: ~'calc(100vh - var(--pwa-menu-height))';
+	}	
   #main-feature.has-media & {
     @media (min-width: @screen-sm) {
       padding: 88px 0 42px 96px;
@@ -574,7 +577,7 @@
   font-style: normal;
   position: relative;
   //text-transform: uppercase;
-  color: @white;
+  color: @color-white;
   letter-spacing: 0.5px;
   position: relative;
   font-size: 44px;

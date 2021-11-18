@@ -154,14 +154,15 @@ var BrowserDetect = {
   
   <form id="form1" runat="server">  
   <!-- Page Header -->
-  <header id="site-header">
+  <header id="site-header" class="panel-group">
 		<section id="notification">
 			<Rock:Zone Name="NotificationBar" runat="server" />
 		</section>
-    <div class="c-header" role="banner">
+    <div class="c-header panel" role="banner">
       <Rock:Zone Name="Header" runat="server" />
       <Rock:Zone Name="Navigation" runat="server" />  
       <Rock:Zone Name="Login" runat="server" />
+      <a href="/locations" class="megamenu-footer__link in" data-parent="#site-header">View Map</a>
     </div>
   </header>
   
