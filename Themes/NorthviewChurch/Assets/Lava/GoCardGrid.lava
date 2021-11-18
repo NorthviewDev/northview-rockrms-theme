@@ -19,9 +19,9 @@
           {% endfor %}
         </div>
         <p class="text-center" style="margin:26px 0 0">
-          <a class="c-btn c-btn--large" href="/gotrips" target="">
+          <!--<a class="c-btn c-btn--large" href="/gotrips" target="">
           View Trips
-          </a>
+          </a>-->
           <a id="prep-opener" class="c-btn c-btn--large" href="#go-teams-process-timeline" target="">
           I’m Accepted. What’s Next?
           </a>
