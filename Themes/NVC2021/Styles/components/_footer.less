@@ -26,15 +26,19 @@
   .l-pad--xs {
     padding: 36px 14px 48px;
     @media (min-width: @screen-md) {
-    	padding: 0;
+      padding: 0;
     }
+  }
+  .l-col--2up {
+    column-count: 2;
+    column-gap: var(--s2);
   }
   .l-col--3up {
     column-count: 3;
     column-gap: var(--s2);
   }
   .c-logo-link {
-    border-bottom:none;  
+    border-bottom: none;
     line-height: 0;
     display: block;
     height: 30px;
@@ -45,46 +49,47 @@
       fill: @white;
       color: @white;
     }
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       .cls-1 {
         fill: @color-gray-lightest;
-        color: @color-gray-lightest;      
+        color: @color-gray-lightest;
       }
     }
   }
   .c-section__header {
-  	margin-bottom:0;
-  	h2 {
-    	text-transform: uppercase;
-    	color: @gray;
-    	font-size: 16px;
-    	letter-spacing: 2.67px;
-    	line-height: 22px;    	
-  	}
+    margin-bottom: 0;
+    h2 {
+      text-transform: uppercase;
+      color: @white;
+      font-size: 16px;
+      letter-spacing: 2.67px;
+      line-height: 22px;
+    }
   }
   .c-list--quick-links {
     li {
-    	font-size: 14px;
-    	margin-bottom: 1.35em;
-    	a {
-      	color: @white;
-      	font-weight: normal;
-      	border-bottom-width: 1px;
-    	}
+      font-size: 14px;
+      margin-bottom: 1em;
+      a {
+        color: @white;
+        font-weight: normal;
+        border-bottom-width: 1px;
+      }
     }
   }
   .c-list--social-media-icons {
-    margin-bottom:0;
+    margin-bottom: 0;
     > * + * {
       margin-left: 25px;
-      padding-left:0;
+      padding-left: 0;
     }
     li {
       font-size: 25px;
       a {
         color: @white;
-        border-bottom:none;
-      	font-weight: normal;
+        border-bottom: none;
+        font-weight: normal;
       }
     }
   }
@@ -103,8 +108,8 @@
     }
     a {
       color: @white;
-    	border-bottom-width: 1px;
-    	font-weight: normal;
+      border-bottom-width: 1px;
+      font-weight: normal;
     }
   }
 }

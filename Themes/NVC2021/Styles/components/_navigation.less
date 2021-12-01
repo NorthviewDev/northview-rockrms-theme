@@ -262,7 +262,7 @@
 .c-primary-nav__link {
   color: @gray-darker;
   text-decoration: none;
-  border: none;
+  border-color: transparent;
   position: relative;
   display: inline-block;
   padding-top: 3px;
@@ -271,9 +271,7 @@
   &:hover,
   &:focus {
     color: @gray-darker;
-    &:after {
-      height: 1.4em;
-    }
+		border-color: var(--primary-color);
   }
   // .no-header & {
   //   @media (min-width: @screen-md) {
@@ -310,7 +308,7 @@
     }
     &:hover,
     &:focus {
-      padding-top: 0;
+      //padding-top: 0;
       &:after {
         height: 2px;
         width: 100%;
@@ -357,7 +355,7 @@
   border: none;
   position: absolute;
   width: 100%;
-  bottom: 0;
+  top: 0;
   left: 0;
   &:hover,
   &:focus,
@@ -365,4 +363,7 @@
     background-color: @color-gray-darker;
     color: @white;
   }
+	&.shown {
+		top: 100%;
+	}
 }

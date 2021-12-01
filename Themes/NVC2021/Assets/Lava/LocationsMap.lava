@@ -7,17 +7,19 @@
     <!-- Turf.js plugin -->
     <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
     <div id="campus-locations">
-      <div id='location-search' class='scroll-pane'>
-      <div class='pad'>
-        <div class='stack'>
-          <h2 class="location-search__title">Join Us This Weekend</h2>
-          <div id="address-input" class="form-group"></div>
-          <div class="form-group"><button id="searchButton" type="submit" class="c-btn c-btn--primary c-btn--offset-border">Search<i class="nv-icon nv-icon--carat_right"></i></button></div>        
-        </div>
-        <div id='campus-list' class='listings stack'></div>
-        </div>
-      </div>
-      <div id='campusmap' class='map'></div>
+			<div id='campusmap' class='map'></div>
+			<div class="container">
+      			<div id='location-search' class='scroll-pane'>
+      				<div class='pad'>
+        				<div class='stack'>
+          				<h2 class="location-search__title">Join Us This Weekend</h2>
+          				<div id="address-input" class="form-group"></div>
+          				<div class="form-group"><button id="searchButton" type="submit" class="c-btn c-btn--primary c-btn--offset-border">Search<i class="nv-icon nv-icon--carat_right"></i></button></div>
+        				</div>
+        				<div id='campus-list' class='listings stack'></div>
+        			</div>
+      			</div>
+					</div>
     </div>
     <script>
     $(function(){
@@ -26,7 +28,7 @@
     			maintainPosition: false
     		}
     	).data('jsp');
-    
+
       /* This will let you use the .remove() function later on */
       if (!('remove' in Element.prototype)) {
         Element.prototype.remove = function() {
@@ -38,13 +40,13 @@
 
       mapboxgl.accessToken = 'pk.eyJ1IjoiYmVuZ29zaG93IiwiYSI6ImNrNW83bzVtYTBkMnYzaHF2YmJtbzZ4a2oifQ.TK9VDaAk7wQIbybffPDsJA';
 
-      /** 
+      /**
        * Add the map to the page
       */
       var map = new mapboxgl.Map({
         container: 'campusmap',
         style: 'mapbox://styles/mapbox/light-v10',
-        center: [-86.1860148,40.3312223],
+        center: [-86.7250,40.2470],
         zoom: 8,
         scrollZoom: false
       });
@@ -60,7 +62,8 @@
 {%- for campus in campusesSorted -%}
 {%- assign isActive = campus.IsActive -%}
 {%- assign hasLocation = campus.Location.Latitude -%}
-{%- if isActive and hasLocation -%}
+{%- assign campusType = campus.CampusTypeValueId -%}
+{%- if isActive and hasLocation and campusType != '1454' -%}
 {%- assign serviceDay = "" -%}
 {%- assign displayServiceTimes = "" -%}
 {%- assign campusDescription = campus.Description | Trim -%}
@@ -71,7 +74,7 @@
 {%- capture displayServiceTimes -%}{%- for serviceTime in serviceTimes -%}{%- assign separator='' -%}{%- if forloop.length > 1 and forloop.last != true -%}{% assign separator=', ' -%}{%- endif -%}{%- assign at=' at ' -%}{{ serviceTime.Day | Pluralize}}{{ at }}{%- assign serviceDay = serviceTime.Day -%}{{ serviceTime.Time }}{{ separator }}{%- endfor -%}{%- endcapture -%}
 {%- endif -%}
 {%- assign campusLocation = campus.Location.Street1 | Trim -%}
-{%- capture displayLocationLink -%}{%- if campusLocation != "" -%}<p class='location-link'><i class='nv-icon nv-icon--location_marker'></i><a target='_blank' href='https://www.google.com/maps/dir/?api=1&amp;destination={{campus.Location.Street1}}+{{campus.Location.City}}+{{campus.Location.State}}+{{campus.Location.PostalCode}}'>Map & Directions</a></p>{%- endif -%}{%- endcapture -%}
+{%- capture displayLocationLink -%}{%- if campusLocation != "" -%}<p>{{campus.Location.Street1}}<br />{{campus.Location.City}}, {{campus.Location.State}} {{campus.Location.PostalCode}}</p><p class='location-link'><i class='nv-icon nv-icon--location_marker'></i><a target='_blank' href='https://www.google.com/maps/dir/?api=1&amp;destination={{campus.Location.Street1}}+{{campus.Location.City}}+{{campus.Location.State}}+{{campus.Location.PostalCode}}'>Map & Directions</a></p>{%- endif -%}{%- endcapture -%}
           {
             "geometry": {
                 "type": "Point",
@@ -113,7 +116,7 @@
        * Wait until the map loads to make changes to the map.
       */
       map.on('load', function (e) {
-        /** 
+        /**
          * This is where your '.addLayer()' used to be, instead
          * add only the source without styling a layer
         */
@@ -122,7 +125,7 @@
           "data": stores
         });
 
-        /** 
+        /**
          * Create a new MapboxGeocoder instance.
         */
         var geocoder = new MapboxGeocoder({
@@ -134,7 +137,7 @@
             bbox: [-88.11601868813376,37.76202661177915,-84.75420228188288,41.7876939175587],
             placeholder:'Search by Zip Code'
         });
-        
+
         /**
          * Add all the things to the page:
          * - The location listings on the side of the page
@@ -156,7 +159,7 @@
          * - Highlight the listing for the closest store.
         */
         geocoder.on('result', function(ev) {
-        
+
           /* Get the coordinate of the search result */
           var searchResult = ev.result.geometry;
 
@@ -176,7 +179,7 @@
             });
           });
 
-          /** 
+          /**
            * Sort stores by distance from closest to the `searchResult`
            * to furthest.
           */
@@ -189,8 +192,8 @@
             }
             return 0; // a must be equal to b
           });
-          
-          /** 
+
+          /**
            * Rebuild the listings:
            * Remove the existing listings and build the location
            * list again using the newly sorted stores.
@@ -200,15 +203,15 @@
             listings.removeChild(listings.firstChild);
           }
           buildLocationList(stores);
-        
+
           /* Open a popup for the closest store. */
           createPopUp(stores.features[0]);
-          
+
           /** Highlight the listing for the closest store. */
           var activeListing = document.getElementById('listing-' + stores.features[0].properties.id);
           activeListing.classList.add('active');
 
-          /** 
+          /**
            * Adjust the map camera:
            * Get a bbox that contains both the geocoder result and
            * the closest store. Fit the bounds to that bbox.
@@ -257,7 +260,7 @@
           el.id = "marker-" + marker.properties.id;
           /* Assign the `marker` class to each marker for styling. */
           el.className = 'marker';
-          
+
           /**
            * Create a marker using the div element
            * defined above and add it to the map.
@@ -356,7 +359,8 @@
       function flyToStore(currentFeature) {
         map.flyTo({
             center: currentFeature.geometry.coordinates,
-            zoom: 8
+            zoom: 8,
+            padding: { bottom:160 }
           });
       }
 
@@ -369,7 +373,8 @@
 
         var popup = new mapboxgl.Popup({
           closeOnClick: true,
-          closeButton: true
+          closeButton: true,
+          anchor: 'top'
         })
           .setLngLat(currentFeature.geometry.coordinates)
           .setHTML('<div style="padding:20px">' +

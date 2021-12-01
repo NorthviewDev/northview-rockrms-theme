@@ -1,19 +1,27 @@
 <nav id="nav" class="c-primary-nav no-header">
-		<div class="c-primary-nav__content">
-			<ul class="c-primary-nav__list">
-				<li class="c-primary-nav__item">
-					<a class="c-primary-nav__link collapsed" role="button" data-toggle="collapse" data-parent="#site-header" href="#collapse0-locations" aria-expanded="false" aria-controls="collapse1"><span>Locations</span> <b class="nv-icon nv-icon--carat_right_large"></b></a>
-					{% include "~~/Assets/Lava/PageMegaMenus.lava" %}
-				</li>
-				<li class="c-primary-nav__item">
-					<a href="/media" class="c-primary-nav__link"><span>Media</span></a>
-				</li>
-				<li class="c-primary-nav__item">
-					<a href="/whattoexpect" class="c-primary-nav__link"><span>What to Expect</span></a>
-				</li>
-				<li class="c-primary-nav__item">
-					<a href="/give" class="c-primary-nav__link"><span>Give</span></a>
-				</li>
-			</ul><!--end c-primary-nav__list-->
-		</div>
-	</nav>
+	<div class="c-primary-nav__content">
+		<ul class="c-primary-nav__list">
+			<li class="c-primary-nav__item">
+				<a class="c-primary-nav__link collapsed" role="button" id="locations-opener" data-toggle="collapse" data-parent="#site-header" href="#collapse0-locations" aria-expanded="false" aria-controls="collapse1"><span>Locations</span> <b class="nv-icon nv-icon--carat_right_large"></b></a>
+				{% include "~~/Assets/Lava/PageMegaMenus.lava" %}
+			</li>
+			<li class="c-primary-nav__item">
+				<a href="/media" class="c-primary-nav__link"><span>Media</span></a>
+			</li>
+			<li class="c-primary-nav__item">
+				<a href="/whattoexpect" class="c-primary-nav__link"><span>What to Expect</span></a>
+			</li>
+			<li class="c-primary-nav__item">
+				<a href="/give" class="c-primary-nav__link"><span>Give</span></a>
+			</li>
+		</ul><!--end c-primary-nav__list-->
+	</div>
+</nav>
+<script>
+$('#collapse0-locations').on('show.bs.collapse', function () {
+		$('#locations-link').toggleClass('shown');
+	});
+$('#collapse0-locations').on('hide.bs.collapse', function () {
+	$('#locations-link').toggleClass('shown');
+});
+</script>

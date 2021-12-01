@@ -172,7 +172,7 @@ var BrowserDetect = {
   <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
   
   <footer id="site-footer" role="contentinfo">
-    <section class="c-section c-section--dark">
+    <section class="c-section">
       <div class="container">
         <Rock:Zone Name="Footer" runat="server" />
       </div>

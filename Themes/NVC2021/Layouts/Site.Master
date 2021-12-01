@@ -80,7 +80,7 @@
 	<link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/_icons/webfont/style.css") %>"/>
   <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", true) %>"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"/>
-  <link rel="stylesheet" href="https://use.typekit.net/uzz1nzz.css">
+  <link rel="stylesheet" href="https://use.typekit.net/qqn7fdp.css">
   
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" ></script>
   <script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/global.js") %>"></script>
@@ -162,7 +162,7 @@ var BrowserDetect = {
       <Rock:Zone Name="Header" runat="server" />
       <Rock:Zone Name="Navigation" runat="server" />  
       <Rock:Zone Name="Login" runat="server" />
-      <a href="/locations" class="megamenu-footer__link in" data-parent="#site-header">View Map</a>
+      <a href="/locations" id="locations-link" class="megamenu-footer__link" data-parent="#site-header">View Map</a>
     </div>
   </header>
   

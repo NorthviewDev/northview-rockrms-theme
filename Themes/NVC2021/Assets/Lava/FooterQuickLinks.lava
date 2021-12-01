@@ -2,7 +2,7 @@
     <div class="c-section__header text-left">
         <h2>Quick Links</h2>
     </div>
-    <ul class="c-list--quick-links">
+    <ul class="c-list--quick-links l-col--2up">
     {% for definedValue in DefinedValues %}
         {% assign LinkClass = definedValue | Attribute:'LinkClass','RawValue' %}
         {% assign LinkTarget = definedValue | Attribute:'LinkTarget','RawValue' %}

@@ -53,6 +53,7 @@
 #notification {
   background-color: @black;
   color: @white;
+	font-size: 16px;
   .zone-content {
     justify-content: space-between;
     align-items: flex-start;
@@ -65,10 +66,17 @@
     }
     a {
       color: @white;
-      border: none;
       text-decoration: none;
-      padding: 10px 15px;
-    }
+			border-color: transparent;
+			text-decoration: none;
+			margin: 10px 24px 8px;
+			padding: 0;
+			display: inline-block;
+			&:hover {
+				border-color: var(--primary-color);
+				background: none;
+			}
+		}
   }
   // + .c-header{
   // 	top: 50px;
@@ -105,11 +113,18 @@
     align-items: center;
     @media (min-width: @screen-sm) {
       display: flex;
+			gap: 24px;
+			align-items: center;
     }
     h2 {
       margin-top: 0;
       font-size: 36px;
     }
+		.c-text {
+			@media (min-width: @screen-sm) {
+				width: 50%;
+			}
+		}
     .c-buttons {
       margin-top: @grid-gutter-width;
       @media (min-width: @screen-sm) {
