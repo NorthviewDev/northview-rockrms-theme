@@ -7,7 +7,7 @@
       <div class="col-lg-12 center-block">
         <div class="isotope-grid c-card__grid clearfix">
           {% for Item in Items %}
-          <div class="c-card isotope-item {{Item | Attribute:'Campus' | ToCssClass}}" data-category="{{Item.Attribute:'Campus' | ToCssClass}}">
+          <div class="c-card isotope-item {{Item | Attribute:'Campus' | ToCssClass}}" data-category="{{Item | Attribute:'Campus' | ToCssClass}}">
             <div class="c-card__wrapper">
             <img src="/GetImage.ashx?guid={{Item | Attribute:'Image','RawValue'}}&w=437&h=247&mode=crop&scale=both" alt="" />
             <div class="c-card__content">

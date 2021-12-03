@@ -1,4 +1,4 @@
-    <section id="latest-message" class="c-section g-padding--bottom-s7 g-padding--sm-bottom-s10" style="background-image:url('/Themes/NorthviewChurch/Assets/_img/background-topography2.png');background-color:#ECECEC;background-size:cover;">
+    <section id="latest-message" class="c-section" style="background-image:url('/Themes/NorthviewChurch/Assets/_img/background-topography2.png');background-size:cover;">
       <div class="container">
         <div class="row">
           <div class="col-lg-10 center-block">

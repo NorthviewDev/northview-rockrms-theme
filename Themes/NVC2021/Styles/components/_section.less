@@ -6,21 +6,53 @@
     --section-padding-top: var(--s8);
     --section-padding-bottom: var(--s8);
   }
+  .-padTopXL &,
+  &.-padTopXL {
+    --section-padding-top: var(--s8);
+    @media (min-width: @screen-lg) {
+      --section-padding-top: var(--s16);
+    }
+  }
+  .-padTopLarge &,
+  &.-padTopLarge {
+    --section-padding-top: var(--s6);
+    @media (min-width: @screen-lg) {
+      --section-padding-top: var(--s12);
+    }
+  }
+  .-padTopSmall &,
   &.-padTopSmall {
     --section-padding-top: var(--s2);
     @media (min-width: @screen-lg) {
       --section-padding-top: var(--s4);
     }
   }
+  .-padTopNone &,
   &.-padTopNone {
     --section-padding-top: 0;
   }
+  .-padBottomXL &,
+  &.-padBottomXL {
+    --section-padding-bottom: var(--s8);
+    @media (min-width: @screen-lg) {
+      --section-padding-bottom: var(--s16);
+    }
+  }
+  .-padBottomLarge &,
+  &.-padBottomLarge {
+    --section-padding-bottom: var(--s6);
+    @media (min-width: @screen-lg) {
+      --section-padding-bottom: var(--s12);
+    }
+  }
+  .-padBottomSmall &,
   &.-padBottomSmall {
     --section-padding-bottom: var(--s2);
     @media (min-width: @screen-lg) {
       --section-padding-bottom: var(--s4);
     }
   }
+  .-padBottomNone &,
   &.-padBottomNone {
     --section-padding-bottom: 0;
   }
@@ -309,21 +341,37 @@
   }
 }
 .c-section--overlap-top {
-  .container:first-child {
-    --section-overlap-top: ~'calc(@{grid-gutter-width} * -3)'; //translate along negative Y axis
-    @media (min-width: @screen-lg) {
-      --section-overlap-top: ~'calc(@{grid-gutter-width} * -7)'; //translate along negative Y axis
-    }
-    body.no-title & {
-      @media (min-width: @screen-sm) {
-        --section-overlap-top: ~'calc(@{grid-gutter-width} * -13)'; //translate along negative Y axis
-      }
-      @media (min-width: @screen-lg) {
-        --section-overlap-top: ~'calc(@{grid-gutter-width} * -12)'; //translate along negative Y axis
-      }
-    }
-    margin-top: var(--section-overlap-top);
+  background-color: transparent;
+  .c-section__header {
+    height: 0;
+    margin: 0;
   }
+  .c-card--title-highlight {
+    margin: 0;
+    position: relative;
+    z-index: 50;
+    h2 {
+      text-transform: none;
+    }
+    .c-card__body {
+      transform: translateY(-50%);
+    }
+  }
+  // .container:first-child {
+  //   --section-overlap-top: ~'calc(@{grid-gutter-width} * -3)'; //translate along negative Y axis
+  //   @media (min-width: @screen-lg) {
+  //     --section-overlap-top: ~'calc(@{grid-gutter-width} * -7)'; //translate along negative Y axis
+  //   }
+  //   body.no-title & {
+  //     @media (min-width: @screen-sm) {
+  //       --section-overlap-top: ~'calc(@{grid-gutter-width} * -13)'; //translate along negative Y axis
+  //     }
+  //     @media (min-width: @screen-lg) {
+  //       --section-overlap-top: ~'calc(@{grid-gutter-width} * -12)'; //translate along negative Y axis
+  //     }
+  //   }
+  //   margin-top: var(--section-overlap-top);
+  // }
 }
 .c-section__header {
   text-align: center;
@@ -338,6 +386,7 @@
     margin-bottom: var(--s3);
   }
   h2 {
+    text-transform: uppercase;
     color: @text-color;
     font-size: 29px;
     margin-top: 0;
@@ -349,7 +398,7 @@
   #featured-events &,
   .c-section--dark & {
     h2 {
-      color: @gray;
+      color: @white;
       letter-spacing: 1px;
       text-transform: uppercase;
       @media (min-width: @screen-sm) {
@@ -401,7 +450,6 @@
     h2 {
       display: inline-block;
       background: white;
-      text-transform: uppercase;
       padding-top: 50px;
       padding-left: 50px;
       padding-right: 20px;
@@ -428,21 +476,20 @@
 .c-section__description {
   color: @text-color;
   font-size: 24px;
-  line-height: 1.1;
   text-align: center;
   text-transform: none;
-  font-family: @headings-font-family;
-  font-weight: 600;
-  margin-top: var(--s1);
+  font-weight: 400;
+  margin: var(--s1) auto 0;
+  width: 66.6667%;
   @media (min-width: @screen-sm) {
-    margin-top: var(--s3);
-    font-size: 36px;
+    margin-top: var(--s2);
+    font-size: 30px;
   }
   .c-section--light & {
     color: @gray-darker;
   }
   .c-section--dark & {
-    color: @white;
+    color: @gray-lighter;
   }
 }
 .c-section__footer {

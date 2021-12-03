@@ -1,0 +1,116 @@
+
+{% comment %}
+Off-canvas menu has to be outside the page content blocks
+{% endcomment %}
+{%- assign pageHeaderImage = CurrentPage | Attribute:'PageHeaderImage','RawValue' -%}
+{%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
+{%- assign sectionClass="" -%}
+{%- if pageHeaderImage != "" || if pageHeaderVideo != "" -%}
+	{%- assign sectionClass=" has-media" -%}
+{%- else -%}
+	{%- assign sectionClass=" no-header" -%}
+{%- endif -%}
+{% if Page.DisplayChildPages and Page.Pages != empty %}
+	<nav id="offcanvas" class="c-offcanvas-menu{{ sectionClass }}">
+		<a class="closer nav-toggle-menu"><i class="nv-icon nv-icon--close"></i></a>
+		<div class="c-offcanvas__content">
+			<ul id="offcanvas-menu" class="c-offcanvas__list panel-group">
+			{% comment %}
+			{% for childPage in Page.Pages %}
+				<li class="c-offcanvas__item{% if childPage.Current %} active{% endif %} panel">
+				{% if childPage.DisplayChildPages == 'true' and childPage.Pages and childPage.Pages != empty %}
+					<a class="c-offcanvas__link collapsed" role="button" data-toggle="collapse" data-parent="#offcanvas-menu" href="#collapse{{ forloop.index }}-{{ childPage.Title | ToCssClass }}" aria-expanded="{% if isopen == ' -active' %}true{% else %}false{% endif %}" aria-controls="collapse{{ forloop.index }}"><span>{{ childPage.Title }}</span> <b class="nv-icon nv-icon--ornament_plus"></b></a>
+					<div id="collapse{{ forloop.index }}-{{ childPage.Title | ToCssClass }}" class="panel-collapse collapse">
+						<ul class="c-offcanvas__submenu">
+							{% for greatGrandChildPage in childPage.Pages %}
+							<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+								<a href="{{ greatGrandChildPage.Url }}">{{ greatGrandChildPage.Title }}</a>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% else %}
+					<a href="{{ childPage.Url }}" class="c-offcanvas__link"><span>{{ childPage.Title }}</span></a>
+				{% endif %}
+				</li>
+			{% endfor %}
+
+			{% for includedPage in IncludePageList  %}
+			{% assign path = 'Global' | Page:'Path' %}
+			{% assign attributeParts = includedPage | PropertyToKeyValue %}
+				<a href="{{ attributeParts.Value }}" class="c-btn c-btn--display-block"><span>{{ attributeParts.Key }}</span></a>
+			{% endfor %}
+
+			{% endcomment %}
+			<li class="c-offcanvas__item{% if path == attributeParts.Value %} active{% endif %}">
+				<a href="/media" class="c-offcanvas__link collapsed"><span>Media</span></a>
+			</li>
+			<li class="c-offcanvas__item{% if path == attributeParts.Value %} active{% endif %}">
+				<a href="/whattoexpect" class="c-offcanvas__link collapsed"><span>What To Expect</span></a>
+			</li>
+			<li class="c-offcanvas__item{% if childPage.Current %} active{% endif %} panel">
+					<a class="c-offcanvas__link collapsed" role="button" data-toggle="collapse" data-parent="#offcanvas-menu" href="#collapse1-{{ childPage.Title | ToCssClass }}" aria-expanded="{% if isopen == ' -active' %}true{% else %}false{% endif %}" aria-controls="collapse{{ forloop.index }}">
+						<span>Who We Are</span><span class="icons"><b class="nv-icon nv-icon--ornament_plus"></b><b class="nv-icon nv-icon--ornament_minus"></b></span></a>
+					<div id="collapse1-{{ childPage.Title | ToCssClass }}" class="panel-collapse collapse">
+						<ul class="c-offcanvas__submenu">
+							<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+								<a href="/beliefs">Beliefs</a>
+							</li>
+							<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+								<a href="/staff">Leadership</a>
+							</li>
+							<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+								<a href="/ministries">Ways to Get Involved</a>
+							</li>
+						</ul>
+					</div>
+			</li>
+			<li class="c-offcanvas__item{% if childPage.Current %} active{% endif %} panel">
+				<a class="c-offcanvas__link collapsed" role="button" data-toggle="collapse" data-parent="#offcanvas-menu" href="#collapse2-{{ childPage.Title | ToCssClass }}" aria-expanded="{% if isopen == ' -active' %}true{% else %}false{% endif %}" aria-controls="collapse{{ forloop.index }}">
+					<span>Get Connected</span> <span class="icons"><b class="nv-icon nv-icon--ornament_plus"></b><b class="nv-icon nv-icon--ornament_minus"></b></span></a>
+				<div id="collapse2-{{ childPage.Title | ToCssClass }}" class="panel-collapse collapse">
+					<ul class="c-offcanvas__submenu">
+						<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+							<a href="/kids">Kids</a>
+						</li>
+						<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+							<a href="/students">Students</a>
+						</li>
+						<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+							<a href="/connect">Get Started</a>
+						</li>
+						<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+							<a href="/groups">Groups</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="c-offcanvas__item{% if childPage.Current %} active{% endif %} panel">
+				<a class="c-offcanvas__link collapsed" role="button" data-toggle="collapse" data-parent="#offcanvas-menu" href="#collapse3-{{ childPage.Title | ToCssClass }}" aria-expanded="{% if isopen == ' -active' %}true{% else %}false{% endif %}" aria-controls="collapse{{ forloop.index }}">
+					<span>Serve</span> <span class="icons"><b class="nv-icon nv-icon--ornament_plus"></b><b class="nv-icon nv-icon--ornament_minus"></b></span></a>
+				<div id="collapse3-{{ childPage.Title | ToCssClass }}" class="panel-collapse collapse">
+					<ul class="c-offcanvas__submenu">
+						<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+							<a href="/serve">At Northview</a>
+						</li>
+						<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+							<a href="/serve/local">Locally</a>
+						</li>
+						<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+							<a href="/serve/global">Globally</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="c-offcanvas__item{% if path == attributeParts.Value %} active{% endif %}">
+				<a href="/events" class="c-offcanvas__link collapsed"><span>Events</span></a>
+			</li>
+			<li class="c-offcanvas__item{% if path == attributeParts.Value %} active{% endif %}">
+				<a href="/give" class="c-offcanvas__link collapsed"><span>Give</span></a>
+			</li>
+			</ul><!--end c-offcanvas__list-->
+			<a href="/invite" class="c-btn c-btn--display-block">Invite A Friend</a>
+			<a href="/contact" class="c-btn c-btn--display-block">Contact Us</a>
+		</div>
+	</nav><!--end c-offcanvas-->
+{% endif %}

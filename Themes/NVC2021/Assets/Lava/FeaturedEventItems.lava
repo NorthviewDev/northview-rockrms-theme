@@ -1,3 +1,14 @@
+<section class="c-section c-section--light">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-{{ sectionTitleWidth }} {{ sectionTitleAlignment }}-block'>
+                <div class="c-section__header {{ sectionTitleStyle }}">
+                    <h2><span>Events</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class='col-lg-12'>
 {%- if numEvents == null or numEvents == "" -%}
 {%- assign numEvents = 3 -%}
 {%- endif -%}
@@ -25,13 +36,13 @@
       <h3 class="c-card__title">{{ event.Name }}</h3>
       <ul class="c-block__date-time c-list--inline">
         <li><i class="nv-icon nv-icon--calendar"></i> {{ event.Date | Date:"M/d/yyyy" }}</li>
-        
+
         {% comment %}
           Removing the event time from the feature events block. - TAS 2/5/20
           <li><i class="nv-icon nv-icon--clock"></i> {{ event.Time }}!</li>
         {% endcomment %}
-        
-        
+
+
       </ul>
       <p>
       {%- if eventDetailPage != "" -%}
@@ -44,3 +55,10 @@
   </a><!--/.c-card-->
 {%- endfor -%}
 </div><!--/.l-grid-->
+<div class="c-section__footer">
+<p class="text-center"><a href="/events" class="c-btn">All Events<i class="nv-icon nv-icon--carat_right"></i></a></p>
+</div>
+</div>
+</div>
+</div>
+</section>

@@ -80,7 +80,7 @@
 	<link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/_icons/webfont/style.css") %>"/>
   <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", true) %>"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"/>
-  <link rel="stylesheet" href="https://use.typekit.net/uzz1nzz.css">
+  <link rel="stylesheet" href="https://use.typekit.net/qqn7fdp.css">
   
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" ></script>
   <script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/global.js") %>"></script>
@@ -152,17 +152,17 @@ var BrowserDetect = {
 </head>
 <body runat="server" id="body">
   
-  <form id="form1" runat="server">
-    <section id="notification">
-    <Rock:Zone Name="NotificationBar" runat="server" />
-    </section>
-  
+  <form id="form1" runat="server">  
   <!-- Page Header -->
-  <header>
-    <div class="c-header" role="banner">
+  <header id="site-header" class="panel-group">
+		<section id="notification">
+			<Rock:Zone Name="NotificationBar" runat="server" />
+		</section>
+    <div class="c-header panel" role="banner">
       <Rock:Zone Name="Header" runat="server" />
       <Rock:Zone Name="Navigation" runat="server" />  
       <Rock:Zone Name="Login" runat="server" />
+      <a href="/locations" id="locations-link" class="megamenu-footer__link" data-parent="#site-header">View Map</a>
     </div>
   </header>
   

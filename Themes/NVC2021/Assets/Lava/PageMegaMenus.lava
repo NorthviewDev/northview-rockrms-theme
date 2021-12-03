@@ -1,0 +1,70 @@
+<div id="collapse0-locations" class="panel-collapse collapse" style="width:0">
+	<ul class="c-nav__submenu">
+		<div>
+			{% campus where:'IsActive == true' sort:'Order' %}
+			{% for Campus in campusItems %}
+			<li class="c-nav__link" id="menu_{{ Campus.Name | ToCssClass }}">
+				<a href="{{ Campus.Url }}">{{ Campus.Name }}</a>
+			</li>
+			{% assign numItems = forloop.length %}
+			{% assign numCols = 3 %}
+			{% assign numItemsPerCol = numItems | DividedBy:numCols | Ceiling %}
+			{% assign newCol = forloop.index | Modulo:numItemsPerCol %}
+			{% if newCol == '0' %}
+		</div><div>
+			{% endif %}
+			{% endfor %}
+			{% endcampus %}
+		</div>
+		<div>
+			<li class="c-nav__link" id="menu_community-sites">
+				<a href="/locations">Community Sites</a>
+			</li>
+			<li class="c-nav__link" id="menu_god-behind-bars">
+				<a href="/locations">God Behind Bars</a>
+			</li>
+		</div>
+	</ul>
+</div>
+{% comment %}
+{% if Page.DisplayChildPages and Page.Pages != empty %}
+	{% for childPage in Page.Pages %}
+		{% if childPage.DisplayChildPages == 'true' and childPage.Pages and childPage.Pages != empty %}
+		{% assign pageSlug = childPage.Title | ToCssClass %}
+			<div id="collapse{{ forloop.index }}-{{ pageSlug }}" class="panel-collapse collapse{% if isopen == ' -active' %} in{% endif %}">
+				<div class="row">
+				<div class="col-md-7 col-md-offset-3">
+				<ul class="c-nav__submenu">
+					<div>
+					{% for grandChildPage in childPage.Pages %}
+					<li class="c-nav__link{% if grandChildPage.Current == 'true' %} -active{% endif%}{% if grandChildPage.DisplayChildPages == 'true' and grandChildPage.Pages and grandChildPage.Pages != empty %} -parent{% endif%}" id="menu_{{ pageSlug }}_{{ grandChildPage.Title | ToCssClass }}">
+						{% if grandChildPage.DisplayChildPages == 'true' and grandChildPage.Pages and grandChildPage.Pages != empty %}
+						<a href="#">{{ grandChildPage.Title }}</a>
+						<ul class="c-nav__submenu">
+							{% for greatGrandChildPage in grandChildPage.Pages %}
+							<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+								<a href="{{ greatGrandChildPage.Url }}">{{ greatGrandChildPage.Title }}</a>
+							</li>
+							{% endfor %}
+						</ul>
+						{% else %}
+						<a href="{{ grandChildPage.Url }}">{{ grandChildPage.Title }}</a>
+						{% endif %}
+					</li>
+					{% assign numItems = forloop.length %}
+					{% assign numCols = 4 %}
+					{% assign numItemsPerCol = numItems | DividedBy:numCols | Ceiling %}
+					{% assign newCol = forloop.index | Modulo:numItemsPerCol %}
+					{% if newCol == '0' %}
+					</div><div>
+					{% endif %}
+					{% endfor %}
+					</div>
+				</ul>
+				</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}
+{% endcomment %}

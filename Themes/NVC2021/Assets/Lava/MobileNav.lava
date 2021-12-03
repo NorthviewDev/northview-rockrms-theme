@@ -2,15 +2,27 @@
 {%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
 {%- assign sectionClass="" -%}
 {%- if pageHeaderImage != "" or pageHeaderVideo != "" -%}
-  {%- assign sectionClass=" has-media" -%}
+	{%- assign sectionClass=" has-media" -%}
 {%- else -%}
-  {%- assign sectionClass=" no-header" -%}
+	{%- assign sectionClass=" no-header" -%}
 {%- endif -%}
-  	<div class="c-header__controls{{ sectionClass }}">
-  		<a href="/" class="c-header__control dark hidden-md hidden-lg"><i class="nv-icon nv-icon--church_logomark"></i><span class="sr-only">Home</span></a>
-  		<a href="#nav" class="c-header__control nav-toggle nav-toggle-menu hidden-md hidden-lg"><i class="nv-icon nv-icon--menu"></i><span class="sr-only">Menu</span></a>
-  		<a href="/locations" class="c-header__control hidden-md hidden-lg"><i class="nv-icon nv-icon--location_marker"></i><span class="sr-only">Locations</span></a>
-  		<a href="/give" class="c-header__control visible-md-inline-block visible-lg-inline-block" style="-ms-grid-row:1; -ms-grid-column:1;"><span class="" style="text-transform: uppercase;font-family: var(--font-family-condensed);font-size: 25px;">Give</span></a>
-  		<a href="/myaccount" class="c-header__control" style="-ms-grid-row:1; -ms-grid-column:2;"><i class="nv-icon nv-icon--account"></i><span class="sr-only">My Account</span></a>
-  		<a href="/search" class="c-header__control nav-toggle nav-toggle-search" style="-ms-grid-row:1; -ms-grid-column:3;"><i class="nv-icon nv-icon--search"></i><span class="sr-only">Search</span></a>
-  	</div><!-- end c-header__controls -->
+<ul class="nav navbar-nav c-header__controls{{ sectionClass }}">
+	<li class="c-header__control hidden-md hidden-lg"><a href="/" class="dark"><i class="nv-icon nv-icon--church_logomark"></i><span class="sr-only">Home</span></a>
+	<li class="c-header__control nav-toggle nav-toggle-menu"><a href="#nav"><i class="nv-icon nv-icon--menu"></i><span class="sr-only">Menu</span></a>
+	<li class="c-header__control dropdown hidden-md hidden-lg">
+		<a class="dropdown-toggle navbar-link" href="#" data-toggle="dropdown">
+				<i class="nv-icon nv-icon--location_marker"></i>
+				<span class="sr-only">Locations</span>
+		</a>
+		<ul class="dropdown-menu">
+		{%- for campus in Campuses -%}
+		{%- if campus.IsActive -%}
+				<li><a href="{{ campus.Url }}">{{ campus.Name }}</a></li>
+		{%- endif -%}
+		{%- endfor -%}
+				<li><a href="/locations">Community Sites</a></li>
+				<li><a href="/locations">God Behind Bars</a></li>
+		</ul>
+	</li>
+	<li class="c-header__control nav-toggle nav-toggle-search"><a href="/search"><i class="nv-icon nv-icon--search"></i><span class="sr-only">Search</span></a>
+</ul><!-- end c-header__controls -->
