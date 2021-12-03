@@ -1,6 +1,10 @@
 /*** NAVIGATION MENU COMPONENT ***/
 #zone-navigation {
   flex: 1 1 auto;
+	.navbar {
+		border: none;
+		margin:0;
+	}
 }
 .c-offcanvas-menu {
   display: flex;
@@ -113,7 +117,7 @@
   display: flex;
   @media (min-width: @screen-md) {
     margin-top: 1px;
-    margin-bottom: 1px;
+    margin-bottom: 0;
   }
 }
 .c-offcanvas__item {
@@ -334,16 +338,6 @@
   &:focus {
     color: @text-color;
   }
-}
-#megamenus {
-  // position: fixed;
-  // top: 128px;
-  // left: 50%;
-  // background: #EAEAEA;
-  // z-index: 25;
-  // width: 1680px;
-  // transform: translateX(-50%);
-  // max-width: 100%;
 }
 .megamenu-footer__link {
   display: block;

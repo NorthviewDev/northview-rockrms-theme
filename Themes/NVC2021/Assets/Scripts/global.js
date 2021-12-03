@@ -1,6 +1,13 @@
 //Global Scripts
 $(function () {
-  //document.ready
+//document.ready
+	
+	/*** calculate header height for fixed position and content margin ***/
+	let fixedHeader = document.getElementById('site-header');
+	let siteBody = document.getElementById('zone-feature');
+	fixedHeader.style.position = 'fixed';
+	siteBody.style.paddingTop = fixedHeader.offsetHeight + 'px';
+	
   $('.rock-text-box input.form-control').each(function () {
     if ($(this).is(':focus')) {
       $(this).closest('.form-group').addClass('focused');

@@ -77,6 +77,9 @@
 				background: none;
 			}
 		}
+		.dropdown-menu>li>a {
+			color: @gray-darker;
+		}
   }
   // + .c-header{
   // 	top: 50px;
@@ -87,7 +90,7 @@
   position: fixed;
   bottom: 0;
   left: 50%;
-  width: 1680px;
+  width: 100%;
   z-index: 1000;
   max-width: 100%;
   transform: translateX(-50%);
@@ -95,6 +98,9 @@
   color: @text-color;
   padding-top: 60px;
   padding-bottom: 60px;
+	@media (min-width: @max-width) {
+		width: @max-width;
+	}
   .closer {
     position: absolute;
     color: @text-color;

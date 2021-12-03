@@ -1,15 +1,15 @@
 /*** HEADER, LOGO, NAVIGATION COMPONENTS ***/
 #site-header {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1010;
   max-width: 100%;
-  @media (min-width: @screen-md) {
-    //top: 0;
+	margin:0;
+	@media (min-width: @max-width) {
+		width: @max-width;
     left: 50%;
-    width: 1680px;
     bottom: auto;
     transform: translateX(-50%);
   }
@@ -108,7 +108,10 @@
     border-bottom: none;
     z-index: 99;
     padding: 0;
-    margin: 12px 0;
+    margin: 0;
+	 @media (min-width: @screen-md) {
+		  margin: 12px 0;
+	 }
     &:before,
     &:after {
       content: none;
@@ -117,8 +120,7 @@
       text-align: center;
       color: @color-gray-darker;
       font-size: 20px;
-      padding-top: 20px;
-      padding-bottom: 20px;
+      padding: 20px;
       line-height: 1;
       border: none;
       transition: all 150ms ease-in-out;
@@ -181,10 +183,22 @@
         }
       }
     }
-    .dropdown-toggle {
+    > li > a {
       font-size: 20px;
+			padding: 20px;
+			text-indent: -999em;
+			display: block;
+			position: relative;
+			width: 60px;
+			height: 60px;
+			text-align: left;
       &:before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
         content: '\e90f';
+				text-indent:0;
         font-family: 'northviewchurch' !important;
         speak: never;
         font-style: normal;

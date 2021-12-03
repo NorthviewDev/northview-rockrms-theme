@@ -6,7 +6,9 @@
   fill: @gray-lighter;
   text-align: center;
   transition: all ease-in-out 100ms;
-  padding: 0 50px;
+	@media (min-width: @screen-md) {
+		padding: 0 50px;
+	}
   &:hover,
   &:focus {
     outline: none;
