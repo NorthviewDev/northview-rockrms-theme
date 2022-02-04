@@ -343,18 +343,25 @@
 .c-section--overlap-top {
   background-color: transparent;
   .c-section__header {
-    height: 0;
+    height: 130px;
     margin: 0;
+    @media screen and (min-width: @screen-sm) {
+      height: 0;
+    }
   }
   .c-card--title-highlight {
     margin: 0;
     position: relative;
     z-index: 50;
+    overflow: visible;
     h2 {
       text-transform: none;
     }
     .c-card__body {
-      transform: translateY(-50%);
+      transform: translateY(-30%);
+      @media screen and (min-width: @screen-sm) {
+        transform: translateY(-50%);
+      }
     }
   }
   // .container:first-child {
@@ -473,19 +480,19 @@
   }
 }
 .c-section__description {
-  color: @text-color;
-  font-size: 24px;
+  color: @color-gray;
+  font-size: 18px;
   text-align: center;
   text-transform: none;
   font-weight: 400;
   margin: var(--s1) auto 0;
-  width: 66.6667%;
+  // width: 66.6667%;
   @media (min-width: @screen-sm) {
     margin-top: var(--s2);
     font-size: 30px;
   }
   .c-section--light & {
-    color: @gray-darker;
+    color: @color-gray;
   }
   .c-section--dark & {
     color: @gray-lighter;

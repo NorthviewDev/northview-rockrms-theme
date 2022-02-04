@@ -2,27 +2,27 @@
 {%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
 {%- assign sectionClass="" -%}
 {%- if pageHeaderImage != "" or pageHeaderVideo != "" -%}
-	{%- assign sectionClass=" has-media" -%}
+{%- assign sectionClass=" has-media" -%}
 {%- else -%}
-	{%- assign sectionClass=" no-header" -%}
+{%- assign sectionClass=" no-header" -%}
 {%- endif -%}
 <ul class="nav navbar-nav c-header__controls{{ sectionClass }}">
 	<li class="c-header__control hidden-md hidden-lg"><a href="/" class="dark"><i class="nv-icon nv-icon--church_logomark"></i><span class="sr-only">Home</span></a>
-	<li class="c-header__control nav-toggle nav-toggle-menu"><a href="#nav"><i class="nv-icon nv-icon--menu"></i><span class="sr-only">Menu</span></a>
 	<li class="c-header__control dropdown hidden-md hidden-lg">
 		<a class="dropdown-toggle navbar-link" href="#" data-toggle="dropdown">
-				<i class="nv-icon nv-icon--location_marker"></i>
-				<span class="sr-only">Locations</span>
+			<i class="nv-icon nv-icon--location_marker"></i>
+			<span class="sr-only">Locations</span>
 		</a>
 		<ul class="dropdown-menu">
-		{%- for campus in Campuses -%}
-		{%- if campus.IsActive -%}
-				<li><a href="{{ campus.Url }}">{{ campus.Name }}</a></li>
-		{%- endif -%}
-		{%- endfor -%}
-				<li><a href="/locations">Community Sites</a></li>
-				<li><a href="/locations">God Behind Bars</a></li>
+			{%- for campus in Campuses -%}
+			{%- if campus.IsActive -%}
+			<li><a href="{{ campus.Url }}">{{ campus.Name }}</a></li>
+			{%- endif -%}
+			{%- endfor -%}
+			<li><a href="/locations">Community Sites</a></li>
+			<li><a href="/locations">God Behind Bars</a></li>
 		</ul>
 	</li>
 	<li class="c-header__control nav-toggle nav-toggle-search"><a href="/search"><i class="nv-icon nv-icon--search"></i><span class="sr-only">Search</span></a>
+	<li class="c-header__control nav-toggle nav-toggle-menu"><a href="#nav"><i class="nv-icon nv-icon--menu"></i><span class="sr-only">Menu</span></a>
 </ul><!-- end c-header__controls -->

@@ -14,14 +14,18 @@
 			<li class="c-primary-nav__item">
 				<a href="/give" class="c-primary-nav__link"><span>Give</span></a>
 			</li>
-		</ul><!--end c-primary-nav__list-->
+			<li class="c-primary-nav__item">
+				<a href="https://northviewchurch.online.church/" target="_blank" class="c-primary-nav__link"><span>Watch Live</span></a>
+			</li>
+		</ul>
+		<!--end c-primary-nav__list-->
 	</div>
 </nav>
 <script>
-$('#collapse0-locations').on('show.bs.collapse', function () {
+	$('#collapse0-locations').on('show.bs.collapse', function () {
 		$('#locations-link').toggleClass('shown');
 	});
-$('#collapse0-locations').on('hide.bs.collapse', function () {
-	$('#locations-link').toggleClass('shown');
-});
+	$('#collapse0-locations').on('hide.bs.collapse', function () {
+		$('#locations-link').toggleClass('shown');
+	});
 </script>
