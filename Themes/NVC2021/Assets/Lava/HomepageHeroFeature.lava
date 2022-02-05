@@ -8,6 +8,7 @@
         {%- assign itemContent = item.Content -%}
         {%- assign buttons = item | Attribute:'Buttons' -%}
         {%- assign video = item | Attribute:'Videom3u8Url','RawValue' -%}
+				{%- assign imageLink = item | Attribute:'ImageLink','RawValue' -%}
         <div class="c-block-hero__background-video l-aspect-ratio__16-9">
           {% if video != '' %}
           <video id='header-video' class="video-js vjs-fluid" style="background:transparent no-repeat center center url(/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=1024&h=576&mode=crop&anchor=middlecenter&scale=both&quality=80);background-size:cover" preload autoplay muted loop playsinline>
@@ -20,7 +21,13 @@
             player.play();
           </script>
           {% else %}
-          <img src="/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=1024&h=576&mode=crop&anchor=middlecenter&scale=both" alt="" />
+						{% if imageLink != '' %}
+						<a href="{{imageLink}}" style="border:none;text-decoration:none">
+						{% endif %}
+          	<img src="/GetImage.ashx?guid={{ item | Attribute:'PosterImage','RawValue' }}&w=1024&h=576&mode=crop&anchor=middlecenter&scale=both" alt="" />
+						{% if imageLink != '' %}
+						</a>
+						{% endif %}
           {% endif %}
         </div>
         {%- endfor -%}

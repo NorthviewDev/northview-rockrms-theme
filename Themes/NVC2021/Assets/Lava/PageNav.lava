@@ -5,6 +5,18 @@
 				<a class="c-primary-nav__link collapsed" role="button" id="locations-opener" data-toggle="collapse" data-parent="#site-header" href="#collapse0-locations" aria-expanded="false" aria-controls="collapse1"><span>Locations</span> <b class="nv-icon nv-icon--carat_right_large"></b></a>
 				{% include "~~/Assets/Lava/PageMegaMenus.lava" %}
 			</li>
+			{% for includedPage in IncludePageList  %}
+			{% assign attributeParts = includedPage | PropertyToKeyValue %}
+			<li class="c-primary-nav__item">
+				{% assign url = attributeParts.Value %}
+				{% if url contains "http" %}
+				{% assign target = "target='_blank'" %}
+				{% endif %}
+				<a href="{{ attributeParts.Value }}" {{target}} class="c-primary-nav__link"><span>{{ attributeParts.Key }}</span></a>
+			</li>
+			{% endfor %}
+			
+			{% comment %}
 			<li class="c-primary-nav__item">
 				<a href="/media" class="c-primary-nav__link"><span>Media</span></a>
 			</li>
@@ -17,6 +29,7 @@
 			<li class="c-primary-nav__item">
 				<a href="https://northviewchurch.online.church/" target="_blank" class="c-primary-nav__link"><span>Watch Live</span></a>
 			</li>
+			{% endcomment %}
 		</ul>
 		<!--end c-primary-nav__list-->
 	</div>
