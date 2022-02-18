@@ -1,0 +1,68 @@
+{%- assign sectionBackgroundImage =  ContentChannel | Attribute:'SectionBackgroundImage','RawValue' -%}
+{%- assign sectionTitle  =  ContentChannel | Attribute:'SectionTitle','RawValue' -%}
+{%- assign sectionTitleStyle  =  ContentChannel | Attribute:'SectionTitleStyle','RawValue' -%}
+{%- assign sectionDescription  =  ContentChannel | Attribute:'SectionDescription' -%}
+{%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
+{%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
+{%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
+{%- assign sectionBgClass  =  ContentChannel | Attribute:'SectionBackgroundColorClass' -%}
+
+<section class="c-section c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}  {{  sectionBgClass }}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}&maxWidth=800&maxHeight=800');{% endif %}">
+  <div class="container">
+    <div class="row">
+      <div class='{%- if sectionTitleStyle == "highlight" -%}col-lg-12{% else %}col-lg-12 center-block{%- endif %}'>
+        <div class="row">
+          <div class='col-lg-{{ sectionTitleWidth }} {{ sectionTitleAlignment }}-block'>
+{%- if sectionTitleStyle == "highlight" -%}
+              <div class="c-section__header">
+                <div class="c-card c-card--title-highlight">
+                  <div class="c-card__body stack">
+                    <h2 class="c-card__title"><span>{{ sectionTitle }}</span></h2>
+                    {%- if sectionDescription != '' -%}
+                    <p class="c-card__description">{{ sectionDescription }}</p>
+                    {%- endif -%}
+                  </div>
+                </div><!--/.c-card-->
+              </div>
+{%- elseif sectionTitleStyle == "hidden" -%}
+              <h2 class="sr-only">{{ sectionTitle }}</h2>
+              <p class="sr-only">{{ sectionDescription }}</p>
+{%- else -%}
+              <div class="c-section__header {{ sectionTitleStyle }}">
+                <h2><span>{{ sectionTitle }}</span></h2>
+                {% assign sectionDescriptionStripped = sectionDescription | StripHTML | StripNewlines | Trim %}
+                {%- if sectionDescriptionStripped != '' -%}
+                <p class="c-section__description">{{ sectionDescription }}</p>
+                {%- endif -%}
+              </div>
+{%- endif -%}
+            </div>
+          </div>
+          <div class="l-grid c-card--side-by-side{% if sectionTitleStyle == "hidden" %} c-card--big{% endif %}">
+      {%- for item in Items -%}
+{%- assign contentAlignment  =  item | Attribute:'ContentAlignment','RawValue' -%}
+{%- assign contentWidth  =  item | Attribute:'ContentWidth','RawValue' -%}
+{%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
+{%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
+{%- assign itemDescription  =  item | Attribute:'ItemDescription' -%}
+{%- assign buttons  =  item | Attribute:'Buttons' -%}
+
+            <div class="l-grid__item" style="grid-row: {{ forloop.index }} / {{ forloop.index }};{% if contentAlignment == "left" %} grid-column: 2 / 2;{% endif %}">
+              <img class="c-card__media" src="/GetImage.ashx?Guid={{ item | Attribute:'ItemImage','RawValue' }}&w=625&h=449&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
+            </div>
+            <div class='l-grid__item c-card__body' style="grid-row: {{ forloop.index }} / {{ forloop.index }}">
+              <div class="c-card_content stack">
+                <h2 class="c-card__title{% if sectionTitleStyle == "highlight" %} c-card__title--med{% endif %}"><span>{{ item.Title }}</span></h2>
+                {%- if itemDescription != '' -%}
+                  <p class="c-card__description">{{ itemDescription }}</p>
+                {%- endif -%}
+                {{ item.Content }}
+                {{buttons}}
+              </div>
+            </div>
+      {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

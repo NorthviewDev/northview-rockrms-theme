@@ -15,7 +15,7 @@
   }
   .-padTopLarge &,
   &.-padTopLarge {
-    --section-padding-top: var(--s6);
+    --section-padding-top: var(--s4);
     @media (min-width: @screen-lg) {
       --section-padding-top: var(--s12);
     }
@@ -343,7 +343,7 @@
 .c-section--overlap-top {
   background-color: transparent;
   .c-section__header {
-    height: 130px;
+    height: 50px;
     margin: 0;
     @media screen and (min-width: @screen-sm) {
       height: 0;
@@ -357,11 +357,15 @@
     h2 {
       text-transform: none;
     }
-    .c-card__body {
-      transform: translateY(-30%);
+    transform: translateY(-90%);
       @media screen and (min-width: @screen-sm) {
-        transform: translateY(-50%);
+        transform: translateY(-130%);
       }
+    .c-card__body {
+      // transform: translateY(-90%);
+      // @media screen and (min-width: @screen-sm) {
+      //   transform: translateY(-130%);
+      // }
     }
   }
   // .container:first-child {

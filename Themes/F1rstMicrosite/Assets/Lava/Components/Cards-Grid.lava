@@ -1,0 +1,87 @@
+{% comment %}
+{% include "~/Themes/NorthviewChurch/Assets/Lava/Components/Cards-Plain.lava" %}
+{% endcomment %}
+{%- assign sectionBackgroundImage =  ContentChannel | Attribute:'SectionBackgroundImage','RawValue' -%}
+{%- assign sectionTitle  =  ContentChannel | Attribute:'SectionTitle','RawValue' -%}
+{%- assign sectionTitleStyle  =  ContentChannel | Attribute:'SectionTitleStyle','RawValue' -%}
+{%- assign sectionDescription  =  ContentChannel | Attribute:'SectionDescription' -%}
+{%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
+{%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
+{%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
+{%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
+{%- assign sectionBgClass  =  ContentChannel | Attribute:'SectionBackgroundColorClass' -%}
+
+<section class="c-section -cards -tileCards c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}} {{  sectionBgClass }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-11 center-block">
+            
+{%- if sectionTitle != "" or sectionDescription != "" -%}
+        <div class="row">
+            <div class='col-lg-{{ sectionTitleWidth }} {{ sectionTitleAlignment }}-block'>
+{%- if sectionTitleStyle == "highlight" -%}
+                <div class="c-section__header">
+                  <div class="c-card c-card--title-highlight">
+                    <div class="c-card__body stack">
+                        {%- if sectionDescription != '' -%}
+                            <div class="c-card__description">{{ sectionDescription }}</div>
+                        {%- endif -%}
+                        {%- if sectionTitle != '' -%}
+                            <h2 class="c-card__title"><span>{{ sectionTitle }}</span></h2>
+                        {%- endif -%}
+                      
+                    </div>
+                  </div><!--/.c-card-->
+                </div>
+{%- elseif sectionTitleStyle == "hidden" -%}
+                <h2 class="sr-only">{{ sectionTitle }}</h2>
+                <div class="sr-only">{{ sectionDescription }}</div>
+{%- else -%}
+
+                <div class="c-section__header {{ sectionTitleStyle }}">
+                    {%- if sectionBackgroundImage != "" -%}
+                        <img class="c-icon__image img-responsive" src="/GetImage.ashx?Guid={{ sectionBackgroundImage }}&w=134&h=134" alt="{{ sectionTitle }}" />
+                    {%- endif -%}
+                    
+                  <div class="c-section__title"><span>{{ sectionTitle }}</span></div>
+                {% assign sectionDescriptionStripped = sectionDescription | StripHTML | StripNewlines | Trim %}
+                {%- if sectionDescriptionStripped != '' -%}
+                  <div class="c-section__description">{{ sectionDescription }}</div>
+                {%- endif -%}
+                </div>
+{%- endif -%}
+            </div>
+        </div>
+{%- endif -%}
+<div class="c-card__tiles block-grid block-grid-xs-1 block-grid-sm-2 block-grid-md-3 row-eq-height">
+{%- for item in Items -%}
+{%- assign contentAlignment  =  item | Attribute:'ContentAlignment','RawValue' -%}
+{%- assign contentWidth  =  item | Attribute:'ContentWidth','RawValue' -%}
+{%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
+{%- assign itemTitleAlignment  =  item | Attribute:'ItemTitleAlignment','RawValue' -%}
+
+{%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
+{%- assign itemDescription  =  item | Attribute:'ItemDescription','RawValue' -%}
+{%- assign itemImageGuid = item | Attribute:'ItemImage','RawValue' -%}
+        <div class="c-card block-grid-item">
+            <div class="c-card__head {% if itemTextAlignment != '' %} text-{{ itemTextAlignment }}{% endif %}">
+                {%- if itemImageGuid != "" -%}
+                    <img class="c-tile__image img-responsive" src="/GetImage.ashx?Guid={{ itemImageGuid }}&w=285&h=301&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
+                {%- endif -%}
+                    {%- if itemTitleStyle != "hidden" -%}
+                        <h3 class="c-card__title">{{ item.Title }}</h3>
+                    {%- endif -%}
+                    {%- if itemDescription != "" -%}
+                        <div class="c-card__meta">{{ itemDescription }}</div>
+                    {%- endif -%}
+                </div>
+            <div class="c-card__content">
+                {{ item.Content }}
+            </div>
+        </div>
+{%- endfor -%}
+</div>
+    </div>
+    </div>
+    </div>
+</section>

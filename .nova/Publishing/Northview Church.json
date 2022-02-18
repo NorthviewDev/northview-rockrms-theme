@@ -1,5 +1,8 @@
 {
   "identifier" : "E30D466A-3AD7-4337-BD03-51B174FF4608",
+  "ignoredFilePatterns" : [
+    "config.codekit3"
+  ],
   "server" : "Northview Church",
   "usesPublishing" : true
 }

@@ -1,0 +1,39 @@
+{% if Page.DisplayChildPages and Page.Pages != empty %}
+<nav class="c-primary-nav__content">
+  <div class="wrapper">
+    {% for childPage in Page.Pages %}
+    {% if childPage.DisplayChildPages and childPage.Pages != empty %}
+    <div class="flex">
+      <div>
+        <a href="{{ childPage.Url }}" class="expander" @click.prevent="expanded = !expanded">
+          {{ childPage.Title }}
+          {% include "~~/Assets/Image/caret.svg" %}
+        </a>
+        <div x-show="expanded" class="menu" style="display: none">
+          <div class="relative">
+            <ul class="subnav">
+              {% for grandChildPage in childPage.Pages %}
+              <li>
+                <a href="{{ grandChildPage.Url }}">
+                  {{grandChildPage.Title}}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <a class="c-primary-nav__item" {% if childPage.Current %} class="active" {% endif %} href="{{ childPage.Url }}">{{ childPage.Title }}</a>
+    {% endif %}
+    {% endfor %}
+
+    {% for includedPage in IncludePageList %}
+    {% assign path = 'Global' | Page:'Path' %}
+    {% assign attributeParts = includedPage | PropertyToKeyValue %}
+    <a href="{{ attributeParts.Value }}">{{ attributeParts.Key }}</a>
+    {% endfor %}
+  </div>
+</nav>
+{% endif %}
