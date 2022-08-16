@@ -237,9 +237,14 @@
     }
   }
   &.c-btn--secondary {
-    --button-background-color: @accent2;
-    --button-border-color: @color-gray-dark;
-    --button-color: @color-gray-dark;
+    --button-background-color: @brand-secondary;
+    --button-border-color: @brand-secondary;
+    --button-color: @white;
+    &.-outline{
+      --button-background-color: transparent;
+      --button-border-color: @brand-secondary;
+      --button-color: @brand-secondary;
+    }
   }
   &.c-btn--dark {
     --button-color: @white;
@@ -256,9 +261,21 @@
     --button-border-color: @white;
     &:hover,
     &:focus {
-      background-color: @brand-primary;
+      background-color: @brand-primary!important;
+      border-color: @brand-primary!important;
+      --button-color: @text-color;
+    }
+    &.-outline{
+      --button-background-color: transparent;
+      --button-color: @white;
+      &:hover,
+      &:focus {
+        color: @white!important;
+        background-color: @white;
+      }
     }
   }
+  
   &.c-btn--text-link {
     background: none;
     border: none;

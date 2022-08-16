@@ -24,6 +24,11 @@
   }
   &.opaque {
     background-color: white;
+    .c-logo-link{
+      path{
+        fill: @color-gray-dark!important;
+      }  
+    }
   }
   .c-header {
     position: relative;
@@ -93,7 +98,12 @@
           //position: relative;
         }
       }
+      path{
+        fill:@white;
+      }
+      
     }
+    
     .c-logo-link__img {
       height: 36px;
       width: 165px;
@@ -284,7 +294,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(90deg, #849E75 0%, #C7D3A9 100%);
+  // background: linear-gradient(90deg, #849E75 0%, #C7D3A9 100%);
+  background: @brand-primary;
+
   min-height: 250px;
   @media (min-width: @screen-sm) {
     min-height: 500px;      
@@ -293,7 +305,10 @@
     display: flex;
     justify-content: center;
     &__headline{
-      font-family: @font-family-serif;
+      font-family: @font-family-sans-serif;
+      color: @accent1;
+      font-weight: 900;
+      z-index: 1;
     }
     img{
       max-width: 70%;
@@ -306,5 +321,17 @@
     display: flex;
     justify-content: center;
   }
-  
+  .bg-hero{
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom:0;
+    left:0;
+    width: 100%;
+    z-index: 0;
+  }
+  .image-title{
+    position: relative;
+    z-index: 1;
+  }
 }

@@ -18,7 +18,7 @@ a.c-card {
 
 .c-card {
   position: relative;
-  background-color: @white;
+  background-color: @color-gray-lightest;
   margin-bottom: var(--s2);
   height: 100%;
 
@@ -308,10 +308,11 @@ a.c-card {
   }
   em {
     display: block;
-    font-size: 16px;
+    font-size: 12px;
     letter-spacing: 0;
     line-height: 20px;
     font-style: normal;
+    font-weight: 400;
   }
 }
 
@@ -446,9 +447,10 @@ a.c-card {
       }
     }
     .c-card__title {
-      font-family: var(--font-family-primary);
+      font-family: "GreycliffCF-Heavy";
       letter-spacing: 0;
-      font-size: 24px;
+      font-size: 25px;
+      line-height: 1.4;
       margin-top: 0;
       margin-right: 30px;
       margin-bottom: 10px;
@@ -612,7 +614,16 @@ a.c-card {
   .c-section__description{
     font-size: 60px;
     @media (min-width: @screen-sm) {
-      font-size: 110px;
+      font-size: 72px;
+    }
+    span{
+      font-family: Azote, serif;
+      font-size: 60px;
+      font-style: italic;
+      font-weight: 300;
+      @media (min-width: @screen-sm) {
+        font-size: 80px;   
+      }
     }
   }
   .c-card__deck{
@@ -629,7 +640,7 @@ a.c-card {
       height: auto;
       transition: .3s ease;
       position:relative;
-      backgroiund-color: @white;
+      background-color: @white;
       @media (min-width: @screen-sm) {
         margin: ~'0 calc((@{grid-gutter-width} / 2))';
         font-size: 16px;
@@ -736,7 +747,7 @@ a.c-card {
     justify-content: center;
     align-items: center;
     h4{ 
-      font-family: var(--font-family-primary);
+      font-family: @font-family-sans-serif;
       font-size: 24px;
       font-weight: 300;
       font-style: italic;
@@ -744,19 +755,22 @@ a.c-card {
       color: @color-gray-lightest;
       text-transform: uppercase;
       margin-bottom: 36px;
+      text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.55);     
+
       @media (min-width: @screen-sm) {
         font-size: 30px;
         letter-spacing: 10px;
       }
     }
     h2{
-      font-family: @font-family-serif;
+      font-family: @font-family-sans-serif;
       font-size: 250%;
       color: @color-gray-lightest!important;
-      text-transform: none;
+      text-transform: uppercase;
+      font-weight: bold;
       @media (min-width: @screen-sm) {
-        font-size: 120px;   
-        text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.55);     
+        font-size: 72px;   
+        // text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.55);     
       }
     }
     .c-section__description{
@@ -777,7 +791,7 @@ a.c-card {
         line-height: 1.4;
         margin-bottom: 36px;
         &:last-child{
-          margin-bottom: 0;
+          // margin-bottom: 0;
         }
         @media (min-width: @screen-sm) {
           font-size: 30px;   
@@ -840,4 +854,29 @@ a.c-card {
 .anchorLink{
   position: absolute;
   top:-70px;
+}
+.-columns{
+  .c-card{
+    background-color:transparent;
+    border-bottom: none; 
+    &:before{
+      background: none; 
+    }
+    &.center{
+      text-align: center;
+    }
+    .c-card__title{
+      font-size: 45px;
+      color: @brand-secondary;
+    }
+    .item-description{
+      font-size: 20px;
+      font-style: italic;
+    }
+    .item-content{
+      font-family: @font-family-sans-serif-bold;
+      font-size: 45px;
+      color: @brand-secondary;
+    }
+  }
 }

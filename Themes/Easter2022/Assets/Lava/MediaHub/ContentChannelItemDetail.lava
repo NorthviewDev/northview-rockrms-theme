@@ -1,0 +1,65 @@
+﻿{% for row in rows %} {% contentchannelitem id:'{{ row.Id }}' %}{% assign item = contentchannelitem %}{% endcontentchannelitem %} {%- assign ccTypeId = item.ContentChannelType.Id -%} {%- assign audioUrl = item | Attribute:'AudioLink','RawValue' -%} {%- assign videoUrl = item | Attribute:'VideoLink','RawValue' -%} {%- assign videoEmbed = item | Attribute:'VideoEmbed','RawValue' -%} {%- assign PDFLink = item | Attribute:'PDFLink','RawValue' -%} {%- assign PDFFile = item | Attribute:'PDFFile','RawValue' -%}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8 col-lg-7 center-block">
+			{%- if videoEmbed != '' -%}
+			<div class="embed-responsive embed-responsive-16by9">
+				{{ videoEmbed }}
+			</div>
+			{%- elseif videoUrl != '' -%}
+			<div class="embed-responsive embed-responsive-16by9">
+				<video poster="/GetImage.ashx?guid={{ item | Attribute:'Image','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both&quality=70" controls preload>
+					<source src="{{ videoUrl }}" type="video/mp4" />
+				</video>
+			</div>
+			{%- elseif ccTypeId != 17 -%}
+			<img src="/GetImage.ashx?guid={{ item | Attribute:'Image','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
+			{%- endif -%}
+		</div>
+	</div>
+	<div class="row g-margin--y-s2">
+		<div class="col-md-8 col-lg-7 center-block">
+			<div class="well well--lg stack g-margin--bottom-s0">
+				<h2>{{ item.Title }}</h2>
+				{{ item.Content }} {%- if PDFLink != '' -%}
+				<a class="btn" href="{{ PDFLink }}" target="_blank">Download Resource</a>
+				{%- elseif PDFFile != '' -%}
+				<a class="c-btn c-btn--primary" href="/GetFile.ashx?guid={{ PDFFile }}" target="_blank">Download Resource</a>
+				{%- endif -%}
+			</div>
+			<div class="addthis_toolbox">
+				<ul>
+					<li class="text-uppercase"><strong>Share This</strong></li>
+					<li>
+						<a class="addthis_button_facebook"><i class="fab fa-facebook"></i></a>
+					</li>
+					<li>
+						<a class="addthis_button_twitter"><i class="fab fa-twitter"></i></a>
+					</li>
+					<li>
+						<a class="addthis_button_email"><i class="nv-icon nv-icon--email"></i></a>
+					</li>
+					<li>
+						<a class="addthis_button_more"><span class="nv-icon nv-icon--ornament_plus"></span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-lg-7 center-block">
+			{%- if audioUrl != '' -%}
+			<div class="c-item -audio">
+				{% if ccTypeId == 17 -%}
+				<img src="/GetImage.ashx?guid={{ item | Attribute:'Image','RawValue' }}&w=150&h=150&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
+				{%- endif -%}
+				<audio controls>
+					<source src="{{audioUrl}}" type="audio/mpeg" />
+					Your browser does not support the audio element.
+				</audio>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endfor %}

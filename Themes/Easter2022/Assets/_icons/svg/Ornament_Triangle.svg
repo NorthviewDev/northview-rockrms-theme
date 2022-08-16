@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>Ornament_Triangle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-140.000000, -1009.000000)" fill="#221F1F" fill-rule="nonzero">
+            <g id="Ornament_Triangle" transform="translate(141.000000, 1010.000000)">
+                <path d="M6.35216582,-0.377903269 L-0.647834176,11.6220967 C-0.939496455,12.1220892 -0.578843125,12.75 0,12.75 L14,12.75 C14.5788431,12.75 14.9394965,12.1220892 14.6478342,11.6220967 L7.64783418,-0.377903269 C7.35842561,-0.874032244 6.64157439,-0.874032244 6.35216582,-0.377903269 Z M7,1.487 L12.695,11.25 L1.304,11.25 L7,1.487 Z" id="Stroke-1"></path>
+            </g>
+        </g>
+    </g>
+</svg>

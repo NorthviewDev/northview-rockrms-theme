@@ -132,7 +132,7 @@
 	font-family: var(--font-family-primary);
 	font-size: 18px;
 	font-weight: normal;
-  color: @color-gray-dark;
+  color: @white;
 	letter-spacing: 0.5px;
 	line-height: 1.4em;
 	margin: var(--s1) 0;
@@ -142,6 +142,9 @@
   &:hover{
     color: @brand-secondary;
     border-bottom: 2px solid @brand-primary;
+  }
+  .opaque &{
+    color: @color-gray-dark;
   }
   @media (min-width: @screen-md) {
     display: inline;

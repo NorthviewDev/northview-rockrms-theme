@@ -1,0 +1,81 @@
+{% assign staffMemberName = PageParameter.memberName | Split:'-' %}
+
+{% sql %}
+	SELECT TOP 1
+		gm.GroupId,
+		p.Id as PersonId,
+		p.NickName, 
+		p.FirstName, 
+		p.LastName,
+		p.Email
+  FROM [Person] p 
+  LEFT OUTER JOIN [GroupMember] gm ON p.Id = gm.PersonId
+  WHERE
+		gm.GroupId = '{{PageParameter.groupId}}'
+		AND p.FirstName = '{{staffMemberName[0]}}'
+		AND p.LastName = '{{staffMemberName[1]}}'
+{% endsql %}
+	
+{% for item in results %}
+	
+	{% assign personId = item.PersonId %}
+	{% assign groupId = item.GroupId %}
+	{% assign nickName = item.NickName %}
+	{% assign firstName = item.FirstName %}
+	{% assign lastName = item.LastName %}
+	{% assign email = item.Email %}
+	{% assign extension = '' %}
+	{% person id:'{{personId}}' %}
+		{% for phoneNumber in person.PhoneNumbers %}
+			{%comment%} /*** Internal Extension ***/ {%endcomment%}
+			{% if phoneNumber.NumberTypeValueId == '1104' %}	{% assign extension = phoneNumber.Number %}{% endif %}
+		{% endfor %}
+	{% endperson %}
+	
+	{% groupmember where:'GroupId == {{groupId}} && PersonId == {{personId}}' %}
+	
+		{% for item in groupmemberItems %}
+		
+		{% assign title = item | Attribute:'Title' %}
+    {%- assign phone = item | Attribute:'Phone' -%}
+		{% assign bio = item | Attribute:'Bio' %}
+			
+		<div class="staff-member">
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 col-md-offset-2 col-md-4">
+					<div class="staff__photo staff__photo--large"><img src="/GetImage.ashx?id={{ person.PhotoId }}&w=600&h=600&mode=crop&anchor=middlecenter&scale=both" alt="{{ firstName }} {{ lastName }}" /></div>
+				</div>
+				<div class="col-sm-8 col-sm-offset-2 col-md-offset-0 col-md-4">
+					<h1>{% if nickName != "" %}{{ nickName }}{% else %}{{ firstName }}{% endif %} {{ lastName }}</h1>
+					<h2 class="staff__title">{{ title }}</h2>
+					<div class="staff__bio">{{ bio }}</div>
+					<ul class="staff__meta">
+						{% if email != '' %}
+        			    <li class="staff__email"><a href="mailto:{{ person.Email }}" title="Email {{ person.FullName }}" target="_blank"><i class="nv-icon nv-icon--email"></i></a></li>
+                {% endif %}
+                {% if phone != '' %}
+                  <li class="staff__phone"><a href="tel:+1{{ phone | Replace:'.','' }}" title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+                {% endif %}
+					</ul>
+				</div>              	 
+			</div><!-- end .row -->
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 col-md-offset-6 col-md-4">
+					<a href="/leadership" class="c-btn"><i class="nv-icon nv-icon--carat_left"></i>Back to Team</a>
+				</div>
+			</div>
+		</div>
+		
+		    {% if bio != '' %}
+          {{ bio | StripHtml | AddMetaTagToHead:'name','description' }}
+          {{ bio | StripHtml | AddMetaTagToHead:'property','og:description' }}
+        {% endif %}
+        {% capture pageTitle %}{% if nickName != '' %}{{ nickName }}{% else %}{{ firstName }}{% endif %} {{ lastName }} | {{ title }}{% endcapture %}
+          {{ pageTitle | SetPageTitle }}
+          {{ pageTitle | AddMetaTagToHead:'property','og:title' }}
+	
+		{% endfor %}
+		
+	{% endgroupmember %}
+	
+{% endfor %}

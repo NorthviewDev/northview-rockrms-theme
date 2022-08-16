@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+
+<h1 id="cssvariablespolyfillforie11">CSS Variables Polyfill for IE11</h1>
+
+<p>A real Custom Properties polyfill for IE11.<br />
+Used on about 9000 <a href="https://publicwww.com/websites/ie11CustomProperties/" title="source">Live Websites</a></p>
+
+<p><strong><a href="https://rawcdn.githack.com/nuxodin/ie11CustomProperties/6c465d21a8c043a45cba939995bb434966048377/demo.html">See the demo!</a></strong></p>
+
+<p><strong>New in v2.7.2: Great performance improvement</strong></p>
+
+<h2 id="itcan:">It can:</h2>
+
+<ul>
+<li>chaining <code>--bar:var(--foo)</code></li>
+<li>fallback <code>var(--color, blue)</code></li>
+<li>:focus, :target, :hover</li>
+<li>handle dynamic added html-content</li>
+<li>handle dynamic added <code>&lt;style&gt;</code>, <code>&lt;link&gt;</code>-elements</li>
+<li>js-integration:
+
+<ul>
+<li><code>style.setProperty('--x','y')</code></li>
+<li><code>style.getPropertyValue('--x')</code></li>
+<li><code>getComputedStyle(el).getPropertyValue('--inherited')</code></li>
+</ul></li>
+<li>Houdini’s new API: <code>CSS.registerProperty({name:'--red', inherit:false, initialValue:'#e33'})</code> (of course not animatable)</li>
+<li>style-attributes <code>&lt;div ie-style=&quot;--foo:bar&quot;...</code></li>
+<li>cascade works</li>
+<li>inheritance works</li>
+<li><code>!important</code> on setters and getters</li>
+<li><code>inherit</code>, <code>initial</code>, <code>unset</code> and <code>revert</code> keyword for variables</li>
+<li>SVG-support</li>
+<li>media-queries (redraw on media-changes)</li>
+<li>transform relative to absolute urls</li>
+<li>under 4k (min+gzip) and dependency-free</li>
+</ul>
+
+<h2 id="ussage">Ussage</h2>
+
+<p>You only want IE11 to load the polyfill, use this snipped in the head of your html file, it then just works:</p>
+
+<pre><code>&lt;script&gt;window.MSInputMethodContext &amp;&amp; document.documentMode &amp;&amp; document.write('&lt;script src=&quot;yourJsPath/ie11CustomProperties.js&quot;&gt;&lt;\x2fscript&gt;');&lt;/script&gt;
+</code></pre>
+
+<h2 id="helpwanted">Help wanted!</h2>
+
+<ul>
+<li>Add a ⭐️</li>
+<li>Vote for this solution at stackoverflow<br />
+https://stackoverflow.com/a/57000437/4865307 and<br />
+https://stackoverflow.com/a/56830621/4865307 and<br />
+https://stackoverflow.com/a/57000620/4865307</li>
+<li>Test, report bugs and send pull requests.</li>
+<li>Tweet about if you like it.</li>
+</ul>
+
+<h2 id="howitworks">How it works</h2>
+
+<p>The script makes use of the fact that IE has minimal custom properties support where properties can be defined and read out with the cascade in mind. This is not possible with properties starting with double dashes.
+<code>.myEl {-ie-test:'aaa'} // only one dash allowed! &quot;-&quot;</code>
+then you can read it in IE with javascript:
+<code>getComputedStyle( querySelector('.myEl') )['-ie-test']</code>
+In the raw CSS, it replaces for example <code>--foo</code> with <code>-ie-foo</code>.
+It searches for all rules containing variable getters and setter, remembers the affected selectors so future affected Elements can be found in a mutation observer.
+Each affected Element gets a uniq class-attribute and its own style-sheet to draw the Element.
+These are the steps that the script does:</p>
+
+<ol>
+<li>given the CSS</li>
+</ol>
+
+<pre><code class="css">header { --myColor:red; }
+main { --myColor:green; }
+li { color:var(--myColor); }
+</code></pre>
+
+<ol>
+<li>rewritten CSS</li>
+</ol>
+
+<pre><code class="css">header { -ie-myColor:red; }
+main { -ie-myColor:green; }
+li { -ieHasVar-color:var(-ie-myColor); }
+</code></pre>
+
+<ol>
+<li>find all affected Element and get its property-values</li>
+</ol>
+
+<pre><code class="js">querySelectorAll('li').forEach(function(){
+    var color = getComputedStyle(this).getPropertyValue('--myColor');
+    // getPropertyValue is extended to handle custom properties
+    // draw_the_Element()
+})
+</code></pre>
+
+<ol>
+<li>draw Elements, this leads in separate rules for each Element</li>
+</ol>
+
+<pre><code class="css">li.iecp-u1 { color:red; }
+li.iecp-u2 { color:red; }
+li.iecp-u3 { color:green; }
+li.iecp-u4 { color:green; }
+</code></pre>
+
+<p><a href="https://postimg.cc/gX7N9ZDf"><img src="https://i.postimg.cc/bryMt02N/custom-properties-ie11.png" alt="custom-properties-ie11.png" /></a></p>
+
+<h2 id="smalllimitations">Small limitations</h2>
+
+<h4 id="stylesinelement-attributes">styles in element-attributes</h4>
+
+<p>There is no way to get the raw content of style-attributes in IE11.
+Use <code>&lt;div style=&quot;--color:blue&quot; ie-style=&quot;--color:blue&quot;&gt;</code> for it</p>
+
+<h4 id="specificityforpropertiescontainingvar">specificity for properties containing &#8220;var()&#8221;</h4>
+
+<p>&#8230;is ~~always little~~ highter if vars are not served by root, cause each selector gets an additional class-selector
+eg. <code>#header</code> results in <code>#header.iecp_u44</code></p>
+
+<h2 id="tests">Tests</h2>
+
+<p><a href="https://rawcdn.githack.com/nuxodin/ie11CustomProperties/6c465d21a8c043a45cba939995bb434966048377/tests.html">See the tests</a><br />
+PRs welcome</p>
+
+</body>
+</html>
+

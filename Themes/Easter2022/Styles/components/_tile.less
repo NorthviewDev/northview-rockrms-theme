@@ -1,0 +1,61 @@
+/** Tile Element for Media Hub **/
+.c-tile {
+  position: relative;
+  background-color: @color-white;
+  color: @text-color;
+  border-bottom: solid 8px @color-gray-darker;
+  transition: all ease-in-out 300ms;
+  height: 100%;
+  &:hover {
+    border-bottom-color: @brand-primary;
+  }
+  .blah{
+    height: 10px;
+  }
+  .well & {
+    padding: 0;
+    background-color: transparent;
+    margin: 0;
+    border: none;
+  }
+  &.flex-row {
+    padding: 35px;
+    .c-tile__body {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      .c-tile__info {
+        padding: 0;
+      }
+      .c-tile__link {
+        padding-left: 30px;
+      }
+    }
+  }
+  .c-tile__body {
+    .c-tile__info {
+      padding: 20px 35px 35px;
+    }
+    .c-tile__link {
+      flex: 0 1 45%;
+    }
+    .c-tile__info {
+      flex: 0 1 55%;
+    }
+    .c-tile__title {
+      font-size: 29px;
+      letter-spacing: 0;
+      line-height: 1;
+      margin: 0;
+    }
+    .c-tile__summary {
+      color: @color-gray;
+      font-size: 18px;
+      letter-spacing: 0;
+      line-height: 22px;
+    }
+    a {
+      border: none;
+    }
+  }
+}
