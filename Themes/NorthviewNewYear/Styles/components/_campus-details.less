@@ -1,0 +1,49 @@
+.location-details,
+.campus-intro {
+  background-color: @color-white;
+  color: @text-color;
+  padding: var(--s3);
+}
+.location-details {
+  font-size: 16px;
+}
+.location-details__info-list {
+  margin-top: var(--s2);
+  i {
+    font-size: 1.2em;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+}
+.campus-intro {
+  grid-template-columns: 1fr 2fr;
+  > * {
+    align-self: center;
+  }
+  :first-child {
+    align-self: flex-start;
+  }
+  h2 {
+    font-size: floor((@font-size-base * 1.5625)); // ~25px
+    @media (min-width: @screen-sm) {
+      font-size: 36px;
+    }
+  }
+}
+#campus-details {
+  overflow: hidden;
+  &:before {
+    content: '';
+    background-color: rgba(@color-gray-lightest, 0.15);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    transform: skew(15deg);
+    transform-origin: bottom left;
+    @media (min-width: @screen-sm) {
+      transform: skew(38deg);
+    }
+  }
+}

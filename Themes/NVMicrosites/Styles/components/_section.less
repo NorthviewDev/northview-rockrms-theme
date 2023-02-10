@@ -31,7 +31,10 @@
   position: relative;
   &.c-section--dark {
     color: @white;
-    background-color: @brand-primary;
+    background-color: @brand-secondary;
+    .panel-body{
+      color: @text-color;
+    }
   }
   &.c-section--medium {
     background-color: @gray-lighter;
@@ -62,6 +65,9 @@
       left: 0;
       right: 0;
       bottom: 0;
+    }
+    &.c-section--light {
+      color: @text-color;
     }
   }
 }
@@ -288,7 +294,7 @@
       }
       &:after {
         content: '';
-        background-color: @brand-primary;
+        background-color: @accent1;
         height: 0.45em;
         bottom: 0;
         left: -10px;

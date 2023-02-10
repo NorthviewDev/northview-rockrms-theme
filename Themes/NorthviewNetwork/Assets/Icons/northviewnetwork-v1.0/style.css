@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'northviewnetwork';
+  src:
+    url('fonts/northviewnetwork.ttf?3toqmp') format('truetype'),
+    url('fonts/northviewnetwork.woff?3toqmp') format('woff'),
+    url('fonts/northviewnetwork.svg?3toqmp#northviewnetwork') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-nn-"], [class*=" icon-nn-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'northviewnetwork' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-nn-share:before {
+  content: "\e900";
+}
+.icon-nn-search:before {
+  content: "\e901";
+}
+.icon-nn-twitter:before {
+  content: "\e902";
+}
+.icon-nn-plus:before {
+  content: "\e903";
+}
+.icon-nn-menu:before {
+  content: "\e904";
+}
+.icon-nn-instagram:before {
+  content: "\e905";
+}
+.icon-nn-facebook:before {
+  content: "\e906";
+}
+.icon-nn-download:before {
+  content: "\e907";
+}
+.icon-nn-close:before {
+  content: "\e908";
+}
+.icon-nn-caret-down:before {
+  content: "\e909";
+}
+.icon-nn-play:before {
+  content: "\e90a";
+}
+.icon-nn-caret-right:before {
+  content: "\e90b";
+}
+.icon-nn-spotify:before {
+  content: "\e90c";
+}
+.icon-nn-apple:before {
+  content: "\e90d";
+}

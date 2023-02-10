@@ -1,0 +1,30 @@
+{% comment %}This is used on the Resource page grid{% endcomment %}
+{% for item in Items %}
+{%- assign linkurl = item.ContentChannel.ItemUrl | Replace:'{Id}',item.Id | Replace:'{Slug}',item.PrimarySlug %}
+{%- assign channelurl = item.ContentChannel.ChannelUrl %}
+{%- assign itemAction = item.ContentChannel | Attribute:'ItemAction' %}
+{% assign pageType = item | Attribute:'PageType' %}
+
+{% assign author = item | Attribute:'Author' %}
+{% assign itemByline = item | Attribute:'Byline' %}
+{% assign itemContent = item.Content %}
+
+{%- assign image = item | Attribute:'Image','Object' %}
+{%- assign imageGuid = item | Attribute:'ItemImage','RawValue' %}
+{%- assign imageTitle = item.Title %}
+{%- assign itemSummary = item | Attribute:'Summary' -%}
+
+<div class="item-media">
+	<a href="{{linkurl}}">
+	<img src="/GetImage.ashx?guid={{ imageGuid }}&w=450&h=450&mode=crop" alt="{{imageTitle}}" height="450" width="450" onerror="javascript:this.src='https://fakeimg.pl/450x450/?text=Item Image'" />
+	</a>
+</div>
+<div class="item-content">
+	<h3 class="item-title">{{item.Title}}</h3>
+
+	<div class="item-type">
+		{{resourceType}}
+	</div>
+</div>
+
+{% endfor %}

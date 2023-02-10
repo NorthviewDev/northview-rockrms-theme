@@ -1,0 +1,40 @@
+{% if Page.DisplayChildPages == 'true' and Page.Pages != empty %}
+    <ul class="nav nav--primary navbar-nav">
+    {% for childPage in Page.Pages limit:6 %}
+      {% if childPage.DisplayChildPages == 'true' and childPage.Pages != empty %}
+      <li class="dropdown">
+        <a id="{{ childPage.Title | ToCssClass }}-container" class="dropdown-toggle navbar-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>{{ childPage.Title }}</span>{% include "~~/Assets/Icons/SVG/caret-down.svg" %}</a>
+        <div class="dropdown-menu">
+          <ul class="nav nav-childpages" aria-labelledby="{{ childPage.Title | ToCssClass }}-container">
+            {% for grandchildPage in childPage.Pages %}
+              <li class="header">
+                {% comment %} Uncomment the line below if you only want text menu items and no links {% endcomment %}
+                {% comment %} {{ grandchildPage.Title }} {% endcomment %}
+                <a href="{{ grandchildPage.Url }}">{{ grandchildPage.Title }}</a>
+              </li>
+                {% if grandchildPage.DisplayChildPages == 'true' %}
+                  {% for greatgrandchildPage in grandchildPage.Pages %}
+                    <li>
+                       <a role="menu-item" href="{{ greatgrandchildPage.Url }}"><span>{{ greatgrandchildPage.Title }}</span></a>
+                     </li>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+          </ul>
+        </div>
+      </li>
+      {% else %}
+      <li class="{{isCurrent}}">
+          <a class="dropdown-toggle navbar-link" href="{{ childPage.Url }}"><span>{{ childPage.Title }}</span></a>
+      </li>
+      {% endif %}
+{% endfor %}
+{% for includedPage in IncludePageList %}
+  {% assign path = 'Global' | Page:'Path' %}
+  {% assign attributeParts = includedPage | PropertyToKeyValue %}
+  <li{% if path == attributeParts.Value %} class="current"{% endif %}>
+      <a href="{{ attributeParts.Value }}"><span>{{ attributeParts.Key }}</span></a>
+  </li>
+{% endfor %}
+    </ul>
+{% endif %}

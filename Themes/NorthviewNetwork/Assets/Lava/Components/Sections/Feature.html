@@ -1,0 +1,45 @@
+{%- assign sectionBackgroundImage =  ContentChannel | Attribute:'SectionBackgroundImage','RawValue' -%}
+{%- assign sectionTitle  =  ContentChannel | Attribute:'SectionTitle','RawValue' -%}
+{%- assign sectionTitleStyle  =  ContentChannel | Attribute:'SectionTitleStyle','RawValue' -%}
+{%- assign sectionDescription  =  ContentChannel | Attribute:'SectionDescription' -%}
+{%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
+{%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
+{%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
+{%- assign sectionBgClass  =  ContentChannel | Attribute:'SectionBackgroundColorClass' -%}
+{%- assign sectionAccentColor  =  ContentChannel | Attribute:'SectionAccentColor' -%}
+
+<section class="c-section c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}  -section-graybg {{ btnColor }}" {% if sectionBackgroundImage != '' %}style="background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}&maxWidth=800&maxHeight=800');"{% endif %}>
+
+  <div class="container">
+    <div class="feature-item">
+
+      {%- for item in Items -%}
+        {%- assign contentAlignment  =  item | Attribute:'ContentAlignment','RawValue' -%}
+        {%- assign itemByline = item | Attribute:'Byline' -%}
+        {%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
+        {%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
+        {%- assign itemDescription  =  item | Attribute:'ItemDescription' -%}
+
+        {%- assign buttons  =  item | Attribute:'Buttons' -%}
+
+        <div class="item-media">
+          <h6>{{ itemByline }}</h6>
+          <img src="/GetImage.ashx?Guid={{ item | Attribute:'ItemImage','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
+        </div>
+        <div class="item-content">
+          <h2 class="h1 item-title">{{ item.Title }}</h2>
+          {% if itemDescription != '' %}
+            <h5 class="h5 item-byline">{{ itemDescription }}</h5>
+          {% endif %}
+          <div class="item-description">
+                {{ item.Content }}
+          </div>
+          <div class="buttons">
+            {{buttons}}
+          </div>
+        </div>
+      {%- endfor -%}
+      </div>
+  </div>
+  </div>
+</section>

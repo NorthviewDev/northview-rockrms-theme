@@ -1,0 +1,46 @@
+{%- if numEvents == null or numEvents == "" -%}
+{%- assign numEvents = 3 -%}
+{%- endif -%}
+<div class="l-grid l-grid--sm-3col">
+{%- for eventItems in EventItems limit:numEvents -%}
+{%- assign numEvents = eventItems | Size -%}
+{%- assign event = eventItems | First -%}
+  {%- assign eventDetailPage = event.DetailPage | Trim -%}
+  {%- if eventDetailPage != "" -%}
+  <a class="c-card no-border" href="{{ event.DetailPage }}">
+  {%- else -%}
+  <a class="c-card no-border" href="/event/{{event.EventItemOccurrence.Id}}?occs=all">
+  {%- endif -%}
+    <div class="c-card__header">
+    {%- if event.EventItemOccurrence.EventItem.Photo.Guid && event.EventItemOccurrence.EventItem.Photo.Guid != "" -%}
+      <img class="c-card__media" src="/GetImage.ashx?guid={{ event.EventItemOccurrence.EventItem.Photo.Guid }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" />
+    {%- endif -%}
+    </div>
+    <div class="c-card__body stack">
+    {%- assign eventAudience = "" -%}
+    {%- for audience in event.EventItemOccurrence.EventItem.EventItemAudiences  -%}
+      {%- capture eventAudience %}{{ eventAudience }}{% if forloop.first != true %}, {% endif %}{{ audience.DefinedValue.Value }}{% endcapture -%}
+    {%- endfor -%}
+      <span class="c-card__callout">{{ eventAudience }}</span>
+      <h3 class="c-card__title">{{ event.Name }}</h3>
+      <ul class="c-block__date-time c-list--inline">
+        <li><i class="nv-icon nv-icon--calendar"></i> {{ event.Date | Date:"M/d/yyyy" }}</li>
+        
+        {% comment %}
+          Removing the event time from the feature events block. - TAS 2/5/20
+          <li><i class="nv-icon nv-icon--clock"></i> {{ event.Time }}!</li>
+        {% endcomment %}
+        
+        
+      </ul>
+      <p>
+      {%- if eventDetailPage != "" -%}
+      <button class="c-btn c-btn--dark" onclick="window.location.href='{{ event.DetailPage }}'">
+      {%- else -%}
+      <button class="c-btn c-btn--dark" onclick="window.location.href='/event/{{event.EventItemOccurrence.Id}}?occs=all'">
+      {%- endif -%}
+        Details<i class="nv-icon nv-icon--carat_right"></i></button></p>
+    </div>
+  </a><!--/.c-card-->
+{%- endfor -%}
+</div><!--/.l-grid-->

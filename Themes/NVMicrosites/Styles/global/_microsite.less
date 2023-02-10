@@ -1,10 +1,35 @@
 html {
   scroll-behavior: smooth;
 }
+p {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+h1, .h1,
+h2, .h2,
+h3, .h3,
+p {	
+  &:first-child {
+    margin-top: 0;
+  }
+}
+#home-feature{
+  height: 52vh;
+  @media (min-width: @screen-sm) {
+   height: auto;       
+  }
+}
 .c-block-hero__wrapper {
-  background-size: cover;
-  background-position: center;
+//  background-size: cover;
+  background-size: 200%;
+  background-repeat: no-repeat;
+  background-position: top;
   padding: 20px;
+  @media (min-width: @screen-sm) {
+    background-size: cover;
+    background-position: center;
+
+  }
   h1 {
     color: @white;
     font-size: 40px;
@@ -31,18 +56,23 @@ html {
     font-family: @font-family-secondary;
     &.c-section__title {
       margin-top: 0;
-      font-size: 2.5rem;
+      font-size: 2rem;
       text-transform: uppercase;
       color: @brand-secondary;
       @media (min-width: @screen-sm) {
         font-size: 3.5rem;
       }
+
     }
+    
     &.c-section__item-title {
       font-size: 3rem;
     }
     &.-padBottom {
       padding-bottom: 30px;
+    }
+    &.-hidden{
+      display: none;
     }
   }
   h4 {
@@ -308,7 +338,7 @@ html {
         padding: 40px;
         display: grid;
         gap: 40px;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr;
       }
       @media (min-width: @screen-md) {
@@ -316,7 +346,7 @@ html {
       }
       @media all and (-ms-high-contrast: none) {
         display: -ms-grid;
-        -ms-grid-columns: repeat(2, 1fr);
+        -ms-grid-columns: repeat(3, 1fr);
         -ms-grid-rows: 1fr;
         :nth-child(1) {
           -ms-grid-row: 1;
@@ -351,12 +381,18 @@ html {
     }
   }
   .invite {
-    margin-right: 100px;
-    display: none;
-    align-items: center;
+    margin-top: 25px;
+    margin-right: 0;
     color: @white;
+    text-align: right;
     @media (min-width: @screen-sm) {
+      
       display: flex;
+      margin-top: 0;
+
+      margin-right: 100px;
+      align-items: center;
+
     }
     .nv-icon--account {
       font-size: 1.625rem;
@@ -368,7 +404,7 @@ html {
     }
     a {
       font-family: @headings-font-family;
-      font-size: 1.625rem;
+      font-size: 1rem;
       font-weight: 700;
       border-bottom: 0;
       text-transform: uppercase;
@@ -378,25 +414,31 @@ html {
       &:hover {
         color: @accent2;
       }
+      @media (min-width: @screen-sm) {
+        font-size: 1.625rem;
+      }
     }
   }
   .footerHead {
     background-color: @gray-lighter;
     position: relative;
-    .gift {
-      position: relative;
-      width: 100%;
-      height: 85px;
-      @media (min-width: @screen-sm) {
-        height: 200px;
-      }
-      img {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, -40px);
-      }
-    }
+    // .gift {
+    //   position: relative;
+    //   width: 100%;
+    //   height: 85px;
+    //   @media (min-width: @screen-sm) {
+    //     height: 200px;
+    //   }
+    //   img {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 50%;
+    //     transform: translate(-50%, 0);
+    //     @media (min-width: @screen-lg) {
+    //       transform: translate(-50%, -180px);
+    //     }
+    //   }
+    // }
   }
   //https://codepen.io/raubaca/pen/PZzpVe?editors=1100
   .shareable {
@@ -480,7 +522,7 @@ html {
       }
       ~ .tab-content {
         max-height: 100vh;
-        padding: 10px 20px 10px;
+        padding: 0 20px 10px;
       }
     }
     .shareable-downloads {
@@ -499,3 +541,35 @@ html {
     }
   }
 } // end .christmas-2020
+.c-card--side-by-side{
+  .l-grid__item{
+    margin-bottom: var(--s2);
+    align-content: center;
+    @media (min-width: @screen-sm) {
+    }
+  }
+  .c-card__title {
+    text-align: center;
+    @media (min-width: @screen-sm) {
+     text-align: inherit;       
+    }
+  }
+  
+  .c-card_content{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    gap: 20px;
+    @media (min-width: @screen-sm) {
+     display: inherit;       
+    }
+  }
+  .panel-group{
+   width: 90%;
+   @media (min-width: @screen-sm) {
+      width: 100%;     
+      margin-top:0;  
+   } 
+  }
+}

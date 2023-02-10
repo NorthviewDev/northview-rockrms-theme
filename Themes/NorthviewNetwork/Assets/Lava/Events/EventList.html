@@ -1,0 +1,137 @@
+<section class="c-section c-section--dark">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h2 class="c-section__title">All Upcoming Events</h2>
+<div class="events_list">
+{% assign eventItemOccurrenceCount = EventItemOccurrences | Size %}
+{% assign current_start_day = null %}
+{% assign num_events = 0 %}
+{% if eventItemOccurrenceCount == 0 %}
+	<div class="panel panel-default margin-t-md">
+		<div class="margin-all-md"> There are no events in this time frame.</div>
+	</div>
+{% else %}
+	<div class='hide'>
+		<div class='hide'>
+			<div class="hide">
+	{% for eventItemOccurrence in EventItemOccurrences %}
+	{% assign currentDate = 'Now' | Date:'yyyyMMdd' %}
+	{% assign eventItemDate = eventItemOccurrence.Date | Date:'yyyyMMdd' %}
+	{%- assign eventExternalRegUrl = EventItemOccurrence | Attribute:'RegistrationURL','RawValue' -%}
+
+	{% if eventItemDate >= currentDate %}
+	{% assign num_events = num_events | Plus:'1' %}
+		{% if eventItemOccurrence.Date != current_start_day %}
+			</div>
+		</div>
+	</div>
+	<div class='day_group_row'>
+		<div class="row event_row">
+			<div class='event_start-date col-sm-12 col-md-3'>
+				<img src="/GetImage.ashx?Guid={{ eventItemOccurrence.EventItemOccurrence.EventItem.Photo.Guid }}&w=450&h=450&mode=crop&scale=both" width="450" height="450" data-imageattribute="EventItemPhoto" onerror="javascript:this.src='https://fakeimg.pl/1600x900/'" />
+			</div>
+			<div class='day_event_list col-sm-12 col-md-6'>
+		{% endif %}
+				<div class='event'>
+					<div>
+						<div class="event__date">{{ eventItemOccurrence.Date  | Date: 'MMMM d, yyyy' }}</div>
+
+						<h3 class="h3 event__title">
+						{% if eventItemOccurrence.DetailPage != null %}
+						<a href="{{ eventItemOccurrence.DetailPage }}">{{ eventItemOccurrence.Name }}</a>
+						{% else %}
+						<a href="/event/{{ eventItemOccurrence.EventItemOccurrence.Id }}">{{ eventItemOccurrence.Name }}</a>
+						{% endif %}
+						</h3>
+						<p class='event__location'>
+						{%- if eventItemOccurrence.Location != null -%}
+							{{ eventItemOccurrence.Location}}
+						{%- endif -%}
+						</p>
+						{{eventItemOccurrence.Summary}}
+
+					</div>
+
+
+					{% assign current_start_day = eventItemOccurrence.Date %}
+					{% assign current_end_day = eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveEndDate %}
+				</div>
+	{% endif %}
+					<div class='event__details'>
+						{{eventExternalRegUrl}}
+						{% if eventItemOccurrence.DetailPage != null %}
+							<a class="c-btn c-btn--red" href="{{ eventItemOccurrence.DetailPage }}">Details</a>
+						{% else %}
+							<a class="c-btn c-btn--red" href="/event/{{ eventItemOccurrence.EventItemOccurrence.Id }}">Details </a>
+						{% endif %}
+					</div>
+{% endfor %}
+			</div>
+
+
+		</div>
+	</div>
+{% if num_events == 0 %}
+	<div class="panel panel-default margin-t-md">
+		<div class="margin-all-md"> There are no events in this time frame.</div>
+	</div>
+{% endif %}
+{% endif %}
+</div>
+
+<div class="pagination-wrapper">
+	{% if Pagination.TotalPages > 1 %}
+	{% assign numPages = Pagination.TotalPages %}
+	<div class="margin-t-lg">
+		{% assign nextPageString = Pagination.NextPage | ToString %}
+		{% assign prevPageString = Pagination.PreviousPage | ToString %}
+		<nav aria-label="Page navigation" style="text-align: center">
+			<ul class="pagination pagination-lg">
+
+			{% if {{Pagination.PreviousPage == -1 }} %}
+			<li class="disabled">
+				<a href="#" aria-label="Previous" class="prev">
+					<span aria-hidden="true"><i class="fa fa-chevron-left"></i> Previous</span>
+				</a>
+			</li>
+			{% else %}
+			<li>
+				<a aria-label="Previous" href="{{Pagination.UrlTemplate | Replace:'PageNum', prevPageString}}" class="prev">
+					<span aria-hidden="true"><i class="fa fa-chevron-left"></i> Previous</span>
+				</a>
+			</li>
+			{% endif %}
+
+			{% for i in (1..numPages) %}
+				{% if {{Pagination.CurrentPage == i }} %}
+					<li class="active"><a href="{{Pagination.UrlTemplate | Replace:'PageNum', i}}">{{ i }} <span class="sr-only">(current)</span></a></li>
+				{% else %}
+					<li><a href="{{Pagination.UrlTemplate | Replace:'PageNum', i}}">{{ i }}</a></li>
+				{% endif %}
+			{% endfor %}
+
+			{% if {{Pagination.NextPage == -1 }} %}
+			<li class="disabled">
+				<a href="#" aria-label="Next" class="next">
+					<span aria-hidden="true">Next <i class="fa fa-chevron-right"></i></span>
+				</a>
+			</li>
+			{% else %}
+			<li>
+				<a aria-label="Next" href="{{Pagination.UrlTemplate | Replace:'PageNum', nextPageString}}" class="next">
+					<span aria-hidden="true">Next <i class="fa fa-chevron-right"></i></span>
+				</a>
+			</li>
+			{% endif %}
+
+			</ul>
+		</nav>
+	</div>
+	{% endif %}
+</div>{% comment %}end pagination-wrapper{% endcomment %}
+
+			</div>
+		</div>
+	</div>
+</section>

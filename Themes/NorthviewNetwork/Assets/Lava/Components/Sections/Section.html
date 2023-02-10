@@ -1,0 +1,38 @@
+{%- assign firstItem = Items | First -%}
+{%- assign section = firstItem.ContentChannel -%}
+{%- assign sectionTitle = section.Name -%}
+{%- assign sectionTitleSize = section | Attribute:'SectionTitleSize', 'RawValue' | Default:'h2' -%}
+{%- assign sectionTitleStyle  =  ContentChannel | Attribute:'SectionTitleStyle','RawValue' -%}
+{%- assign sectionColorScheme = section | Attribute:'SectionColorScheme', 'RawValue' -%}
+{%- assign sectionImage = section | Attribute:'SectionImage','Object' -%}
+{%- assign sectionContentAlignment = section | Attribute:'SectionContentAlignment','RawValue' -%}
+{%- assign sectionPadding = section | Attribute:'SectionPadding' -%}
+{%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
+{%- capture sectionClass -%}{{ sectionPadding }} {{ sectionColorScheme }}{%- endcapture -%}
+<section id="{{sectionTitle | ToCssClass}}" class="c-section {{sectionClass}} {% if sectionType != '' %}c-section--{{ sectionType }}{% endif %}">
+	<div class="wrapper">
+		<div class="container">
+			<duv class="row">
+				<div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+		<div class="content">
+			<article>
+				<{{sectionTitleSize}} class="{{sectionTitleSize}} {{sectionTitleStyle}}">{{ sectionTitle }}</{{sectionTitleSize}}>
+				{%- for item in Items -%}
+				{%- assign itemTitleSize = item | Attribute:'TitleSize', 'RawValue' | Default:'h2' -%}
+				{%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
+
+				{%- assign image = item | Attribute:'Image','Object' -%}
+				{%- assign imageGuid = item | Attribute:'Image','RawValue' -%}
+				{%- assign buttons = item | Attribute:'Buttons' -%}
+				<{{itemTitleSize}} class="{{itemTitleSize}} {{itemTitleStyle}}">{{ item.Title }}</{{itemTitleSize}}>
+				{{ item.Content }}
+				{{ buttons }}
+				{%- endfor -%}
+			</article>
+			</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</section>

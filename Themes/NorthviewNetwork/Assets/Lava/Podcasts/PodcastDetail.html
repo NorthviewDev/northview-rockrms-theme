@@ -1,0 +1,85 @@
+{%- assign channelUrl = Item.ContentChannel.ChannelUrl %}
+
+{%- assign author = Item | Attribute:'Host' %}
+{%- assign authorImage = Item | Attribute:'AuthorImage','RawValue' %}
+{%- assign authorTitle = Item | Attribute:'AuthorTitle','RawValue' %}
+
+
+{%- assign audioUrl = Item | Attribute:'AudioLink','RawValue' -%}
+{%- assign videoUrl = Item | Attribute:'VideoLink','RawValue' -%}
+{%- assign videoEmbed = Item | Attribute:'VideoEmbed','RawValue' -%}
+{%- assign PDFLink = Item | Attribute:'PDFLink','RawValue' -%}
+{%- assign PDFFile = Item | Attribute:'PDFFile','RawValue' -%}
+{%- assign podcastImage = Item | Attribute:'PodcastImage','RawValue' -%}
+{%- assign featureImage = Item | Attribute:'FeatureImage','RawValue' -%}
+
+<article class="c-item">
+
+	<div class="article-head">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 center-block head-content">
+					<p class="c-item__date">{{ Item.StartDateTime | Date:'MMMM d, yyyy' }}</p>
+					<h2 class="c-item__title">{{ Item.Title }}</h2>
+					{%- if author != '' -%}
+						<p class="c-item__author -head">{{ author }}</p>
+					{%- endif -%}
+					<div class="buttons">
+					{% if audioUrl != '' %}
+						<a href="{{audioUrl}}" target="_blank" class="c-btn button4 -small -outline">Listen <i class="icon-nn-spotify"></i></a>
+					{% endif %}
+					<a href="#" class="c-btn button4 -small -outline addthis_button_more at300b">Share <i class="icon-nn-share"></i></a>
+					</div>
+					<div class="article-media">
+						<div class="embed-responsive embed-responsive-16by9">
+							{% if videoEmbed != '' %}
+								{{ videoEmbed }}
+								{% elseif videoUrl != '' %}
+								<video poster="/GetImage.ashx?guid={{ Item | Attribute:'PodcastImage','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both&quality=70" controls preload><source src="{{ videoUrl }}" type="video/mp4"></video>
+							{% else %}
+
+								{% if featureImage != '' %}
+									<img src="/GetImage.ashx?guid={{featureImage}}&w=1120&h=635&mode=crop&anchor=middlecenter&scale=both" alt="{{ Item.Title }}" />
+								{% else %}
+									<img src="/GetImage.ashx?guid={{podcastImage}}&w=1120&h=635&mode=crop&anchor=middlecenter&scale=both" alt="{{ Item.Title }}" />
+								{% endif %}
+							{% endif %}
+						</div>
+					</div>{% comment %}end article-media{% endcomment %}
+
+				</div>
+
+			</div>
+		</div>
+	</div>{% comment %}end article-head{% endcomment %}
+	<div class="row">
+	<div class="col-md-6 center-block">
+	<div class="article-body">
+		<div class="c-item__content stack">
+			{{ Item.Content }}
+		</div>
+	</div>{% comment %}end article-body{% endcomment %}
+	<div class="article-footer">
+		{% if author != '' %}
+			<div class="c-item__author">
+			{% if authorImage != '' %}
+				<div class="author-image">
+					<img src="/GetImage.ashx?guid={{ authorImage }}&w=115&h=115&mode=crop&anchor=middlecenter&scale=both" alt="{{ Item.Title }}" />
+				</div>
+			{%- endif -%}
+			<div class="author-info">
+				{%- if author != '' -%}
+					<p class="c-item__author">Hosted by {{ author }}</p>
+				{%- endif -%}
+				{%- if authorTitle != '' -%}
+					<p class="c-item__author-title">{{ authorTitle }}</p>
+				{%- endif -%}
+			</div>
+			{% endif %}
+		</div>
+		<p><a href="{{channelUrl}}" class="c-btn back-btn -small">{% include "~~/Assets/Icons/SVG/caret-down.svg" %} Back to all</a></p>
+	</div>{% comment %}end article-footer{% endcomment %}
+	</div>
+	</div>
+</article>
+

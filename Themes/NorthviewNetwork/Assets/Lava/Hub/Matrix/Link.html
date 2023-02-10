@@ -1,0 +1,27 @@
+{% if AttributeMatrixItems != empty %}
+
+{% for attributeMatrixItem in AttributeMatrixItems %}
+{%- assign linkName = attributeMatrixItem | Attribute:'LinkName' -%}
+{%- assign linkUrl = attributeMatrixItem | Attribute:'LinkURL','RawValue' -%}
+{%- assign linkTarget = attributeMatrixItem | Attribute:'LinkTarget', 'RawValue' -%}
+{%- assign parentPageType = attributeMatrixItem | Attribute:'ParentPageType' -%}
+
+{% if parentPageType == 'Item' %}
+		{{ linkUrl }}
+{% else %}
+
+{%- if forloop.first == true  -%}
+	<h6>Links</h6>
+	<ul class="asset-list list-links">
+{% endif %}
+{%- if  linkTarget == "_blank" -%}
+	{%- assign rel = 'nofollow noopener' -%}
+{%- endif -%}
+	<li><a class="list-link-item" href="{{ linkUrl }}" {%- if linkTarget != "" -%}target="{{ linkTarget }}" rel="{{rel}}"{%- endif -%}>{{ linkName }}<i class="icon-nn-caret-down"></i></a></li>
+
+{%- if forloop.last == true -%}
+	</ul>
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}

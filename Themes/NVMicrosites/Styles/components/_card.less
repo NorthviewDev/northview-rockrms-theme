@@ -136,6 +136,7 @@ a.c-card {
       }
     }
   }
+  
 }
 
 /**
@@ -186,6 +187,7 @@ a.c-card {
     }
   }
   &.l-grid__item {
+    margin-bottom: 20px;
     @media (min-width: @screen-sm) {
       margin-bottom: 0;
     }
@@ -245,8 +247,11 @@ a.c-card {
       font-size: 64px;
     }
   }
-}
 
+}
+.stack > .-hidden + .panel-group{
+  display: none;
+}
 /**
  * Card Description
  * 1) A <p> tag that contains the card's primary text

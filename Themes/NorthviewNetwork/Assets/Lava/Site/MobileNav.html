@@ -1,0 +1,13 @@
+{%- assign pageHeaderImage = CurrentPage | Attribute:'PageHeaderImage','RawValue' -%}
+{%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
+{%- assign sectionClass="" -%}
+{%- if pageHeaderImage != "" or pageHeaderVideo != "" -%}
+{%- assign sectionClass=" has-media" -%}
+{%- else -%}
+{%- assign sectionClass=" no-header" -%}
+{%- endif -%}
+<ul class="nav navbar-nav c-header__controls{{ sectionClass }}">
+
+{% comment %} 	<li class="c-header__control nav-toggle nav-toggle-search"><a href="/search"><i class="nv-icon nv-icon--search"></i><span class="sr-only">Search</span></a> {% endcomment %}
+	<li class="c-header__control nav-toggle nav-toggle-menu"><a href="#nav"><i class="icon-nn-menu"></i><span class="sr-only">Menu</span></a>
+</ul><!-- end c-header__controls -->

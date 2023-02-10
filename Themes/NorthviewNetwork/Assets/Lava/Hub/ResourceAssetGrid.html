@@ -1,0 +1,68 @@
+{%- assign linkurl = ItemContentChannel.ItemUrl | Replace:'{Id}',Item.Id | Replace:'{Slug}',Item.PrimarySlug %}
+{%- assign channelurl = Item.ContentChannel.ChannelUrl %}
+{% assign pageType = Item | Attribute:'PageType' %}
+
+{% assign author = Item | Attribute:'Author' %}
+{% assign itemByline = Item | Attribute:'Byline' %}
+{% assign itemContent = Item.Content %}
+
+{%- assign image = Item | Attribute:'Image','Object' %}
+{%- assign imageGuid = Item | Attribute:'ItemImage','RawValue' %}
+{%- assign imageTitle = Item.Title %}
+{%- assign itemSummary = Item | Attribute:'Summary' -%}
+{%- assign assetsVisual =  Item | Attribute:'VisualAssets' -%}
+{%- assign assetsDocuments =  Item | Attribute:'Documents' -%}
+{%- assign assetsLinks =  Item | Attribute:'Links' -%}
+{%- assign downloadAll =  Item | Attribute:'DownloadAll','RawValue' | Trim -%}
+{%- assign downloadZIP =  Item | Attribute:'DownloadZIP','RawValue' | Trim -%}
+
+{% if pageType == 'Collection' %}
+<section class="c-section c-section--dark">
+	<div class="container">
+		<div class="row">
+			<div class="resource-assets -grid">
+				<div class="leftCol">
+					{% if downloadAll != empty %}
+						<a class="all-link" href="{{ downloadAll }}" target="_blank">Download All <i class="icon-nn-download"></i></a>
+					{% elseif downloadZIP != empty %}
+						<a class="all-link" href="/GetFile.ashx?guid={{ downloadZIP }}" target="_blank">Download All <i class="icon-nn-download"></i></a>
+					{% endif %}
+					<h6>Media</h6>
+					<div class="assets-visual">
+						{{assetsVisual}}
+					</div>
+				</div>
+				<div class="rightCol">
+					<div class="assets-documents">
+						{{assetsDocuments}}
+					</div>
+					<div class="assets-links">
+						{{assetsLinks}}
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+{% endif %}
+
+
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+
+<script>
+// external js: isotope.pkgd.js
+
+// init Isotope
+var $grid = $('.assets-visual').imagesLoaded( function() {
+	$grid.isotope({
+		itemSelector: '.asset-item',
+		masonry: {
+			columnWidth: '.asset-item',
+		gutter: 26
+	}
+});
+});
+</script>
+

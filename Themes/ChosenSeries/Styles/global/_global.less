@@ -51,7 +51,16 @@ h1.pagetitle:empty {
     column-gap: 60px;
   }
 }
-
+.clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: ' ';
+  }
+  &:after {
+    clear: both;
+  }
+}
 /* Rock Overrides */
 .zone-configuration-bar,
 .block-configuration-bar {

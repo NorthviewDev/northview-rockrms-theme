@@ -225,7 +225,7 @@ a.c-card {
   padding: var(--s2);
   background-color: @white;
   color: @text-color;
-  font-size: 16px;
+  font-size: 18px;
   &.--noPad {
     padding: 0;
   }
@@ -289,7 +289,7 @@ a.c-card {
   font-size: 25px;
   color: @text-color;
   @media (min-width: @screen-md) {
-    font-size: 36px;
+    font-size: 48px;
   }
   &.c-card__title--med {
     font-size: 29px;
@@ -612,7 +612,9 @@ a.c-card {
     }
   }
   .c-section__description{
+    font-family: @font-family-sans-serif-bold;
     font-size: 60px;
+    text-transform: uppercase;
     @media (min-width: @screen-sm) {
       font-size: 72px;
     }
@@ -729,7 +731,7 @@ a.c-card {
     }
   }
   .c-card{
-    border-radius: 5px;
+    border-radius: 10px;
     transition: .3s ease;
     &:hover,
     &:focus {
@@ -763,9 +765,9 @@ a.c-card {
       }
     }
     h2{
-      font-family: @font-family-sans-serif;
+      font-family: @font-family-sans-serif-bold;
       font-size: 250%;
-      color: @color-gray-lightest!important;
+      color: @brand-primary!important;
       text-transform: uppercase;
       font-weight: bold;
       @media (min-width: @screen-sm) {
@@ -795,6 +797,7 @@ a.c-card {
         }
         @media (min-width: @screen-sm) {
           font-size: 30px;   
+          padding: 0 30px;
         }
       }
       svg{
@@ -867,16 +870,17 @@ a.c-card {
     }
     .c-card__title{
       font-size: 45px;
-      color: @brand-secondary;
+      color: @brand-primary;
     }
     .item-description{
       font-size: 20px;
       font-style: italic;
+      margin-bottom:30px;
     }
     .item-content{
       font-family: @font-family-sans-serif-bold;
       font-size: 45px;
-      color: @brand-secondary;
+      color: @brand-primary;
     }
   }
 }

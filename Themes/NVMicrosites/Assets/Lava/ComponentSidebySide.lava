@@ -29,7 +29,7 @@
               <div class="c-section__header">
                 <h2><span>{{ sectionTitle }}</span></h2>
                 {%- if sectionDescription != '' -%}
-                <p class="c-section__description">{{ sectionDescription }}</p>
+                {{ sectionDescription }}
                 {%- endif -%}
               </div>
 {%- endif -%}
@@ -43,11 +43,11 @@
 {%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
 {%- assign itemDescription  =  item | Attribute:'ItemDescription' -%}
             <div class="l-grid__item" style="grid-row: {{ forloop.index }} / {{ forloop.index }};{% if contentAlignment == "left" %} grid-column: 2 / 2;{% endif %}">
-              <img class="c-card__media" src="/GetImage.ashx?Guid={{ item | Attribute:'ItemImage','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
+              <img class="c-card__media" src="/GetImage.ashx?Guid={{ item | Attribute:'ItemImage','RawValue' }}&w=800&h=597&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
             </div>
             <div class='l-grid__item c-card__body' style="grid-row: {{ forloop.index }} / {{ forloop.index }}">
               <div class="c-card_content stack">
-                <h2 class="c-card__title{% if sectionTitleStyle == "highlight" %} c-card__title--med{% endif %}"><span>{{ item.Title }}</span></h2>
+                <h2 class="c-card__title{% if sectionTitleStyle == "highlight" %} c-card__title--med{% endif %} {% if itemTitleStyle == "hidden" %} -hidden{% endif %}"><span>{{ item.Title }}</span></h2>
                 {%- if itemDescription != '' -%}
                   <p class="c-card__description">{{ itemDescription }}</p>
                 {%- endif -%}

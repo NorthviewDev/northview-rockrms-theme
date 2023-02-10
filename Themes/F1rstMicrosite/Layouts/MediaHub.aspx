@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        <section class="c-section c-section--light">
+        <section class="c-section">
           <div class="container">
             <div class="row">
                 <div class="col-lg-12">

@@ -1,0 +1,49 @@
+{% comment %}Most Recent Article or Podcast{% endcomment %}
+{% comment %}{% include "~~/Assets/Lava/Articles/LatestItem.html" %}{% endcomment %}
+<section class="c-section -section-graybg">
+	<div class="container">
+		<div class="feature-item">
+		{% for itemFeature in Items %}
+		{%- assign channelName = itemFeature.ContentChannel.ChannelUrl %}
+		{%- assign channelDescription = itemFeature.ContentChannel.Description %}
+
+		{%- assign linkurl = itemFeature.ContentChannel.ItemUrl | Replace:'{Id}',itemFeature.Id | Replace:'{Slug}',itemFeature.PrimarySlug %}
+		{%- assign channelurl = itemFeature.ContentChannel.ChannelUrl %}
+		{%- assign itemAction = itemFeature.ContentChannel | Attribute:'ItemAction' %}
+
+		{% assign author = itemFeature | Attribute:'Author' %}
+		{% assign itemByline = itemFeature | Attribute:'Byline' %}
+		{% assign itemContent = itemFeature.Content %}
+
+
+		{%- assign itemVideo = itemFeature | Attribute:'VideoVimeo','RawValue' %}
+		{%- assign image = itemFeature | Attribute:'Image','Object' %}
+		{%- assign imageGuid = itemFeature | Attribute:'Image','RawValue' %}
+		{%- assign imageTitle = itemFeature.Title %}
+		{%- assign itemSummary = itemFeature | Attribute:'Summary' -%}
+
+		<div class="item-media">
+			{% comment %}<h6>Most Recent from {{ channelDescription }}</h6>{% endcomment %}
+			<img src='/GetImage.ashx?guid={{ imageGuid }}&w=800&h=450&mode=crop' alt='{{imageTitle}}' onerror="javascript:this.src='https://fakeimg.pl/800x450/'" />
+		</div>
+		<div class="item-content">
+			<h2 class="h1 item-title">{{itemFeature.Title}}</h2>
+			{% if author != '' %}
+				<h5 class="h5 item-byline">By {{ author }}</h5>
+			{% endif %}
+			<div class="item-description">
+				{% if itemSummary != '' %}
+					{{itemSummary}}
+				{% else %}
+					{{ itemContent | Truncate:150,'...' }}
+				{% endif %}
+
+			</div>
+			<div class="buttons">
+				<a href="{{linkurl}}" class="c-btn button1">Read More</a>
+			</div>
+		{% endfor %}
+		</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,165 @@
+{% assign today = 'Now' | Date:'yyyyMMdd' %}
+{% assign dateTimeNow = 'Now' | Date:'yyyyMMddhhmmss' %}
+
+{% assign eventItemOccurrenceLinkages = EventItemOccurrence.Linkages %}
+{% assign eventItemOccurrenceLinkagesCount = eventItemOccurrenceLinkages | Size %}
+
+<article class="c-event">
+  <div class="article-head">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 center-block">
+          {% assign scheduledDates = EventItemOccurrence.Schedule.iCalendarContent | Split: 'RRULE' %}
+            {% assign scheduledNumDates = scheduledDates | Size %}
+            {% assign eventItemOccurrenceCustomDateText = EventItemOccurrence | Attribute:'CustomDateText' %}
+
+            {% if eventItemOccurrenceLinkagesCount > 1 %}
+              Multiple Opportunities
+            {% else %}
+              <div class="event-date c-item__date">
+              {% if eventItemOccurrenceCustomDateText != null and eventItemOccurrenceCustomDateText != '' -%}
+                {{ eventItemOccurrenceCustomDateText }}
+              {% else -%}
+                {% assign eventItemDatesIsHidden = EventItemOccurrence | Attribute:'AttEventDatesHide' %}
+              {% unless eventItemDatesIsHidden == 'Yes' %}
+                {{ EventItemOccurrence.Schedule.NextStartDateTime | Date: 'dddd, MMMM d'}}
+              {% endunless %}
+              {% endif -%}
+              </div>
+
+            {% endif %}
+          <h2 class="c-item__title">{{ Event.Name }}</h2>
+          <div class="event-location">
+            {% if EventItemOccurrence.Campus and EventItemOccurrence.Campus.Name != '' %}
+            <span>{{ EventItemOccurrence.Campus.Name }}</span>
+            {% else %}
+            <span>All Campuses</span>
+            {% endif -%}
+            {% if EventItemOccurrence.Location != '' %}
+            &nbsp;|&nbsp;
+            <span>{{ EventItemOccurrence.Location }}</span>
+            {% endif -%}
+          </div>
+          <div class="buttons">
+          {% if eventItemOccurrenceLinkagesCount > 0 %}
+          <a href="#register" class="c-btn button2 -small">Register <i class="icon-nn-plus"></i></a>
+          {% endif %}
+          <a href="#" class="c-btn button2 -small -outline addthis_button_more at300b">Share <i class="icon-nn-share"></i></a>
+          </div>
+        {% if Event.Photo.Guid %}
+          <div class="article-media">
+            <img src="/GetImage.ashx?Guid={{ Event.Photo.Guid }}&w=1120&h=635&quality=80&mode=crop&anchor=middlecenter&scale=both" class="title-image img-responsive" />
+          </div>
+            {% capture metaimg %}{{'Global' | Attribute:'PublicApplicationRoot'}}GetImage.ashx?Guid={{ Event.Photo.Guid }}&width=1200&height=630&mode=crop&scale=both{% endcapture %}
+            {{ metaimg | AddMetaTagToHead:'property','og:image' }}
+            {{ metaimg | AddMetaTagToHead:'name','twitter:image' }}
+            {{ 'summary_large_image' | AddMetaTagToHead:'name','twitter:card' }}
+        {% endif %}
+        <div class="event-meta">
+          <div class="meta-col">
+            <div class="meta-head">Date & Time</div>
+            <div class="meta-body">
+            {% if eventItemOccurrenceCustomDateText != null and eventItemOccurrenceCustomDateText != '' -%}
+              {{ eventItemOccurrenceCustomDateText }}
+            {% else -%}
+              {% assign eventItemDatesIsHidden = EventItemOccurrence | Attribute:'AttEventDatesHide' %}
+            {% unless eventItemDatesIsHidden == 'Yes' %}
+              {{ EventItemOccurrence.Schedule.NextStartDateTime | Date: 'M.d.yy'}}
+            {% endunless %}
+            {% endif -%}
+            </div>
+            <div class="meta-foot">
+              {% if eventItemOccurrenceCustomDateText == null or eventItemOccurrenceCustomDateText == '' -%}
+              {% unless eventItemDatesIsHidden == 'Yes' %}
+              {{ EventItemOccurrence.Schedule.StartTimeOfDay | Date: 'h:mm tt' }}
+              {% endunless %}
+              {% endif -%}
+            </div>
+          </div>{% comment %} end event-time{% endcomment %}
+          <div class="meta-col">
+            <div class="meta-head">Location Name</div>
+            <div class="meta-body">
+              {% if EventItemOccurrence.Campus and EventItemOccurrence.Campus.Name != '' %}
+              <span>{{ EventItemOccurrence.Campus.Name }}</span>
+              {% else %}
+              <span>All Campuses</span>
+              {% endif -%}
+              {% if EventItemOccurrence.Location != '' %}
+              &nbsp;|&nbsp;
+              <span>{{ EventItemOccurrence.Location }}</span>
+              {% endif -%}
+            </div>
+            <div class="meta-foot">
+              {{ EventItemOccurrence.Campus.FormattedAddress }}
+            </div>
+          </div>{% comment %}end event-location{% endcomment %}
+          <div id="register" class="event-register meta-col">
+            {% comment %}BEGIN Registration links{% endcomment %}
+            {% if eventItemOccurrenceLinkagesCount > 0 %}
+            {% for eventItemOccurrenceLinkage in eventItemOccurrenceLinkages %}
+            {% assign daysTillStartDate = 'Now' | DateDiff:eventItemOccurrenceLinkage.RegistrationInstance.StartDateTime,'m' %}
+            {% assign daysTillEndDate = 'Now' | DateDiff:eventItemOccurrenceLinkage.RegistrationInstance.EndDateTime,'m' %}
+            {% assign showRegistration = true %}
+            {% assign registrationMessage = '' %}
+
+            {% if daysTillStartDate and daysTillStartDate > 0 %}
+            {% assign showRegistration = false %}
+            {% if eventItemOccurrenceLinkagesCount == 1 %}
+            {% capture registrationMessage %}<p>Registration opens on {{ eventItemOccurrenceLinkage.RegistrationInstance.StartDateTime | Date:'dddd, MMMM d, yyyy' }}</p>{% endcapture %}
+            {% else %}
+            {% capture registrationMessage %}<p>Registration for {{ eventItemOccurrenceLinkage.PublicName }} opens on {{ eventItemOccurrenceLinkage.RegistrationInstance.StartDateTime | Date:'dddd, MMMM d, yyyy' }}</p>{% endcapture %}
+            {% endif %}
+            {% endif %}
+
+            {% if daysTillEndDate and daysTillEndDate < 0 %} {% assign showRegistration=false %} {% if eventItemOccurrenceLinkagesCount==1 %} {% capture registrationMessage %}<p>Registration closed on {{ eventItemOccurrenceLinkage.RegistrationInstance.EndDateTime | Date:'dddd, MMMM d, yyyy' }}</p>{% endcapture %}
+              {% else %}
+              {% capture registrationMessage %}<p>Registration for {{ eventItemOccurrenceLinkage.PublicName }} closed on {{ eventItemOccurrenceLinkage.RegistrationInstance.EndDateTime | Date:'dddd, MMMM d, yyyy' }}</p>{% endcapture %}
+              {% endif %}
+              {% endif %}
+
+              {% if showRegistration == true %}
+              {% assign statusLabel = RegistrationStatusLabels[eventItemOccurrenceLinkage.RegistrationInstanceId] %}
+              {% if eventItemOccurrenceLinkagesCount == 1 %}
+              {% assign registrationButtonText = statusLabel %}
+              {% else %}
+              {% assign registrationButtonText = statusLabel | Plus:' for ' | Plus:eventItemOccurrenceLinkage.PublicName %}
+              {% endif %}
+
+              {% if statusLabel == 'Full' %}
+              {% if eventItemOccurrenceLinkagesCount == 1 %}
+              {% assign registrationButtonText = 'Registration Full' %}
+              {% else %}
+              {% assign registrationButtonText = eventItemOccurrenceLinkage.PublicName | Plus: ' (Registration Full) ' %}
+              {% endif %}
+              <div class='label label-default text-center margin-t-md' style='display: block; padding: 8px;'>{{ registrationButtonText }}</div>
+              {% else %}
+              {% if eventItemOccurrenceLinkage.UrlSlug != '' %}
+              <a href='{{ RegistrationPage }}?RegistrationInstanceId={{ eventItemOccurrenceLinkage.RegistrationInstanceId }}&Slug={{eventItemOccurrenceLinkage.UrlSlug}}' class="c-btn c-btn--primary -small">{{ registrationButtonText }} <i class="icon-nn-plus"></i></a>
+              {% else %}
+              <a href="{{ RegistrationPage }}?RegistrationInstanceId={{ eventItemOccurrenceLinkage.RegistrationInstanceId }}&EventOccurrenceID={{ eventItemOccurrenceLinkage.EventItemOccurrenceId }}" class="c-btn c-btn--primary -small">{{ registrationButtonText }} <i class="icon-nn-plus"></i></a>
+              {% endif %}
+              {% endif %}
+              {% else %}
+              <p>{{ registrationMessage }}</p>
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+              {% comment %}END Registration links{% endcomment %}
+          </div>{% comment %}end event-register{% endcomment %}
+        </div>{% comment %}end .event-meta{% endcomment %}
+      </div>
+    </div>
+    </div>
+
+  </div>{% comment %}end article-head{% endcomment %}
+  <div class="row">
+    <div class="col-md-6 center-block">
+      <div class="article-body">
+        <div class="c-item__content stack">
+          {{ Event.Description }}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
