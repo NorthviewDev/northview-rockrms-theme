@@ -13,7 +13,7 @@
 {%- assign podcastImage = Item | Attribute:'PodcastImage','RawValue' -%}
 {%- assign featureImage = Item | Attribute:'FeatureImage','RawValue' -%}
 
-<article class="c-item">
+<article class="c-item podcast">
 
 	<div class="article-head">
 		<div class="container">
@@ -30,21 +30,10 @@
 					{% endif %}
 					<a href="#" class="c-btn button4 -small -outline addthis_button_more at300b">Share <i class="icon-nn-share"></i></a>
 					</div>
-					<div class="article-media">
-						<div class="embed-responsive embed-responsive-16by9">
+					<div class="article-media audio-player">
 							{% if videoEmbed != '' %}
 								{{ videoEmbed }}
-								{% elseif videoUrl != '' %}
-								<video poster="/GetImage.ashx?guid={{ Item | Attribute:'PodcastImage','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both&quality=70" controls preload><source src="{{ videoUrl }}" type="video/mp4"></video>
-							{% else %}
-
-								{% if featureImage != '' %}
-									<img src="/GetImage.ashx?guid={{featureImage}}&w=1120&h=635&mode=crop&anchor=middlecenter&scale=both" alt="{{ Item.Title }}" />
-								{% else %}
-									<img src="/GetImage.ashx?guid={{podcastImage}}&w=1120&h=635&mode=crop&anchor=middlecenter&scale=both" alt="{{ Item.Title }}" />
-								{% endif %}
-							{% endif %}
-						</div>
+							{% endif%}
 					</div>{% comment %}end article-media{% endcomment %}
 
 				</div>
@@ -57,6 +46,7 @@
 	<div class="article-body">
 		<div class="c-item__content stack">
 			{{ Item.Content }}
+
 		</div>
 	</div>{% comment %}end article-body{% endcomment %}
 	<div class="article-footer">

@@ -36,7 +36,7 @@
 
 	<!-- Included CSS Files -->
     <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/bootstrap.css", false) %>">
-    <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", false) %>">
+    <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", true) %>">
 
     <!-- Web Fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/znh6mwy.css">

@@ -23,6 +23,7 @@ article.c-item{
 			margin-bottom: 150px;
 
 		}
+
 		.head-content{
 			display: flex;
 			flex-direction: column;
@@ -32,11 +33,37 @@ article.c-item{
 
 		}
 	}
+	&.podcast {
+		.article-head{
+			margin-bottom: 150px;
+			@media (min-width: @screen-sm) {
+				max-height: 890px;
+				margin-bottom: 150px;
+			}
+		}
+	}
+	.buttons {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+			.c-btn{
+				margin-top:0;
+			}
+	}
 	.article-media{
 		margin-top: 30px;
 		margin-bottom: 50px;
 		img{
 			border-radius: 10px;
+		}
+		&.audio-player{
+			width: 90%;
+			margin: 30px auto 0px;
+			@media (min-width: @screen-sm) {
+				width: 75%;
+				margin: 50px auto -130px;
+			}
 		}
 	}
 	.article-body{

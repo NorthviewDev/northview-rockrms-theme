@@ -24,6 +24,18 @@
 // 1. HTML Overrides
 // -------------------------
 
+
+.clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: ' ';
+  }
+  &:after {
+    clear: both;
+  }
+}
+
 html {
   -webkit-font-smoothing: antialiased;
 }
@@ -173,7 +185,9 @@ body {
   }
 }
 #form1 {
-  width: 1680px;
+  width: 100%;
+
+ // width: 1680px;
   //width: 1440px;
   max-width: 100%;
   margin-left: auto;

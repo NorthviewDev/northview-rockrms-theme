@@ -16812,6 +16812,9 @@ button:focus {
 .l-grid.l-grid--align-bottom {
   align-items: flex-end;
 }
+.threequarters .l-grid {
+  grid-template-columns: 4fr 2fr;
+}
 /*** FLEX LAYOUT ***/
 @media (min-width: 768px) {
   .l-row--flex {
@@ -17774,7 +17777,7 @@ a.c-card:focus {
   color: #77BDC4 !important;
   line-height: 0.8;
   padding: 0 60px;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
   text-transform: uppercase;
 }
 @media (min-width: 768px) {
@@ -18479,8 +18482,8 @@ a.c-card:focus {
   color: #ffffff;
   background-color: transparent;
 }
-.c-section.c-section--transparent h2 {
-  color: #F3F3F3 !important;
+.c-section.c-section--transparent .c-card__body {
+  background-color: transparent;
 }
 .c-section.c-section--medium {
   background-color: #eeeeee;
@@ -21358,12 +21361,40 @@ article.c-item .article-head .head-content {
   align-items: center;
   gap: 8px;
 }
+article.c-item.podcast .article-head {
+  margin-bottom: 150px;
+}
+@media (min-width: 768px) {
+  article.c-item.podcast .article-head {
+    max-height: 890px;
+    margin-bottom: 150px;
+  }
+}
+article.c-item .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+article.c-item .buttons .c-btn {
+  margin-top: 0;
+}
 article.c-item .article-media {
   margin-top: 30px;
   margin-bottom: 50px;
 }
 article.c-item .article-media img {
   border-radius: 10px;
+}
+article.c-item .article-media.audio-player {
+  width: 90%;
+  margin: 30px auto 0px;
+}
+@media (min-width: 768px) {
+  article.c-item .article-media.audio-player {
+    width: 75%;
+    margin: 50px auto -130px;
+  }
 }
 article.c-item .article-body {
   margin-top: 0;

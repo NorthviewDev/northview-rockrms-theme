@@ -5,13 +5,16 @@
 {%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
 {%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
 {%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
+{%- assign sectionContentWidth  =  ContentChannel | Attribute:'SectionContentRatio','RawValue' -%}
+{%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
+{%- assign sectionBgColor  =  ContentChannel | Attribute:'SectionBackgroundColorClass','RawValue' -%}
 {%- assign sectionBgClass  =  ContentChannel | Attribute:'SectionBackgroundColorClass' -%}
 {%- assign sectionAccentColor  =  ContentChannel | Attribute:'SectionAccentColor' -%}
 
 {%- if sectionAccentColor == '#e94650' -%}
   {%- assign btnColor = 'accent-red' -%}
 {%- endif -%}
-<section class="c-section c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}  {{  sectionBgClass }} {{ btnColor }}" {% if sectionBackgroundImage != '' %}style="background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}&maxWidth=800&maxHeight=800');"{% endif %}>
+<section class="c-section c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %} {% if sectionBgColor contains "--gradient" %} -gradient{% endif %}{% if sectionBgColor contains "-small-overlap-top" %} -small-overlap-top{% endif %} {{sectionPadding}} {{ btnColor }} {{sectionContentWidth}}" {% if sectionBackgroundImage != '' %}style="background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}&maxWidth=800&maxHeight=800');"{% endif %}>
   <div class="container">
     <div class="row">
       <div class='{%- if sectionTitleStyle == "highlight" -%}col-lg-12{% else %}col-lg-12 center-block{%- endif %}'>
@@ -44,16 +47,24 @@
           </div>
           <div class="l-grid c-card--side-by-side{% if sectionTitleStyle == "hidden" %} c-card--big{% endif %}">
       {%- for item in Items -%}
-{%- assign contentAlignment  =  item | Attribute:'ContentAlignment','RawValue' -%}
-{%- assign contentWidth  =  item | Attribute:'ContentWidth','RawValue' -%}
-{%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
-{%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
-{%- assign itemDescription  =  item | Attribute:'ItemDescription' -%}
-
-{%- assign buttons  =  item | Attribute:'Buttons' -%}
+          {%- assign contentAlignment  =  item | Attribute:'ContentAlignment','RawValue' -%}
+          {%- assign contentWidth  =  item | Attribute:'ContentWidth','RawValue' -%}
+          {%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
+          {%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
+          {%- assign itemDescription  =  item | Attribute:'ItemDescription' -%}
+          {%- assign video = item | Attribute:'VideoFile','RawValue' -%}
+          {%- assign videourl = item | Attribute:'VideoUrl','RawValue' -%}
+          {%- assign buttons  =  item | Attribute:'Buttons' -%}
 
             <div class="l-grid__item" style="grid-row: {{ forloop.index }} / {{ forloop.index }};{% if contentAlignment == "left" %} grid-column: 2 / 2;{% endif %}">
+            {% if videourl != '' %}
+              <div class="video-wrap">
+                <video src='{{videourl}}' class='js-media-video' type='video/mp4' width='100%' height='100%' preload='auto' playsinline loop controls poster="/GetImage.ashx?Guid={{ item | Attribute:'ItemImage','RawValue' }}&w=1280&h=720&mode=crop&anchor=middlecenter&scale=both"
+                 ></video>
+              </div>
+              {% else %}
               <img class="c-card__media" src="/GetImage.ashx?Guid={{ item | Attribute:'ItemImage','RawValue' }}&w=458&h=458&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
+              {% endif %}
             </div>
             <div class='l-grid__item c-card__body' style="grid-row: {{ forloop.index }} / {{ forloop.index }}">
               <div class="c-card_content stack">
