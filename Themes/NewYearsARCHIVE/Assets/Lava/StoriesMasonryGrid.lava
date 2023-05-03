@@ -1,0 +1,35 @@
+    <section id="stories-grid" class="c-section c-section--white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="c-section__header"><h2 style="text-transform: uppercase"><span>Stories</span></h2></div>
+                  <div class="c-section__content">
+                    <div class="masonry-grid">
+                    {%- for item in Items -%}
+                    {%- assign itemBgImage = item | Attribute:'Image','RawValue' %}
+                    {%- assign itemPrimarySlug = item.PrimarySlug | Trim -%}
+                    {%- if LinkedPages.DetailPage contains '{{Slug}}' and itemPrimarySlug != '' -%}
+                      {%- assign itemLink = LinkedPages.DetailPage | Replace:'{{Slug}}',item.PrimarySlug | Prepend:'/' -%}
+                    {%- else -%}
+                      {%- if LinkedPages.DetailPage contains '{{Slug}}' -%}
+                        {%- assign itemLink = LinkedPages.DetailPage | Replace:'{{Slug}}',item.Id | Prepend:'/' -%}
+                      {%- else -%}
+                        {%- capture itemLink -%}{{ LinkedPages.DetailPage }}?Item={{ item.Id }}{%- endcapture -%}
+                      {%- endif -%}
+                    {%- endif -%}
+                      <div class="masonry-grid__grid-item" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&maxWidth=800&maxHeight=800')">
+                        <div class="masonry-grid__content">
+                          <div class="masonry-grid__title-link stack">
+                            <h3 class="masonry-grid__item-title">{{ item.Title }}</h3>
+                            <p><a class="c-btn c-btn--text-link" href="{{ itemLink }}">Watch Story<i class="nv-icon nv-icon--carat_right"></i></a></p>
+                          </div>
+                        </div>
+                      </div>
+                    {%- endfor -%}
+                    </div>
+                  </div>
+                  {% comment %}<p class="c-section__footer"><a href="#" class="c-btn c-btn--large">All Stories<i class="nv-icon nv-icon--carat_right"></i></a></p>{% endcomment %}
+                </div>
+            </div>
+        </div>
+    </section>

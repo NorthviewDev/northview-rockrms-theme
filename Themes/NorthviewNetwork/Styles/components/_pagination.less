@@ -1,0 +1,53 @@
+.pagination-wrapper{
+	.pagination{
+		display: flex;
+		gap: 4px;
+		justify-content: center;
+		margin-top:50px;
+		li{
+			a{
+				font-family: @font-family-secondary;
+				font-size: 24px;
+				font-weight: 450;
+				color: @brand-secondary;
+				background-color: transparent;
+				border: none;
+				padding:10px 8px;
+
+				display: flex;
+				align-items: center;
+				&:hover{
+					background-color:transparent;
+					text-decoration: underline;
+				}
+				&.prev{
+					margin-right: 12px;
+					i{
+						padding-right: 5px;
+					}
+				}
+				&.next{
+					margin-left: 12px;
+					i{
+						padding-left: 5px;
+					}
+				}
+			}
+			i{
+				font-size: 12px;
+			}
+			&.active{
+				a{
+					color: @white;
+				}
+			}
+			&.disabled{
+				a, a:hover{
+					color: @color-gray;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+}// end .pagination

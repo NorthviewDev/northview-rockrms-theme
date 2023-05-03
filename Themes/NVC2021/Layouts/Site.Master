@@ -55,7 +55,7 @@
             HtmlMeta cardTwMetaTag = new HtmlMeta();
             cardTwMetaTag.Attributes.Add("name", "twitter:card");
             cardTwMetaTag.Attributes.Add("content", "summary_large_image");
-            Page.Header.Controls.Add(cardTwMetaTag);            
+            Page.Header.Controls.Add(cardTwMetaTag);
         }
         HtmlMeta urlOGMetaTag = new HtmlMeta();
         urlOGMetaTag.Attributes.Add("property", "og:url");
@@ -75,13 +75,13 @@
   <script src="<%# System.Web.Optimization.Scripts.Url("~/Scripts/Bundles/RockJQueryLatest") %>"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <asp:ContentPlaceHolder ID="css" runat="server" />
-  
+
   <!-- Included CSS Files -->
 	<link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/_icons/webfont/style.css") %>"/>
   <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", true) %>"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"/>
   <link rel="stylesheet" href="https://use.typekit.net/qqn7fdp.css">
-  
+
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" ></script>
   <script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/global.js") %>"></script>
 <script>
@@ -119,14 +119,14 @@ var BrowserDetect = {
             {string: navigator.userAgent, subString: "MSIE", identity: "Explorer"},
             {string: navigator.userAgent, subString: "Trident", identity: "Explorer"},
             {string: navigator.userAgent, subString: "Firefox", identity: "Firefox"},
-            {string: navigator.userAgent, subString: "Opera", identity: "Opera"},  
-            {string: navigator.userAgent, subString: "OPR", identity: "Opera"},  
+            {string: navigator.userAgent, subString: "Opera", identity: "Opera"},
+            {string: navigator.userAgent, subString: "OPR", identity: "Opera"},
 
-            {string: navigator.userAgent, subString: "Chrome", identity: "Chrome"}, 
-            {string: navigator.userAgent, subString: "Safari", identity: "Safari"}       
+            {string: navigator.userAgent, subString: "Chrome", identity: "Chrome"},
+            {string: navigator.userAgent, subString: "Safari", identity: "Safari"}
         ]
     };
-    
+
     BrowserDetect.init();
     if (BrowserDetect.browser !== "Explorer") {
       document.write('<script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/modern.js") %>"><\x2fscript>');
@@ -138,21 +138,25 @@ var BrowserDetect = {
 </script>
   <!-- styles needed by jScrollPane -->
   <link type="text/css" href="<%# ResolveRockUrl("~~/Assets/Scripts/jsscrollpane/jquery.jscrollpane-min.css") %>" rel="stylesheet" media="all" />
-  
+
   <!-- the mousewheel plugin - optional to provide mousewheel support -->
   <script defer type="text/javascript" src="<%# ResolveRockUrl("~~/Assets/Scripts/jsscrollpane/jquery.mousewheel.js") %>"></script>
-  
+
   <!-- the jScrollPane script -->
   <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jScrollPane/2.2.1/script/jquery.jscrollpane.min.js"></script>
 
   <!-- the ie11CustomProps script -->
   <script>window.MSInputMethodContext && document.documentMode && document.write('<script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/ie11CustomProperties.js") %>"><\x2fscript>');</script>
 
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51faa34f14a110ca"></script>
+
+
   <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body runat="server" id="body">
-  
-  <form id="form1" runat="server">  
+
+  <form id="form1" runat="server">
   <!-- Page Header -->
   <header id="site-header" class="panel-group">
 		<section id="notification">
@@ -160,24 +164,24 @@ var BrowserDetect = {
 		</section>
     <div class="c-header panel" role="banner">
       <Rock:Zone Name="Header" runat="server" />
-      <Rock:Zone Name="Navigation" runat="server" />  
+      <Rock:Zone Name="Navigation" runat="server" />
       <Rock:Zone Name="Login" runat="server" />
       <a href="/locations" id="locations-link" class="megamenu-footer__link" data-parent="#site-header">View Map</a>
     </div>
   </header>
-  
+
   <asp:ContentPlaceHolder ID="feature" runat="server"></asp:ContentPlaceHolder>
   <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
-  
+
   <footer id="site-footer" role="contentinfo">
     <section class="c-section c-section--dark">
       <div class="container">
         <Rock:Zone Name="Footer" runat="server" />
       </div>
-    </section>  
+    </section>
     <Rock:Zone Name="Footer Info" runat="server" />
   </footer>
-    
+
   <%-- controls for scriptmanager and update panel --%>
   <asp:ScriptManager ID="sManager" runat="server"/>
   <asp:UpdateProgress id="updateProgress" runat="server" DisplayAfter="800">
@@ -190,7 +194,7 @@ var BrowserDetect = {
     <div class="updateprogress-bg modal-backdrop"></div>
   </ProgressTemplate>
   </asp:UpdateProgress>
-  
+
   </form>
 
 </body>

@@ -1,0 +1,5 @@
+{% include "~~/Assets/Lava/EventItem.lava" %}
+
+{% comment %}
+Rock ships with this as the Event Item Occurrence detail template. Right now there's no difference between this and the Event Item detail view.
+{% endcomment %}

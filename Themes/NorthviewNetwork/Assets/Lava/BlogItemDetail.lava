@@ -1,0 +1,62 @@
+﻿{%- assign author = Item | Attribute:'Author' %}
+{%- assign audioUrl = Item | Attribute:'AudioLink','RawValue' -%}
+{%- assign videoUrl = Item | Attribute:'VideoLink','RawValue' -%}
+{%- assign videoEmbed = Item | Attribute:'VideoEmbed','RawValue' -%}
+{%- assign PDFLink = Item | Attribute:'PDFLink','RawValue' -%}
+{%- assign PDFFile = Item | Attribute:'PDFFile','RawValue' -%}
+<article class="c-item panel">
+  <h2 class="c-item__title">
+    <em>{{ Item.ContentChannel.Name }}</em>
+    {{ Item.Title }}</h2>
+  <p class="c-item__date"><strong>{{ Item.StartDateTime | Date:'MMMM d, yyyy' }}</strong></p>
+  <div class="embed-responsive embed-responsive-16by9">
+  {% if videoEmbed != '' %}
+    {{ videoEmbed }}
+  {% elseif videoUrl != '' %}
+    <video poster="/GetImage.ashx?guid={{ Item | Attribute:'Image','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both&quality=70" controls preload>
+      <source src="{{ videoUrl }}" type="video/mp4">
+    </video>
+  {% else %}
+    <img src="/GetImage.ashx?guid={{ Item | Attribute:'Image','RawValue' }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" alt="{{ Item.Title }}" />
+  {% endif %}
+  </div>
+  <div class="c-item__content stack">
+  {{ Item.Content }}
+  </div>
+  {%- if author != '' -%}
+  <p class="c-item__author"><strong>by {{ author }}</strong></p>
+  {%- endif -%}
+  <div class="c-filter__buttons">
+  {% sql %}
+  SELECT
+  t.Name
+  FROM TaggedItem ti
+  INNER JOIN Tag t
+  ON t.id = ti.TagId
+  WHERE ti.EntityGuid='{{Item.Guid}}'
+  {% endsql %}
+  {%- for tag in results -%}
+    <a class="c-filter__button" href="{{ tag.Name | Replace:' ','-' | Downcase | Prepend:'/topic/' }}">
+    {{ tag.Name }}
+    </a>
+  {%- endfor -%}
+  </div>
+  
+  {%- if PDFLink != '' -%}
+  <p><a class="c-btn c-btn--primary" href="{{ PDFLink }}" target="_blank">Download Resource</a></p>
+  {%- elseif PDFFile != '' -%}
+  <p><a class="c-btn c-btn--primary" href="/GetFile.ashx?guid={{ PDFFile }}" target="_blank">Download Resource</a></p>
+  {%- endif -%}
+  {%- if audioUrl != '' -%}
+  <div class="c-item__audio">
+    {% if ccTypeId == 17 -%}
+    <img src="/GetImage.ashx?guid={{ Item | Attribute:'Image','RawValue' }}&w=150&h=150&mode=crop&anchor=middlecenter&scale=both" alt="{{ Item.Title }}" />
+    {%- endif -%}
+    <audio controls>
+      <source src="{{audioUrl}}" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+  {% endif %}
+</article>
+<p><a href="/media" class="c-btn "><i class="nv-icon nv-icon--carat_left"></i> Back</a></p>

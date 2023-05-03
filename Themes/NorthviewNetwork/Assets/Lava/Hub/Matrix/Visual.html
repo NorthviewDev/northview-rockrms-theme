@@ -1,0 +1,34 @@
+{%- assign matrixItemCount = AttributeMatrixItems  | Size -%}
+{% for attributeMatrixItem in AttributeMatrixItems %}
+
+{%- assign itemName = attributeMatrixItem | Attribute:'VisualAssetName' -%}
+{%- assign itemImage = attributeMatrixItem | Attribute:'Image','RawValue' -%}
+{%- assign itemVideo = attributeMatrixItem | Attribute:'Video','RawValue' -%}
+{%- assign itemDescription = attributeMatrixItem | Attribute:'VADescription' -%}
+	{% if matrixItemCount > 0 %}
+		{% if itemImage != '' %}
+			{% assign getType = '/GetImage.ashx?guid=' %}
+			{% assign itemGuid = itemImage %}
+		{% else %}
+			{% assign getType = '/GetFile.ashx?guid=' %}
+			{% assign itemGuid = itemVideo %}
+
+		{% endif %}
+	<div class="asset-grid -mosaic">
+		<div class="asset-item">
+				<a class="asset-link-item" href="{{getType}}{{itemGuid}}" target="_blank" rel="{{rel}}" title="Right-click to Save">
+					<img src="/GetImage.ashx?guid={{ attributeMatrixItem | Attribute:'Image','RawValue' }}&w=800" alt="{{ itemName }}" />
+				</a>
+				<h5 class="item-name">{{ itemName }}</h5>
+				<p>{{ itemDescription }}</p>
+		</div>
+	</div>
+	{% else %}
+		{% if itemVideo != '' %}
+			{{ itemVideo }}
+		{% else %}
+			{{ itemImage }}
+		{% endif %}
+	{% endif %}
+{% endfor %}
+

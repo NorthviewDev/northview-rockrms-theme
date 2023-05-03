@@ -1,0 +1,199 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Rock.Web.UI.RockMasterPage" %>
+<%@ Import Namespace="System.Web.Optimization" %>
+<%@ Import Namespace="Rock" %>
+<%@ Import Namespace="Rock.Model" %>
+<%@ Import Namespace="Rock.Web.UI" %>
+<%@ Import Namespace="Rock.Web.Cache" %>
+<!DOCTYPE html>
+
+<script runat="server">
+
+    // keep code below to call base class init method
+
+    /// <summary>
+    /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+    /// </summary>
+    /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
+    protected override void OnInit( EventArgs e )
+    {
+        base.OnInit( e );
+        //Check to see if header media exists
+        var page = PageCache.Get( ( ( RockPage ) Page ).PageId );
+        var pageHeaderImage = page.GetAttributeValue( "PageHeaderImage" );
+        var pageHeaderVideo = page.GetAttributeValue( "PageHeaderVideo" );
+
+        HtmlMeta typeOGMetaTag = new HtmlMeta();
+        typeOGMetaTag.Attributes.Add("property", "og:type");
+        typeOGMetaTag.Attributes.Add("content", "website");
+        Page.Header.Controls.Add(typeOGMetaTag);
+        if (!(string.IsNullOrEmpty(page.PageTitle)))
+        {
+            HtmlMeta titleOGMetaTag = new HtmlMeta();
+            titleOGMetaTag.Attributes.Add("property", "og:title");
+            titleOGMetaTag.Attributes.Add("content", page.BrowserTitle);
+            Page.Header.Controls.Add(titleOGMetaTag);
+        }
+        if (!(string.IsNullOrEmpty(page.Description)))
+        {
+            HtmlMeta descOGMetaTag = new HtmlMeta();
+            descOGMetaTag.Attributes.Add("property", "og:description");
+            descOGMetaTag.Attributes.Add("content", page.Description);
+            Page.Header.Controls.Add(descOGMetaTag);
+        }
+        if (!(string.IsNullOrEmpty(pageHeaderImage)))
+        {
+            HtmlMeta imageOGMetaTag = new HtmlMeta();
+            imageOGMetaTag.Attributes.Add("property", "og:image");
+            imageOGMetaTag.Attributes.Add("content", "https://rock.northviewchurch.us/GetImage.ashx?Guid=" + pageHeaderImage + "&w=1600&h=900");
+            Page.Header.Controls.Add(imageOGMetaTag);
+
+            HtmlMeta imageTwMetaTag = new HtmlMeta();
+            imageTwMetaTag.Attributes.Add("property", "twitter:image");
+            imageTwMetaTag.Attributes.Add("content", "https://rock.northviewchurch.us/GetImage.ashx?Guid=" + pageHeaderImage + "&w=1600&h=900");
+            Page.Header.Controls.Add(imageTwMetaTag);
+
+            HtmlMeta cardTwMetaTag = new HtmlMeta();
+            cardTwMetaTag.Attributes.Add("name", "twitter:card");
+            cardTwMetaTag.Attributes.Add("content", "summary_large_image");
+            Page.Header.Controls.Add(cardTwMetaTag);            
+        }
+        HtmlMeta urlOGMetaTag = new HtmlMeta();
+        urlOGMetaTag.Attributes.Add("property", "og:url");
+        urlOGMetaTag.Attributes.Add("content", Request.Url.AbsoluteUri);
+        Page.Header.Controls.Add(urlOGMetaTag);
+
+    }
+
+</script>
+
+<html lang="en-US">
+<head runat="server">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title></title>
+  <script src="<%# System.Web.Optimization.Scripts.Url("~/Scripts/Bundles/RockJQueryLatest") %>"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <asp:ContentPlaceHolder ID="css" runat="server" />
+  
+  <!-- Included CSS Files -->
+	<link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/_icons/webfont/style.css") %>"/>
+  <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/bootstrap.css", false) %>"/>
+  <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", true) %>"/>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"/>
+  <link rel="stylesheet" href="https://use.typekit.net/uzz1nzz.css">
+  <link rel="stylesheet" href="https://use.typekit.net/vqi6yjm.css">
+  
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" ></script>
+  <script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/global.js") %>"></script>
+<script>
+var BrowserDetect = {
+        init: function () {
+            this.browser = this.searchString(this.dataBrowser) || "Other";
+            this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || "Unknown";
+        },
+        searchString: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var dataString = data[i].string;
+                this.versionSearchString = data[i].subString;
+
+                if (dataString.indexOf(data[i].subString) !== -1) {
+                    return data[i].identity;
+                }
+            }
+        },
+        searchVersion: function (dataString) {
+            var index = dataString.indexOf(this.versionSearchString);
+            if (index === -1) {
+                return;
+            }
+
+            var rv = dataString.indexOf("rv:");
+            if (this.versionSearchString === "Trident" && rv !== -1) {
+                return parseFloat(dataString.substring(rv + 3));
+            } else {
+                return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+            }
+        },
+
+        dataBrowser: [
+            {string: navigator.userAgent, subString: "Edge", identity: "MS Edge"},
+            {string: navigator.userAgent, subString: "MSIE", identity: "Explorer"},
+            {string: navigator.userAgent, subString: "Trident", identity: "Explorer"},
+            {string: navigator.userAgent, subString: "Firefox", identity: "Firefox"},
+            {string: navigator.userAgent, subString: "Opera", identity: "Opera"},  
+            {string: navigator.userAgent, subString: "OPR", identity: "Opera"},  
+
+            {string: navigator.userAgent, subString: "Chrome", identity: "Chrome"}, 
+            {string: navigator.userAgent, subString: "Safari", identity: "Safari"}       
+        ]
+    };
+    
+    BrowserDetect.init();
+    if (BrowserDetect.browser !== "Explorer") {
+      document.write('<script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/modern.js") %>"><\x2fscript>');
+      //document.write("You are using <b>" + BrowserDetect.browser + "</b> with version <b>" + BrowserDetect.version + "</b>");
+      console.log("You are not using IE")
+    } else {
+      console.log("You are using Internet Explorer")
+    }
+</script>
+  <!-- styles needed by jScrollPane -->
+  <link type="text/css" href="<%# ResolveRockUrl("~~/Assets/Scripts/jsscrollpane/jquery.jscrollpane-min.css") %>" rel="stylesheet" media="all" />
+  
+  <!-- the mousewheel plugin - optional to provide mousewheel support -->
+  <script defer type="text/javascript" src="<%# ResolveRockUrl("~~/Assets/Scripts/jsscrollpane/jquery.mousewheel.js") %>"></script>
+  
+  <!-- the jScrollPane script -->
+  <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jScrollPane/2.2.1/script/jquery.jscrollpane.min.js"></script>
+
+  <!-- the ie11CustomProps script -->
+  <script>window.MSInputMethodContext && document.documentMode && document.write('<script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/ie11CustomProperties.js") %>"><\x2fscript>');</script>
+
+  <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body runat="server" id="body">
+  
+  <form id="form1" runat="server">
+    <section id="notification">
+    <Rock:Zone Name="NotificationBar" runat="server" />
+    </section>
+  
+  <!-- Page Header -->
+  <header>
+    <div class="c-header" role="banner">
+      <Rock:Zone Name="Header" runat="server" />
+      <Rock:Zone Name="Navigation" runat="server" />  
+      <Rock:Zone Name="Login" runat="server" />
+    </div>
+  </header>
+  
+  <asp:ContentPlaceHolder ID="feature" runat="server"></asp:ContentPlaceHolder>
+  <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+  
+  <footer id="site-footer" role="contentinfo">
+    <section class="c-section">
+      <div class="container">
+        <Rock:Zone Name="Footer" runat="server" />
+      </div>
+    </section>  
+    <Rock:Zone Name="Footer Info" runat="server" />
+  </footer>
+    
+  <%-- controls for scriptmanager and update panel --%>
+  <asp:ScriptManager ID="sManager" runat="server"/>
+  <asp:UpdateProgress id="updateProgress" runat="server" DisplayAfter="800">
+  <ProgressTemplate>
+    <div class="updateprogress-status">
+      <div class="spinner">
+        <div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div>
+      </div>
+    </div>
+    <div class="updateprogress-bg modal-backdrop"></div>
+  </ProgressTemplate>
+  </asp:UpdateProgress>
+  
+  </form>
+
+</body>
+</html>

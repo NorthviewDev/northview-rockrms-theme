@@ -8,7 +8,7 @@ p {
 h1, .h1,
 h2, .h2,
 h3, .h3,
-p {	
+p {
 	&:first-child {
 		margin-top: 0;
 	}
@@ -51,6 +51,9 @@ p {
       color: @brand-secondary;
       @media (min-width: @screen-sm) {
         font-size: 3.5rem;
+      }
+      &.text-sm-center{
+        text-align:center;
       }
     }
     &.c-section__item-title {
@@ -323,7 +326,7 @@ p {
         padding: 40px;
         display: grid;
         gap: 40px;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr;
       }
       @media (min-width: @screen-md) {
@@ -331,7 +334,7 @@ p {
       }
       @media all and (-ms-high-contrast: none) {
         display: -ms-grid;
-        -ms-grid-columns: repeat(2, 1fr);
+        -ms-grid-columns: repeat(3, 1fr);
         -ms-grid-rows: 1fr;
         :nth-child(1) {
           -ms-grid-row: 1;

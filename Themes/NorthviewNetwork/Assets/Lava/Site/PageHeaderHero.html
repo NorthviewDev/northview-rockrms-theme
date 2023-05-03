@@ -1,0 +1,15 @@
+{%- assign pageHeaderImage = CurrentPage | Attribute:'HeaderImage','RawValue' -%}
+{%- assign pageHeaderBGImage = CurrentPage | Attribute:'HeaderBGImage','RawValue' -%}
+
+{%- assign displayTitle = item.ContentChannel | Attribute:'DisplayTitle' -%}
+
+<section id="page-header" class="c-section__hero">
+  <div class="c-block-hero">
+    <div class="c-section__hero-img">
+      <img class="bg-hero" src="/GetImage.ashx?guid= {{pageHeaderBGImage}}&w=1350&h=500&mode=crop&anchor=middlecenter&scale=both&quality=90" alt="{{ displayTitle }}" width="1350" height="500" />
+    </div>
+    <div class="c-block-hero__container container">
+      <h1 class="c-block-hero__headline"><span>{{ CurrentPage.PageTitle }}</span></h1>
+    </div>
+  </div><!-- end c-block--hero-->
+</section>

@@ -1,0 +1,28 @@
+{% if AttributeMatrixItems != empty %}
+	{% assign numDocs = AttributeMatrixItems | Size %}
+
+	{% for attributeMatrixItem in AttributeMatrixItems %}
+		{%- assign fileGuid = attributeMatrixItem | Attribute:'File','RawValue' -%}
+		{%- assign fileName = attributeMatrixItem | Attribute:'FileName' -%}
+		{%- assign parentPageType = attributeMatrixItem | Attribute:'ParentPageType' -%}
+
+
+		{%- if  linkTarget == "_blank" -%}
+			{%- assign rel = 'nofollow noopener' -%}
+		{%- endif -%}
+		{% if parentPageType == 'Item' %}
+				{{ fileGuid }}
+		{% else %}
+		{%- if forloop.first == true  -%}
+			<h6>Documents</h6>
+			<ul class="asset-list list-documents">
+		{% endif %}
+				<li><a class="list-link-item" href="/GetFile.ashx?guid={{ fileGuid }}" {%- if linkTarget != "" -%}target="_blank" rel="{{rel}}"{%- endif -%}>{{ fileName }}<i class="icon-nn-download"></i></a></li>
+		{%- if forloop.last == true -%}
+			</ul>
+		{% endif %}
+		{% endif %}
+
+	{% endfor %}
+
+{% endif %}

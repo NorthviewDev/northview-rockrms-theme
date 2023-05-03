@@ -6,7 +6,7 @@
 {%- if pageHeaderImage != "" or pageHeaderVideo != "" -%}
   {%- assign sectionClass=" has-media" -%}
   {%- assign ornamentClass=" has-ornaments" -%}
-  {%- assign containerClass="col-lg-9 col-lg-offset-1" -%}
+  {%- assign containerClass="col-lg-8 col-lg-offset-1" -%}
 {%- else -%}
   {%- assign sectionClass=" no-header" -%}
   {%- assign containerClass="col-xs-12" -%}
@@ -16,15 +16,12 @@
       <div class="c-block-hero__container">
         <div class="container">
           <div class="row">
-            <div class="{{ containerClass }} c-block-hero__header">
-              <div class="l-row--flex">
-                <div class="l-col--flex">
+            <div class="{{ containerClass }}">
+							<div class="c-block-hero__header">
                   <div class="c-block-hero__content">
                     <h1 class="c-block-hero__headline"><span>{{ CurrentPage.PageTitle }}</span></h1>
                   </div>
-                </div>
                 {%- if pageHeaderImage != "" || if pageHeaderVideo != "" -%}
-                <div class="l-col">
                   <div class="c-block-hero__background-video g-aspect-ratio__16-9">
                     <video poster="/GetImage.ashx?guid={{ pageHeaderImage }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" loop muted playsinline preload>
                     {%- if pageHeaderVideo != "" -%}
@@ -32,10 +29,8 @@
                     {%- endif -%}
                     </video>
                   </div>
-                </div>
                 {%- endif -%}
-              </div>
-            </div>
+							</div>
           </div>
         </div>      
       </div>

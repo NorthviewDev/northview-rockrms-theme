@@ -2,7 +2,7 @@
 :root {
   .sizeBase12(); //12px size increments
   --font-family-primary: @font-family-sans-serif;
-  --font-family-condensed: @headings-font-family;
+  --font-family-condensed: @font-family-sans-serif;
   --pwa-menu-height: 62px;
   --vh: 1vh; //set initial vh before js calculates it
 }
@@ -133,7 +133,7 @@ h1.pagetitle:empty {
 
 /*** GLOBAL STYLES ***/
 body {
-  background-color: #fafafa;
+  background-color: @color-gray-lightest;
   margin-bottom: var(--pwa-menu-height);
   @media (min-width: @screen-md) {
     margin-bottom: 0;
@@ -210,9 +210,7 @@ img {
 a {
   display: inline-block;
   text-decoration: none;
-  border-bottom: solid 2px @color-brand-primary;
   color: @text-color;
-  font-weight: 600;
   &:hover,
   &:focus {
     color: @gray;

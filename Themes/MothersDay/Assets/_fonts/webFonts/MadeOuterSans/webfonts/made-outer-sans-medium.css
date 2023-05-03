@@ -1,0 +1,27 @@
+/*
+Font: 		MADE Outer Sans
+Style: 		
+URL: 		https://www.youworkforthem.com/font/T11454/made-outer-sans
+Foundry: 	MadeType
+Foundry: 	https://www.youworkforthem.com/designer/1002/madetype
+Copyright:	Copyright (c) 2019 by MadeType. All rights reserved.
+Version: 	17
+Created:	October 22, 2019
+License: 	https://www.youworkforthem.com/font-license 
+License: 	The WebFont(s) listed in this document must follow the YouWorkForThem
+			WebFont license rules. All other parties are strictly restricted 
+			from using the WebFonts(s) listed without a purchased license. 
+			All details above must always remain unaltered and visible in your CSS.
+*/
+
+@font-face {
+	font-family: 'MADEOuterSans-Medium';
+	src: url('made-outer-sans-medium.eot');
+	src: url('made-outer-sans-medium.eot?#iefix') format('embedded-opentype'),
+             url('made-outer-sans-medium.woff2') format('woff2'),
+	     url('made-outer-sans-medium.woff') format('woff'),
+	     url('made-outer-sans-medium.ttf') format('truetype'),
+	     url('made-outer-sans-medium.svg#youworkforthem') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

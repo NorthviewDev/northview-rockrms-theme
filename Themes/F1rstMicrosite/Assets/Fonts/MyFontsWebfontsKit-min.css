@@ -1,0 +1,68 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 4370088, 2022-02-15T20:18:58-0500
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: GreycliffCF-ExtraLight by Connary Fagen
+ * URL: https://www.myfonts.com/fonts/connary-fagen/greycliff-cf/extra-light/
+ * 
+ * Webfont: GreycliffCF-Light by Connary Fagen
+ * URL: https://www.myfonts.com/fonts/connary-fagen/greycliff-cf/light/
+ * 
+ * Webfont: GreycliffCF-Regular by Connary Fagen
+ * URL: https://www.myfonts.com/fonts/connary-fagen/greycliff-cf/regular/
+ * 
+ * Webfont: GreycliffCF-RegularOblique by Connary Fagen
+ * URL: https://www.myfonts.com/fonts/connary-fagen/greycliff-cf/regular-oblique/
+ * 
+ * Webfont: GreycliffCF-Bold by Connary Fagen
+ * URL: https://www.myfonts.com/fonts/connary-fagen/greycliff-cf/bold/
+ * 
+ * Webfont: GreycliffCF-BoldOblique by Connary Fagen
+ * URL: https://www.myfonts.com/fonts/connary-fagen/greycliff-cf/bold-oblique/
+ * 
+ * Webfont: GreycliffCF-Heavy by Connary Fagen
+ * URL: https://www.myfonts.com/fonts/connary-fagen/greycliff-cf/heavy/
+ * 
+ * Webfonts copyright: Copyright © 2021 by Connary Fagen. All rights reserved.
+ * 
+ * © 2022 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/42aea8");
+  
+@font-face {
+  font-family: "GreycliffCF-Light";
+  src: url('webFonts/GreycliffCFLight/font.woff2') format('woff2'), url('webFonts/GreycliffCFLight/font.woff') format('woff');
+}
+@font-face {
+  font-family: "GreycliffCF-ExtraLight";
+  src: url('webFonts/GreycliffCFExtraLight/font.woff2') format('woff2'), url('webFonts/GreycliffCFExtraLight/font.woff') format('woff');
+}
+@font-face {
+  font-family: "GreycliffCF-BoldOblique";
+  src: url('webFonts/GreycliffCFBoldOblique/font.woff2') format('woff2'), url('webFonts/GreycliffCFBoldOblique/font.woff') format('woff');
+}
+@font-face {
+  font-family: "GreycliffCF-RegularOblique";
+  src: url('webFonts/GreycliffCFRegularOblique/font.woff2') format('woff2'), url('webFonts/GreycliffCFRegularOblique/font.woff') format('woff');
+}
+@font-face {
+  font-family: "GreycliffCF-Bold";
+  src: url('webFonts/GreycliffCFBold/font.woff2') format('woff2'), url('webFonts/GreycliffCFBold/font.woff') format('woff');
+}
+@font-face {
+  font-family: "GreycliffCF-Regular";
+  src: url('webFonts/GreycliffCFRegular/font.woff2') format('woff2'), url('webFonts/GreycliffCFRegular/font.woff') format('woff');
+}
+@font-face {
+  font-family: "GreycliffCF-Heavy";
+  src: url('webFonts/GreycliffCFHeavy/font.woff2') format('woff2'), url('webFonts/GreycliffCFHeavy/font.woff') format('woff');
+}

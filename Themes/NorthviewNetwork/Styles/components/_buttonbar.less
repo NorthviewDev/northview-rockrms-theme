@@ -1,0 +1,95 @@
+.c-section {
+  &.-ctaButtonBar {
+    color: @white;
+    font-size: 16px;
+    //border-bottom: solid 12px var(--primary-color);
+    @media (min-width: @screen-sm) {
+      font-size: 22px;
+    }
+    .c-section__content {
+      flex-direction: column;
+      padding: 50px 35px 50px;
+      gap: 30px;
+      @media screen and (min-width: @screen-lg) {
+        flex-direction: row;
+        padding: 78px 90px;
+        justify-content: space-between;
+       }
+      p:last-child{
+        margin-bottom: 0;
+      }
+      .content-wrap{
+        flex-basis: 70%;
+      }
+    }
+    .c-buttons{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .c-btn{
+        margin: 0 10px;
+      }
+    }
+    .c-section--bgimg {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 10px;
+      @media (min-width: @screen-sm) {
+        border-radius: 5px;
+      }
+      &:after{
+        content: '';
+        position: absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 70.12%);
+        opacity: 0.85;
+        border-radius: 5px;
+        @media (min-width: @screen-sm) {
+          background: linear-gradient(90.12deg, #000000 35.25%, rgba(0, 0, 0, 0) 99.89%);
+        }
+      }
+    }
+    .c-section__item-title {
+      font-family:@font-family-good;
+      // color: @white;
+      font-size: 60px;
+      line-height: .85;
+      margin: 8px 0;
+      text-transform: uppercase;
+      em {
+        text-transform: uppercase;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+      @media (min-width: @screen-sm) {
+        font-size: 74px;
+        em {
+          text-transform: none;
+          font-size: 18px;
+        }
+      }
+      &.h1{
+        font-size:72px;
+        text-transform: uppercase;
+        line-height: .8;
+        margin: 0;
+        @media (min-width: @screen-sm) {
+         font-size:100px;
+        }
+      }
+
+    }
+    .c-button {
+      --buttonBackgroundColor: var(--primary-color);
+      --buttonTextColor: @black;
+      --buttonBorderColor: var(--primary-color);
+      --buttonHoverBackgroundColor: transparent;
+      --buttonHoverTextColor: var(--primary-color);
+      --buttonHoverBorderColor: var(--primary-color);
+    }
+  }
+}

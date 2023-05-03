@@ -1,0 +1,88 @@
+{% comment %}Used on Resource Detail pages {% endcomment %}
+<section class="c-section -section-graybg">
+	<div class="container">
+		<div class="feature-item">
+		{%- assign channelName = itemFeature.ContentChannel.ChannelUrl %}
+		{%- assign channelDescription = itemFeature.ContentChannel.Description %}
+
+		{%- assign linkurl = Item.ContentChannel.ItemUrl | Replace:'{Id}',itemFeature.Id | Replace:'{Slug}',itemFeature.PrimarySlug %}
+
+		{% assign pageType = Item | Attribute:'PageType' %}
+
+		{% assign author = Item | Attribute:'Author' %}
+		{% assign itemByline = Item | Attribute:'Byline' %}
+		{% assign itemContent = Item.Content %}
+
+		{%- assign itemVideo = Item | Attribute:'VideoVimeo','RawValue' %}
+		{%- assign image = Item | Attribute:'Image','Object' %}
+		{%- assign imageGuid = Item | Attribute:'FeatureImage','RawValue' %}
+		{%- assign imageTitle = Item.Title %}
+		{%- assign itemSummary = Item | Attribute:'Summary' -%}
+		{%- assign itemMediaType = Item | Attribute:'MediaType','RawValue' -%}
+		{%- assign itemDocument = Item | Attribute:'Documents' -%}
+		{%- assign itemGuid = Item | Attribute:'Documents','RawValue' -%}
+		{%- assign visualAsset = Item | Attribute:'VisualAssets'-%}
+		{%- assign linkAsset = Item | Attribute:'Links'-%}
+
+
+		{% if pageType == 'Item' %}
+			{% if itemMediaType == 'file' %}
+				{% assign btnText = 'Download' %}
+				{% assign getType = '/GetFile.ashx?guid=' %}
+				{% assign btnUrl = itemDocument | Trim  %}
+				{% assign btnIcon = 'icon-nn-download' %}
+			{% elseif itemMediaType == 'video'%}
+				{% assign btnText = 'Play' %}
+				{% assign getType = '/GetFile.ashx?guid=' %}
+				{% assign btnUrl = visualAsset| Trim %}
+				{% assign btnIcon = 'icon-nn-play' %}
+			{% elseif itemMediaType == 'image'%}
+				{% assign btnText = 'Download' %}
+				{% assign getType = '/GetFile.ashx?guid=' %}
+				{% assign btnUrl = visualAsset| Trim %}
+				{% assign btnIcon = 'icon-nn-download' %}
+			{% elseif itemMediaType == 'audio'%}
+				{% assign btnText = 'Play' %}
+				{% assign getType = '/GetFile.ashx?guid=' %}
+				{% assign btnUrl = itemDocument | Trim %}
+				{% assign btnIcon = 'icon-nn-audio' %}
+			{% elseif itemMediaType == 'link'%}
+				{% assign btnText = 'More' %}
+				{% assign getType = ' %}
+				{% assign btnUrl = linkAsset | Trim %}
+				{% assign btnIcon = 'icon-nn-caret-right' %}
+			{% elseif itemMediaType == 'article'%}
+				{% assign btnText = 'Read' %}
+				{% assign getType = '/GetFile.ashx?guid=' %}
+				{% assign btnUrl = itemDocument | Trim %}
+				{% assign btnIcon = 'icon-nn-caret-down' %}
+				{% assign button = '<a href="/GetFile.ashx?guid={{itemGuid}}" class="c-btn button1">{{ btnText }}</a>' %}
+			{% endif %}
+		{% endif %}
+
+		<div class="item-media">
+			<img src='/GetImage.ashx?guid={{ imageGuid }}&w=800&h=450&mode=crop' alt='{{imageTitle}}' onerror="javascript:this.src='https://fakeimg.pl/800x450/?text=Feature Image'" />
+		</div>
+		<div class="item-content">
+			<h2 class="h1 item-title">{{Item.Title}}</h2>
+			{% if itemByline != '' %}
+				<h5 class="h5 item-byline">{{ itemByline }}</h5>
+			{% endif %}
+			<div class="item-description">
+				{{Item.Content}}
+			</div>
+
+			<div class="buttons">
+				{% if pageType == 'Item' %}
+					{% if itemMediaType != '' %}
+						<a href="{{getType}}{{btnUrl}}" class="c-btn button1" target="_blank">{{btnText}} <i class="{{btnIcon}}"></i></a>
+						{% else %}
+						<a href="https://northviewnetwork.com/signup?RegistrationInstanceId=3358" class="c-btn button1">Sign Up</a>
+					{% endif %}
+				{% endif %}
+				<a href="#" class="c-btn button1 addthis_button_compact">Share  <i class="icon-nn-share"></i></a>
+			</div>
+		</div>
+		</div>
+	</div>
+</section>

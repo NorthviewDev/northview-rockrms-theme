@@ -1,0 +1,106 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Rock.Web.UI.RockMasterPage" %>
+<%@ Import Namespace="System.Web.Optimization" %>
+<%@ Import Namespace="Rock" %>
+<%@ Import Namespace="Rock.Model" %>
+<%@ Import Namespace="Rock.Web.UI" %>
+<%@ Import Namespace="Rock.Web.Cache" %>
+<!DOCTYPE html>
+
+<script runat="server">
+
+    // keep code below to call base class init method
+
+    /// <summary>
+    /// Raises the <see cref="E:System.Web.UI.Control.Init" /> event.
+    /// </summary>
+    /// <param name="e">An <see cref="T:System.EventArgs" /> object that contains the event data.</param>
+    protected override void OnInit( EventArgs e )
+    {
+        base.OnInit( e );
+    }
+
+</script>
+
+<html lang="en-US">
+<head runat="server">
+
+    <meta charset="utf-8">
+    <title></title>
+
+   <script src="<%# System.Web.Optimization.Scripts.Url("~/Scripts/Bundles/RockJQueryLatest") %>"></script>
+
+   <!-- Set the viewport width to device width for mobile -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+   <asp:ContentPlaceHolder ID="css" runat="server" />
+
+	<!-- Included CSS Files -->
+    <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/bootstrap.css", false) %>">
+    <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Styles/theme.css", true) %>">
+
+    <!-- Web Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/znh6mwy.css">
+    <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/_icons/webfont/style.css") %>">
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" ></script>
+    <script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/global.js") %>"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+
+    <!-- GSAP -->
+    <script src="<%# ResolveRockUrl("~~/Assets/Scripts/gsap.min.js", false) %>"></script>
+    <script src="<%# ResolveRockUrl("~~/Assets/Scripts/ScrollTrigger.min.js", false) %>"></script>
+
+    <!-- SwiperJS -->
+    <link rel="stylesheet" href="<%# ResolveRockUrl("~/Themes/node_modules/swiper/swiper-bundle.min.css", false) %>" />
+    <script src="<%# ResolveRockUrl("~/Themes/node_modules/swiper/swiper-bundle.min.js", false) %>"></script>
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63e2701a6ac3ac34"></script>
+
+
+</head>
+<body runat="server" id="body">
+
+  <form id="form1" runat="server">
+  <!-- Page Header -->
+  <header id="site-header">
+        <section id="notification">
+            <Rock:Zone Name="NotificationBar" runat="server" />
+        </section>
+    <div class="c-header" role="banner">
+      <Rock:Zone Name="Header" runat="server" />
+      <Rock:Zone Name="Navigation" runat="server" />
+      <Rock:Zone Name="Login" runat="server" />
+    </div>
+  </header>
+
+  <asp:ContentPlaceHolder ID="feature" runat="server"></asp:ContentPlaceHolder>
+  <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+
+  <footer id="site-footer" role="contentinfo">
+    <section class="c-section">
+      <div class="container">
+        <Rock:Zone Name="Footer" runat="server" />
+      </div>
+    </section>
+    <Rock:Zone Name="Footer Info" runat="server" />
+  </footer>
+
+  <%-- controls for scriptmanager and update panel --%>
+  <asp:ScriptManager ID="sManager" runat="server"/>
+  <asp:UpdateProgress id="updateProgress" runat="server" DisplayAfter="800">
+  <ProgressTemplate>
+    <div class="updateprogress-status">
+      <div class="spinner">
+        <div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div>
+      </div>
+    </div>
+    <div class="updateprogress-bg modal-backdrop"></div>
+  </ProgressTemplate>
+  </asp:UpdateProgress>
+
+  </form>
+
+</body>
+</html>

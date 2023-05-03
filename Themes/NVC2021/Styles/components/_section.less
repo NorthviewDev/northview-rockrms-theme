@@ -15,7 +15,7 @@
   }
   .-padTopLarge &,
   &.-padTopLarge {
-    --section-padding-top: var(--s6);
+    --section-padding-top: var(--s4);
     @media (min-width: @screen-lg) {
       --section-padding-top: var(--s12);
     }
@@ -343,18 +343,29 @@
 .c-section--overlap-top {
   background-color: transparent;
   .c-section__header {
-    height: 0;
+    height: 50px;
     margin: 0;
+    @media screen and (min-width: @screen-sm) {
+      height: 0;
+    }
   }
   .c-card--title-highlight {
     margin: 0;
     position: relative;
     z-index: 50;
+    overflow: visible;
     h2 {
       text-transform: none;
     }
+    transform: translateY(-90%);
+      @media screen and (min-width: @screen-sm) {
+        transform: translateY(-130%);
+      }
     .c-card__body {
-      transform: translateY(-50%);
+      // transform: translateY(-90%);
+      // @media screen and (min-width: @screen-sm) {
+      //   transform: translateY(-130%);
+      // }
     }
   }
   // .container:first-child {
@@ -394,8 +405,7 @@
       font-size: 64px;
     }
   }
-  #latest-message &,
-  #featured-events &,
+  .dark &,
   .c-section--dark & {
     h2 {
       color: @white;
@@ -474,19 +484,19 @@
   }
 }
 .c-section__description {
-  color: @text-color;
-  font-size: 24px;
+  color: @color-gray;
+  font-size: 18px;
   text-align: center;
   text-transform: none;
   font-weight: 400;
   margin: var(--s1) auto 0;
-  width: 66.6667%;
+  // width: 66.6667%;
   @media (min-width: @screen-sm) {
     margin-top: var(--s2);
     font-size: 30px;
   }
   .c-section--light & {
-    color: @gray-darker;
+    color: @color-gray;
   }
   .c-section--dark & {
     color: @gray-lighter;

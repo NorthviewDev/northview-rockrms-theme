@@ -1,0 +1,117 @@
+<section class="c-section c-section--dark">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h2 class="c-section__title">Season 1</h2>
+				<div class="items_list">
+					{% for item in Items %}
+					{%- assign channelName = item.ContentChannel.ChannelUrl %}
+					{%- assign channelDescription = item.ContentChannel.Description %}
+
+					{%- assign linkurl = item.ContentChannel.ItemUrl | Replace:'{Id}',item.Id | Replace:'{Slug}',item.PrimarySlug %}
+					{%- assign channelurl = item.ContentChannel.ChannelUrl %}
+					{%- assign itemAction = item.ContentChannel | Attribute:'ItemAction' %}
+
+					{% assign author = item | Attribute:'Author' %}
+					{% assign itemByline = item | Attribute:'Byline' %}
+					{% assign itemContent = item.Content %}
+
+
+					{%- assign itemVideo = item | Attribute:'VideoVimeo','RawValue' %}
+					{%- assign image = item | Attribute:'Image','Object' %}
+					{%- assign imageGuid = item | Attribute:'PodcastImage','RawValue' %}
+					{%- assign imageTitle = item.Title %}
+					{%- assign itemSummary = item | Attribute:'Summary' -%}
+					{%- assign itemHost = item | Attribute:'Host' -%}
+					{%- assign itemGuest = item | Attribute:'Guest' -%}
+
+
+					<div class="item_wrap">
+					<div class="item_row">
+						<div class='item-media'>
+							<img src="/GetImage.ashx?Guid={{ imageGuid }}&w=450&h=450&mode=crop&scale=both" width="450" height="450" data-imageattribute="PodcastImage" onerror="javascript:this.src='https://fakeimg.pl/450x450/'" />
+						</div>
+						<div class="item_meta">
+						<div class='item_list'>
+							<div class='item'>
+								<div class="item__date">{{ item.StartDateTime | Date:'MMMM d, yyyy' }}</div>
+								<h3 class="h3 item__title"><a href="{{linkurl}}" title="{{ item.Title }}">{{ item.Title }}</a></h3>
+								<p class='item__author'>
+									{%- if itemHost != null or itemGues != null -%}
+										With {{ itemHost }}
+										{% if itemGuest != '' %}
+											{% if itemGuest != '' and itemHost != '' %}
+											 and
+											{% endif %}
+											{{itemGuest}}
+										{% endif %}
+
+									{%- endif -%}
+								</p>
+								{% comment %}{{itemSummary}}{% endcomment %}
+
+							</div>
+						</div>
+						<div class='item__btn'>
+							<a class="c-btn c-btn--red" href="{{linkurl}}">Listen</a>
+						</div>
+						</div>
+					</div>{% comment %}end item__row{% endcomment %}
+					</div>
+					{% endfor %}
+				</div>
+
+				<div class="pagination-wrapper">
+					{% if Pagination.TotalPages > 1 %}
+					{% assign numPages = Pagination.TotalPages %}
+					<div class="margin-t-lg">
+						{% assign nextPageString = Pagination.NextPage | ToString %}
+						{% assign prevPageString = Pagination.PreviousPage | ToString %}
+						<nav aria-label="Page navigation" style="text-align: center">
+							<ul class="pagination pagination-lg">
+
+							{% if {{Pagination.PreviousPage == -1 }} %}
+							<li class="disabled">
+								<a href="#" aria-label="Previous" class="prev">
+									<span aria-hidden="true"><i class="fa fa-chevron-left"></i> Previous</span>
+								</a>
+							</li>
+							{% else %}
+							<li>
+								<a aria-label="Previous" href="{{Pagination.UrlTemplate | Replace:'PageNum', prevPageString}}" class="prev">
+									<span aria-hidden="true"><i class="fa fa-chevron-left"></i> Previous</span>
+								</a>
+							</li>
+							{% endif %}
+
+							{% for i in (1..numPages) %}
+								{% if {{Pagination.CurrentPage == i }} %}
+									<li class="active"><a href="{{Pagination.UrlTemplate | Replace:'PageNum', i}}">{{ i }} <span class="sr-only">(current)</span></a></li>
+								{% else %}
+									<li><a href="{{Pagination.UrlTemplate | Replace:'PageNum', i}}">{{ i }}</a></li>
+								{% endif %}
+							{% endfor %}
+
+							{% if {{Pagination.NextPage == -1 }} %}
+							<li class="disabled">
+								<a href="#" aria-label="Next" class="next">
+									<span aria-hidden="true">Next <i class="fa fa-chevron-right"></i></span>
+								</a>
+							</li>
+							{% else %}
+							<li>
+								<a aria-label="Next" href="{{Pagination.UrlTemplate | Replace:'PageNum', nextPageString}}" class="next">
+									<span aria-hidden="true">Next <i class="fa fa-chevron-right"></i></span>
+								</a>
+							</li>
+							{% endif %}
+
+							</ul>
+						</nav>
+					</div>
+					{% endif %}
+				</div>{% comment %}end pagination-wrapper{% endcomment %}
+			</div>
+		</div>
+	</div>
+</section>

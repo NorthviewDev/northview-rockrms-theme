@@ -1,0 +1,95 @@
+<section class="c-section c-section--dark">
+	<div class="container">
+		<div class="row">
+			{% if sectionHeader != '' %}
+				<h2 class="c-section__header">{{ sectionHeader }}</h2>
+			{% endif %}
+			<div class="latest-resources -grid">
+
+{% for item in Items %}
+{%- assign linkurl = item.ContentChannel.ItemUrl | Replace:'{Id}',item.Id | Replace:'{Slug}',item.PrimarySlug %}
+{%- assign channelurl = item.ContentChannel.ChannelUrl %}
+{% assign pageType = item | Attribute:'PageType' %}
+
+{% assign author = item | Attribute:'Author' %}
+{% assign itemByline = item | Attribute:'Byline' %}
+{% assign itemContent = item.Content %}
+
+{%- assign image = item | Attribute:'Image','Object' %}
+{%- assign imageGuid = item | Attribute:'ItemImage','RawValue' %}
+{%- assign imageTitle = item.Title %}
+{%- assign itemSummary = item | Attribute:'Summary' -%}
+<div class="resource-item">
+	<div class="item-media">
+		<a href="{{linkurl}}">
+		<img src='/GetImage.ashx?guid={{ imageGuid }}&w=450&h=450&mode=crop' alt='{{imageTitle}}' onerror="javascript:this.src='https://fakeimg.pl/450x450/?text=Item Image'" />
+		</a>
+	</div>
+	<div class="item-content">
+		<h3 class="item-title">{{item.Title}}</h3>
+		<div class="item-type">
+			{{resourceType}}
+		</div>
+	</div>
+</div>
+{% endfor %}
+				</div>
+				{% comment %}Pagination{% endcomment %}
+				<div class="pagination-wrapper">
+					{% if Pagination.TotalPages > 1 %}
+					{% assign numPages = Pagination.TotalPages %}
+					<div class="margin-t-lg">
+						{% assign nextPageString = Pagination.NextPage | ToString %}
+						{% assign prevPageString = Pagination.PreviousPage | ToString %}
+						<nav aria-label="Page navigation" style="text-align: center">
+							<ul class="pagination pagination-lg">
+
+							{% if {{Pagination.PreviousPage == -1 }} %}
+							<li class="disabled">
+								<a href="#" aria-label="Previous" class="prev">
+									<span aria-hidden="true"><i class="fa fa-chevron-left"></i> Previous</span>
+								</a>
+							</li>
+							{% else %}
+							<li>
+								<a aria-label="Previous" href="{{Pagination.UrlTemplate | Replace:'PageNum', prevPageString}}" class="prev">
+									<span aria-hidden="true"><i class="fa fa-chevron-left"></i> Previous</span>
+								</a>
+							</li>
+							{% endif %}
+
+							{% for i in (1..numPages) %}
+								{% if {{Pagination.CurrentPage == i }} %}
+									<li class="active"><a href="{{Pagination.UrlTemplate | Replace:'PageNum', i}}">{{ i }} <span class="sr-only">(current)</span></a></li>
+								{% else %}
+									<li><a href="{{Pagination.UrlTemplate | Replace:'PageNum', i}}">{{ i }}</a></li>
+								{% endif %}
+							{% endfor %}
+
+							{% if {{Pagination.NextPage == -1 }} %}
+							<li class="disabled">
+								<a href="#" aria-label="Next" class="next">
+									<span aria-hidden="true">Next <i class="fa fa-chevron-right"></i></span>
+								</a>
+							</li>
+							{% else %}
+							<li>
+								<a aria-label="Next" href="{{Pagination.UrlTemplate | Replace:'PageNum', nextPageString}}" class="next">
+									<span aria-hidden="true">Next <i class="fa fa-chevron-right"></i></span>
+								</a>
+							</li>
+							{% endif %}
+
+							</ul>
+						</nav>
+					</div>
+					{% endif %}
+				</div>{% comment %}end pagination-wrapper{% endcomment %}
+
+			</div>
+		</div>
+	</div>
+</section>
+
+
+

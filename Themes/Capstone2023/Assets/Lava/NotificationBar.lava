@@ -1,0 +1,11 @@
+{% for item in Items %}
+<section id="notification" class="notification">
+    <div class="row pod nopad">
+      <div class="col-sm-12">
+        <div class=" ">{{ item.Content }}</div>
+      </div>
+    </div>
+    <div class="closer"><span class="icon icon-close"></span></div>
+
+  </section><!-- end notification -->
+{% endfor %}

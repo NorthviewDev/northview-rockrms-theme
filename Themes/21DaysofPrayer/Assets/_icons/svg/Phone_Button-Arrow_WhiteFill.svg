@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="134px" height="31px" viewBox="0 0 134 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>Phone_Button-Arrow_WhiteFill</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-97.000000, -570.000000)">
+            <g id="Phone_Button-Arrow_WhiteFill" transform="translate(97.000000, 570.000000)">
+                <g id="Group-12">
+                    <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="134" height="31"></rect>
+                    <text id="Join-a-Group" font-family="GoodPro-CondMedium, Good Pro" font-size="16" font-style="condensed" font-weight="400" line-spacing="30.7999992" letter-spacing="0.711111111" fill="#221F1F">
+                        <tspan x="16" y="15">JOIN A GROUP</tspan>
+                    </text>
+                    <g id="Group-9" transform="translate(104.000000, 10.000000)" stroke="#221F1F" stroke-linecap="round" stroke-width="1.5">
+                        <g id="Group" transform="translate(0.000000, 5.000000)">
+                            <line x1="14.5" y1="1" x2="0.5" y2="1" id="Line"></line>
+                        </g>
+                        <polyline id="Path-2" stroke-linejoin="round" transform="translate(9.818182, 5.818182) rotate(-135.000000) translate(-9.818182, -5.818182) " points="13.6363636 9.63636364 6 9.63636364 6 2"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

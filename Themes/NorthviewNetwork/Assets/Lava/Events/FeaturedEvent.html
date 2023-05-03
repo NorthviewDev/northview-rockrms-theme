@@ -1,0 +1,45 @@
+<section class="c-section -section-graybg">
+	<div class="container">
+	{%- if numEvents == null or numEvents == "" -%}
+	{%- assign numEvents = 3 -%}
+	{%- endif -%}
+		<div class="feature-item">
+{%- for eventItems in EventItems limit:numEvents -%}
+		{%- assign numEvents = eventItems | Size -%}
+		{%- assign event = eventItems | First -%}
+		{%- assign eventDetailPage = event.DetailPage | Trim -%}
+		{%- assign eventExternalRegUrl = event.EventItemOccurrence | Attribute:'RegistrationURL','RawValue' -%}
+			{% assign eventItemOccurrenceLinkages = event.eventItemOccurrence.Linkages %}
+
+		{%- if eventDetailPage != "" -%}
+		<div class="item-media">
+			<h6>Upcoming Event</h6>
+
+			{%- if event.EventItemOccurrence.EventItem.Photo.Guid && event.EventItemOccurrence.EventItem.Photo.Guid != "" -%}
+				<img src="/GetImage.ashx?guid={{ event.EventItemOccurrence.EventItem.Photo.Guid }}&w=800&h=450&mode=crop&anchor=middlecenter&scale=both" onerror="javascript:this.src='https://fakeimg.pl/800x450/'" />
+			{%- endif -%}
+
+		</div>
+		<div class="item-content">
+			<h5 class="h5 item-byline">{{ event.Date | Date:"MMMM d, yyyy" }}</h5>
+			<h2 class="h1 item-title">{{ event.Name }}</h2>
+
+			<div class="item-description">
+				{{itemFeature.Content}}
+			</div>
+			<div class="buttons">
+				{% if eventExternalRegUrl != '' %}
+					<button class="c-btn button1" onclick="window.location.href='{{eventExternalRegUrl}}'">Register <i class="icon-nn-plus"></i></button>
+				{% endif %}
+				<button class="c-btn button1" onclick="window.location.href='{{ event.DetailPage }}'">
+				{%- else -%}
+				<button class="c-btn button1" onclick="window.location.href='/event/{{event.EventItemOccurrence.Id}}?occs=all'">
+				{%- endif -%}
+					Details<i class="icon-nn-carat-right"></i></button>
+
+			</div>
+		{% endfor %}
+		</div>
+		</div>
+	</div>
+</section>

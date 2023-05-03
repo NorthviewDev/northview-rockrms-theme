@@ -1,5 +1,6 @@
 @import '_mixins';
 
+@max-width: 1730px;
 @increment: 12px;
 :root {
   --s0: 0;
@@ -174,13 +175,16 @@ body {
   }
 }
 #form1 {
-  width: 1680px;
+	width: 100%;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   position: relative;
   box-shadow: 0px 0px 10px 0px #8c8c8c;
   background-color: @white;
+	@media (min-width: @max-width) {
+		width: @max-width;
+	}
 }
 
 blockquote {
@@ -477,5 +481,12 @@ button:focus {
       justify-content: flex-end;
       align-items: flex-end;
     }
+  }
+}
+
+
+.atm-i{
+  a{
+    border-bottom: none;
   }
 }
