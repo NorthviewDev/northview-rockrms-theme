@@ -1,0 +1,65 @@
+{% comment %}
+{% include "~/Themes/NorthviewChurch/Assets/Lava/Components/Cards.lava" %}
+{% endcomment %}
+{%- assign sectionBackgroundImage =  ContentChannel | Attribute:'SectionBackgroundImage','RawValue' -%}
+{%- assign sectionTitle  =  ContentChannel | Attribute:'SectionTitle','RawValue' -%}
+{%- assign sectionTitleStyle  =  ContentChannel | Attribute:'SectionTitleStyle','RawValue' -%}
+{%- assign sectionDescription  =  ContentChannel | Attribute:'SectionDescription' -%}
+{%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
+{%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
+{%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
+{%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
+
+<section class="c-section -cards c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
+    <div class="container">
+{%- if sectionTitle != "" or sectionDescription != "" -%}
+        <div class="row">
+            <div class='col-lg-{{ sectionTitleWidth }} {{ sectionTitleAlignment }}-block'>
+{%- if sectionTitleStyle == "highlight" -%}
+                <div class="c-section__header">
+                  <div class="c-card c-card--title-highlight">
+                    <div class="c-card__body stack">
+                      {%- if sectionTitle != '' -%}
+                      <h2 class="c-card__title"><span>{{ sectionTitle }}</span></h2>
+                      {%- endif -%}
+                      {%- if sectionDescription != '' -%}
+                      <div class="c-card__description">{{ sectionDescription }}</div>
+                      {%- endif -%}
+                    </div>
+                  </div><!--/.c-card-->
+                </div>
+{%- elseif sectionTitleStyle == "hidden" -%}
+                <h2 class="sr-only">{{ sectionTitle }}</h2>
+                <div class="sr-only">{{ sectionDescription }}</div>
+{%- else -%}
+                <div class="c-section__header {{ sectionTitleStyle }}">
+                  <h2><span>{{ sectionTitle }}</span></h2>
+                {% assign sectionDescriptionStripped = sectionDescription | StripHTML | StripNewlines | Trim %}
+                {%- if sectionDescriptionStripped != '' -%}
+                  <div class="c-section__description">{{ sectionDescription }}</div>
+                {%- endif -%}
+                </div>
+{%- endif -%}
+            </div>
+        </div>
+{%- endif -%}
+<div class="c-card__deck">
+{%- for item in Items -%}
+{%- assign contentAlignment  =  item | Attribute:'ContentAlignment','RawValue' -%}
+{%- assign contentWidth  =  item | Attribute:'ContentWidth','RawValue' -%}
+{%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
+{%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
+{%- assign itemDescription  =  item | Attribute:'ItemDescription','RawValue' -%}
+{%- assign itemBgImage = item | Attribute:'ItemImage','RawValue' -%}
+        <div class="masonry-grid__grid-item c-card" style="background-image:url('/GetImage.ashx?guid={{itemBgImage}}&width=667&height=375&mode=crop')">
+          <div class="masonry-grid__content">
+            <div class="stack">
+              <h3 class="c-card__title">{{ item.Title }}</h3>
+              {{ item.Content }}
+            </div>
+          </div>
+        </div>
+{%- endfor -%}
+</div>
+    </div>
+</section>

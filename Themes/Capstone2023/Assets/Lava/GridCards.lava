@@ -1,0 +1,26 @@
+{[ grid cols:'3']}
+[[ item custom-class:'c-card decorated']]
+    <div class="c-card__body">
+      <div class="stack"><img src="/Content/ExternalSite/Northview_Connect_Dark.png"><h3 class="c-card__title c-card__title--med">Connect</h3>
+        <p class="c-card__description">Find your next step.</p>
+        <p><a href="/ministries" class="c-btn c-btn--primary c-btn--offset-border">Get Connected<i class="nv-icon nv-icon--carat_right"></i></a></p>
+      </div>
+    </div>
+[[ enditem ]]
+[[ item custom-class:'c-card decorated']]
+    <div class="c-card__body">
+      <div class="stack"><img src="/Content/ExternalSite/Northview_Serve_Dark.png"><h3 class="c-card__title c-card__title--med">Serve</h3>
+        <p class="c-card__description">Use your gifts, get to know others.</p>
+        <p><a href="/serve" class="c-btn c-btn--primary c-btn--offset-border">Find a Team<i class="nv-icon nv-icon--carat_right"></i></a></p>
+      </div>
+    </div>
+[[ enditem ]]
+[[ item custom-class:'c-card decorated']]
+    <div class="c-card__body">
+      <div class="stack"><img src="/Content/ExternalSite/Northview_Groups_Dark.png"><h3 class="c-card__title c-card__title--med">Grow</h3>
+        <p class="c-card__description">Feel connected, grow your faith.</p>
+        <p><a href="/groups" class="c-btn c-btn--primary c-btn--offset-border">Find a Group<i class="nv-icon nv-icon--carat_right"></i></a></p>
+      </div>
+    </div>
+[[ enditem ]]
+{[ endgrid ]}
