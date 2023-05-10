@@ -1,0 +1,39 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+{%- for campus in Campuses -%}
+{%- assign isActive = campus.IsActive -%}
+{%- assign hasLocation = campus.Location.Latitude -%}
+{%- if isActive and hasLocation -%}
+{%- assign serviceDay = "" -%}
+{%- assign displayServiceTimes = "" -%}					
+{%- assign serviceTimes = campus.ServiceTimes -%}
+{%- capture displayServiceTimes -%}{%- for serviceTime in serviceTimes -%}{%- assign separator='' -%}{%- if forloop.length > 1 -%}{%- if forloop.last -%}{% assign separator=' and ' -%}{%- elseif forloop.first != true and serviceTime.Day == serviceDay -%}{% assign separator=', ' -%}{% endif -%}{%- endif -%}{%- if serviceTime.Day != serviceDay -%}{% assign at=' at ' -%}{{ serviceTime.Day | Pluralize}}{{ at }}{%- assign serviceDay = serviceTime.Day -%}{%- endif -%}{{ separator }}{{ serviceTime.Time }}{%- endfor -%}{%- endcapture -%}
+{%- assign campusLocation = campus.Location.Street1 | Trim -%}
+{%- capture displayLocationLink -%}{%- if campusLocation != "" -%}<p class='location-link'><i class='nv-icon nv-icon--location_marker'></i><a target='_blank' href='https://www.google.com/maps/dir/?api=1&amp;destination={{campus.Location.Street1}}+{{campus.Location.City}}+{{campus.Location.State}}+{{campus.Location.PostalCode}}'>Map & Directions</a></p>{%- endif -%}{%- endcapture -%}
+          {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  {{ campus.Location.Longitude }},
+                  {{ campus.Location.Latitude }}
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "campusid": "{{ campus.Id }}",
+                "serviceTimes": "{{ displayServiceTimes }}",
+                "locationLink": "{{ displayLocationLink }}",
+                "name": "{{ campus.Name }}",
+                "url": "{{ campus.Url }}",
+                "phone": "{{ campus.PhoneNumber }}"
+            }
+  {%- if forloop.last -%}
+        }
+  {%- else -%}
+        },
+  {%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+    ]
+}
