@@ -23,18 +23,24 @@
   }
   .panel-title {
     color: @color-white;
-  	font-size: 25px;
+    font-size: 20px;
   	font-weight: 600;
   	line-height: 30px;
   	font-family: @font-family-sans-serif;
+    @media (min-width: @screen-sm) {
+      font-size: 25px;
+    }
   	a {
     	display: block;
     	position: relative;
     	border: none;
     	padding-right: 50px;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 100;
-      text-transform: unset;
+      text-transform: none;
+      @media (min-width: @screen-sm) {
+        font-size: 1.5rem;
+      }
     	&:after {
       	.nv-icon("\e907");
       	position: absolute;
@@ -52,9 +58,15 @@
   }
   .panel-default {
     box-shadow: unset;
-    padding: 20px 0;
-    &:first-of-type {
-      border-bottom: solid 1px @color-white;
+    padding: 15px 0;
+    border-bottom: solid 1px @color-white;
+    @media (min-width: @screen-sm) {
+      padding: 20px 0;
+    }
+    &:last-of-type {
+      @media (min-width: @screen-sm) {
+        border-bottom: solid 0px @color-white;
+      }
     }
   }
 }

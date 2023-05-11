@@ -10,7 +10,7 @@
 {%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
 {%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
 
-<section class="c-section c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{ sectionPadding }}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
+<section class="c-section c-section--{{ sectionType }} accordion {% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{ sectionPadding }}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
     <div class="container">
         <div class="row">
             <div class='col-lg-{{ sectionTitleWidth }} {{ sectionTitleAlignment }}-block'>
@@ -33,7 +33,7 @@
 {%- else -%}
                 <div class="c-section__header {{sectionTitleStyle}}">
                 {%- if sectionTitle != '' -%}
-                  <h2><span>{{ sectionTitle }}</span></h2>
+                  <h2 class="c-section__title"><span>{{ sectionTitle }}</span></h2>
                 {%- endif -%}
                 {% assign sectionDescriptionStripped = sectionDescription | StripHTML | StripNewlines | Trim %}
                 {%- if sectionDescriptionStripped != '' -%}

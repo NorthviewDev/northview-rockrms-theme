@@ -14,9 +14,19 @@ p {
   }
 }
 #home-feature{
-  height: 52vh;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: @brand-primary;
   @media (min-width: @screen-sm) {
    height: auto;
+   min-height: 760px;
+  }
+  img{
+    max-height: 600px;
+    width: 100%;
+
   }
 }
 .c-block-hero__wrapper {
@@ -53,7 +63,7 @@ p {
     }
   }
   h2 {
-    font-family: @font-family-secondary;
+    font-family: @headings-font-family;
     &.c-section__title {
       margin-top: 0;
       font-size: 2rem;
@@ -63,6 +73,13 @@ p {
         font-size: 3.5rem;
       }
 
+    }
+    &.xxl{
+      font-size: 3rem;
+      @media (min-width: @screen-sm) {
+        font-size: 4.5rem;
+        line-height: 1.4;
+      }
     }
 
     &.c-section__item-title {
@@ -80,7 +97,7 @@ p {
     font-family: @font-family-secondary;
     font-size: 1rem;
     font-weight: 500;
-    letter-spacing: 1px;
+    letter-spacing: 0;
     text-transform: uppercase;
     &.-padBottomSmall {
       padding-bottom: 25px;
@@ -291,6 +308,8 @@ p {
   }
   .c-block-hero {
     position: relative;
+    padding: 0;
+    min-height: auto;
   }
   .c-block-hero__container {
     display: flex;
@@ -384,16 +403,17 @@ p {
     position: relative;
   }
   .invite {
+    display: flex;
     margin-top: 25px;
-    margin-right: 0;
+    margin-right: 12px;
     color: @white;
     text-align: right;
+    justify-content: flex-end;
+
     @media (min-width: @screen-sm) {
-
-      display: flex;
       margin-top: 0;
-
-      margin-right: 100px;
+      margin-right: 50px;
+      gap:20px;
       align-items: center;
 
     }
@@ -546,7 +566,7 @@ p {
 } // end .christmas-2020
 .c-card--side-by-side{
   .l-grid__item{
-    margin-bottom: var(--s2);
+    //margin-bottom: var(--s2);
     align-content: center;
     @media (min-width: @screen-sm) {
     }
@@ -562,10 +582,19 @@ p {
     display: flex;
     flex-direction: column;
     align-content: center;
-    align-items: center;
     gap: 20px;
     @media (min-width: @screen-sm) {
      display: inherit;
+    }
+  }
+  .c-card__body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    padding: 25px;
+    @media (min-width: @screen-sm) {
+      padding: 50px;
     }
   }
   .panel-group{
@@ -586,5 +615,37 @@ p {
     left:0;
     border: none;
     text-indent: -999em;
+  }
+}
+.form-control{
+  color:#000000;
+}
+.two-tone{
+  background-color: #E4D2C4;
+  .l-grid__item{
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    @media (min-width: @screen-sm) {
+     padding: 0;
+    }
+    &.c-card__body{
+      background-color: #E4D2C4;
+    }
+  }
+  .c-card_content{
+    background-color: #E4D2C4;
+  }
+
+}
+.accordion{
+  .c-section__title{
+    font-size: 3rem;
+
+    @media (min-width: @screen-sm) {
+      font-size: 4rem;
+    }
   }
 }

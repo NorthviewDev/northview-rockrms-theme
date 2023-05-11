@@ -6,7 +6,7 @@
   4. Bootstrap Overrides - When Bootstrap gets it wrong, we make it right
   5. ASP.Net Overrides - Yep they get it wrong too sometimes
 */
-@import url("https://use.typekit.net/dij6bun.css");
+@import url("https://use.typekit.net/cjr3ttk.css");
 :root {
   --focus-state-border: 1px solid #fb0404;
   --focus-state-border-color: #fb0404;
@@ -16318,9 +16318,9 @@ fieldset[disabled] .btn-danger-solid.focus {
   --s8: calc(8 * 12px);
   --s9: calc(9 * 12px);
   --s10: calc(10 * 12px);
-  --font-family-primary: trade-gothic-next, sans-serif;
-  --font-family-condensed: 'Raleway', sans-serif;
-  --font-family-secondary: 'Raleway', sans-serif;
+  --font-family-primary: "poppins", sans-serif;
+  --font-family-condensed: "tandelle", sans-serif;
+  --font-family-secondary: "poppins", sans-serif;
   --pwa-menu-height: 62px;
   --vh: 1vh;
 }
@@ -16492,8 +16492,8 @@ body.no-title .c-block-hero__headline .ornamental {
 blockquote {
   padding: 0;
   border-left: none;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
+  font-family: "tandelle", sans-serif;
+  font-weight: 400;
 }
 @media (min-width: 992px) {
   blockquote {
@@ -16969,7 +16969,7 @@ button:focus {
   border-radius: 0;
   border-color: var(--button-border-color);
   color: #000;
-  font-family: var(--button-font-family);
+  font-family: "poppins", sans-serif;
   font-size: 18px;
   letter-spacing: 0.8px;
   line-height: 1.1;
@@ -16985,7 +16985,7 @@ button:focus {
 .c-btn .nv-icon.nv-icon--carat_left,
 .c-btn .nv-icon.nv-icon--carat_right {
   position: relative;
-  display: inline-block;
+  display: none;
   width: 1.3em;
   height: 1em;
   transition: width ease-in-out 300ms;
@@ -17040,8 +17040,8 @@ button:focus {
 }
 .c-btn:hover,
 .c-btn:focus {
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: #ffc0a7;
+  border-color: #ffc0a7;
 }
 .c-btn:hover .nv-icon--carat_left,
 .c-btn:focus .nv-icon--carat_left,
@@ -17164,7 +17164,7 @@ button:focus {
 }
 .c-filter__buttons .c-filter__button {
   color: #ffffff;
-  font-family: 'Raleway', sans-serif;
+  font-family: "tandelle", sans-serif;
   font-weight: normal;
   font-size: 20px;
   letter-spacing: 0.89px;
@@ -17302,7 +17302,7 @@ button:focus {
   margin-top: var(--s1);
   margin-bottom: 0;
   font-weight: 600;
-  font-family: 'Raleway', sans-serif;
+  font-family: "tandelle", sans-serif;
 }
 @media (min-width: 768px) {
   .c-icon-link__title {
@@ -17333,19 +17333,29 @@ button:focus {
 }
 .panel-group .panel-title {
   color: #ffffff;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 30px;
-  font-family: trade-gothic-next, sans-serif;
+  font-family: "poppins", sans-serif;
+}
+@media (min-width: 768px) {
+  .panel-group .panel-title {
+    font-size: 25px;
+  }
 }
 .panel-group .panel-title a {
   display: block;
   position: relative;
   border: none;
   padding-right: 50px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 100;
-  text-transform: unset;
+  text-transform: none;
+}
+@media (min-width: 768px) {
+  .panel-group .panel-title a {
+    font-size: 1.5rem;
+  }
 }
 .panel-group .panel-title a:after {
   /* use !important to prevent issues with browser extensions that change fonts */
@@ -17385,10 +17395,18 @@ button:focus {
 }
 .panel-group .panel-default {
   box-shadow: unset;
-  padding: 20px 0;
-}
-.panel-group .panel-default:first-of-type {
+  padding: 15px 0;
   border-bottom: solid 1px #ffffff;
+}
+@media (min-width: 768px) {
+  .panel-group .panel-default {
+    padding: 20px 0;
+  }
+}
+@media (min-width: 768px) {
+  .panel-group .panel-default:last-of-type {
+    border-bottom: solid 0px #ffffff;
+  }
 }
 .-hidden {
   display: none;
@@ -17421,7 +17439,12 @@ button:focus {
   }
 }
 .c-section.-padTopNone {
-  --section-padding-top: 0;
+  --section-padding-top: 10px;
+}
+@media (min-width: 768px) {
+  .c-section.-padTopNone {
+    --section-padding-top: 0;
+  }
 }
 .c-section.-padBottomSmall {
   --section-padding-bottom: var(--s2);
@@ -17432,7 +17455,22 @@ button:focus {
   }
 }
 .c-section.-padBottomNone {
-  --section-padding-bottom: 0;
+  --section-padding-bottom: 10px;
+}
+@media (min-width: 768px) {
+  .c-section.-padBottomNone {
+    --section-padding-bottom: 0;
+  }
+}
+.c-section.full .container {
+  width: 100%;
+}
+.c-section.full .col-lg-10 {
+  width: 100%;
+  padding: 0;
+}
+.c-section.threequarters .container {
+  width: 90%;
 }
 .c-section.c-section--dark {
   color: #ffffff;
@@ -17441,24 +17479,36 @@ button:focus {
 .c-section.c-section--dark .panel-body {
   color: #ffffff;
 }
+.c-section.c-section--dark h2.c-section__title {
+  color: #ffffff;
+  font-family: "tandelle", sans-serif;
+  text-transform: none;
+}
 .c-section.c-section--medium {
-  background-color: #ffffff;
+  background-color: #414042;
 }
 .c-section.c-section--light {
-  background-color: #f3f3f3;
+  background-color: #E4D2C4;
 }
 .c-section.c-section--white {
   background-color: #ffffff;
 }
 .c-section.c-section--accent {
-  background-color: #ffffff;
+  background-color: #ffc0a7;
 }
 .c-section .c-section--bgimg,
 .c-section.c-section--bgimg {
   position: relative;
-  background-size: cover;
+  background-size: 160%;
   color: #ffffff;
   background-color: #414042;
+  background-repeat: no-repeat;
+}
+@media (min-width: 768px) {
+  .c-section .c-section--bgimg,
+  .c-section.c-section--bgimg {
+    background-size: cover;
+  }
 }
 .c-section .c-section--bgimg .c-section__content,
 .c-section.c-section--bgimg .c-section__content,
@@ -17650,17 +17700,19 @@ button:focus {
 }
 @media (min-width: 992px) {
   .c-section__header {
-    margin-bottom: var(--s3);
+    margin-bottom: var(--s1);
   }
 }
 .c-section__header h2 {
   color: #414042;
-  font-size: 1.5625rem;
+  font-size: 3.25rem;
   margin-top: 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 @media (min-width: 992px) {
   .c-section__header h2 {
-    font-size: 44px;
+    font-size: 4.5rem;
   }
 }
 #latest-message .c-section__header h2,
@@ -17694,27 +17746,6 @@ button:focus {
   .c-section--light .c-section__header h2 span,
   .c-section__header.decorated h2 span {
     display: inline-block;
-  }
-}
-.c-section--alt2 .c-section__header h2:after,
-.c-section--light .c-section__header h2:after,
-.c-section__header.decorated h2:after {
-  content: '';
-  background-color: #fff;
-  height: 0.45em;
-  bottom: 0;
-  left: -10px;
-  right: -10px;
-  position: absolute;
-  z-index: 0;
-  transition: all ease-in-out 150ms;
-}
-@media (min-width: 768px) {
-  .c-section--alt2 .c-section__header h2:after,
-  .c-section--light .c-section__header h2:after,
-  .c-section__header.decorated h2:after {
-    left: -20px;
-    right: -20px;
   }
 }
 .c-section--alt2 .c-section__header--plain h2:after,
@@ -17763,13 +17794,13 @@ button:focus {
   line-height: 1.1;
   text-align: center;
   text-transform: none;
-  font-family: 'Raleway', sans-serif;
+  font-family: "poppins", sans-serif;
   font-weight: 600;
   margin-top: var(--s1);
 }
 @media (min-width: 768px) {
   .c-section__description {
-    margin-top: var(--s3);
+    margin-top: var(--s1);
     font-size: 36px;
   }
 }
@@ -17862,14 +17893,8 @@ button:focus {
   content: '';
 }
 @media (min-width: 768px) {
-  #homepage-feature .c-block-hero {
-    padding: 112px 55px 112px 120px;
-  }
 }
 @media (min-width: 1200px) {
-  #homepage-feature .c-block-hero {
-    padding: 112px 120px;
-  }
 }
 #homepage-feature .c-block-hero__background-video {
   line-height: 0;
@@ -18486,7 +18511,7 @@ button:focus {
   }
 }
 .c-block-hero__headline {
-  font-family: 'Raleway', sans-serif;
+  font-family: "tandelle", sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #ffffff;
@@ -19331,7 +19356,7 @@ header {
 .c-primary-nav__item {
   font-family: var(--font-family-condensed);
   font-size: 29px;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.5px;
   line-height: 1.4em;
   text-transform: uppercase;
@@ -19357,7 +19382,7 @@ header {
   display: inline-block;
   padding-left: 5px;
   padding-top: 3px;
-  font-weight: 700;
+  font-weight: 400;
   transition: padding cubic-bezier(0.01, -0.74, 0.57, 1.57) 100ms;
 }
 .c-primary-nav__link:after {
@@ -19446,6 +19471,9 @@ footer {
 footer .c-section {
   background-color: transparent;
   padding: 40px 10px 32px;
+}
+footer .c-section.c-section--dark {
+  background-color: #414042;
 }
 footer .l-pad--xs {
   padding: 36px 14px 48px;
@@ -19547,12 +19575,21 @@ p:first-child {
   margin-top: 0;
 }
 #home-feature {
-  height: 52vh;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fb0404;
 }
 @media (min-width: 768px) {
   #home-feature {
     height: auto;
+    min-height: 760px;
   }
+}
+#home-feature img {
+  max-height: 600px;
+  width: 100%;
 }
 .c-block-hero__wrapper {
   background-size: 200%;
@@ -19585,7 +19622,7 @@ p:first-child {
 @media (max-width: 768px) {
 }
 .nvmicrosite h2 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "tandelle", sans-serif;
 }
 .nvmicrosite h2.c-section__title {
   margin-top: 0;
@@ -19596,6 +19633,15 @@ p:first-child {
 @media (min-width: 768px) {
   .nvmicrosite h2.c-section__title {
     font-size: 3.5rem;
+  }
+}
+.nvmicrosite h2.xxl {
+  font-size: 3rem;
+}
+@media (min-width: 768px) {
+  .nvmicrosite h2.xxl {
+    font-size: 4.5rem;
+    line-height: 1.4;
   }
 }
 .nvmicrosite h2.c-section__item-title {
@@ -19609,10 +19655,10 @@ p:first-child {
 }
 .nvmicrosite h4 {
   color: #fb0404;
-  font-family: 'Raleway', sans-serif;
+  font-family: "poppins", sans-serif;
   font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 .nvmicrosite h4.-padBottomSmall {
@@ -19826,6 +19872,8 @@ p:first-child {
 }
 .nvmicrosite .c-block-hero {
   position: relative;
+  padding: 0;
+  min-height: auto;
 }
 .nvmicrosite .c-block-hero__container {
   display: flex;
@@ -19923,16 +19971,18 @@ p:first-child {
   position: relative;
 }
 .nvmicrosite .invite {
+  display: flex;
   margin-top: 25px;
-  margin-right: 0;
+  margin-right: 12px;
   color: #ffffff;
   text-align: right;
+  justify-content: flex-end;
 }
 @media (min-width: 768px) {
   .nvmicrosite .invite {
-    display: flex;
     margin-top: 0;
-    margin-right: 100px;
+    margin-right: 50px;
+    gap: 20px;
     align-items: center;
   }
 }
@@ -19945,7 +19995,7 @@ p:first-child {
   position: relative;
 }
 .nvmicrosite .invite a {
-  font-family: 'Raleway', sans-serif;
+  font-family: "tandelle", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   border-bottom: 0;
@@ -19955,7 +20005,7 @@ p:first-child {
   color: #ffffff;
 }
 .nvmicrosite .invite a:hover {
-  color: #ffffff;
+  color: #ffc0a7;
 }
 @media (min-width: 768px) {
   .nvmicrosite .invite a {
@@ -20058,7 +20108,6 @@ p:first-child {
   font-weight: 400;
 }
 .c-card--side-by-side .l-grid__item {
-  margin-bottom: var(--s2);
   align-content: center;
 }
 .c-card--side-by-side .c-card__title {
@@ -20073,12 +20122,23 @@ p:first-child {
   display: flex;
   flex-direction: column;
   align-content: center;
-  align-items: center;
   gap: 20px;
 }
 @media (min-width: 768px) {
   .c-card--side-by-side .c-card_content {
     display: inherit;
+  }
+}
+.c-card--side-by-side .c-card__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 25px;
+}
+@media (min-width: 768px) {
+  .c-card--side-by-side .c-card__body {
+    padding: 50px;
   }
 }
 .c-card--side-by-side .panel-group {
@@ -20100,8 +20160,44 @@ p:first-child {
   border: none;
   text-indent: -999em;
 }
+.form-control {
+  color: #000000;
+}
+.two-tone {
+  background-color: #E4D2C4;
+}
+.two-tone .l-grid__item {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .two-tone .l-grid__item {
+    padding: 0;
+  }
+}
+.two-tone .l-grid__item.c-card__body {
+  background-color: #E4D2C4;
+}
+.two-tone .c-card_content {
+  background-color: #E4D2C4;
+}
+.accordion .c-section__title {
+  font-size: 3rem;
+}
+@media (min-width: 768px) {
+  .accordion .c-section__title {
+    font-size: 4rem;
+  }
+}
 /*** keep these last ***/
 body {
-  font-weight: 600;
+  font-weight: 400;
+}
+strong,
+b {
+  font-weight: 700;
 }
 /*# sourceMappingURL=theme.css.map */
