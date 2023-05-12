@@ -50,19 +50,19 @@
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 
 <!-- Alpine Plugins -->
-    <script defer src="<%# ResolveRockUrl("~~/Scripts/alpine.persist.min.js", false) %>"></script>
-    <script defer src="<%# ResolveRockUrl("~~/Scripts/alpine.collapse.min.js", false) %>"></script>
+  <!--  <script defer src="<%# ResolveRockUrl("~~/Scripts/alpine.persist.min.js", false) %>"></script>
+    <script defer src="<%# ResolveRockUrl("~~/Scripts/alpine.collapse.min.js", false) %>"></script>-->
 
     <!-- Alpine Core -->
-    <script defer src="<%# ResolveRockUrl("~~/Scripts/alpine.min.js", false) %>"></script>
+    <!--<script defer src="<%# ResolveRockUrl("~~/Scripts/alpine.min.js", false) %>"></script>-->
 
     <!-- GSAP -->
-    <script src="<%# ResolveRockUrl("~~/Scripts/gsap.min.js", false) %>"></script>
-    <script src="<%# ResolveRockUrl("~~/Scripts/ScrollTrigger.min.js", false) %>"></script>
+  <!--  <script src="<%# ResolveRockUrl("~~/Scripts/gsap.min.js", false) %>"></script>
+    <script src="<%# ResolveRockUrl("~~/Scripts/ScrollTrigger.min.js", false) %>"></script> -->
 
     <!-- SwiperJS -->
-    <link rel="stylesheet" href="<%# ResolveRockUrl("~/Themes/node_modules/swiper/swiper-bundle.min.css", false) %>" />
-    <script src="<%# ResolveRockUrl("~/Themes/node_modules/swiper/swiper-bundle.min.js", false) %>"></script>
+   <!-- <link rel="stylesheet" href="<%# ResolveRockUrl("~/Themes/node_modules/swiper/swiper-bundle.min.css", false) %>" />
+    <script src="<%# ResolveRockUrl("~/Themes/node_modules/swiper/swiper-bundle.min.js", false) %>"></script> -->
 
 </head>
 <body runat="server" id="body">

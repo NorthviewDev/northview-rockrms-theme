@@ -43,13 +43,14 @@
   position: relative;
   &.c-section--dark {
     color: @white;
-    background-color: @brand-primary;
+    background-color: @color-gray-dark;
     h2{
       color: @color-gray-lightest!important;
     }
   }
   &.c-section--medium {
-    background-color: @gray-lighter;
+    color: @white;
+    background-color: @brand-primary;
   }
   &.-light,
   &.c-section--light {
@@ -520,11 +521,11 @@
     }
     img{
       width: auto;
-      min-width: 251px;   
-      
+      min-width: 251px;
+
       @media (min-width: @screen-sm) {
         width: 90%;
-        min-width: 751px;   
+        min-width: 751px;
       }
     }
     &.-stack{
@@ -537,11 +538,11 @@
     &.-full{
       img{
         width: auto;
-        min-width: 251px;   
-        
+        min-width: 251px;
+
         @media (min-width: @screen-sm) {
           width: 100%;
-          min-width: 751px;   
+          min-width: 751px;
         }
       }
     }
@@ -579,17 +580,17 @@
       align-items: center;
       flex-direction: column;
       @media (min-width: @screen-sm) {
-       flex-direction: row;       
+       flex-direction: row;
       }
     }
     h2{
       font-size: 48px;
       text-transform: uppercase;
       @media (min-width: @screen-sm) {
-       font-size: 60px;       
+       font-size: 60px;
       }
     }
-    
+
     p{
       font-size: 24px;
       &:last-of-type{
@@ -633,16 +634,16 @@
       .content-item{
         max-width: 80%;
         @media (min-width: @screen-sm) {
-         max-width: 60%;       
+         max-width: 60%;
         }
         &.-full{
           max-width: 80%;
           @media (min-width: @screen-sm) {
-           max-width: 100%;       
+           max-width: 100%;
           }
-        }     
+        }
       }
-      
+
     }
   }
   &.-plainSection{
@@ -667,7 +668,7 @@
     box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.5);
     @media (min-width: @screen-sm) {
-     max-width: 40%;       
+     max-width: 40%;
     }
   }
   .buttons{
@@ -679,7 +680,7 @@
         }
       }
     }
-    
+
   }
 }
 .-primaryBg,
@@ -698,7 +699,7 @@
 .-lightGreenGradientBg,
 .-lightGreenGradientBg .c-section{
   background: linear-gradient(180deg, #BFD5D9 0%, #EDEDED 74.4%);
-  
+
   h2.c-section__title{
     color: @brand-secondary!important;
   }
@@ -725,7 +726,7 @@
 .home #zone-sectiond .zone-content{
   // background: linear-gradient(180deg, #685E4A 0%, #9E9071 100%);
   .c-section{
-    background-color: #E1F7DA; 
+    background-color: #E1F7DA;
   }
 }
 .-f1rstResources{

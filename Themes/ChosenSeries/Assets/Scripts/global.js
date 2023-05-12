@@ -2,9 +2,9 @@
 $(function () { //document.ready
   $('.rock-text-box input.form-control').each(function(){
     if ($(this).is(':focus')) {
-      $(this).closest('.form-group').addClass('focused');      
+      $(this).closest('.form-group').addClass('focused');
     } else if ($(this).val() === '') {
-      $(this).closest('.form-group').addClass('blurred');      
+      $(this).closest('.form-group').addClass('blurred');
     }
   });
   $('.rock-text-box input.form-control').on('focus', function(){
@@ -17,8 +17,8 @@ $(function () { //document.ready
       $(this).closest('.form-group').removeClass('focused');
     }
   });
-  
-  $('.address-control .form-control[type="text"]:not(.js-street1)').each(function(){    
+
+  $('.address-control .form-control[type="text"]:not(.js-street1)').each(function(){
     $(this).closest('.form-group').prepend("<label class='control-label' for='"+$(this).attr("id")+"'>"+$(this).attr("placeholder")+"</label>");
     $(this).wrap("<div class='control-wrapper'></div>").attr("placeholder","");
     $(this).closest('.form-group').addClass('blurred');
@@ -33,7 +33,7 @@ $(function () { //document.ready
       $(this).closest('.form-group').removeClass('focused');
     }
   });
-   
+
   var navActive = false,
     navOpen = document.querySelector('.nav-toggle-menu'),
     navListOpen = document.querySelector('.c-primary-nav');
@@ -52,7 +52,7 @@ $(function () { //document.ready
       navOpen.classList.remove("nav-toggle-menu--is-active");
     }
   });
-  // Function to execute X function, Y number of times with Z of interval delay 
+  // Function to execute X function, Y number of times with Z of interval delay
   function recursiveDelay(functionToCall, executionsNumber, timeoutInMilliseconds) {
     if (executionsNumber) { //exit condition
 
@@ -67,7 +67,7 @@ $(function () { //document.ready
 
   //hero scripts
   function addOrnamentalElem(appendObject, appendIconClass, numIcons) {
-    // create a new element 
+    // create a new element
     var newSpan = document.createElement("span");
     // add the text node to the newly created div
     newSpan.classList.add("ornamental");
@@ -85,7 +85,7 @@ $(function () { //document.ready
     for (i = 0; i < numIcons; i++) {
       appendIcon(i);
     }
-    // add the newly created element and its content into the DOM 
+    // add the newly created element and its content into the DOM
     appendObject.appendChild(newSpan);
   }
   function playHeroVideos() {
@@ -104,41 +104,18 @@ $(function () { //document.ready
       recursiveDelay(playVideo, numVids, 600);
     }
   }
-  function addSlashes() {
-    var ltHeadline = document.querySelector('.c-locations-times__list div');
-    if (ltHeadline) addOrnamentalElem(ltHeadline, "nv-icon--ornament_backslash", 15);
-    var heroVideo = document.querySelector('.c-block-hero__background-video');
-    if (heroVideo) addOrnamentalElem(heroVideo, "nv-icon--ornament_backslash", 15);
-    var heroHeadline = document.querySelector('.c-block-hero__headline');
-    var heroSubHeadline = document.querySelector('.c-block-hero__subhead');
-    if (heroSubHeadline) {
-      addOrnamentalElem(heroSubHeadline, "nv-icon--ornament_backslash", 25);
-    } else {
-      addOrnamentalElem(heroHeadline, "nv-icon--ornament_backslash", 15);
-    }
-    var heroContainer = document.querySelector('.c-block-hero__container');
-    if (heroContainer) addOrnamentalElem(heroContainer, "nv-icon--ornament_plus", 3);
-    var calloutPrimary = document.querySelectorAll('.c-card--title-highlight');
-    calloutPrimary.forEach(item => {
-      addOrnamentalElem(item, "nv-icon--ornament_backslash", 35)
-    });
-    var cardOrnamental = document.querySelectorAll('.c-card.decorated');
-    cardOrnamental.forEach(item => {
-      addOrnamentalElem(item, "nv-icon--ornament_minus", 8)
-    });
-  }
-  
- 
+
+
   /*
     function randPercentRange(range){
       return Math.floor(Math.random() * (range[1]-range[0])) + range[0] + '%';
     }
-    function addOrnament(appendObject,appendIconClass,rangeTop,rangeLeft) {      
-      // create a new element 
+    function addOrnament(appendObject,appendIconClass,rangeTop,rangeLeft) {
+      // create a new element
       var newSpan = document.createElement("span");
       // add the text node to the newly created div
-      newSpan.classList.add("ornament");  
-      // add the newly created element and its content into the DOM 
+      newSpan.classList.add("ornament");
+      // add the newly created element and its content into the DOM
       appendObject.appendChild(newSpan);
       var newIcon = document.createElement("i");
       newIcon.classList.add("nv-icon");
@@ -178,7 +155,7 @@ $(function () { //document.ready
         rangeTop = [67,95]; rangeLeft = [34,66];
         addOrnament(hasOrnaments,"nv-icon--ornament_circle",rangeTop,rangeLeft);
         rangeTop = [67,95]; rangeLeft = [67,95];
-        addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);        
+        addOrnament(hasOrnaments,"nv-icon--ornament_triangle",rangeTop,rangeLeft);
       }
     });
   */

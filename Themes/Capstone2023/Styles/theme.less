@@ -1,6 +1,20 @@
 
 // Load Master Styles
 // -------------------------
+
+
+.clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: ' ';
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
 @import "../../../Styles/Bootstrap/variables.less";
 @import "../../../Styles/_rock-core.less";
 @import "../../../Styles/_store.less";

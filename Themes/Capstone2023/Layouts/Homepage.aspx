@@ -21,13 +21,6 @@
             </div>
           </div>
         </div>
-        <section class="c-section">
-        <div class="row">
-            <div class="col-md-8 center-block">
-                <Rock:Zone Name="Sub Feature" runat="server" />
-            </div>
-        </div>
-        </section>
         <div class="row">
             <div class="col-md-12">
                 <Rock:Zone Name="Section A" runat="server" />

@@ -555,24 +555,24 @@ input[type="text"].chosen-focus-input {
   font-family: 'FontAwesome';
   font-style: normal;
   font-weight: 900;
-  src: url('../../../Assets/Fonts/FontAwesome/fa-solid-900.eot?v=free5.15.3');
-  src: url('../../../Assets/Fonts/FontAwesome/fa-solid-900.eot?v=free5.15.3#iefix') format('embedded-opentype'), url('../../../Assets/Fonts/FontAwesome/fa-solid-900.woff2?v=free5.15.3') format('woff2'), url('../../../Assets/Fonts/FontAwesome/fa-solid-900.woff?v=free5.15.3') format('woff'), url('../../../Assets/Fonts/FontAwesome/fa-solid-900.ttf?v=free5.15.3') format('truetype'), url('../../../Assets/Fonts/FontAwesome/fa-solid-900.svg?v=free5.15.3#fontawesome') format('svg');
+  src: url('../../../../Assets/Fonts/FontAwesome/fa-solid-900.eot?v=free5.15.3');
+  src: url('../../../../Assets/Fonts/FontAwesome/fa-solid-900.eot?v=free5.15.3#iefix') format('embedded-opentype'), url('../../../../Assets/Fonts/FontAwesome/fa-solid-900.woff2?v=free5.15.3') format('woff2'), url('../../../../Assets/Fonts/FontAwesome/fa-solid-900.woff?v=free5.15.3') format('woff'), url('../../../../Assets/Fonts/FontAwesome/fa-solid-900.ttf?v=free5.15.3') format('truetype'), url('../../../../Assets/Fonts/FontAwesome/fa-solid-900.svg?v=free5.15.3#fontawesome') format('svg');
   font-display: block;
 }
 @font-face {
   font-family: 'FontAwesome';
   font-style: normal;
   font-weight: 400;
-  src: url('../../../Assets/Fonts/FontAwesome/fa-regular-400.eot?v=free5.15.3');
-  src: url('../../../Assets/Fonts/FontAwesome/fa-regular-400.eot?v=free5.15.3#iefix') format('embedded-opentype'), url('../../../Assets/Fonts/FontAwesome/fa-regular-400.woff2?v=free5.15.3') format('woff2'), url('../../../Assets/Fonts/FontAwesome/fa-regular-400.woff?v=free5.15.3') format('woff'), url('../../../Assets/Fonts/FontAwesome/fa-regular-400.ttf?v=free5.15.3') format('truetype'), url('../../../Assets/Fonts/FontAwesome/fa-regular-400.svg?v=free5.15.3#fontawesome') format('svg');
+  src: url('../../../../Assets/Fonts/FontAwesome/fa-regular-400.eot?v=free5.15.3');
+  src: url('../../../../Assets/Fonts/FontAwesome/fa-regular-400.eot?v=free5.15.3#iefix') format('embedded-opentype'), url('../../../../Assets/Fonts/FontAwesome/fa-regular-400.woff2?v=free5.15.3') format('woff2'), url('../../../../Assets/Fonts/FontAwesome/fa-regular-400.woff?v=free5.15.3') format('woff'), url('../../../../Assets/Fonts/FontAwesome/fa-regular-400.ttf?v=free5.15.3') format('truetype'), url('../../../../Assets/Fonts/FontAwesome/fa-regular-400.svg?v=free5.15.3#fontawesome') format('svg');
   font-display: block;
 }
 @font-face {
   font-family: 'FontAwesome Brands';
   font-style: normal;
   font-weight: 400;
-  src: url('../../../Assets/Fonts/FontAwesome/fa-brands-400.eot?v=free5.15.3');
-  src: url('../../../Assets/Fonts/FontAwesome/fa-brands-400.eot?v=free5.15.3#iefix') format('embedded-opentype'), url('../../../Assets/Fonts/FontAwesome/fa-brands-400.woff2?v=free5.15.3') format('woff2'), url('../../../Assets/Fonts/FontAwesome/fa-brands-400.woff?v=free5.15.3') format('woff'), url('../../../Assets/Fonts/FontAwesome/fa-brands-400.ttf?v=free5.15.3') format('truetype'), url('../../../Assets/Fonts/FontAwesome/fa-brands-400.svg?v=free5.15.3#fontawesome') format('svg');
+  src: url('../../../../Assets/Fonts/FontAwesome/fa-brands-400.eot?v=free5.15.3');
+  src: url('../../../../Assets/Fonts/FontAwesome/fa-brands-400.eot?v=free5.15.3#iefix') format('embedded-opentype'), url('../../../../Assets/Fonts/FontAwesome/fa-brands-400.woff2?v=free5.15.3') format('woff2'), url('../../../../Assets/Fonts/FontAwesome/fa-brands-400.woff?v=free5.15.3') format('woff'), url('../../../../Assets/Fonts/FontAwesome/fa-brands-400.ttf?v=free5.15.3') format('truetype'), url('../../../../Assets/Fonts/FontAwesome/fa-brands-400.svg?v=free5.15.3#fontawesome') format('svg');
   font-display: block;
 }
 @font-face {
@@ -580,7 +580,7 @@ input[type="text"].chosen-focus-input {
   font-family: summernote;
   font-style: normal;
   font-weight: 400;
-  src: url(font/summernote.eot?#iefix) format("embedded-opentype"), url(font/summernote.woff2) format("woff2"), url(font/summernote.woff) format("woff"), url(font/summernote.ttf) format("truetype");
+  src: url(../../../Styles/summernote/font/summernote.eot?#iefix) format("embedded-opentype"), url(../../../Styles/summernote/font/summernote.woff2) format("woff2"), url(../../../Styles/summernote/font/summernote.woff) format("woff"), url(../../../Styles/summernote/font/summernote.ttf) format("truetype");
 }
 [class*=" note-icon"]:before,
 [class^=note-icon]:before {
@@ -4115,7 +4115,7 @@ span.data-view-filter-label {
   overflow: hidden;
   text-align: left;
   text-indent: -999px;
-  background: url("../../../Assets/Images/sprite-cards.png") 0 0 no-repeat;
+  background: url("../../../../../Assets/Images/sprite-cards.png") 0 0 no-repeat;
 }
 .card-mastercard {
   background-position: -55px 0;
@@ -9309,7 +9309,7 @@ select[multiple].input-group-sm .slidingdaterange-daterange .input-group-addon {
   width: 100px;
   height: 100px;
   cursor: crosshair;
-  background-image: url("../../../Assets/Images/bootstrap-colorpicker/saturation.png");
+  background-image: url("../../../../Assets/Images/bootstrap-colorpicker/saturation.png");
 }
 .colorpicker-saturation i {
   position: absolute;
@@ -9349,11 +9349,11 @@ select[multiple].input-group-sm .slidingdaterange-daterange .input-group-addon {
   border-top: 1px solid #fff;
 }
 .colorpicker-hue {
-  background-image: url("../../../Assets/Images/bootstrap-colorpicker/hue.png");
+  background-image: url("../../../../Assets/Images/bootstrap-colorpicker/hue.png");
 }
 .colorpicker-alpha {
   display: none;
-  background-image: url("../../../Assets/Images/bootstrap-colorpicker/alpha.png");
+  background-image: url("../../../../Assets/Images/bootstrap-colorpicker/alpha.png");
 }
 .colorpicker-saturation,
 .colorpicker-hue,
@@ -9411,7 +9411,7 @@ select[multiple].input-group-sm .slidingdaterange-daterange .input-group-addon {
   margin-top: 5px;
   clear: both;
   background-position: 0 100%;
-  background-image: url("../../../Assets/Images/bootstrap-colorpicker/alpha.png");
+  background-image: url("../../../../Assets/Images/bootstrap-colorpicker/alpha.png");
 }
 .colorpicker-color div {
   height: 10px;
@@ -9502,10 +9502,10 @@ select[multiple].input-group-sm .slidingdaterange-daterange .input-group-addon {
   border: 0;
 }
 .colorpicker.colorpicker-horizontal .colorpicker-hue {
-  background-image: url("../../../Assets/Images/bootstrap-colorpicker/hue-horizontal.png");
+  background-image: url("../../../../Assets/Images/bootstrap-colorpicker/hue-horizontal.png");
 }
 .colorpicker.colorpicker-horizontal .colorpicker-alpha {
-  background-image: url("../../../Assets/Images/bootstrap-colorpicker/alpha-horizontal.png");
+  background-image: url("../../../../Assets/Images/bootstrap-colorpicker/alpha-horizontal.png");
 }
 .colorpicker.colorpicker-hidden {
   display: none;
@@ -16948,154 +16948,6 @@ button:focus {
 .attachment-gallery.attachment-gallery--4 .attachment {
   flex-basis: 50%;
   max-width: 50%;
-}
-.form-group {
-  font-family: sans-serif;
-}
-.block-content > div:not(.modal-open) input.form-control,
-.block-content > div:not(.modal-open) select.form-control {
-  background-color: transparent;
-  color: #414042;
-  font-weight: 600;
-  border: none;
-  border-bottom: solid 3px #d3d3d3;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 6px 0;
-  transition: border-bottom 0;
-}
-.block-content > div:not(.modal-open) input.form-control:focus,
-.block-content > div:not(.modal-open) select.form-control:focus {
-  border-bottom: none;
-  outline: solid 3px #131218;
-  padding: 6px 12px;
-}
-.searchbox .block-content > div:not(.modal-open) input.form-control,
-.searchbox .block-content > div:not(.modal-open) select.form-control {
-  box-sizing: border-box;
-  padding: 10px;
-}
-.block-content > div:not(.modal-open) textarea.form-control {
-  border: solid 1px #d3d3d3;
-  border-bottom: solid 3px #d3d3d3;
-}
-.block-content > div:not(.modal-open) .form-group {
-  position: relative;
-  margin-bottom: 2em;
-  margin-top: 20px;
-}
-.block-content > div:not(.modal-open) .form-group .dropdown-toggle {
-  border: solid 2px #000;
-  font-weight: bold;
-  color: #000;
-  padding: 10px 40px 10px 15px;
-  position: relative;
-}
-.block-content > div:not(.modal-open) .form-group .dropdown-toggle .fa-caret-down {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-}
-.block-content > div:not(.modal-open) .form-group .dropdown-toggle .fa-caret-down:before {
-  content: '\f078';
-}
-.block-content > div:not(.modal-open) .form-group label {
-  color: #000;
-  transition: all 0.2s ease-in-out;
-  position: absolute;
-  z-index: 5;
-  white-space: nowrap;
-  top: -20px;
-  font-size: 0.85em;
-  display: inline-block;
-  margin: 0;
-  line-height: 1.4em;
-  padding: 0;
-}
-.block-content > div:not(.modal-open) .form-group label.radio-inline,
-.block-content > div:not(.modal-open) .form-group label.checkbox-inline {
-  padding-left: 20px;
-  margin-right: 10px;
-  font-size: 1em;
-}
-.block-content > div:not(.modal-open) .form-group .in-columns label {
-  white-space: normal;
-  display: block;
-}
-.block-content > div:not(.modal-open) .form-group.rock-radio-button-list label,
-.block-content > div:not(.modal-open) .form-group.rock-check-box-list label {
-  position: relative;
-  top: 0;
-}
-.block-content > div:not(.modal-open) .form-group .radiolist-group label,
-.block-content > div:not(.modal-open) .form-group .checkboxlist-group label {
-  position: relative;
-  top: auto;
-}
-.block-content > div:not(.modal-open) .form-group .radio label,
-.block-content > div:not(.modal-open) .form-group .checkbox label {
-  position: relative;
-  top: 0;
-  padding-left: 20px;
-}
-.block-content > div:not(.modal-open) .form-group .radio label .label-text,
-.block-content > div:not(.modal-open) .form-group .checkbox label .label-text {
-  vertical-align: middle;
-}
-.block-content > div:not(.modal-open) .form-group.focused label {
-  top: -20px;
-  font-size: 0.85em;
-  margin: 0;
-}
-.block-content > div:not(.modal-open) .form-group.blurred label {
-  color: #979797;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 1em;
-  top: 0px;
-  display: inline-block;
-  margin: 6px 0;
-  line-height: 1.4em;
-  padding: 0;
-  cursor: text;
-}
-.block-content > div:not(.modal-open) .contribution-payment .tab-content {
-  margin-top: 32px;
-}
-.block-content > div:not(.modal-open) .input-group-addon {
-  padding: 6px 12px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1;
-  color: #777576;
-  text-align: center;
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-  border-bottom: solid 3px #d3d3d3;
-}
-#ctl00_main_ctl10_ctl02_ctl00_divRepeatingPayments {
-  display: flex;
-}
-#ctl00_main_ctl10_ctl02_ctl00_divRepeatingPayments .date-picker {
-  margin-left: 30px;
-}
-#ctl00_main_ctl10_ctl02_ctl00_divRepeatingPayments .date-picker .form-control {
-  padding: 20px 12px;
-  margin-top: 3px;
-}
-#addressInput {
-  background-color: #d8d8d8;
-  box-sizing: content-box;
-  padding: 10px 20px;
-}
-.universal-search .panel {
-  background: transparent;
-}
-.universal-search .searchbox {
-  background-color: #ffffff;
-  height: 37px;
 }
 /*** BUTTONS ***/
 :root {
