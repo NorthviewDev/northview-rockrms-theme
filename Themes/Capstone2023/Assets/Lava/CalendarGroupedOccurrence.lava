@@ -19,25 +19,25 @@
     <div class="panel-body">
 		<div class="row">
 			<div class="col-md-2">
-				<b>Date</b>
+				<strong>Date</strong>
 			</div>
 			<div class="col-md-2">
-				<b>Time</b>
+				<strong>Time</strong>
 			</div>
 			<div class="col-md-2">
-				 <b>Location</b>
+				 <strong>Location</strong>
 			</div>
 			<div class="col-md-4">
-			  <b>Summary</b>
+			  <strong>Summary</strong>
 			</div>
 		</div>
 		{% for eventItemOccurrence in eventItem %}
 		<div class="row">
 			<div class="col-md-2">
 				{% if eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveStartDate != eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveEndDate %}
-					{{ eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveStartDate  | Date: 'MMM d' }} -  {{ eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveEndDate  | Date: 'MMM d' }}
+					{{ eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveStartDate  | Date:'MMM d' }} -  {{ eventItemOccurrence.EventItemOccurrence.Schedule.EffectiveEndDate  | Date:'MMM d' }}
 				{% else %}
-					{{ eventItemOccurrence.Date | Date: 'MMM d' }}
+					{{ eventItemOccurrence.Date | Date:'MMM d' }}
 				{% endif %}
 			</div>
 			<div class="col-md-2">
@@ -55,7 +55,7 @@
 				  <i> View <i class="fa fa-chevron-right"></i> </i>
 				</a>
 				{% else %}
-				<a href="/event/{{ eventItemOccurrence.EventItemOccurrence.Id }}">
+				<a href="{{ DetailsPage }}?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}">
 					View <i class="fa fa-chevron-right"></i>
 				</a>
 				{% endif %}

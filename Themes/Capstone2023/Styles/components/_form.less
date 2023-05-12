@@ -1,22 +1,40 @@
-.form-group {
-  font-family: sans-serif;
-}
 .block-content > div:not(.modal-open) {
+  .workflow-entry-panel{
+    background: #e5e5e5;
+    padding: 40px 30px;
+    @media (min-width: @screen-sm) {
+      padding: 53px 55px;
+    }
+    .row{
+      display: flex;
+      flex-direction: column;
+      [class*="col-md-"] {
+        width: 100%;
+      }
+    }
+  }
+  input.form-control{
+    padding: 26px;
+  }
+  select.js-state{
+    height: 56px;
+    margin-top: 25px; //fields without label
+  }
+  select.form-control{
+    height: 56px;
+  }
   input.form-control,
   select.form-control {
-    background-color: transparent;
-    color: @text-color;
-    font-weight: 600;
-    border: none;
-    border-bottom: solid 3px #d3d3d3;
-    border-radius: 0;
+    background-color: @white;
+    color: #666666;
+    font-weight: 400;
+    border: solid 1px #cccccc;
+    border-radius: 8px;
     box-shadow: none;
-    padding: 6px 0;
-    transition: border-bottom 0;
     &:focus {
-      border-bottom: none;
-      outline: solid 3px @brand-primary;
-      padding: 6px 12px;
+      border-color: transparent;
+      outline: solid 1px @color-brand-primary;
+      padding: 26px;
     }
     .searchbox & {
       box-sizing: border-box;
@@ -29,8 +47,9 @@
   }
   .form-group {
     position: relative;
-    margin-bottom: 2em;
-    margin-top: 20px;
+    margin-bottom: 30px;;
+    // margin-top: 20px;
+    
     .dropdown-toggle {
       border: solid 2px @black;
       font-weight: bold;
@@ -43,18 +62,18 @@
         right: 10px;
         transform: translateY(-50%);
         &:before {
-          content: '\f078';
+          content: "\f078";
         }
       }
     }
     label {
-      color: @black;
+      color: #666666;
       transition: all 0.2s ease-in-out;
-      position: absolute;
+      //position: absolute;
       z-index: 5;
       white-space: nowrap;
-      top: -20px;
-      font-size: 0.85em;
+      //top: -20px;
+      font-size: 0.75rem;
       display: inline-block;
       margin: 0;
       line-height: 1.4em;
@@ -63,7 +82,7 @@
       &.checkbox-inline {
         padding-left: 20px;
         margin-right: 10px;
-        font-size: 1em;
+        font-size: .75rem;
       }
     }
     .in-columns {
@@ -103,20 +122,20 @@
     }
     &.focused {
       label {
-        top: -20px;
-        font-size: 0.85em;
-        margin: 0;
+        // top: -20px;
+        // font-size: 0.85em;
+        // margin: 0;
       }
     }
     &.blurred {
       label {
-        color: @color-gray-light;
+        color: #666666;
         white-space: nowrap;
         overflow: hidden;
-        font-size: 1em;
+        font-size: .75rem;
         top: 0px;
         display: inline-block;
-        margin: 6px 0;
+        // margin: 6px 0;
         line-height: 1.4em;
         padding: 0;
         cursor: text;
@@ -136,7 +155,24 @@
     background-color: transparent;
     border: none;
     border-radius: 0;
-    border-bottom: solid 3px #d3d3d3;
+    // border-bottom: solid 3px #d3d3d3;
+  }
+  .actions{
+    display: flex;
+    justify-content: center;
+    .btn{
+      background: @color-gray-dark;
+      border-color: @color-gray-dark;
+      border-radius: 50px;
+      padding: 10px 100px;
+      border-width: 2px;
+      transition: all .3s ease-in-out;
+      &:hover{
+        color: @color-gray-dark;
+        background-color: transparent; 
+        border-width: 2px;
+      }
+    }
   }
 }
 #ctl00_main_ctl10_ctl02_ctl00_divRepeatingPayments {
@@ -160,6 +196,35 @@
   }
   .searchbox {
     background-color: #ffffff;
-    height: 37px;
+    input, .btn {
+      height: 37px;
+    }
+    .input-group-btn {
+      text-align: right;
+      .btn {
+        display: block;
+      }
+    }
+  }
+}
+.filters {
+  &.flex-row-sm {
+    @media (min-width: @screen-sm-min) {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .form-group {
+      //margin: 0 15px;
+      flex-basis: 33%;
+      select {
+        background-color: transparent;
+        border: 1px solid #221f1f;
+        border-radius: 2px;
+        height: 41px;
+        display: block;
+        width: 100%;
+      }
+    }
   }
 }

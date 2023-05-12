@@ -47,10 +47,10 @@
 {%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
 {%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
 {%- assign itemDescription  =  item | Attribute:'ItemDescription','RawValue' -%}
-
+{%- assign buttons  =  item | Attribute:'Buttons' -%}
+			<div class="{% if sectionBackgroundImage != '' %}c-section--bgimg{% endif %}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
 				<div class="row">
 					<div class='col-lg-{{ contentWidth }} {{ contentAlignment }}-block'>
-						<div class="{% if sectionBackgroundImage != '' %}c-section--bgimg{% endif %}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
 							<div class="c-section__content text-{{itemTextAlignment}}">
 								{%- if itemTitleStyle != "hidden" -%}
 								<{{ itemTitleStyle }} class="c-section__item-title">{{ item.Title }}</{{ itemTitleStyle }}>
@@ -59,6 +59,7 @@
 								<p class="c-section__item-description">{{ ItemDescription }}</p>
 								{%- endif -%}
 								{{ item.Content }}
+								{{buttons}}
 							</div>
 						</div>
 					</div>

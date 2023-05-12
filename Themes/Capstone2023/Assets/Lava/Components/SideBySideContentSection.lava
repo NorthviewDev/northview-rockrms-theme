@@ -1,0 +1,74 @@
+{% comment %}
+{% include "~/Themes/NorthviewChurch/Assets/Lava/Components/Section.lava" %}
+{% endcomment %}
+{%- assign sectionBackgroundImage =  ContentChannel | Attribute:'SectionBackgroundImage','RawValue' -%}
+{%- assign sectionTitle  =  ContentChannel | Attribute:'SectionTitle','RawValue' -%}
+{%- assign sectionTitleStyle  =  ContentChannel | Attribute:'SectionTitleStyle','RawValue' -%}
+{%- assign sectionDescription  =  ContentChannel | Attribute:'SectionDescription' -%}
+{%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
+{%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
+{%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
+{%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
+{%- assign sectionBgClass  =  ContentChannel | Attribute:'SectionBackgroundColorClass' -%}
+
+<section class="c-section -sbs-content c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}} {{  sectionBgClass }}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
+    <div class="container">
+{%- if sectionTitle != "" or sectionDescription != "" -%}
+        <div class="row">
+            <div class='col-lg-{{ sectionTitleWidth }} {{ sectionTitleAlignment }}-block'>
+{%- if sectionTitleStyle == "highlight" -%}
+                <div class="c-section__header">
+                  <div class="c-card c-card--title-highlight">
+                    <div class="c-card__body stack">
+                      {%- if sectionTitle != '' -%}
+                      <h2 class="c-card__title"><span>{{ sectionTitle }}</span></h2>
+                      {%- endif -%}
+                      {%- if sectionDescription != '' -%}
+                      <div class="c-card__description">{{ sectionDescription }}</div>
+                      {%- endif -%}
+                    </div>
+                  </div><!--/.c-card-->
+                </div>
+{%- elseif sectionTitleStyle == "hidden" -%}
+                <h2 class="sr-only">{{ sectionTitle }}</h2>
+                <div class="sr-only">{{ sectionDescription }}</div>
+{%- else -%}
+                <div class="c-section__header {{ sectionTitleStyle }}">
+                  <h2><span>{{ sectionTitle }}</span></h2>
+                {% assign sectionDescriptionStripped = sectionDescription | StripHTML | StripNewlines | Trim %}
+                {%- if sectionDescriptionStripped != '' -%}
+                  <div class="c-section__description">{{ sectionDescription }}</div>
+                {%- endif -%}
+                </div>
+{%- endif -%}
+            </div>
+        </div>
+{%- endif -%}
+
+{%- for item in Items -%}
+{%- assign contentAlignment  =  item | Attribute:'ContentAlignment','RawValue' -%}
+{%- assign contentWidth  =  item | Attribute:'ContentWidth','RawValue' -%}
+{%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
+{%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
+{%- assign itemDescription  =  item | Attribute:'ItemDescription','RawValue' -%}
+{%- assign buttons  =  item | Attribute:'Buttons' -%}
+
+        <div class="row">
+            <div class='{{ contentAlignment }}-block'>
+                <div class="c-section__content text-{{itemTextAlignment}}">
+                <div class="col-lg-{{ contentWidth }}">
+                    {%- if itemTitleStyle != "hidden" -%}
+                <{{ itemTitleStyle }} class="c-section__item-title">{{ item.Title }}</{{ itemTitleStyle }}>
+                {%- endif -%}
+                {%- if itemDescription != "" -%}
+                <p class="c-section__item-description">{{ ItemDescription }}</p>
+                {%- endif -%}
+                {{ item.Content }}
+                </div>
+                {{buttons}}
+                </div>
+            </div>
+        </div>
+{%- endfor -%}
+    </div>
+</section>

@@ -1,5 +1,5 @@
 @import '_mixins';
-
+@max-width: 1730px;
 @increment: 12px;
 :root {
   --s0: 0;
@@ -13,19 +13,24 @@
   --s8: calc(8 * @increment);
   --s9: calc(9 * @increment);
   --s10: calc(10 * @increment);
+  --s11: calc(11 * @increment);
+  --s12: calc(12 * @increment);
+  --s16: calc(16 * @increment);
+  
 
   --font-family-primary: @font-family-sans-serif;
   --font-family-condensed: @headings-font-family;
-  --font-family-secondary: @font-family-secondary;
-
   --pwa-menu-height: 62px;
   --vh: 1vh; //set initial vh before js calculates it
 }
+
+
 // 1. HTML Overrides
 // -------------------------
 
 html {
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 main {
@@ -51,16 +56,7 @@ h1.pagetitle:empty {
     column-gap: 60px;
   }
 }
-.clearfix {
-  &:before,
-  &:after {
-    display: table;
-    content: ' ';
-  }
-  &:after {
-    clear: both;
-  }
-}
+
 /* Rock Overrides */
 .zone-configuration-bar,
 .block-configuration-bar {
@@ -74,8 +70,7 @@ h1.pagetitle:empty {
   border: 0;
   box-shadow: none;
 
-  & > .panel-heading,
-  & > .rock-panel-drawer {
+  & > .panel-heading {
     display: none;
   }
 
@@ -116,10 +111,10 @@ h1.pagetitle:empty {
   @media (min-width: @screen-sm) {
     padding: 32px;
   }
-  > h1,
-  > h2,
-  > h3,
-  > h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     margin-top: var(--space);
     &:first-child {
       margin-top: 0;
@@ -157,11 +152,11 @@ h1.pagetitle:empty {
 
 /*** GLOBAL STYLES ***/
 body {
-  background-color: #fafafa;
-  margin-bottom: var(--pwa-menu-height);
+  background-color: white;
+ // margin-bottom: var(--pwa-menu-height);
   @media (min-width: @screen-md) {
     margin-bottom: 0;
-    font-size: 19px;
+    font-size: 20px;
   }
   &.narrow {
     .c-block-hero__header {
@@ -183,14 +178,16 @@ body {
 }
 #form1 {
   width: 100%;
-  //width: 1680px;
-  //width: 1440px;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   position: relative;
   box-shadow: 0px 0px 10px 0px #8c8c8c;
   background-color: @white;
+  overflow: hidden;
+  @media (min-width: @max-width) {
+    width: @max-width;
+  }
 }
 
 blockquote {
@@ -199,6 +196,9 @@ blockquote {
   font-family: @headings-font-family;
   font-weight: @headings-font-weight;
 }
+h1,.h1,h2,.h2  {
+  font-family: @font-family-sans-serif;
+}
 @media (min-width: @screen-md) {
   blockquote {
     font-size: 36px;
@@ -206,14 +206,17 @@ blockquote {
   h1,
   .h1 {
     font-size: 80px;
+    font-family: @font-family-serif;
   }
   h2,
   .h2 {
     font-size: 48px;
+    font-family: @font-family-sans-serif-bold;
+    font-weight: bold;
   }
   h3,
   .h3 {
-    font-size: 36px;
+    font-size: 48px;
   }
   h4,
   .h4 {
@@ -236,19 +239,17 @@ img {
 a {
   display: inline-block;
   text-decoration: none;
-  border-bottom: solid 2px @brand-secondary;
   color: @text-color;
-  font-weight: 600;
   &:hover,
   &:focus {
     color: @gray;
     text-decoration: none;
   }
-  .imageupload-thumbnail & {
-    display: inline;
-  }
   .config-bar & {
     border: none;
+  }
+  .imageupload-thumbnail & {
+    display: block;
   }
 }
 ul,
@@ -293,7 +294,22 @@ ol {
         margin: 0;
         &:hover,
         &:focus {
-          color: @brand-primary;
+          color: @color-brand-primary;
+        }
+      }
+    }
+  }
+  &.-light {
+    background-color: @white;
+    color: @text-color;
+    ul {
+      li {
+        a {
+          color: @text-color;
+          &:hover,
+          &:focus {
+            color: @color-brand-primary;
+          }
         }
       }
     }
@@ -310,7 +326,7 @@ ol {
 a:focus,
 button:focus {
   outline: none;
-  //box-shadow: 0 0 8px rgba(@brand-primary, 0.6);
+  //box-shadow: 0 0 8px rgba(@color-brand-primary, 0.6);
 }
 .pad {
   padding: 0 48px;

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'northviewchurch';
-  src:  url('fonts/northviewchurch.eot?rphm79');
-  src:  url('fonts/northviewchurch.eot?rphm79#iefix') format('embedded-opentype'),
-    url('fonts/northviewchurch.ttf?rphm79') format('truetype'),
-    url('fonts/northviewchurch.woff?rphm79') format('woff'),
-    url('fonts/northviewchurch.svg?rphm79#northviewchurch') format('svg');
+  src:  url('fonts/northviewchurch.eot?qwmys8');
+  src:  url('fonts/northviewchurch.eot?qwmys8#iefix') format('embedded-opentype'),
+    url('fonts/northviewchurch.ttf?qwmys8') format('truetype'),
+    url('fonts/northviewchurch.woff?qwmys8') format('woff'),
+    url('fonts/northviewchurch.svg?qwmys8#northviewchurch') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -114,7 +114,4 @@
 }
 .nv-icon--calendar:before {
   content: "\e918";
-}
-.nv-icon--ticket:before {
-  content: "\e91e";
 }

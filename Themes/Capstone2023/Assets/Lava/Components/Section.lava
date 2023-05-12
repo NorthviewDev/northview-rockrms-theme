@@ -9,8 +9,9 @@
 {%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
 {%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
 {%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
+{%- assign sectionBgClass  =  ContentChannel | Attribute:'SectionBackgroundColorClass' -%}
 
-<section class="c-section c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
+<section class="c-section {% if sectionType != '' %}c-section--{{ sectionType }}{% endif %} {{  sectionBgClass }} {% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
     <div class="container">
 {%- if sectionTitle != "" or sectionDescription != "" -%}
         <div class="row">
@@ -50,6 +51,8 @@
 {%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
 {%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
 {%- assign itemDescription  =  item | Attribute:'ItemDescription','RawValue' -%}
+{%- assign buttons  =  item | Attribute:'Buttons' -%}
+
         <div class="row">
             <div class='col-lg-{{ contentWidth }} {{ contentAlignment }}-block'>
                 <div class="c-section__content text-{{itemTextAlignment}}">
@@ -60,6 +63,7 @@
                 <p class="c-section__item-description">{{ ItemDescription }}</p>
                 {%- endif -%}
                 {{ item.Content }}
+                {{buttons}}
                 </div>
             </div>
         </div>

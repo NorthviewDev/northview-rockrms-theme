@@ -1,6 +1,11 @@
+#latest-message {
+  background-color: #ececec;
+  .dark & {
+    background-color: #221f1f;
+  }
+}
 @media (min-width: @screen-sm) {
   /* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
-
   #latest-message-grid {
     display: -ms-grid;
     display: grid;
@@ -14,7 +19,7 @@
       -ms-grid-row-span: 3;
       -ms-grid-column: 1;
       grid-area: Media;
-      margin-top: @s4;
+      margin-top: var(--s4);
     }
     .c-section__header {
       -ms-grid-row: 1;
@@ -22,7 +27,7 @@
       grid-area: Title;
       width: 60%;
       text-align: left;
-      padding-left: @s3;
+      padding-left: var(--s3);
       margin-bottom: var(--s2);
       h2 {
         line-height: 0.9375em;
@@ -42,16 +47,16 @@
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center;
-      -webkit-transform: translateX(@s3*-1);
-      -ms-transform: translateX(@s3*-1);
-      transform: translateX(@s3*-1);
+      -webkit-transform: translateX(~'calc(var(--s3)*-1)');
+      -ms-transform: translateX(~'calc(var(--s3)*-1)');
+      transform: translateX(~'calc(var(--s3)*-1)');
     }
     .c-section__footer {
       -ms-grid-row: 3;
       -ms-grid-column: 2;
       text-align: left;
       grid-area: Footer;
-      padding-left: @s3;
+      padding-left: var(--s3);
       margin-top: var(--s2);
     }
   }

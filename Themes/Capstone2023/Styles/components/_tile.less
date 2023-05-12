@@ -7,7 +7,7 @@
   transition: all ease-in-out 300ms;
   height: 100%;
   &:hover {
-    border-bottom-color: @brand-primary;
+    border-bottom-color: @color-brand-primary;
   }
   .well & {
     padding: 0;
@@ -31,7 +31,9 @@
   }
   .c-tile__body {
     .c-tile__info {
-      padding: 20px 35px 35px;
+      @media screen and (min-width: @screen-sm) {
+        padding: 20px 35px 35px;
+      }
     }
     .c-tile__link {
       flex: 0 1 45%;

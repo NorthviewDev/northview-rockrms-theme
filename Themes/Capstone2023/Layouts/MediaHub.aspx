@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        <section class="c-section c-section--light">
+        <section class="c-section">
           <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -30,12 +30,12 @@
                 </div>
             </div>
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-lg-8">
                 <div class="c-section__content">
                   <Rock:Zone Name="Sub Feature" runat="server" />
                 </div>
               </div>
-              <div class="col-sm-4">
+              <div class="col-lg-4">
                 <Rock:Zone Name="Feature Sidebar" runat="server" />
               </div>
             </div>

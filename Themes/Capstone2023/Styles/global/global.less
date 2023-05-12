@@ -1,22 +1,8 @@
-@import '_mixins';
+@import "_mixins";
 :root {
-  // .sizeBase12(); //12px size increments
-  // Rock LESS Compiler crashes with mixin loop so doing this by hand
-  --s1: calc(1 * 12px);
-  --s2: calc(2 * 12px);
-  --s3: calc(3 * 12px);
-  --s4: calc(4 * 12px);
-  --s5: calc(5 * 12px);
-  --s6: calc(6 * 12px);
-  --s7: calc(7 * 12px);
-  --s8: calc(8 * 12px);
-  --s9: calc(9 * 12px);
-  --s10: calc(10 * 12px);
-
+  .sizeBase12(); //12px size increments
   --font-family-primary: @font-family-sans-serif;
   --font-family-condensed: @headings-font-family;
-  --font-family-secondary: @font-family-secondary;
-
   --pwa-menu-height: 62px;
   --vh: 1vh; //set initial vh before js calculates it
 }
@@ -106,17 +92,17 @@ h1.pagetitle:empty {
   @media (min-width: @screen-sm) {
     padding: 32px;
   }
-  > h1,
-  > h2,
-  > h3,
-  > h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     margin-top: var(--space);
     &:first-child {
       margin-top: 0;
     }
   }
   .form-control {
-    &[type='text'] {
+    &[type="text"] {
       background-color: @color-gray-lighter;
       height: 50px;
       padding: 15px;
@@ -172,8 +158,7 @@ body {
   }
 }
 #form1 {
-  // width: 1680px;
-  width: 1440px;
+  width: 1680px;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -225,7 +210,7 @@ img {
 a {
   display: inline-block;
   text-decoration: none;
-  border-bottom: solid 2px @brand-secondary;
+  border-bottom: solid 2px @color-brand-primary;
   color: @text-color;
   font-weight: 600;
   &:hover,
@@ -235,6 +220,9 @@ a {
   }
   .config-bar & {
     border: none;
+  }
+  .imageupload-thumbnail & {
+    display: contents;
   }
 }
 ul,
@@ -279,10 +267,25 @@ ol {
         margin: 0;
         &:hover,
         &:focus {
-          color: @brand-primary;
+          color: @color-brand-primary;
         }
       }
     }
+  }
+  &.-light {
+    background-color: @white;
+    color: @text-color;
+    ul {
+      li {
+        a {
+          color: @text-color;
+          &:hover,
+          &:focus {
+            color: @color-brand-primary;
+          }
+        }
+      }
+    } 
   }
 }
 .center-block {
@@ -296,7 +299,7 @@ ol {
 a:focus,
 button:focus {
   outline: none;
-  //box-shadow: 0 0 8px rgba(@brand-primary, 0.6);
+  //box-shadow: 0 0 8px rgba(@color-brand-primary, 0.6);
 }
 .pad {
   padding: 0 48px;

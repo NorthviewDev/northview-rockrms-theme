@@ -1,15 +1,90 @@
 /*** NAVIGATION MENU COMPONENT ***/
 #zone-navigation {
-  flex: 1 1 auto;
+	flex: 1 1 auto;
+}
+.c-offcanvas-menu {
+  display: flex;
+  background-color: @brand-secondary;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  padding-bottom: var(--pwa-menu-height);
+  left:100%;
+  right: 0;
+  transform: translate(100%, 0);
+  flex-direction: column;
+  flex-wrap: nowrap;
+  //justify-content: center;
+  transition: all ease-in-out 350ms;
+  overflow: auto;
+  //align-items: center;
+  z-index: 9999;
+  justify-content: space-between;
+  &:after {
+    content: '';
+  }
+  @media (min-width: @screen-md) {
+    transform: translate(100%, 0);
+    padding-bottom: 0;
+    left: 100%;
+    width: 400px;
+  }
+  &.c-offcanvas-menu--is-active {
+    transform: translate(0, 0);
+    left: 0;
+    @media (min-width: @screen-md) {
+      left: auto;
+    }
+  }
+  .closer {
+    margin: 12px 14px;
+    padding: 12px;
+    text-decoration: none;
+    align-self: self-end;
+    border: none;
+    background: none;
+    line-height: 1;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+  }
+}
+.c-offcanvas__content {
+  //padding: var(--s2);
+  width: 50%;
+  min-width: 187px;
+  margin: 0 auto;
+  #offcanvas-menu{
+    list-style: none;
+  }
+  .c-offcanvas__item{
+    font-size: 28px;
+    margin-bottom: 12px;
+    color:@color-gray-lightest;
+    &:hover{
+      color: @accent1;
+    }
+  }
+  .c-offcanvas__link{
+    color:@color-gray-lightest;
+    border-bottom: 1px solid transparent;
+    
+    &:hover{
+      color: @accent1;
+      border-bottom: 1px solid @accent1;
+    }
+  }
 }
 .c-primary-nav {
   display: flex;
   background-color: #eeeeee;
   position: fixed;
-  top: 0;
-  bottom: var(--pwa-menu-height);
-  left: 0;
-  right: 0;
+  top:0;
+  bottom:var(--pwa-menu-height);
+  left:0;
+  right:0;
   transform: translateY(100%);
   flex-direction: column;
   flex-wrap: nowrap;
@@ -24,121 +99,129 @@
     justify-content: flex-start;
   }
   @media (min-width: @screen-md) {
-    transform: none;
-    min-height: 0;
-    background-color: transparent;
-    position: relative;
-    flex-direction: row;
-    padding-bottom: 0;
+  	transform: none;
+  	min-height: 0;
+  	background-color: transparent;
+  	position: relative;
+  	flex-direction: row;
+  	padding-bottom: 0;
   }
 }
 .c-primary-nav__content {
-  padding-top: var(--s3);
-  padding-bottom: var(--s3);
-  padding-left: var(--s3);
-  padding-right: var(--s3);
+  display: none;
   @media (min-width: @screen-sm) {
-    padding-left: 0;
-    padding-right: 0;
+  	display: block;
+    padding-top: var(--s3);
+    padding-bottom: var(--s3);
+    padding-left: var(--s3);
+    padding-right: var(--s3);
+    
   }
 }
 .c-primary-nav__list {
-  margin-left: 0;
+  margin-left:0;
   margin-bottom: 3em;
-  padding-left: 0;
+  padding-left:0;
   list-style: none;
   @media (min-width: @screen-md) {
-    margin-bottom: 0;
+    margin-bottom:0;
   }
 }
 
 .c-primary-nav__item {
-  font-family: var(--font-family-condensed);
-  font-size: 29px;
-  font-weight: @headings-font-weight;
-  letter-spacing: 0.5px;
-  line-height: 1.4em;
-  text-transform: uppercase;
-  margin: var(--s1) 0;
-  vertical-align: top;
+	font-family: var(--font-family-primary);
+	font-size: 18px;
+	font-weight: normal;
+  color: @white;
+	letter-spacing: 0.5px;
+	line-height: 1.4em;
+	margin: var(--s1) 0;
+	vertical-align: top;
+  border-bottom: 2px solid transparent;
+  transition: all .3s ease-in-out;
+  &:hover{
+    color: @brand-secondary;
+    border-bottom: 2px solid @brand-primary;
+  }
+  .opaque &{
+    color: @color-gray-dark;
+  }
   @media (min-width: @screen-md) {
     display: inline;
-    font-size: 26px;
+    font-size: 18px;
     line-height: 1.2;
-    margin: 0 0 0 50px;
+    margin: 0 29px 0 29px;
+    font-weight:600;
     &:first-child {
-      margin-left: 0;
+      margin-left:0;
     }
   }
 }
 .c-primary-nav__link {
-  color: @gray-darker;
-  text-decoration: none;
-  border: none;
-  position: relative;
-  display: inline-block;
-  padding-left: 5px;
-  padding-top: 3px;
-  font-weight: @headings-font-weight;
-  transition: padding cubic-bezier(0.01, -0.74, 0.57, 1.57) 100ms;
-  &:after {
-    content: '';
-    background-color: @brand-primary;
-    height: 0.75em;
-    bottom: 0;
-    left: 0;
-    right: -5px;
-    position: absolute;
-    z-index: 0;
-    transition: all ease-in-out 150ms;
-  }
-  &:hover,
-  &:focus {
-    color: @gray-darker;
-    &:after {
-      height: 1.4em;
-    }
-  }
+	color: @color-gray-dark;
+	text-decoration: none;
+	border: none;
+	position: relative;
+	display:inline-block;
+	padding-left: 5px;
+	padding-top:3px;
+	font-weight: @headings-font-weight;
+	transition: padding cubic-bezier(0.01, -0.74, 0.57, 1.57) 100ms;
+	&:after {
+  	content:"";
+  	background-color: @color-brand-primary;
+  	height:0.75em;
+  	bottom:0;
+  	left:0;
+  	right:-5px;
+  	position: absolute;
+  	z-index: 0;
+  	transition: all ease-in-out 150ms;
+	}
+	&:hover, &:focus {
+  	color: @gray-darker;
+  	&:after {
+    	height:1.4em; 
+      
+  	}
+	}
   .no-header & {
     @media (min-width: @screen-md) {
       color: @white;
-      &:hover,
-      &:focus {
+    	&:hover, &:focus {
         color: @white;
-      }
+      }    	
     }
   }
-  span {
-    position: relative;
-    z-index: 1;
-  }
-  @media (min-width: @screen-md) {
-    padding-left: 0;
-    &:after {
-      position: relative;
-      height: 2px;
-      right: 0;
-      width: 0;
-      display: block;
-    }
-    &:hover,
-    &:focus {
-      padding-top: 0;
-      &:after {
+	span {
+  	position: relative;
+  	z-index: 1;
+	}
+	@media (min-width: @screen-md) {
+  	padding-left:0;
+	  &:after {
+  	  position: relative;
+     	height: 2px;
+  	  right:0;
+  	  width:0;
+  	  display: block;
+	  }	
+  	&:hover, &:focus {
+    	padding-top:0;
+    	&:after {
         height: 2px;
-        width: 100%;
-      }
-    }
-  }
+      	width: 100%;
+    	}
+  	}
+	}
 }
 .nav-toggle-menu--is-active {
-  color: @text-color;
-  background-color: @brand-primary;
+  color: @color-gray-lightest;
+  background-color: @color-brand-primary;
   .nv-icon:before {
-    content: '\e900';
+    content: "\e900";
   }
-  &:hover,
-  &:focus {
-    color: @text-color;
+  &:hover, &:focus {
+    color: @accent1;
   }
 }

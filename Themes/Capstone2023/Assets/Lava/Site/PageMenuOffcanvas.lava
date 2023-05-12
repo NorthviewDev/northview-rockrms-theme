@@ -1,0 +1,48 @@
+
+{% comment %}
+Off-canvas menu has to be outside the page content blocks
+{% endcomment %}
+{%- assign pageHeaderImage = CurrentPage | Attribute:'PageHeaderImage','RawValue' -%}
+{%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
+{%- assign sectionClass="" -%}
+{%- if pageHeaderImage != "" || if pageHeaderVideo != "" -%}
+	{%- assign sectionClass=" has-media" -%}
+{%- else -%}
+	{%- assign sectionClass=" no-header" -%}
+{%- endif -%}
+{% if Page.DisplayChildPages and Page.Pages != empty %}
+	<nav id="offcanvas" class="c-offcanvas-menu{{ sectionClass }}">
+		<a class="closer nav-toggle-menu"><i class="nv-icon nv-icon--close"></i></a>
+		<div class="c-offcanvas__content">
+			<ul id="offcanvas-menu" class="c-offcanvas__list panel-group">
+			{% for childPage in Page.Pages %}
+				<li class="c-offcanvas__item{% if childPage.Current %} active{% endif %} panel">
+				{% if childPage.DisplayChildPages == 'true' and childPage.Pages and childPage.Pages != empty %}
+					<a class="c-offcanvas__link collapsed" role="button" data-toggle="collapse" data-parent="#offcanvas-menu" href="#collapse{{ forloop.index }}-{{ childPage.Title | ToCssClass }}" aria-expanded="{% if isopen == ' -active' %}true{% else %}false{% endif %}" aria-controls="collapse{{ forloop.index }}">
+						<span>{{ childPage.Title }}</span><span class="icons"><b class="nv-icon nv-icon--ornament_plus"></b><b class="nv-icon nv-icon--ornament_minus"></b></span>
+					</a>
+					<div id="collapse{{ forloop.index }}-{{ childPage.Title | ToCssClass }}" class="panel-collapse collapse">
+						<ul class="c-offcanvas__submenu">
+							{% for greatGrandChildPage in childPage.Pages %}
+							<li class="c-nav__link{% if greatGrandChildPage.Current == 'true' %} -active{% endif%}" id="menu_{{ grandChildPage.Title | ToCssClass }}_{{ greatGrandChildPage.Title | ToCssClass }}">
+								<a href="{{ greatGrandChildPage.Url }}">{{ greatGrandChildPage.Title }}</a>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% else %}
+					<a href="{{ childPage.Url }}" class="c-offcanvas__link collapsed"><span>{{ childPage.Title }}</span></a>
+				{% endif %}
+				</li>
+			{% endfor %}
+
+			</ul><!--end c-offcanvas__list-->
+			
+			{% for includedPage in IncludePageList  %}
+			{% assign attributeParts = includedPage | PropertyToKeyValue %}
+				<a href="{{ attributeParts.Value }}" class="c-btn c-btn--display-block"><span>{{ attributeParts.Key }}</span></a>
+			{% endfor %}
+
+		</div>
+	</nav><!--end c-offcanvas-->
+{% endif %}

@@ -1,45 +1,42 @@
-// stylelint-disable value-keyword-case
 
-//
-// Variables
-// --------------------------------------------------
+:root {
+	--primary-color: #28373A; //primary brand color #color
+}
 
-/*
-    Colors from InVision:
-*/
 
 // Theme Colors *show in editor*
-@brand-primary: #1f2637; // #color
-@brand-secondary: #b68854; // #color
-@accent1: #fff; // #color
-@accent2: #fff; // #color
-@accent3: #fff; // #color
+@brand-primary: #050d1a; // #color
+@brand-secondary: #30b45b; // #color
+@accent1: #75e395; // #color
+@accent2: #d2ec74; // #color
+@accent3: #6e97a0; // #color
 @color-gray-darker: #221f1f; // #color
-@color-gray-dark: #373737; // #color
+@color-gray-dark: #494949; // #color
 @color-gray: #777576; // #color
 @color-gray-light: #979797; // #color
 @color-gray-lighter: #eeeeee; // #color
-@color-gray-lightest: #f9f9f5; //#color
+@color-gray-lightest: #EDEDED; //#color
 //--
 @color-white: #ffffff; // #color
-
-//
 //## Gray and brand colors for use across Bootstrap.
 
-@black: #000;
-@white: @color-white;
-@gray-darker: @color-gray-darker;
-@gray-dark: @color-gray-dark;
-@gray: @color-gray;
-@gray-light: @color-gray-light;
-@gray-lighter: @color-gray-lighter;
-@brand-primary: #1f2637;
-@brand-secondary: #b68854;
-@brand-success: #5cb85c;
-@brand-info: #5bc0de;
-@brand-warning: #f0ad4e;
-@brand-danger: #d9534f;
-@brand-brown: #3c2f2d;
+@color-brand-primary: var(--primary-color);
+
+
+// @black: #000;
+// @white: @color-white;
+// @gray-darker: @color-gray-darker;
+// @gray-dark: @color-gray-dark;
+// @gray: @color-gray;
+// @gray-light: @color-gray-light;
+// @gray-lighter: @color-gray-lighter;
+// @brand-primary: #1f2637;
+// @brand-secondary: #b68854;
+// @brand-success: #5cb85c;
+// @brand-info: #5bc0de;
+// @brand-warning: #f0ad4e;
+// @brand-danger: #d9534f;
+// @brand-brown: #3c2f2d;
 
 // Global Styles  *show in editor*
 @body-bg: @color-white; //-- Background color for `<body>`
@@ -49,12 +46,14 @@
 @link-hover-decoration: underline; //** Link hover decoration.
 
 // Typography  *show in editor*
-@font-family-sans-serif: ff-good-web-pro, sans-serif;
+@font-family-sans-serif: "GreycliffCF-Regular", sans-serif;
 @font-family-secondary: futura-pt, sans-serif;
-@font-family-serif: Georgia, 'Times New Roman', Times, serif;
+@font-family-serif: azote, 'Times New Roman', Times, serif;
+@font-family-sans-serif-bold: "GreycliffCF-Bold", sans-serif;
+
 //--
-@headings-font-family: ff-good-web-pro-condensed, sans-serif;
-@headings-font-weight: 700;
+@headings-font-family: @font-family-sans-serif-bold;
+@headings-font-weight: 400;
 @headings-line-height: 1.1;
 @headings-color: inherit;
 
@@ -313,7 +312,7 @@
 
 // XL screen / wide desktop
 //** Deprecated `@screen-lg` as of v3.0.1
-@screen-xl: 1440px;
+@screen-xl: 1600px;
 @screen-xl-min: @screen-xl;
 //** Deprecated `@screen-lg-desktop` as of v3.0.1
 @screen-xl-desktop: @screen-xl-min;
@@ -331,7 +330,7 @@
 //** Number of columns in the grid.
 @grid-columns: 12;
 //** Padding between columns. Gets divided in half for the left and right.
-@grid-gutter-width: 24px;
+@grid-gutter-width: 48px;
 // Navbar collapse
 //** Point at which the navbar becomes uncollapsed.
 @grid-float-breakpoint: @screen-sm-min;
@@ -353,18 +352,15 @@
 @container-md: @container-desktop;
 
 // Large screen / wide desktop
-@container-large-desktop: (1080px);
-//@container-large-desktop:      (1200px);
-
+@container-large-desktop: (1200px);
 //** For `@screen-lg-min` and up.
 @container-lg: @container-large-desktop;
 
 // Large screen / wide desktop
-@container-xl-desktop: (1144px + @grid-gutter-width);
-//@container-xl-desktop:      (1360px + @grid-gutter-width);
-
+@container-xl-desktop: (1360px + @grid-gutter-width);
 //** For `@screen-lg-min` and up.
 @container-xl: @container-xl-desktop;
+
 
 //== Navbar
 //
@@ -590,7 +586,6 @@
 //== Modals
 //
 //##
-@modal-body-bg:#fff;
 
 //** Padding applied to the modal body
 @modal-inner-padding: 15px;

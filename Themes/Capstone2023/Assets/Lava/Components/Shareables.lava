@@ -51,7 +51,7 @@
               {%- assign itemDescription  =  item | Attribute:'ItemDescription','RawValue' -%}
               {%- assign itemImage  =  item | Attribute:'ItemImage','RawValue' -%}
               {%- assign itemContent  =  item.Content -%}
-                <div class="shareable text-center shareimgpop">
+                <div class="shareable text-center">
                     <img src="/GetImage.ashx?Guid={{ itemImage }}&w=500&h=500&mode=crop" class="" alt="{{ item.Title }}" />
                     {{ itemContent }}
                 </div>

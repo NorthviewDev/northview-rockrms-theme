@@ -1,0 +1,60 @@
+{%- assign firstItem = Items | First -%}
+{%- assign section = firstItem.ContentChannel -%}
+{%- assign sectionTitle  = section | Attribute:'SectionTitle' -%}
+{%- assign sectionTitleSize  = section | Attribute:'SectionTitleSize', 'RawValue' -%}
+{%- assign sectionTitleStyle  = section | Attribute:'SectionTitleStyle', 'RawValue' -%}
+{%- assign sectionDescription  =  ContentChannel | Attribute:'SectionDescription' -%}
+{%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
+{%- assign sectionColorScheme  = section | Attribute:'SectionType', 'RawValue' -%}
+{%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
+{%- assign sectionImage = section | Attribute:'SectionBackgroundImage','RawValue' -%}
+{%- assign sectionContentAlignment = section | Attribute:'ContentAlignment','RawValue' -%}
+{%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
+{%- assign sectionBgClass  =  ContentChannel | Attribute:'SectionBackgroundColorClass' -%}
+
+{%- for item in Items -%}
+  {%- assign contentAlignment  =  item | Attribute:'ContentAlignment','RawValue' -%}
+  {%- assign contentWidth  =  item | Attribute:'ContentWidth','RawValue' -%}
+  {%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
+  {%- assign itemTitleSize  =  item | Attribute:'TitleStyle', 'RawValue' -%}
+  {%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
+  {%- assign imageGuid =  item | Attribute:'ItemImage','RawValue' -%}
+  {%- assign buttons =  item | Attribute:'Buttons' -%}
+  {%- if imageGuid != "" or videoGuid != "" -%}
+      {%- assign sectionClass = "-bgCover" -%}
+  {%- else -%}
+      {%- assign sectionClass = "-noBg" -%}
+  {%- endif -%}
+<section id="{{sectionTitle | ToCssClass}}" class="c-section -hero c-section--{{ sectionType }} {{ sectionClass }} {{  sectionBgClass }} {{sectionPadding}} flex-column" style="{% if sectionImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionImage }}');{% endif %}">
+  <div class="c-section__container">
+      <div class="c-section__content text-{{itemTextAlignment}}">
+          <div class='c-section__text'>
+            {%- if itemTitleStyle != "hidden" -%}
+              <h2 class="c-section__title {{itemTitleSize}}">
+                {%- if subtitlePosition and subtitlePosition == "before" -%}<em>{{ subtitle }}</em>{%- endif -%}
+                    <span>{{ item.Title }}</span>
+                {%- if subtitlePosition and subtitlePosition != "before" -%}<em>{{ subtitle }}</em>{%- endif -%}
+                </h2>
+            {%- endif -%}
+              
+            {%- if imageGuid != '' -%}
+              <div class="content-item -full">
+            {%- else -%}
+              <div class="content-item -stack">
+            {%- endif -%}
+            {{ item.Content }}
+            {{ buttons }}
+            {%- if imageGuid != '' -%}
+              <picture>
+                <source media="(min-width: 768px)"
+                  srcset="/GetImage.ashx?Guid={{ imageGuid }}&width=1680&height=754&mode=crop&scale=both">
+                <img src='/GetImage.ashx?Guid={{ imageGuid }}&width=375&height=667&mode=crop&scale=both' alt='' />
+              </picture>
+            {%- endif -%}
+            </div>
+          </div>
+      </div>
+  </div>
+ 
+{%- endfor -%}
+</section>
