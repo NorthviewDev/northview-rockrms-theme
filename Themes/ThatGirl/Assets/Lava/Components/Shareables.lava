@@ -1,0 +1,64 @@
+{% comment %}
+{% include "~/Themes/NorthviewChurch/Assets/Lava/Components/Shareables.lava" %}
+{% endcomment %}
+{%- assign sectionBackgroundImage =  ContentChannel | Attribute:'SectionBackgroundImage','RawValue' -%}
+{%- assign sectionTitle  =  ContentChannel | Attribute:'SectionTitle','RawValue' -%}
+{%- assign sectionTitleStyle  =  ContentChannel | Attribute:'SectionTitleStyle','RawValue' -%}
+{%- assign sectionDescription  =  ContentChannel | Attribute:'SectionDescription' -%}
+{%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
+{%- assign sectionTitleWidth  =  ContentChannel | Attribute:'SectionTitleWidth','RawValue' -%}
+{%- assign sectionTitleAlignment  =  ContentChannel | Attribute:'SectionTitleAlignment','RawValue' -%}
+{%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
+
+<section class="c-section c-section__shareables c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{ sectionPadding }}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-{{ sectionTitleWidth }} {{ sectionTitleAlignment }}-block'>
+{%- if sectionTitleStyle == "highlight" -%}
+                <div class="c-section__header">
+                  <div class="c-card c-card--title-highlight">
+                    <div class="c-card__body stack">
+                      {%- if sectionTitle != '' -%}
+                      <h2 class="c-card__title"><span>{{ sectionTitle }}</span></h2>
+                      {%- endif -%}
+                      {%- if sectionDescription != '' -%}
+                        <p class="c-card__description">{{ sectionDescription }}</p>
+                      {%- endif -%}
+                    </div>
+                  </div><!--/.c-card-->
+                </div>
+{%- elseif sectionTitleStyle == "hidden" -%}
+                <h2 class="sr-only">{{ sectionTitle }}</h2>
+                <p class="sr-only">{{ sectionDescription }}</p>
+{%- else -%}
+                <div class="c-section__header {{sectionTitleStyle}}">
+                {%- if sectionTitle != '' -%}
+                  <h2><span>{{ sectionTitle }}</span></h2>
+                {%- endif -%}
+                {% assign sectionDescriptionStripped = sectionDescription | StripHTML | StripNewlines | Trim %}
+                {%- if sectionDescriptionStripped != '' -%}
+                  <div class="c-section__description">{{ sectionDescription }}</div>
+                {%- endif -%}
+                </div>
+{%- endif -%}
+            </div>
+        </div>
+
+        <div class="row">
+          <div class='col-lg-12'>
+            <div class="shareables-grid">
+            {%- for item in Items -%}
+              {%- assign itemDescription  =  item | Attribute:'ItemDescription','RawValue' -%}
+              {%- assign itemImage  =  item | Attribute:'ItemImage','RawValue' -%}
+              {%- assign itemContent  =  item.Content -%}
+                <div class="shareable text-center shareimgpop">
+                    <img src="/GetImage.ashx?Guid={{ itemImage }}&w=1000&h=1000&mode=crop" class="" alt="{{ item.Title }}" />
+                    {{ itemContent }}
+                </div>
+
+            {%- endfor -%}
+            </div>
+          </div>
+        </div>
+    </div>
+</section>

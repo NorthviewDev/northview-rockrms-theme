@@ -1,5 +1,9 @@
 {
-  "identifier" : "AA59D130-A059-4E41-BC40-06921DF71DF9",
+  "identifier" : "007638C4-1743-41A0-AE35-DA6A2C003712",
+  "ignoredFilePatterns" : [
+    ".gitignore",
+    "config.codekit3"
+  ],
   "server" : "(L) Northview Church",
   "usesPublishing" : true
 }
