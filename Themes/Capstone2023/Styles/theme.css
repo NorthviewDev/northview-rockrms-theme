@@ -20816,7 +20816,7 @@ http://humaan.com
   }
 }
 #site-header.opaque {
-  background-color: white;
+  background-color: #221f1f;
 }
 #site-header.opaque .c-logo-link path {
   fill: #5E5E5F !important;
@@ -20833,7 +20833,7 @@ http://humaan.com
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-content: stretch;
-    align-items: flex-start;
+    align-items: center;
     padding: 0 66px;
   }
 }
@@ -20935,13 +20935,9 @@ http://humaan.com
 #zone-login .c-header__controls > li.nav-toggle-menu {
   order: 1;
 }
-#zone-login .c-header__controls:before,
-#zone-login .c-header__controls:after {
-  content: none;
-}
 #zone-login .c-header__controls .c-header__control a {
   text-align: center;
-  color: #221f1f;
+  color: #f5f5f5;
   font-size: 20px;
   padding: 20px;
   line-height: 1;
@@ -20951,28 +20947,17 @@ http://humaan.com
   padding-left: 26px;
   padding-right: 26px;
   height: 57px;
+  display: flex;
 }
 @media (min-width: 992px) {
-  #zone-login .c-header__controls .c-header__control a {
-    display: none;
-  }
+}
+#zone-login .c-header__controls .c-header__control a span {
+  display: none;
 }
 #zone-login .c-header__controls .c-header__control a:hover,
 #zone-login .c-header__controls .c-header__control a:focus {
-  color: #221f1f;
+  color: var(--primary-color);
   background-color: transparent;
-}
-@media (min-width: 1200px) {
-  #zone-login .c-header__controls .c-header__control a:hover,
-  #zone-login .c-header__controls .c-header__control a:focus {
-    padding-top: 18px;
-    padding-bottom: 14px;
-  }
-  #zone-login .c-header__controls .c-header__control a:hover:after,
-  #zone-login .c-header__controls .c-header__control a:focus:after {
-    height: 2px;
-    width: 100%;
-  }
 }
 #zone-login .c-header__controls .c-header__control a i {
   position: relative;
@@ -21199,7 +21184,7 @@ http://humaan.com
   background-color: transparent;
 }
 .c-offcanvas__content {
-  width: 50%;
+  width: 75%;
   min-width: 187px;
   margin: 0 auto;
 }
@@ -21257,7 +21242,11 @@ http://humaan.com
   }
 }
 .c-primary-nav__content {
-  display: none;
+  display: block;
+}
+.c-primary-nav__content .wrapper {
+  display: flex;
+  gap: 30px;
 }
 .c-primary-nav__content .wrapper a {
   color: #f5f5f5;
@@ -21265,17 +21254,10 @@ http://humaan.com
   font-size: 20px;
   line-height: 20px;
   letter-spacing: -0.02em;
-  text-decoration-line: underline;
   text-transform: uppercase;
 }
-@media (min-width: 768px) {
-  .c-primary-nav__content {
-    display: block;
-    padding-top: var(--s3);
-    padding-bottom: var(--s3);
-    padding-left: var(--s3);
-    padding-right: var(--s3);
-  }
+.c-primary-nav__content .wrapper a:hover {
+  text-decoration-line: underline;
 }
 .c-primary-nav__list {
   margin-left: 0;
@@ -21330,24 +21312,9 @@ http://humaan.com
   font-weight: 500;
   transition: padding cubic-bezier(0.01, -0.74, 0.57, 1.57) 100ms;
 }
-.c-primary-nav__link:after {
-  content: "";
-  background-color: var(--primary-color);
-  height: 0.75em;
-  bottom: 0;
-  left: 0;
-  right: -5px;
-  position: absolute;
-  z-index: 0;
-  transition: all ease-in-out 150ms;
-}
 .c-primary-nav__link:hover,
 .c-primary-nav__link:focus {
   color: #222222;
-}
-.c-primary-nav__link:hover:after,
-.c-primary-nav__link:focus:after {
-  height: 1.4em;
 }
 @media (min-width: 992px) {
   .no-header .c-primary-nav__link {
@@ -21372,10 +21339,6 @@ http://humaan.com
     right: 0;
     width: 0;
     display: block;
-  }
-  .c-primary-nav__link:hover,
-  .c-primary-nav__link:focus {
-    padding-top: 0;
   }
   .c-primary-nav__link:hover:after,
   .c-primary-nav__link:focus:after {

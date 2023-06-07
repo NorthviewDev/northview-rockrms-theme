@@ -53,7 +53,7 @@
 }
 .c-offcanvas__content {
   //padding: var(--s2);
-  width: 50%;
+  width: 75%;
   min-width: 187px;
   margin: 0 auto;
   #offcanvas-menu{
@@ -70,7 +70,7 @@
   .c-offcanvas__link{
     color:@color-gray-lightest;
     border-bottom: 1px solid transparent;
-    
+
     &:hover{
       color: @accent1;
       border-bottom: 1px solid @accent1;
@@ -108,22 +108,21 @@
   }
 }
 .c-primary-nav__content {
-  display: none;
-  .wrapper a {
-    color: @color-white;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 20px;
-    letter-spacing: -0.02em;
-    text-decoration-line: underline;
-    text-transform: uppercase;
-  }
-  @media (min-width: @screen-sm) {
-  	display: block;
-    padding-top: var(--s3);
-    padding-bottom: var(--s3);
-    padding-left: var(--s3);
-    padding-right: var(--s3);
+  display: block;
+  .wrapper {
+    display: flex;
+    gap: 30px;
+    a {
+      color: @color-white;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 20px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      &:hover{
+        text-decoration-line: underline;
+      }
+    }
   }
 }
 .c-primary-nav__list {
@@ -175,22 +174,22 @@
 	padding-top:3px;
 	font-weight: @headings-font-weight;
 	transition: padding cubic-bezier(0.01, -0.74, 0.57, 1.57) 100ms;
-	&:after {
-  	content:"";
-  	background-color: @color-brand-primary;
-  	height:0.75em;
-  	bottom:0;
-  	left:0;
-  	right:-5px;
-  	position: absolute;
-  	z-index: 0;
-  	transition: all ease-in-out 150ms;
-	}
+	// &:after {
+  // 	content:"";
+  // 	background-color: @color-brand-primary;
+  // 	height:0.75em;
+  // 	bottom:0;
+  // 	left:0;
+  // 	right:-5px;
+  // 	position: absolute;
+  // 	z-index: 0;
+  // 	transition: all ease-in-out 150ms;
+	// }
 	&:hover, &:focus {
   	color: @gray-darker;
   	&:after {
-    	height:1.4em; 
-      
+    	// height:1.4em;
+
   	}
 	}
   .no-header & {
@@ -198,7 +197,7 @@
       color: @white;
     	&:hover, &:focus {
         color: @white;
-      }    	
+      }
     }
   }
 	span {
@@ -213,9 +212,9 @@
   	  right:0;
   	  width:0;
   	  display: block;
-	  }	
+	  }
   	&:hover, &:focus {
-    	padding-top:0;
+    	// padding-top:0;
     	&:after {
         height: 2px;
       	width: 100%;

@@ -1,3 +1,5 @@
+{% comment %}{% include "~~/Assets/Lava/Site/MobileNav.html" %}{% endcomment %}
+
 {%- assign pageHeaderImage = CurrentPage | Attribute:'PageHeaderImage','RawValue' -%}
 {%- assign pageHeaderVideo = CurrentPage | Attribute:'PageHeaderVideo','RawValue' -%}
 {%- assign sectionClass="" -%}
@@ -6,8 +8,9 @@
 {%- else -%}
 {%- assign sectionClass=" no-header" -%}
 {%- endif -%}
+
 <ul class="nav navbar-nav c-header__controls{{ sectionClass }}">
 
-{% comment %} 	<li class="c-header__control nav-toggle nav-toggle-search"><a href="/search"><i class="nv-icon nv-icon--search"></i><span class="sr-only">Search</span></a> {% endcomment %}
-	<li class="c-header__control nav-toggle nav-toggle-menu"><a href="#nav"><i class="nv-icon nv-icon--menu"></i><span class="sr-only">Menu</span></a>
+
+	<li class="c-header__control nav-toggle nav-toggle-menu"><a href="#nav"><i class="nv-icon nv-icon--menu" aria-hidden="true"></i><span class="">Menu</span></a>
 </ul><!-- end c-header__controls -->

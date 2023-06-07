@@ -29,11 +29,15 @@
     {% endif %}
     {% endfor %}
 
-    {% for includedPage in IncludePageList %}
-    {% assign path = 'Global' | Page:'Path' %}
+    {% for includedPage in IncludePageList  %}
     {% assign attributeParts = includedPage | PropertyToKeyValue %}
-    <a href="{{ attributeParts.Value }}">{{ attributeParts.Key }}</a>
+      {% assign url = attributeParts.Value %}
+      {% if url contains "http" %}
+      {% assign target = "target='_blank'" %}
+      {% endif %}
+      <a href="{{ attributeParts.Value }}" {{target}} class="c-primary-nav__link"><span>{{ attributeParts.Key }}</span></a>
     {% endfor %}
   </div>
 </nav>
 {% endif %}
+
