@@ -11,8 +11,8 @@
 {%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
 {%- assign sectionBgClass  =  ContentChannel | Attribute:'SectionBackgroundColorClass' -%}
 
-<section class="c-section {% if sectionType != '' %}c-section--{{ sectionType }}{% endif %} {{  sectionBgClass }} {% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
-    <div class="wrapper">
+<section class="c-section -menu {% if sectionType != '' %}c-section--{{ sectionType }}{% endif %} {{  sectionBgClass }} {% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
+    <div class="container">
 {%- if sectionTitle != "" or sectionDescription != "" -%}
         <div class="row">
             <div class='col-lg-{{ sectionTitleWidth }} {{ sectionTitleAlignment }}-block'>
@@ -57,17 +57,21 @@
         <div class="row">
             <div class='col-lg-{{ contentWidth }} {{ contentAlignment }}-block'>
                 <div class="c-section__content text-{{itemTextAlignment}}">
-                {%- if itemTitleStyle != "hidden" -%}
-                <{{ itemTitleStyle }} class="c-section__item-title">{{ item.Title }}</{{ itemTitleStyle }}>
-                {%- endif -%}
-                {%- if itemDescription != "" -%}
-                <p class="c-section__item-description">{{ itemDescription }}</p>
-                {%- endif -%}
-                {% if itemImage != '' %}
-                <img class="c-section__item-icon" src='/GetImage.ashx?Guid={{ itemImage }}' />
-                {% endif %}
-                {{ item.Content }}
-                {{buttons}}
+                <div class="menu-item__top">
+                    {%- if itemTitleStyle != "hidden" -%}
+                    <{{ itemTitleStyle }} class="c-section__item-title">{{ item.Title }}</{{ itemTitleStyle }}>
+                    {%- endif -%}
+                    {%- if itemDescription != "" -%}
+                    <p class="c-section__item-description">{{ itemDescription }}</p>
+                    {%- endif -%}
+                </div>
+                <div class="menu-item__bottom">
+                    {{ item.Content }}
+                    {% if itemImage != '' %}
+                    <img class="c-section__item-icon" src='/GetImage.ashx?Guid={{ itemImage }}' />
+                    {% endif %}
+                    {{buttons}}
+                </div>
                 </div>
             </div>
         </div>

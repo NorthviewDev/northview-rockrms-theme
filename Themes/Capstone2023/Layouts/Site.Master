@@ -41,8 +41,10 @@
 
     <!-- Web Fonts -->
     <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/Fonts/MyFontsWebfontsKit.css") %>">
-    <link rel="stylesheet" href="https://use.typekit.net/znh6mwy.css">
+    <!-- old <link rel="stylesheet" href="https://use.typekit.net/znh6mwy.css">-->
     <link rel="stylesheet" href="<%# ResolveRockUrl("~~/Assets/_icons/webfont/style.css") %>"/>
+
+    <link rel="stylesheet" href="https://use.typekit.net/uuy7kps.css">
 
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" ></script>
     <script defer src="<%# ResolveRockUrl("~~/Assets/Scripts/global.js") %>"></script>
@@ -61,8 +63,8 @@
     <script src="<%# ResolveRockUrl("~~/Scripts/ScrollTrigger.min.js", false) %>"></script> -->
 
     <!-- SwiperJS -->
-   <!-- <link rel="stylesheet" href="<%# ResolveRockUrl("~/Themes/node_modules/swiper/swiper-bundle.min.css", false) %>" />
-    <script src="<%# ResolveRockUrl("~/Themes/node_modules/swiper/swiper-bundle.min.js", false) %>"></script> -->
+   <link rel="stylesheet" href="<%# ResolveRockUrl("~/Themes/node_modules/swiper/swiper-bundle.min.css", false) %>" />
+    <script src="<%# ResolveRockUrl("~/Themes/node_modules/swiper/swiper-bundle.min.js", false) %>"></script>
 
 </head>
 <body runat="server" id="body">
@@ -86,7 +88,8 @@
   <footer id="site-footer" role="contentinfo">
     <section class="c-section c-section--dark">
       <div class="container">
-        <Rock:Zone Name="Footer" runat="server" />
+        <Rock:Zone Name="Footer A" runat="server" />
+        <Rock:Zone Name="Footer B" runat="server" />
       </div>
     </section>
     <Rock:Zone Name="Footer Info" runat="server" />

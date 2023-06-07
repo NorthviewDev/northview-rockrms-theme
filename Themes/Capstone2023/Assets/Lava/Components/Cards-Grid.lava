@@ -14,7 +14,7 @@
 <section class="c-section -cards -tileCards c-section--{{ sectionType }}{% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}} {{  sectionBgClass }}">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-10 center-block">
+            <div class="col-sm-12 center-block">
             
 {%- if sectionTitle != "" or sectionDescription != "" -%}
         <div class="row">
@@ -53,30 +53,31 @@
             </div>
         </div>
 {%- endif -%}
-<div class="c-card__tiles block-grid block-grid-xs-1 block-grid-sm-2 block-grid-md-3 row-eq-height">
+<div class="c-card__tiles block-grid block-grid-xs-1 block-grid-sm-2 row-eq-height">
 {%- for item in Items -%}
 {%- assign contentAlignment  =  item | Attribute:'ContentAlignment','RawValue' -%}
 {%- assign contentWidth  =  item | Attribute:'ContentWidth','RawValue' -%}
 {%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
 {%- assign itemTitleAlignment  =  item | Attribute:'ItemTitleAlignment','RawValue' -%}
-
+{%- assign buttons  =  item | Attribute:'Buttons' -%}
 {%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
 {%- assign itemDescription  =  item | Attribute:'ItemDescription','RawValue' -%}
 {%- assign itemImageGuid = item | Attribute:'ItemImage','RawValue' -%}
         <div class="c-card block-grid-item">
             <div class="c-card__head {% if itemTextAlignment != '' %} text-{{ itemTextAlignment }}{% endif %}">
                 {%- if itemImageGuid != "" -%}
-                    <img class="c-tile__image img-responsive" src="/GetImage.ashx?Guid={{ itemImageGuid }}&w=285&h=301&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
+                    <img class="c-tile__image img-responsive" src="/GetImage.ashx?Guid={{ itemImageGuid }}&h=457&mode=crop&anchor=middlecenter&scale=both" alt="{{ item.Title }}" />
                 {%- endif -%}
-                    {%- if itemTitleStyle != "hidden" -%}
-                        <h3 class="c-card__title">{{ item.Title }}</h3>
-                    {%- endif -%}
-                    {%- if itemDescription != "" -%}
-                        <div class="c-card__meta">{{ itemDescription }}</div>
-                    {%- endif -%}
                 </div>
             <div class="c-card__content">
+                {%- if itemTitleStyle != "hidden" -%}
+                    <h3 class="c-card__title">{{ item.Title }}</h3>
+                {%- endif -%}
+                {%- if itemDescription != "" -%}
+                    <div class="c-card__meta">{{ itemDescription }}</div>
+                {%- endif -%}
                 {{ item.Content }}
+                {{buttons}}
             </div>
         </div>
 {%- endfor -%}

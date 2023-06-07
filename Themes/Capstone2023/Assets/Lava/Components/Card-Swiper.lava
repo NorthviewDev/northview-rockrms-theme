@@ -1,0 +1,91 @@
+{%- assign firstItem = Items | First -%}
+{%- assign section = firstItem.ContentChannel -%}
+{%- assign sectionTitle = section | Attribute:'SectionTitle', 'RawValue' -%}
+{%- assign sectionTitleStyle = section | Attribute:'SectionTitleStyle', 'RawValue' -%}
+{%- assign sectionTitleAlignment = section | Attribute:'SectionTitleAlignment','RawValue' | ToCssClass -%}
+{%- assign sectionPadding = section | Attribute:'SectionPadding' -%}
+{%- assign sectionImage = section | Attribute:'SectionImage','RawValue' -%}
+{%- assign sectionId = section.Name | ToCssClass %}
+
+<section id="{{sectionId}}" class="section cards -swiperCards {{sectionPadding}}">
+  <div class="wrapper">
+    <div class="c-section__content">
+      {% if sectionTitleStyle != 'hidden' %}
+      <h2 class="c-section__title text-{{sectionTitleAlignment}} {{sectionTitleStyle}}"><span>{{sectionTitle}}</span></h2>
+      {% endif %}
+      <div id="card-swiper-{{sectionId}}" class="c-card__swiper swiper overflow-visible">
+        <div id="card-swiper-buttons-{{sectionId}}" class="swiper-buttons">
+          <!--<div class="swiper-button-prev">{% include "~~/Assets/Icons/prev.svg" %}</div>
+          <div class="swiper-button-next">{% include "~~/Assets/Icons/next.svg" %}</div>-->
+
+          <div class="swiper-button-prev"><-</div>
+          <div class="swiper-button-next">-></div>
+        </div>
+        <div class="swiper-wrapper c-card__deck wow">
+          {%- for item in Items -%}
+          {%- assign imageGuid = item | Attribute:'ItemImage','RawValue' -%}
+          {%- assign itemTitleStyle  =  item | Attribute:'ItemTitleStyle','RawValue' -%}
+          {%- assign buttons = item | Attribute:'Buttons' -%}
+          {%- assign itemDescription  =  item | Attribute:'ItemDescription','RawValue' -%}
+          {%- assign itemTextAlignment  =  item | Attribute:'ItemTextAlignment','RawValue' -%}
+
+          {% if buttons == '' %}
+          {%- assign itemLink = item.PrimarySlug -%}
+          {% endif %}
+          <div class="swiper-slide">
+            <div class="c-card -portrait">
+              <div class="c-card__body text-{{itemTextAlignment}}"  style="{% if imageGuid != '' %} background-image: url('/GetImage.ashx?Guid={{ imageGuid }}'); {% endif %}">
+
+                {%- if itemTitleStyle != "hidden" -%}
+                <{{ itemTitleStyle }} class="c-card__title">{{ item.Title }}</{{ itemTitleStyle }}>
+                {%- endif -%}
+                {%- if itemDescription != "" -%}
+                <p class="c-section__item-description">{{ itemDescription }}</p>
+                {%- endif -%}
+                {{ item.Content }}
+                {{ buttons }}
+              </div>
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  Sys.Application.add_load(function () { //this is the ASP.NET equivalent of $(document).ready
+
+  var swiper = new Swiper('#card-swiper-{{sectionId}}', {
+    navigation: {
+      nextEl: '#card-swiper-buttons-{{sectionId}} .swiper-button-next',
+      prevEl: '#card-swiper-buttons-{{sectionId}} .swiper-button-prev',
+    },
+    mousewheel: {
+      forceToAxis: true,
+      releaseOnEdges: true,
+      invert: false,
+    },
+    //preventClicks: true,
+    keyboard: true,
+    watchSlidesProgress: true,
+    watchSlidesVisibility: true,
+    watchOverflow: true,
+    freeModeSticky: true,
+    spaceBetween: 10,
+    slidesPerView: 1,
+    breakpoints: {
+      768: {
+        spaceBetween: 30,
+        slidesPerView: 2,
+      },
+      1024: {
+        spaceBetween: 30,
+        freeMode: true,
+        slidesPerView: 3,
+      }
+    }
+  });
+  });
+
+</script>

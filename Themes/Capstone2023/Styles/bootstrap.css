@@ -2,6 +2,7 @@
  * Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
+@import url("https://use.typekit.net/uuy7kps.css");
 .fa,
 .fas,
 .far,
@@ -6189,11 +6190,11 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "GreycliffCF-Regular", sans-serif;
+  font-family: "montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.42857143;
   color: #222222;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
 }
 input,
 button,
@@ -6237,7 +6238,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   border: 1px solid #ddd;
   border-radius: 0;
   -webkit-transition: all 0.2s ease-in-out;
@@ -6289,8 +6290,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "GreycliffCF-Bold", sans-serif;
-  font-weight: 400;
+  font-family: "montserrat", sans-serif;
+  font-weight: 500;
   line-height: 1.1;
   color: inherit;
 }
@@ -7505,7 +7506,7 @@ th {
   border-top: 2px solid #ddd;
 }
 .table .table {
-  background-color: #ffffff;
+  background-color: #f5f5f5;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -9218,7 +9219,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:focus {
   color: #555555;
   cursor: default;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
 }
@@ -9263,7 +9264,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #ffffff;
+    border-bottom-color: #f5f5f5;
   }
 }
 .nav-pills > li {
@@ -9331,7 +9332,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom-color: #ffffff;
+    border-bottom-color: #f5f5f5;
   }
 }
 .tab-content > .tab-pane {
@@ -10180,7 +10181,7 @@ a.badge:focus {
   padding: 4px;
   margin-bottom: 22px;
   line-height: 1.42857143;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   border: 1px solid #ddd;
   border-radius: 0;
   -webkit-transition: border 0.2s ease-in-out;
@@ -11156,7 +11157,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "GreycliffCF-Regular", sans-serif;
+  font-family: "montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.42857143;
@@ -11274,7 +11275,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "GreycliffCF-Regular", sans-serif;
+  font-family: "montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.42857143;
@@ -11921,7 +11922,7 @@ button.close {
     removed in Rock v 6.0.
 */
 :root {
-  --primary-color: #28373A;
+  --primary-color: #E19145;
 }
 /* FontAwesome Start */
 /* FontAwesome End */

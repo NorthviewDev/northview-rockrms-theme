@@ -13,20 +13,28 @@
   background-color: var(--button-background-color);
   border-style: solid;
   border-width: 3px;
-  border-radius: 81px;
   border-color: var(--button-border-color);
   color: var(--button-color);
-  font-family: var(--button-font-family);
-  font-size: 16px;
-  font-weight: var(--button-font-weight);
-  letter-spacing: 0;
-  line-height: 1.1;
-  text-transform: none;
-  padding: 12px 36px;
+  //font-family: var(--button-font-family);
+  //font-size: 16px;
+  //font-weight: var(--button-font-weight);
+  //letter-spacing: 0;
+  //line-height: 1.1;
+  //text-transform: none;
+  //padding: 12px 36px;
   position: relative;
   transition: all ease-in-out 300ms;
   display: block;
   text-align: center;
+  
+  font-family: @font-family-sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase; 
+  padding: 20px 30px;
   @media (min-width: @screen-sm) {
     display: inline-block;
   }
@@ -46,6 +54,11 @@
   .c-section--dark & {
     --button-border-color: @white;
     --button-color: @white;
+    &:hover{
+      border-color: @white !important;
+      color: @white !important;
+      background-color: transparent;
+    }
   }
   .c-btn--text-link .nv-icon {
     display: none;
@@ -229,11 +242,12 @@
     }
   }
   &.c-btn--primary {
-    --button-background-color: var(--button-color);
+    --button-background-color: @brand-primary;
+    --button-border-color: @brand-primary;
     color: @white;
     &:hover{
       background-color: transparent;
-      color: var(--button-color);
+      color: @brand-primary;
     }
   }
   &.c-btn--secondary {
@@ -256,14 +270,14 @@
     }
   }
   &.c-btn--white {
-    --button-color: @text-color;
+    --button-color: @brand-primary;
     --button-background-color: @white;
     --button-border-color: @white;
     &:hover,
     &:focus {
-      background-color: @brand-primary!important;
-      border-color: @brand-primary!important;
-      --button-color: @text-color;
+      background-color: transparent !important;
+      border-color: @white !important;
+      color: @white !important;
     }
     &.-outline{
       --button-background-color: transparent;
@@ -302,12 +316,11 @@
       margin-left: 0;
     }
   }
-  &.c-btn--display-block {
+  /* &.c-btn--display-block {
     display: block;
     text-align: center;
     padding: 10px 30px 8px;
-  }
-  
+  } */
 }
 
 .c-filter__buttons {

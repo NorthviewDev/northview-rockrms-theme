@@ -109,13 +109,21 @@
 }
 .c-primary-nav__content {
   display: none;
+  .wrapper a {
+    color: @color-white;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+  }
   @media (min-width: @screen-sm) {
   	display: block;
     padding-top: var(--s3);
     padding-bottom: var(--s3);
     padding-left: var(--s3);
     padding-right: var(--s3);
-    
   }
 }
 .c-primary-nav__list {

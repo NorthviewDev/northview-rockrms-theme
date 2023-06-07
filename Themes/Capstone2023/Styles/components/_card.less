@@ -210,7 +210,10 @@ a.c-card {
   display: block;
   width: 100%;
   max-width: 100%;
-
+  height: 600px;
+  @media (min-width: @screen-sm) {
+    height: 745px;
+  }
   .c-card--side-by-side:not(.c-card--big) & {
     object-fit: cover;
     height: 100%;
@@ -226,6 +229,9 @@ a.c-card {
   background-color: @white;
   color: @text-color;
   font-size: 18px;
+  height: 745px;
+  background-size: cover;
+  background-position: center;
   &.--noPad {
     padding: 0;
   }
@@ -249,10 +255,10 @@ a.c-card {
 
   .c-card--big & {
     background-color: transparent;
-    padding: var(--s1) 0 0;
+    padding: 50px var(--s2);
 
     @media (min-width: @screen-sm) {
-      padding: var(--s4) var(--s1) var(--s4) var(--s8);
+      padding: var(--s4);
     }
   }
 
@@ -348,7 +354,8 @@ a.c-card {
     font-size: 18px;
     letter-spacing: 0;
     @media (min-width: @screen-sm) {
-      margin: ~'0 calc((@{grid-gutter-width} / 2))';
+      //margin: ~'0 calc((@{grid-gutter-width} / 2))';
+      margin: 0 6px;
       font-size: 22px;
       line-height: 28px;
     }
@@ -731,7 +738,6 @@ a.c-card {
     }
   }
   .c-card{
-    border-radius: 10px;
     transition: .3s ease;
     &:hover,
     &:focus {
@@ -814,12 +820,12 @@ a.c-card {
   .c-card__tiles{
     position: relative;
     .c-card{
-      background-color: @color-gray-lightest;
+      background-color: @color-gray-lighter;
     }
     .c-card__head{
       position: relative;
     }
-    .c-card__title{
+    /* .c-card__title{
       position: absolute;
       left:25px;
       bottom: 10px;
@@ -827,22 +833,22 @@ a.c-card {
       font-family: "GreycliffCF-Bold";
       font-size: 40px;
       font-weight: 800;
-    }
+    } */
     .c-tile__image{
       width: 100%;
-      border-radius: 5px 5px 0px 0px;
-      max-height: 250px;
+      max-height: 460px;
       object-fit: cover;
       @media (min-width: @screen-sm) {
-        max-height: 100%;
+        //max-height: 100%;
         object-fit: cover;
       }
       
     }
     .c-card__content{
-      color: @color-gray-dark;
-      padding: 25px 51px 25px 21px;
-      p{
+      color: @brand-primary;
+      padding: 35px;
+      font-family: @font-family-sans-serif;
+      /* p{
         font-style: italic;
       }
       h3{
@@ -850,9 +856,134 @@ a.c-card {
         font-size: 26px;
         font-weight: 400;
         margin: 0;
+      } */
+      p {
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 27px;
+        letter-spacing: -0.02em;
+      }
+      a:not([class]) {
+        color: @color-gray-dark;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 34px;
+        letter-spacing: -0.02em;
+        padding: 15px 0;
+        text-decoration: underline;
+      }
+      .c-card__title {
+        font-family: @headings-font-family;
+        font-weight: 700;
+        font-size: 50px;
+        line-height: 38px;
+        letter-spacing: -0.02em;
+        color: @color-gray-dark;
+        text-transform: uppercase;
+      }
+      .c-buttons {
+        margin-top: 40px;
       }
     }
   }  
+}
+.-swiperCards {
+  margin-top: -270px;
+  .c-card__swiper {
+    overflow: visible;
+  }
+}
+.-sideBySide {
+  .container {
+    margin: 0;
+    width: 100%;
+    .center-block {
+      padding: 0;
+      .c-card__body {
+        width: unset;
+        height: min-content;
+        @media (min-width: @screen-sm) {
+          height: 100%;
+          width: 75%;
+        }
+        .c-card__content {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          font-family: @font-family-sans-serif;
+          @media (min-width: @screen-sm) {
+            max-width: 500px;
+          }
+          &.alignEnd {
+            justify-content: end;
+            color: @color-gray-dark;
+            h4 {
+              font-weight: 700;
+              font-size: 40px;
+              line-height: 50px;
+              letter-spacing: -0.01em;
+              color: @brand-primary;
+            }
+            h5 {
+              font-weight: 300;
+              font-size: 90px;
+              line-height: 87px;
+              letter-spacing: -0.06em;
+            }
+            p {
+              font-weight: 400;
+              font-size: 20px;
+              line-height: 25px;
+              letter-spacing: -0.02em;
+            }
+          }
+          .c-card__title {
+            font-family: @headings-font-family;
+            font-weight: 300;
+            font-size: 80px;
+            line-height: 75px;
+            letter-spacing: -0.06em;
+            color: @color-white;
+            margin-left: -18px;
+            @media (min-width: @screen-sm) {
+              font-size: 150px;
+              line-height: 120px;
+            }
+          }
+        }
+      }
+      .c-card__media {
+        background-size: cover;
+        background-position: center;
+        @media (min-width: @screen-sm) {
+          height: inherit;
+        }
+      }
+    }
+  }
+}
+.-sbs-content { //button bar
+  --section-padding-bottom: var(--s2) !important;
+  --section-padding-top: var(--s2) !important;
+  .c-section__content {
+    justify-content: space-between !important;
+    h3 {
+      font-style: italic;
+      font-weight: 300;
+      font-size: 5vw;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+    .c-buttons {
+      margin-top: 0 !important;
+      .c-btn {
+        color: @brand-primary;
+        padding: 10px 20px;
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+  }
 }
 .anchorLink{
   position: absolute;
