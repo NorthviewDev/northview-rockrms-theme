@@ -1,0 +1,390 @@
+{% assign staffGroupId = "318383" %}
+
+{% assign staffGroupTitle = "Campuses" %}
+
+
+{% assign campusFilter = PageParameter.campus | SanitizeSQL | Downcase %}
+
+{% assign deptFilter = PageParameter.department | SanitizeSQL | Downcase %}
+
+{% assign teamFilter = PageParameter.team | SanitizeSQL | Downcase %}
+
+{%- if teamFilter == null -%}
+    {%- assign teamFilter = 1  -%}
+{%- endif -%}
+
+
+{%- if teamFilter == 1 or teamFilter == null -%}
+    {%- assign staffGroupTitle = "Executive Team" -%}
+{%- elseif teamFilter == 2 -%}
+    {%- assign staffGroupTitle = "Central Team" -%}
+{%- endif -%}
+
+{%- if teamFilter == 3 -%}
+{% assign deptCampusOrder = "CampusDisplayOrder" %}
+{%- else -%}
+{%- assign deptCampusOrder = "DepartmentDisplayOrder" -%}
+{%- endif -%}
+
+
+
+
+
+{%- sql -%}
+
+SELECT
+
+gm.GroupId,
+
+g.Name,
+
+gt.Id as GroupTypeId,
+
+gtr.IsLeader,
+
+gm.GroupRoleId,
+
+p.Id as PersonId,
+
+p.NickName,
+
+p.FirstName,
+
+p.LastName,
+
+p.Email,
+
+AVPosition.Value as 'Position',
+
+AVPhone.Value as 'Phone',
+AVTitle.Value as 'GroupTitle',
+
+AVBio.Value as 'Bio',
+
+AVTeam.Value as 'Team',
+AVDisplayOrder.Value as 'Display Order',
+
+AVPhotoURL.Value as 'PhotoURL',
+
+DVCampus.Value as 'Campus',
+DVCampus.[Order] as 'CampusDisplayOrder',
+DVDept.Value as 'Department',
+DVDept.[Order] as 'DepartmentDisplayOrder'
+
+
+
+FROM [Person] p
+
+LEFT OUTER JOIN [GroupMember] gm ON p.Id = gm.PersonId
+
+LEFT OUTER JOIN [Group] g ON gm.GroupId = g.Id
+
+LEFT OUTER JOIN [GroupType] gt ON g.GroupTypeId = gt.Id
+
+LEFT OUTER JOIN [GroupTypeRole] gtr ON gt.Id = gtr.GroupTypeId
+
+LEFT OUTER JOIN AttributeValue AVPosition ON AVPosition.EntityId = p.Id AND AVPosition.AttributeId = 2707
+
+LEFT OUTER JOIN AttributeValue AVPhone ON AVPhone.EntityId = gm.Id AND AVPhone.AttributeId = 37099
+LEFT OUTER JOIN AttributeValue AVTitle ON AVTitle.EntityId = gm.Id AND AVTitle.AttributeId = 37097
+
+LEFT OUTER JOIN AttributeValue AVBio ON AVBio.EntityId = gm.Id AND AVBio.AttributeId = 37100
+
+LEFT OUTER JOIN AttributeValue AVCampus ON AVCampus.EntityId = gm.Id AND AVCampus.AttributeId = 42479
+
+LEFT OUTER JOIN AttributeValue AVDept ON AVDept.EntityId = gm.Id AND AVDept.AttributeId = 42480
+
+LEFT OUTER JOIN AttributeValue AVTeam ON AVTeam.EntityId = gm.Id AND AVTeam.AttributeId = 74090
+LEFT OUTER JOIN AttributeValue AVDisplayOrder ON AVDisplayOrder.EntityId = gm.Id AND AVDisplayOrder.AttributeId = 74152
+LEFT OUTER JOIN DefinedValue DVCampus ON CONVERT(VARCHAR(255), DVCampus.Guid) = AVCampus.Value
+
+LEFT OUTER JOIN AttributeValue AVPhotoURL ON AVPhotoURL.EntityId = gm.Id AND AVPhotoURL.AttributeId = 43055
+
+LEFT OUTER JOIN DefinedValue DVDept ON CONVERT(VARCHAR(255), DVDept.Guid) = AVDept.Value
+
+  WHERE
+
+  (gm.GroupId = '{{staffGroupId}}') and gm.GroupMemberStatus = 1 and (gm.GroupRoleId = gtr.Id) and (AVTeam.Value = {{teamFilter}})
+
+ ORDER BY {{deptCampusOrder}}, cast(AVDisplayOrder.Value as integer)
+
+
+
+{%- endsql -%}
+
+ <style>
+     .people {display:flex;}
+     .staff__photo img{width:215px;}
+     .button {border: solid black 2px; border-radius: 5px; background-color: white; text-align: center; width: 150px; font-family: ff-good-web-pro-condensed, sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;}
+    .button:hover, .btn-selected { background-color: #000; color: white;}
+     @media (max-width: 768px) {
+        .people {display: block;}
+     }
+</style>
+
+ <div class="page-buttons">
+
+    <div class="buttons " style="display: inline-block; align-items: flex-end;
+    justify-content: space-between; primary-color: none;">
+        <a href="?team=1" style=" padding-top: 5px; padding-bottom: 5px; border: none;">
+      <button type="button" class="btn button btn-default btn-lg {% if teamFilter == 1 %}btn-selected{% endif %}">
+       Executive Team 
+      </button>
+      </a>
+      <a href="?team=2" style=" padding-top: 5px; padding-bottom: 5px; border: none;">
+      <button type="button" class="btn button btn-default btn-lg {% if teamFilter == 2 %}btn-selected{% endif %}">
+        Central Team 
+      </button>
+      </a>
+      <a href="?team=3" style=" padding-top: 5px; padding-bottom: 5px; border: none;">
+      <button type="button" class="btn button btn-default btn-lg {% if teamFilter == 3 %}btn-selected{% endif %}">
+            Campuses  
+      </button>
+     </a>
+    </div>
+</div>
+<div class="main-body" style="padding-top: 65px;">
+    <div class="page-title">
+    
+    <h2>{{ staffGroupTitle }}</h2>
+     </div> 
+
+    {%- if teamFilter == 3 -%}
+    
+    {%- assign lastCampus = '' -%}
+
+  {%- for item in results -%}
+
+    {%- assign personId = item.PersonId -%}
+
+    {%- assign groupId = item.GroupId -%}
+
+    {%- assign nickName = item.NickName -%}
+
+    {%- assign firstName = item.FirstName -%}
+
+    {%- assign lastName = item.LastName -%}
+
+    {%- assign email = item.Email -%}
+
+    {%- assign emailParts = email | Split:'@' -%}
+
+    {%- assign extension = '' -%}
+
+    {%- assign GroupTitleSize = item.GroupTitle | Size -%}
+
+    {%- assign PhotoLinkSize = item.PhotoURL | Size -%}
+
+    {%- assign phone = item.Phone -%}
+
+    {%- assign bio = item.Bio -%}
+
+    {%- assign memberCampus = item.Campus -%}
+
+    {%- assign memberTeam = item.Team -%}
+
+    {%- assign memberDepartment = item.Department -%}
+
+    {%- assign person = item.PersonId | PersonById -%}
+
+    {%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
+
+    {%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
+    
+    
+    
+    
+    {%- if lastCampus == '' -%}
+
+    <div class="Department" style="display: block">
+    <div class="department-title">
+        <h3>{{ item.Campus }}</h3>
+    </div>
+    
+      <div class="people" style=" flex-wrap: wrap;">
+
+    {%- elseif lastCampus != memberCampus -%}
+        </div>
+        </div>
+        <div class="Department" style="display: block">
+            <div class="department-title" style="padding: 30px;">
+                <h3>{{ item.Campus }}</h3>
+            </div>
+            
+              <div class="people" style=" flex-wrap: wrap;">
+    {%- endif -%}
+
+    <div class="person">
+
+        <div class="staff__item">
+         <div class="row">
+             <div class="col-sm-12 col-md-12">
+                 
+              <div class="staff__photo" style=" min-width: 215px;">
+                
+                {% if PhotoLinkSize == 0 %}
+
+                <img class="staff__detail-image lazyload" src="/GetImage.ashx?id={{person.PhotoId}}&w=300&h=300&mode=crop" width="300px" height="300px" alt="{{person.FullName}}" loading="lazy">
+                
+                {% else %}
+                <img class="staff__detail-image lazyload" src="{{item.PhotoURL}}" width="300px" height="300px" alt="{{person.FullName}}" loading="lazy">
+                {% endif %}
+              </div>
+    
+              <div class="staff__name">{{ person.FullName }}</div>
+    
+                {% if GroupTitleSize == 0 %}
+                {% assign title = item.Position %}
+                {% else %}
+                {% assign title = item.GroupTitle %}
+                {% endif %}
+                
+              <div class="staff__title" style=" max-width: 215px;">{{ title }}</div>
+                
+                    
+              <ul class="staff__meta">
+               {%- if email != '' %}
+                <li class="staff__email" id="contact-{{ person.FullName | TOCssClass }}" class="mailtolink">
+                    <a href="mailto:{{item.Email}}" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>
+                </li>
+    
+                {% endif %}
+    
+                {% if phone != '' and phone != null %}
+    
+                  <li class="staff__phone"><a href=tel:+1{{ phone | Replace:'.','' | Replace:'-','' }} title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+    
+                {% endif %}
+              </ul>
+            </div>
+        </div>
+        </div>
+      </div>
+      {%- assign lastCampus = memberCampus -%}
+      {%- if forloop.last -%}
+      
+            </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+    
+    
+    {%- else -%}
+
+    {%- assign lastDept = '' -%}
+
+  {%- for item in results -%}
+
+    {%- assign personId = item.PersonId -%}
+
+    {%- assign groupId = item.GroupId -%}
+
+    {%- assign nickName = item.NickName -%}
+
+    {%- assign firstName = item.FirstName -%}
+
+    {%- assign lastName = item.LastName -%}
+
+    {%- assign email = item.Email -%}
+
+    {%- assign emailParts = email | Split:'@' -%}
+
+    {%- assign extension = '' -%}
+
+    {%- assign GroupTitleSize = item.GroupTitle | Size -%}
+
+    {%- assign PhotoLinkSize = item.PhotoURL | Size -%}
+
+    {%- assign phone = item.Phone -%}
+
+    {%- assign bio = item.Bio -%}
+
+    {%- assign memberCampus = item.Campus -%}
+
+    {%- assign memberTeam = item.Team -%}
+
+    {%- assign memberDepartment = item.Department -%}
+
+    {%- assign person = item.PersonId | PersonById -%}
+
+    {%- assign colPos = forloop.index0 | Modulo:5 | Plus:1 -%}
+
+    {%- assign rowPos = forloop.index | DividedBy:5 | Ceiling -%}
+
+    
+    {%- if lastDept == '' -%}
+
+    <div class="Department" style="display: block">
+    <div class="department-title">
+        <h3>{{ item.Department }}</h3>
+    </div>
+    
+      <div class="people" style=" flex-wrap: wrap;">
+
+    {%- elseif lastDept != memberDepartment -%}
+        </div>
+        </div>
+        <div class="Department" style="display: block">
+            <div class="department-title" style="padding: 30px;">
+                <h3>{{ item.Department }}</h3>
+            </div>
+            
+              <div class="people" style=" flex-wrap: wrap;">
+    {%- endif -%}
+
+    <div class="person">
+
+        <div class="staff__item">
+         <div class="row">
+             <div class="col-sm-12 col-md-12">
+              <div class="staff__photo" style=" min-width: 215px;">
+                
+                
+        
+                {% if PhotoLinkSize == 0 %}
+
+                <img class="staff__detail-image lazyload" src="/GetImage.ashx?id={{person.PhotoId}}&w=300&h=300&mode=crop" width="300px" height="300px" alt="{{person.FullName}}" loading="lazy">
+                
+                {% else %}
+                <img class="staff__detail-image lazyload" src="{{item.PhotoURL}}" width="300px" height="300px" alt="{{person.FullName}}" loading="lazy">
+                {% endif %}
+              </div>
+    
+              <div class="staff__name">{{ person.FullName }}</div>
+    
+           
+                {% if GroupTitleSize == 0 %}
+                {% assign title = item.Position %}
+                {% else %}
+                {% assign title = item.GroupTitle %}
+                {% endif %}
+              <div class="staff__title" style=" max-width: 215px;">{{ title | RegExReplace:'#','<br/>', 'i' }}</div>
+    
+              <ul class="staff__meta">
+               {%- if email != '' %}
+                <li class="staff__email" id="contact-{{ person.FullName | TOCssClass }}" class="mailtolink">
+                    <a href="mailto:{{item.Email}}" title="Email {{ person.FullName }}" target="_blank" rel="noreferrer"><i class="nv-icon nv-icon--email"></i></a>
+                </li>
+    
+                {% endif %}
+    
+                {% if phone != '' and phone != null %}
+    
+                  <li class="staff__phone"><a href=tel:+1{{ phone | Replace:'.','' | Replace:'-','' }} title="Call {{ person.FullName }}"><i class="nv-icon nv-icon--phone"></i></a></li>
+    
+                {% endif %}
+              </ul>
+            </div>
+        </div>
+        </div>
+      </div>
+      {%- assign lastDept = memberDepartment -%}
+      {%- if forloop.last -%}
+      
+            </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+{%- endif -%}
