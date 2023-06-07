@@ -4,7 +4,7 @@
 }
 .c-offcanvas-menu {
   display: flex;
-  background-color: @brand-secondary;
+  background-color: @color-white;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -27,7 +27,7 @@
     transform: translate(100%, 0);
     padding-bottom: 0;
     left: 100%;
-    width: 400px;
+    width: 568px;
   }
   &.c-offcanvas-menu--is-active {
     transform: translate(0, 0);
@@ -45,6 +45,8 @@
     background: none;
     line-height: 1;
     cursor: pointer;
+    color: @color-gray-dark;
+    font-size: 28px;
     &:hover,
     &:focus {
       background-color: transparent;
@@ -68,12 +70,17 @@
     }
   }
   .c-offcanvas__link{
-    color:@color-gray-lightest;
+    color: @brand-primary;
     border-bottom: 1px solid transparent;
-
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    margin-bottom: 30px;
     &:hover{
-      color: @accent1;
-      border-bottom: 1px solid @accent1;
+      color: @color-gray-dark;
+      border-bottom: 1px solid @color-gray-dark;
     }
   }
 }
@@ -229,6 +236,6 @@
     content: "\e900";
   }
   &:hover, &:focus {
-    color: @accent1;
+    color: @brand-primary;
   }
 }
