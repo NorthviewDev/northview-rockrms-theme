@@ -18792,6 +18792,15 @@ a.c-card:focus {
     padding: 0 20px;
   }
 }
+.c-section.-menu .c-section__header h2 {
+  font-family: "montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 70px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  margin-bottom: 50px;
+  color: #5E5E5F;
+}
 .c-section.-menu .c-section__content .menu-item__top {
   display: flex;
   gap: 5px;
@@ -18812,6 +18821,7 @@ a.c-card:focus {
   font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.02em;
+  color: #5E5E5F;
 }
 .c-section.-menu .c-section__content .menu-item__bottom p {
   font-family: "montserrat", sans-serif;
@@ -18820,6 +18830,7 @@ a.c-card:focus {
   font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.02em;
+  color: #5E5E5F;
 }
 .-light {
   background-color: #979797;
