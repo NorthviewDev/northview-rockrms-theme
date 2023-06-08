@@ -2,7 +2,8 @@
   "identifier" : "007638C4-1743-41A0-AE35-DA6A2C003712",
   "ignoredFilePatterns" : [
     ".gitignore",
-    "config.codekit3"
+    "config.codekit3",
+    "Themes\/Capstone2023-bu"
   ],
   "server" : "(L) Northview Church",
   "usesPublishing" : true

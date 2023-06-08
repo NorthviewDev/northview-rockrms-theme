@@ -112,68 +112,6 @@
   // //     width: 2em;
   // //   }
   // }
-  .f1rst-site &{
-    .nv-icon {
-      //font-size: 0.85em;
-      &.nv-icon--carat_left,
-      &.nv-icon--carat_right {
-        position: relative;
-        display: inline-block;
-        width: 1.3em;
-        height: 1em;
-        transition: width ease-in-out 300ms;
-        margin-left: 12px;
-        //margin-top:3px;
-        vertical-align: text-top;
-        &:before {
-          position: absolute;
-          top: 50%;
-          right: 0;
-          transform: translateY(-50%);
-        }
-        &:after {
-          content: '';
-          height: 0;
-          width: 100%;
-          border-style: solid;
-          border-width: 1px;
-          border-color: inherit;
-          background: @text-color;
-          border-radius: 0;
-          position: absolute;
-          top: 50%;
-          right: 0;
-          transform: translate(-2px, -50%);
-        }
-      }
-      &.nv-icon--carat_left {
-        margin-left: 0;
-        margin-right: 12px;
-        &:before {
-          .nv-icon('\e905');
-          left: 0;
-          right: auto;
-          transform: rotate(180deg) translateY(50%);
-        }
-        &:after {
-          transform: translate(1px, -50%);
-        }
-      }
-    }
-    &:hover,
-    &:focus {
-      text-decoration: none;
-      color: var(--button-color);
-      @media (min-width: @screen-sm) {
-        padding-left: var(--button-padding-x);
-        padding-right: var(--button-padding-x);
-      }
-      .nv-icon--carat_left,
-      .nv-icon--carat_right {
-        width: 2em;
-      }
-    }
-  }// end .f1rst-site
   &.c-btn--large {
     @media (min-width: @screen-sm) {
       font-size: 30px;
@@ -343,32 +281,6 @@
     &:active {
       border: solid 2px @brand-primary;
       color: @text-color;
-    }
-  }
-}
-.f1rst-site{
-  .c-btn--text-link {
-    display: inline-block;
-    background: none;
-    border: none;
-    color: @color-brand-primary;
-    padding-left: 0;
-    padding-right: 0;
-    &:after{
-      content: "";
-    }
-    &:hover,
-    &:focus {
-      text-decoration: none;
-      color: var(--button-color);
-      @media (min-width: @screen-sm) {
-        padding-left: 0;
-        padding-right: 0;
-      }
-      .nv-icon--carat_left,
-      .nv-icon--carat_right {
-        width: 2em;
-      }
     }
   }
 }

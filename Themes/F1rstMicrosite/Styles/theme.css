@@ -1,3 +1,14 @@
+.clearfix:before,
+.clearfix:after,
+.form-row:before,
+.form-row:after {
+  display: table;
+  content: ' ';
+}
+.clearfix:after,
+.form-row:after {
+  clear: both;
+}
 /*
   Rock's Core CSS
   1. Imports - Used to import the various core less files
@@ -1782,6 +1793,17 @@ Copyright (c) 2012 Dan Eden*/
 .modal-content.rock-modal .modal-header:after,
 .rock-modal .modal-content .modal-header:after {
   display: table;
+  content: ' ';
+}
+.modal-content.rock-modal .modal-header:after,
+.rock-modal .modal-content .modal-header:after {
+  clear: both;
+}
+.modal-content.rock-modal .modal-header:before,
+.rock-modal .modal-content .modal-header:before,
+.modal-content.rock-modal .modal-header:after,
+.rock-modal .modal-content .modal-header:after {
+  display: table;
   content: " ";
 }
 .modal-content.rock-modal .modal-header:after,
@@ -2168,6 +2190,14 @@ dl:not(.dl-horizontal) dd {
 .input-group.input-width-xxl,
 .form-control-group.input-width-xxl input {
   width: 530px;
+}
+.form-control-group:before,
+.form-control-group:after {
+  display: table;
+  content: ' ';
+}
+.form-control-group:after {
+  clear: both;
 }
 .form-control-group:before,
 .form-control-group:after {
@@ -3679,6 +3709,14 @@ span.data-view-filter-label {
 .recurrence-pattern-specific-date:before,
 .recurrence-pattern-specific-date:after {
   display: table;
+  content: ' ';
+}
+.recurrence-pattern-specific-date:after {
+  clear: both;
+}
+.recurrence-pattern-specific-date:before,
+.recurrence-pattern-specific-date:after {
+  display: table;
   content: " ";
 }
 .recurrence-pattern-specific-date:after {
@@ -3701,6 +3739,14 @@ span.data-view-filter-label {
 }
 .recurrence-pattern-weekly .week-days {
   margin-top: 24px;
+}
+.recurrence-pattern-weekly .week-days:before,
+.recurrence-pattern-weekly .week-days:after {
+  display: table;
+  content: ' ';
+}
+.recurrence-pattern-weekly .week-days:after {
+  clear: both;
 }
 .recurrence-pattern-weekly .week-days:before,
 .recurrence-pattern-weekly .week-days:after {
@@ -4981,6 +5027,14 @@ span.data-view-filter-label {
   display: block;
   padding: 8px;
   border-radius: 0;
+}
+.persondetails-group .groupmembers .member a:before,
+.persondetails-group .groupmembers .member a:after {
+  display: table;
+  content: ' ';
+}
+.persondetails-group .groupmembers .member a:after {
+  clear: both;
 }
 .persondetails-group .groupmembers .member a:before,
 .persondetails-group .groupmembers .member a:after {
@@ -6635,6 +6689,14 @@ iframe.email-body {
 .picker:before,
 .picker:after {
   display: table;
+  content: ' ';
+}
+.picker:after {
+  clear: both;
+}
+.picker:before,
+.picker:after {
+  display: table;
   content: " ";
 }
 .picker:after {
@@ -7894,6 +7956,17 @@ fieldset .actions {
 .timepicker-input:after,
 .clearable-input:after {
   display: table;
+  content: ' ';
+}
+.timepicker-input:after,
+.clearable-input:after {
+  clear: both;
+}
+.timepicker-input:before,
+.clearable-input:before,
+.timepicker-input:after,
+.clearable-input:after {
+  display: table;
   content: " ";
 }
 .timepicker-input:after,
@@ -8662,6 +8735,14 @@ ul.rocklist .rocklist-item.selected {
 .list-horizontal:before,
 .list-horizontal:after {
   display: table;
+  content: ' ';
+}
+.list-horizontal:after {
+  clear: both;
+}
+.list-horizontal:before,
+.list-horizontal:after {
+  display: table;
   content: " ";
 }
 .list-horizontal:after {
@@ -8743,6 +8824,14 @@ select[multiple].input-group-sm .slidingdaterange-daterange .input-group-addon {
   align-items: flex-start;
   padding: 8px 0;
   background-color: #eeeeee;
+}
+.wizard:before,
+.wizard:after {
+  display: table;
+  content: ' ';
+}
+.wizard:after {
+  clear: both;
 }
 .wizard:before,
 .wizard:after {
@@ -14617,6 +14706,14 @@ iframe {
 .form-row:before,
 .form-row:after {
   display: table;
+  content: ' ';
+}
+.form-row:after {
+  clear: both;
+}
+.form-row:before,
+.form-row:after {
+  display: table;
   content: " ";
 }
 .form-row:after {
@@ -14772,6 +14869,14 @@ th[align="right"] {
 .form-right:before,
 .form-right:after {
   display: table;
+  content: ' ';
+}
+.form-right:after {
+  clear: both;
+}
+.form-right:before,
+.form-right:after {
+  display: table;
   content: " ";
 }
 .form-right:after {
@@ -14836,6 +14941,14 @@ th[align="right"] {
 .popover-content header:before,
 .popover-content header:after {
   display: table;
+  content: ' ';
+}
+.popover-content header:after {
+  clear: both;
+}
+.popover-content header:before,
+.popover-content header:after {
+  display: table;
   content: " ";
 }
 .popover-content header:after {
@@ -14860,6 +14973,14 @@ th[align="right"] {
 }
 .popover-content .body div:last-child {
   margin-bottom: 0;
+}
+.list-group-item:before,
+.list-group-item:after {
+  display: table;
+  content: ' ';
+}
+.list-group-item:after {
+  clear: both;
 }
 .list-group-item:before,
 .list-group-item:after {
@@ -15088,6 +15209,14 @@ th[align="right"] {
 .panel-persondetails .panel-body .form-group.static-control:before,
 .panel-persondetails .panel-body .form-group.static-control:after {
   display: table;
+  content: ' ';
+}
+.panel-persondetails .panel-body .form-group.static-control:after {
+  clear: both;
+}
+.panel-persondetails .panel-body .form-group.static-control:before,
+.panel-persondetails .panel-body .form-group.static-control:after {
+  display: table;
   content: " ";
 }
 .panel-persondetails .panel-body .form-group.static-control:after {
@@ -15144,6 +15273,14 @@ th[align="right"] {
 }
 .panel-block > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #cde1f1;
+}
+.panel-block > .panel-heading:before,
+.panel-block > .panel-heading:after {
+  display: table;
+  content: ' ';
+}
+.panel-block > .panel-heading:after {
+  clear: both;
 }
 .panel-block > .panel-heading:before,
 .panel-block > .panel-heading:after {
@@ -15229,6 +15366,14 @@ th[align="right"] {
   color: #5697d0;
   cursor: pointer;
   border-bottom: 1px solid #cde1f1;
+}
+.drawer-pull:before,
+.drawer-pull:after {
+  display: table;
+  content: ' ';
+}
+.drawer-pull:after {
+  clear: both;
 }
 .drawer-pull:before,
 .drawer-pull:after {
