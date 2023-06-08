@@ -1,0 +1,28 @@
+<section class="c-section c-section--white staff-list">
+		<div class="container">
+				<div class="row">
+						<div class="col-md-12">
+							<div class="c-section__content">
+								<div class="staff-grid">
+								{%- for item in Items -%}
+								{%- assign staffName = item.Title %}
+								{%- assign staffDisplayName = item | Attribute:'DisplayName' %}
+								{%- assign staffTitle = item | Attribute:'StaffTitle' %}
+								{%- assign staffImage = item | Attribute:'StaffImage','RawValue' %}
+								<div class="staff-grid__item">
+										<div class="staff__item">
+												<div class="staff__photo">
+														<img src="/GetImage.ashx?guid={{staffImage}}&maxWidth=800&maxHeight=800" alt="{{staffDisplayName}}" />
+												</div>
+												<div class="staff__name">{{staffName}}</div>
+												<div class="staff__title">{{staffTitle}}</div>
+										</div>
+								</div>
+
+								{%- endfor -%}
+								</div>
+							</div>
+						</div>
+				</div>
+		</div>
+</section>

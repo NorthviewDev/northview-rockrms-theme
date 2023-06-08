@@ -19964,6 +19964,7 @@ a.c-card:focus {
   margin: 10px;
   padding: 0;
   text-align: center;
+  color: #777576;
 }
 @media (min-width: 768px) {
   .staff__item {
@@ -19979,6 +19980,7 @@ a.c-card:focus {
   font-size: 20px;
   font-weight: 600;
   margin-top: 22px;
+  text-transform: uppercase;
 }
 .staff__detail-link {
   background-position: center center;
@@ -20063,6 +20065,8 @@ a.c-card:focus {
   margin-bottom: 5px;
   font-size: 16px;
   color: #777576;
+  font-style: italic;
+  text-transform: uppercase;
 }
 .staff__title + .btn {
   margin-top: 20px!important;
@@ -20122,12 +20126,12 @@ a.c-card:focus {
 }
 @media (min-width: 992px) {
   .staff-grid .staff-grid__item {
-    flex: 0 1 25%;
+    flex: 0 1 30%;
   }
 }
 @media (min-width: 1200px) {
   .staff-grid .staff-grid__item {
-    flex: 0 1 20%;
+    flex: 0 1 30%;
   }
 }
 /*!
