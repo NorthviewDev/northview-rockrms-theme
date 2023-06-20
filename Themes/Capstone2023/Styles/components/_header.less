@@ -32,6 +32,9 @@
   }
   .c-header {
     position: relative;
+    @media (max-width: @screen-md) {
+      padding-left: 26px;
+    }
     @media (min-width: @screen-sm) {
       // &::before {
       //   content: '';
@@ -101,9 +104,7 @@
       path{
         fill:@white;
       }
-
     }
-
     .c-logo-link__img {
       height: 36px;
       width: 165px;
@@ -118,6 +119,27 @@
           fill: @color-gray-dark;
           color: @color-gray-dark;
         }
+      }
+    }
+    //order online button in nav
+    #order-btn {
+      margin-left: 30px;
+      float: right;
+      margin-top: -5px;
+      @media (max-width: @screen-sm) {
+        position: absolute;
+        top: 15px;
+        right: 65px;
+        margin: auto;
+      }
+    }
+    //logo in nav
+    #site-logo {
+      width: 200px;
+      filter: invert(1);
+      padding: 15px 0;
+      @media (max-width: @screen-sm) {
+        width: 100px;
       }
     }
   }
@@ -155,6 +177,13 @@
       }
       &.nav-toggle-menu {
         order: 1;
+        margin: 0;
+        @media (min-width: @screen-md) {
+          margin-top: -15px;
+        }
+        @media (max-width: @screen-md) and (min-width: @screen-sm) {
+          margin-top: 10px;
+        }
       }
     }
     &:before,
@@ -292,6 +321,18 @@
     }
   }
 }
+.c-section__hero:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: inherit;
+  background: rgba(0, 0, 0, 0.25) 100%;
+  content: "";
+  @media (max-width: @screen-sm) {
+    height: 500px;
+  }
+}
 .c-section__hero{
   display: flex;
   justify-content: center;
@@ -316,7 +357,7 @@
       max-width: 875px;
       font-weight: 500;
       @media (max-width: @screen-sm) {
-        padding-top: 20px;
+        padding-top: 55px;
         padding-bottom: 80px;
       }
       h1 {

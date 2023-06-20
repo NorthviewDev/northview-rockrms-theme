@@ -350,12 +350,12 @@ a.c-card {
     --button-border-color: @white;
     --button-color: @gray-dark;
     flex: 1;
-    margin: 0 0 @grid-gutter-width;
+    //margin: 0 0 @grid-gutter-width;
     font-size: 18px;
     letter-spacing: 0;
     @media (min-width: @screen-sm) {
       //margin: ~'0 calc((@{grid-gutter-width} / 2))';
-      margin: 0 6px;
+      margin: 0;
       font-size: 22px;
       line-height: 28px;
     }
@@ -836,7 +836,7 @@ a.c-card {
     } */
     .c-tile__image{
       width: 100%;
-      max-height: 460px;
+      aspect-ratio: 1.5;
       object-fit: cover;
       @media (min-width: @screen-sm) {
         //max-height: 100%;
@@ -862,6 +862,10 @@ a.c-card {
         font-size: 25px;
         line-height: 27px;
         letter-spacing: -0.02em;
+        @media (max-width: @screen-sm) {
+          font-size: 18px;
+          line-height: 22px;
+        }
       }
       a:not([class]) {
         color: @color-gray-dark;
@@ -871,6 +875,10 @@ a.c-card {
         letter-spacing: -0.02em;
         padding: 15px 0;
         text-decoration: underline;
+        @media (max-width: @screen-sm) {
+          font-size: 18px;
+          line-height: 22px;
+        }
       }
       .c-card__title {
         font-family: @headings-font-family;
@@ -880,6 +888,9 @@ a.c-card {
         letter-spacing: -0.02em;
         color: @color-gray-dark;
         text-transform: uppercase;
+        @media (max-width: @screen-sm) {
+          font-size: 40px;
+        }
       }
       .c-buttons {
         margin-top: 40px;
@@ -888,9 +899,27 @@ a.c-card {
   }  
 }
 .-swiperCards {
-  margin-top: -270px;
+  &.c-section--dark {
+    background: linear-gradient(180deg, @color-gray-dark 0%, @color-gray-dark 35%, @color-white 35%, @color-white 100%);
+  }
+  &.c-section--medium {
+    background: linear-gradient(180deg, @brand-primary 0%, @brand-primary 35%, @color-white 35%, @color-white 100%);
+  }
+  &.-light,
+  &.c-section--light,
+  &.-section-graybg {
+    background: linear-gradient(180deg, @color-gray-lighter 0%, @color-gray-lighter 35%, @color-white 35%, @color-white 100%);
+  }
+  &.c-section--white {
+    background-color: @color-white;
+  }
   .c-card__swiper {
     overflow: visible;
+    .swiper-slide .c-card__body {
+      @media (max-width: @screen-sm) {
+        height: 500px;
+      }
+    }
   }
 }
 .-sideBySide {
@@ -900,13 +929,13 @@ a.c-card {
     .center-block {
       padding: 0;
       .c-card__body {
-        width: unset;
+        width: 100%;
         height: min-content;
         @media (min-width: @screen-sm) {
           height: 100%;
-          width: 75%;
         }
         .c-card__content {
+          width: inherit;
           height: 100%;
           display: flex;
           flex-direction: column;
@@ -917,24 +946,38 @@ a.c-card {
           &.alignEnd {
             justify-content: end;
             color: @color-gray-dark;
-            h4 {
+            .c-card__description {
               font-weight: 700;
-              font-size: 40px;
-              line-height: 50px;
+              font-size: 25px;
+              line-height: 28px;
               letter-spacing: -0.01em;
               color: @brand-primary;
+              @media (min-width: @screen-sm) {
+                font-size: 40px;
+                line-height: 50px;
+              }
             }
-            h5 {
+            .c-card__title {
+              color: @color-gray-dark;
               font-weight: 300;
-              font-size: 90px;
-              line-height: 87px;
+              line-height: 60px;
+              font-size: 60px;
               letter-spacing: -0.06em;
+              margin-left: 0;
+              @media (min-width: @screen-sm) {
+                font-size: 90px;
+                line-height: 87px;
+              }
             }
             p {
               font-weight: 400;
-              font-size: 20px;
-              line-height: 25px;
+              font-size: 18px;
+              line-height: 22px;
               letter-spacing: -0.02em;
+              @media (min-width: @screen-sm) {
+                font-size: 20px;
+                line-height: 25px;
+              }
             }
           }
           .c-card__title {
@@ -944,10 +987,23 @@ a.c-card {
             line-height: 75px;
             letter-spacing: -0.06em;
             color: @color-white;
-            margin-left: -18px;
+            margin-left: -10px;
             @media (min-width: @screen-sm) {
+              margin-left: -18px;
               font-size: 150px;
               line-height: 120px;
+            }
+          }
+          .c-buttons {
+            .c-btn {
+              display: inline-flex;
+              align-items: center;
+            }
+            .icon-nn-caret-right:before {
+              content: "\e901";
+              font-size: 30px;
+              padding-left: 15px;
+              font-weight: 700;
             }
           }
         }
@@ -965,14 +1021,44 @@ a.c-card {
 .-sbs-content { //button bar
   --section-padding-bottom: var(--s2) !important;
   --section-padding-top: var(--s2) !important;
+  padding-left: 20px;
+  padding-right: 20px;
+  &.hide-mid-arrow {
+    .c-section__content .mid-arrow {
+      display: none !important;
+    }
+  }
   .c-section__content {
-    justify-content: space-between !important;
     h3 {
       font-style: italic;
       font-weight: 300;
-      font-size: 4.5vw;
+      font-size: 4.25vw;
       letter-spacing: -0.03em;
       margin: 0;
+      width: max-content;
+      @media (max-width: @screen-sm) {
+        font-size: 10vw;
+        text-align: center;
+        width: auto;
+      }
+    }
+    .mid-arrow {
+      display: flex;
+      align-items: center;
+      margin: 0 25px;
+      width: 50%;
+      width: -webkit-fill-available;
+      hr {
+        width: 100%;
+        border-top: 2px solid @color-white;
+      }
+      i {
+        margin-left: -10px;
+        font-size: 15px;
+      }
+      @media (max-width: @screen-sm) {
+        display: none;
+      }
     }
     .c-buttons {
       margin-top: 0 !important;
@@ -981,6 +1067,13 @@ a.c-card {
         padding: 10px 20px;
         font-size: 16px;
         line-height: 20px;
+        @media (min-width: @screen-sm) {
+          width: max-content;
+        }
+      }
+      .icon-nn-arrow-right:before {  
+        content: "\e905";
+        font-size: 40px;
       }
     }
   }

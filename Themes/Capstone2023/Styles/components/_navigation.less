@@ -55,7 +55,7 @@
 }
 .c-offcanvas__content {
   //padding: var(--s2);
-  width: 75%;
+  width: 80%;
   min-width: 187px;
   margin: 0 auto;
   #offcanvas-menu{
@@ -77,10 +77,15 @@
     font-size: 34px;
     line-height: 40px;
     letter-spacing: -0.02em;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     &:hover{
       color: @color-gray-dark;
       border-bottom: 1px solid @color-gray-dark;
+    }
+  }
+  .c-list--social-media-icons {
+    @media (min-width: @screen-sm) {
+      padding-left: 1.5em;
     }
   }
 }
@@ -115,7 +120,10 @@
   }
 }
 .c-primary-nav__content {
-  display: block;
+  display: none;
+  @media (min-width: @screen-sm) {
+    display: block;
+  }
   .wrapper {
     display: flex;
     gap: 30px;
@@ -231,7 +239,7 @@
 }
 .nav-toggle-menu--is-active {
   color: @color-gray-lightest;
-  background-color: @color-brand-primary;
+  //background-color: @color-brand-primary;
   .nv-icon:before {
     content: "\e900";
   }

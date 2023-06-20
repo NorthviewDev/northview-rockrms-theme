@@ -431,41 +431,46 @@
   --swiper-navigation-size: 17px;
   --swiper-navigation-color: @brand-primary;
   position: absolute;
-  top: 35%;
+  top: 50%;
   width: 100%;
   .swiper-button-prev,
   .swiper-button-next {
-    background-color: #ffffff;
+    /* background-color: #ffffff;
     border-radius: 100%;
     padding: 22px;
     font-weight: 700;
-    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1); */
+    font-size: 75px;
+    color: @color-white;
     &:after {
+      display: none;
+    }
+    /* &:after {
       display: block;
     }
     &:after {
-      // .c-icon(@c-icon--next);
+      .c-icon(@c-icon--next);
     }
     &:focus {
       outline: none;
-      // outline-offset: 5px;
-    }
+      outline-offset: 5px;
+    } */
   }
   .swiper-button-next {
-    right: 0;
+    right: 20px;
     @media (min-width: @screen-sm) {
-      right: -60px;
+      right: 40px;
     }
   }
   .swiper-button-prev {
-    left: 0px;
-    transform:rotate(180deg);
+    left: 20px;
+    //transform:rotate(180deg);
     @media (min-width: @screen-sm) {
-      left: -60px;   
+      left: 40px;   
     }
-    &:after {
+    /* &:after {
       transform: scaleX(-1);
-    }
+    } */
   }
   .swiper-button-disabled{
   }

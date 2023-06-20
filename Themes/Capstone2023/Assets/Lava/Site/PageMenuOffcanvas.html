@@ -37,6 +37,16 @@ Off-canvas menu has to be outside the page content blocks
 			{% endfor %}
 
 			</ul><!--end c-offcanvas__list-->
+			
+			<ul class="c-list--inline c-list--social-media-icons">
+			{% definedvalue where:'DefinedTypeId == 151' sort:'order asc' %}
+			{% for dv in definedvalueItems %}
+					{% assign IconClass = dv | Attribute:'IconClass','RawValue' %}
+					{% assign LinkTarget = dv | Attribute:'LinkTarget','RawValue' %}
+					<li><a href='{{ dv.Description }}' target='{{LinkTarget}}' rel='noopener'><i class='{{IconClass}}'></i><span class="sr-only">{{ dv.Value }}</span></a></li>
+			{% endfor %}
+			{% enddefinedvalue %}
+			</ul>
 
 			{% for includedPage in IncludePageList  %}
 			{% assign attributeParts = includedPage | PropertyToKeyValue %}

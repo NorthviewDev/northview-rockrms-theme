@@ -11,7 +11,7 @@
 {%- assign sectionPadding  =  ContentChannel | Attribute:'SecPadMatrix' -%}
 {%- assign sectionBgClass  =  ContentChannel | Attribute:'SectionBackgroundColorClass' -%}
 
-<section class="c-section -menu {% if sectionType != '' %}c-section--{{ sectionType }}{% endif %} {{  sectionBgClass }} {% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
+<section class="c-section -menu col-md-6 {% if sectionType != '' %}c-section--{{ sectionType }}{% endif %} {{  sectionBgClass }} {% if sectionBackgroundImage != '' %} c-section--bgimg{% endif %}{% if sectionTitleStyle == "highlight" %} c-section--overlap-top{% endif %}{{sectionPadding}}" style="{% if sectionBackgroundImage != '' %}background-image: url('/GetImage.ashx?Guid={{ sectionBackgroundImage }}');{% endif %}">
     <div class="container">
 {%- if sectionTitle != "" or sectionDescription != "" -%}
         <div class="row">

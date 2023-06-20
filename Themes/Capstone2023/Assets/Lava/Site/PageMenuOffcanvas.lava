@@ -38,6 +38,7 @@ Off-canvas menu has to be outside the page content blocks
 
 			</ul><!--end c-offcanvas__list-->
 			
+			
 			{% for includedPage in IncludePageList  %}
 			{% assign attributeParts = includedPage | PropertyToKeyValue %}
 				<a href="{{ attributeParts.Value }}" class="c-btn c-btn--display-block"><span>{{ attributeParts.Key }}</span></a>

@@ -66,6 +66,10 @@
                 {%- endif -%}
                 {{ item.Content }}
                 </div>
+                <div class="mid-arrow">
+                    <hr />
+                    <i class="icon-caret-right"></i>
+                </div>
                 {{buttons}}
                 </div>
             </div>

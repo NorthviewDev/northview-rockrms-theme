@@ -86,9 +86,11 @@
   <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
 
   <footer id="site-footer" role="contentinfo">
-    <section class="c-section c-section--dark">
-      <div class="container">
+    <section class="c-section">
+      <div class="col-md-8 c-half">
         <Rock:Zone Name="Footer A" runat="server" />
+      </div>
+      <div class="col-md-4 c-half">
         <Rock:Zone Name="Footer B" runat="server" />
       </div>
     </section>

@@ -5,9 +5,10 @@
 {%- assign sectionTitleAlignment = section | Attribute:'SectionTitleAlignment','RawValue' | ToCssClass -%}
 {%- assign sectionPadding = section | Attribute:'SectionPadding' -%}
 {%- assign sectionImage = section | Attribute:'SectionImage','RawValue' -%}
+{%- assign sectionType  =  ContentChannel | Attribute:'SectionType','RawValue' -%}
 {%- assign sectionId = section.Name | ToCssClass %}
 
-<section id="{{sectionId}}" class="section cards -swiperCards {{sectionPadding}}">
+<section id="{{sectionId}}" class="section cards -swiperCards {{sectionPadding}} {% if sectionType != '' %}c-section--{{ sectionType }}{% endif %}">
   <div class="wrapper">
     <div class="c-section__content">
       {% if sectionTitleStyle != 'hidden' %}
@@ -18,8 +19,12 @@
           <!--<div class="swiper-button-prev">{% include "~~/Assets/Icons/prev.svg" %}</div>
           <div class="swiper-button-next">{% include "~~/Assets/Icons/next.svg" %}</div>-->
 
-          <div class="swiper-button-prev"><-</div>
-          <div class="swiper-button-next">-></div>
+          <div class="swiper-button-prev">
+            <i class="icon-caret-left"></i>
+          </div>
+          <div class="swiper-button-next">
+            <i class="icon-caret-right"></i>
+          </div>
         </div>
         <div class="swiper-wrapper c-card__deck wow">
           {%- for item in Items -%}
@@ -73,16 +78,16 @@
     watchOverflow: true,
     freeModeSticky: true,
     spaceBetween: 10,
-    slidesPerView: 1,
+    slidesPerView: 1.25,
     breakpoints: {
       768: {
-        spaceBetween: 30,
-        slidesPerView: 2,
+        spaceBetween: 10,
+        slidesPerView: 2.5,
       },
       1024: {
-        spaceBetween: 30,
+        spaceBetween: 10,
         freeMode: true,
-        slidesPerView: 3,
+        slidesPerView: 3.5,
       }
     }
   });

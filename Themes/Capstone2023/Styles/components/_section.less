@@ -38,7 +38,7 @@
   }
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
-  background-color: @color-white;
+  background-color: #fff;
   background-position: center center;
   position: relative;
   &.c-section--dark {
@@ -104,6 +104,7 @@
         @media (min-width: @screen-sm) {
           font-size: 85px;
           line-height: 81px;
+          padding: 0 100px;
         }
       }
     }
@@ -129,14 +130,22 @@
     }
   }
   &.-menu {
+    @media (max-width: @screen-sm) {
+      padding: 24px 0;
+    }
     .c-section__header h2 {
       font-family: @headings-font-family;
       font-weight: 300;
       font-size: 70px;
-      line-height: 20px;
+      line-height: 65px;
       letter-spacing: -0.02em;
       margin-bottom: 50px;
       color: @color-gray-dark;
+      @media (max-width: @screen-sm) {
+        font-size: 45px;
+        line-height: 50px;
+        margin-bottom: 25px;
+      }
     }
     .c-section__content {
       .menu-item__top {
@@ -577,23 +586,27 @@
     flex-direction: column;
     justify-content: center;
     .c-section__item-icon {
-      padding-bottom: 70px;
-      max-width: 262px;
-      margin: -6% auto 0 auto;
+      width: 150px;
+      margin: -10% auto 0 auto;
+      padding-bottom: 50px;
+      @media (min-width: @screen-sm) {
+        width: 262px;
+        margin: -6% auto 0 auto;
+        padding-bottom: 70px;
+      }
     }
     h2 {
       &.c-section__item-title {
         font-family: @font-family-sans-serif;
         font-weight: 200;
-        font-size: 235px; //fallback size
-        line-height: 200px;
+        font-size: 150px; //fallback size
         text-transform: uppercase;
       }
     }
     p {
       letter-spacing: -0.02em;
-      font-size: 25px;
-      line-height: 28px;
+      font-size: 20px;
+      line-height: 25px;
       font-weight: 500;
       @media (min-width: @screen-sm) {
         font-size: 30px;
@@ -671,13 +684,13 @@
   &.-sbs-content{
     .c-section__content{
       display: flex;
-//      justify-content: space-between;
-      justify-content: flex-start;
-
+      justify-content: space-between;
       align-items: center;
       flex-direction: column;
+      gap: 20px;
       @media (min-width: @screen-sm) {
-       flex-direction: row;
+        flex-direction: row;
+        gap: unset;
       }
     }
     h2{
@@ -687,7 +700,6 @@
        font-size: 60px;
       }
     }
-
     p{
       font-size: 24px;
       &:last-of-type{
@@ -876,4 +888,49 @@
 }
 .hidetemp{
   display: none;
+}
+
+//wide-titles on Capstone site
+#wide-title-1 section {
+  @media (max-width: @screen-sm) {
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+  .c-section__content {
+    z-index: 5;
+    position: absolute;
+    margin-top: -140px;
+    left: 0;
+    right: 0;
+    @media (max-width: @screen-sm) {
+      margin-top: -40px;
+    }
+    h2 {
+      font-size: 16.25vw !important;
+      text-align: center;
+    }
+  }
+}
+#wide-title-2 section .c-section__content {
+  h2 {
+    font-size: 10.5vw !important;
+    @media (max-width: @screen-sm) {
+      font-size: 9.5vw !important;
+    }
+  }
+}
+#wide-title-3 section {
+  .c-section__content {
+    margin-top: -120px;
+    @media (max-width: @screen-sm) {
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 18vw !important;
+      @media (max-width: @screen-sm) {
+        font-size: 16vw !important;
+        margin-top: 11px;
+      }
+    }
+  }
 }
