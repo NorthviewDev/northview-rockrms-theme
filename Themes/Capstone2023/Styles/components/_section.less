@@ -42,15 +42,21 @@
   background-position: center center;
   position: relative;
   &.c-section--dark {
-    color: @white;
+    color: @color-white;
     background-color: @color-gray-dark;
     h2{
       color: @color-gray-lightest!important;
+    }
+    a:not([class]) {
+      color: @color-white;
     }
   }
   &.c-section--medium {
     color: @color-white;
     background-color: @brand-primary;
+    a:not([class]) {
+      color: @color-white;
+    }
   }
   &.-light,
   &.c-section--light {

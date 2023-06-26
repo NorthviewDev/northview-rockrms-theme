@@ -82,6 +82,35 @@
       color: @color-gray-dark;
       border-bottom: 1px solid @color-gray-dark;
     }
+    
+    .nv-icon {
+      font-size: 25px;
+      margin: 9px 0 9px 15px;
+      display: inline-block;
+      &:first-child {
+        display: none;
+      }
+    }
+    &.collapsed .nv-icon {
+      display: none;
+      &:first-child {
+        display: inline-block;
+      }
+    }
+  }
+  .c-offcanvas__submenu {
+    list-style: none;
+    margin-bottom: 40px;
+    .c-nav__link {
+      margin-bottom: 15px;
+      a {
+        color: @brand-primary;
+      }
+      a:hover {
+        color: @color-gray-dark;
+        border-bottom: 1px solid @color-gray-dark;
+      }
+    }
   }
   .c-list--social-media-icons {
     @media (min-width: @screen-sm) {
