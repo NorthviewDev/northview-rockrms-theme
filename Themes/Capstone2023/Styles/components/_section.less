@@ -38,7 +38,8 @@
   }
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
-  background-color: #fff;
+  //background-color: #fff;
+  background-color: @color-white;
   background-position: center center;
   position: relative;
   &.c-section--dark {
@@ -697,6 +698,10 @@
       @media (min-width: @screen-sm) {
         flex-direction: row;
         gap: unset;
+      }
+      @media (min-width: @screen-xl) {
+        justify-content: center;
+        gap: 30px;
       }
     }
     h2{

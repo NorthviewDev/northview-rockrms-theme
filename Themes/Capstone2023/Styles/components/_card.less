@@ -946,7 +946,9 @@ a.c-card {
           &.alignEnd {
             justify-content: end;
             color: @color-gray-dark;
-            margin-bottom: 150px;
+            @media (min-width: @screen-sm) {
+              margin-bottom: 150px;
+            }
             .c-card__description {
               font-weight: 700;
               font-size: 25px;
@@ -1042,6 +1044,9 @@ a.c-card {
         font-size: 10vw;
         text-align: center;
         width: auto;
+      }
+      @media (min-width: @screen-xl) {
+        font-size: 3.75vw;
       }
     }
     .mid-arrow {

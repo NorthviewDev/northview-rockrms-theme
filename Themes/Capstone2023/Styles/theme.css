@@ -16489,13 +16489,8 @@ body.no-title .c-block-hero__headline .ornamental {
   margin-right: auto;
   position: relative;
   box-shadow: 0px 0px 10px 0px #8c8c8c;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   overflow: hidden;
-}
-@media (min-width: 1730px) {
-  #form1 {
-    width: 1730px;
-  }
 }
 blockquote {
   padding: 0;
@@ -18355,7 +18350,11 @@ a.c-card:focus {
 .-sideBySide .container .center-block .c-card__body .c-card__content.alignEnd {
   justify-content: end;
   color: #5E5E5F;
-  margin-bottom: 150px;
+}
+@media (min-width: 768px) {
+  .-sideBySide .container .center-block .c-card__body .c-card__content.alignEnd {
+    margin-bottom: 150px;
+  }
 }
 .-sideBySide .container .center-block .c-card__body .c-card__content.alignEnd .c-card__description {
   font-weight: 700;
@@ -18454,6 +18453,11 @@ a.c-card:focus {
     font-size: 10vw;
     text-align: center;
     width: auto;
+  }
+}
+@media (min-width: 1600px) {
+  .-sbs-content .c-section__content h3 {
+    font-size: 3.75vw;
   }
 }
 .-sbs-content .c-section__content .mid-arrow {
@@ -18638,7 +18642,7 @@ a.c-card:focus {
   --section-padding-bottom: var(--s4);
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
-  background-color: #fff;
+  background-color: #f5f5f5;
   background-position: center center;
   position: relative;
 }
@@ -19329,6 +19333,12 @@ a.c-card:focus {
   .c-section.-sbs-content .c-section__content {
     flex-direction: row;
     gap: unset;
+  }
+}
+@media (min-width: 1600px) {
+  .c-section.-sbs-content .c-section__content {
+    justify-content: center;
+    gap: 30px;
   }
 }
 .c-section.-sbs-content h2 {
@@ -21014,7 +21024,6 @@ http://humaan.com
 }
 @media (min-width: 1730px) {
   #site-header {
-    width: 1730px;
     left: 50%;
     bottom: auto;
     transform: translateX(-50%);
@@ -21120,7 +21129,7 @@ http://humaan.com
 #site-header .c-header #site-logo {
   width: 200px;
   filter: invert(1);
-  padding: 15px 0;
+  padding: 11px 0 0 0;
 }
 @media (max-width: 768px) {
   #site-header .c-header #site-logo {
@@ -21298,6 +21307,7 @@ http://humaan.com
   height: inherit;
   background: rgba(0, 0, 0, 0.25) 100%;
   content: "";
+  min-height: 700px;
 }
 @media (max-width: 768px) {
   .c-section__hero:before {
@@ -21479,7 +21489,7 @@ http://humaan.com
 }
 .c-offcanvas__content .c-offcanvas__link:hover {
   color: #5E5E5F;
-  border-bottom: 1px solid #5E5E5F;
+  border-bottom: 1px solid #E19145;
 }
 .c-offcanvas__content .c-offcanvas__link .nv-icon {
   font-size: 25px;
@@ -21507,7 +21517,7 @@ http://humaan.com
 }
 .c-offcanvas__content .c-offcanvas__submenu .c-nav__link a:hover {
   color: #5E5E5F;
-  border-bottom: 1px solid #5E5E5F;
+  border-bottom: 1px solid #E19145;
 }
 @media (min-width: 768px) {
   .c-offcanvas__content .c-list--social-media-icons {
@@ -21554,6 +21564,12 @@ http://humaan.com
 @media (min-width: 768px) {
   .c-primary-nav__content {
     display: block;
+    margin-top: -25px;
+  }
+}
+@media (min-width: 992px) {
+  .c-primary-nav__content {
+    margin-top: -10px;
   }
 }
 .c-primary-nav__content .wrapper {

@@ -80,7 +80,7 @@
     margin-bottom: 25px;
     &:hover{
       color: @color-gray-dark;
-      border-bottom: 1px solid @color-gray-dark;
+      border-bottom: 1px solid @brand-primary;
     }
     
     .nv-icon {
@@ -108,7 +108,7 @@
       }
       a:hover {
         color: @color-gray-dark;
-        border-bottom: 1px solid @color-gray-dark;
+        border-bottom: 1px solid @brand-primary;
       }
     }
   }
@@ -152,6 +152,10 @@
   display: none;
   @media (min-width: @screen-sm) {
     display: block;
+    margin-top: -25px;
+  }
+  @media (min-width: @screen-md) {
+    margin-top: -10px;
   }
   .wrapper {
     display: flex;
